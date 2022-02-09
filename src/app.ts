@@ -6,9 +6,6 @@ import config from './config';
 
 const app = new Koa();
 
-console.log('NODE_ENV', process.env.NODE_ENV);
-console.log(config);
-
 app.use(Koa2Cors()).use(KoaBodyParser());
 
 app.listen(3000, () => {
