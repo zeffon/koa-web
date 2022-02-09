@@ -2,7 +2,12 @@ import Koa from 'koa';
 import Koa2Cors from 'koa2-cors';
 import KoaBodyParser from 'koa-bodyparser';
 
+import config from './config';
+
 const app = new Koa();
+
+console.log('NODE_ENV', process.env.NODE_ENV);
+console.log(config);
 
 app.use(Koa2Cors()).use(KoaBodyParser());
 
