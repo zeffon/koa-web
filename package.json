@@ -1,0 +1,49 @@
+{
+  "name": "koa2-plus",
+  "version": "0.0.1",
+  "description": "koa开发web项目模块",
+  "main": "./src/app.ts",
+  "scripts": {
+    "start": "nodemon --watch src/**/* -e ts,tsx --exec ts-node ./src/app.ts",
+    "commit": "./node_modules/cz-customizable/standalone.js",
+    "build": "webpack",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.1.1",
+    "koa2-cors": "^2.0.6"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
+    "@types/koa": "^2.13.4",
+    "@types/koa-bodyparser": "^4.3.5",
+    "@types/koa-router": "^7.4.4",
+    "@types/koa2-cors": "^2.0.2",
+    "@types/node": "^16.11.12",
+    "@types/webpack": "^5.28.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "commitlint-config-cz": "^0.13.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^6.3.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^12.3.3",
+    "nodemon": "^2.0.15",
+    "prettier": "2.5.1",
+    "ts-loader": "^9.2.6",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5",
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $GIT_PARAMS"
+    }
+  }
+}
