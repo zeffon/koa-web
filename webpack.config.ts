@@ -5,7 +5,7 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 const config: Webpack.Configuration = {
   mode: 'production',
   target: 'node',
-  entry: './src/index.ts',
+  entry: './src/app.ts',
   devtool: 'inline-source-map',
   output: {
     filename: 'index.js',
