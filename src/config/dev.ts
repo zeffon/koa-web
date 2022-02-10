@@ -1,4 +1,5 @@
 export const devConf = {
+  env: 'dev',
   database: {
     dbName: 'root',
     host: 'localhost',

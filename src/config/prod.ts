@@ -1,4 +1,5 @@
 export const prodConf = {
+  env: 'prod',
   database: {
     dbName: 'root',
     host: '127.0.0.1',
