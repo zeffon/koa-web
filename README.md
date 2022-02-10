@@ -16,7 +16,7 @@
 
 3. 代码格式化
     ```
-    $ pnpm commit
+    $ pnpm lint
     ```
 
 4. 打包
