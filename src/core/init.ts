@@ -1,11 +1,19 @@
+import Koa from 'koa';
+import Koa2Cors from 'koa2-cors';
+import KoaBodyParser from 'koa-bodyparser';
 import requireDirectory from 'require-directory';
 import Router from 'koa-router';
 import config from '../config';
 
 export default class InitManager {
-  static initCore(app: any) {
-    //入口方法
-    // InitManager.app = app
+  static app: Koa;
+
+  static initCore(app: Koa) {
+    this.app = app;
+    app.use(Koa2Cors()); // 跨域处理
+    app.use(KoaBodyParser()); // body数据处理
+    // 全局异常处理
+    // 路由加载
     console.log(app);
     InitManager.initLoadRouters();
     // InitManager.loadHttpException()
