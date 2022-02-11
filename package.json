@@ -15,7 +15,8 @@
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^10.1.1",
-    "koa2-cors": "^2.0.6"
+    "koa2-cors": "^2.0.6",
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
@@ -24,6 +25,7 @@
     "@types/koa-bodyparser": "^4.3.5",
     "@types/koa-router": "^7.4.4",
     "@types/koa2-cors": "^2.0.2",
+    "@types/lodash-es": "^4.17.6",
     "@types/node": "^16.11.12",
     "@types/require-directory": "^2.1.2",
     "@types/webpack": "^5.28.0",
