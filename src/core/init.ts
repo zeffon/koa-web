@@ -4,38 +4,22 @@ import KoaBodyParser from 'koa-bodyparser';
 import requireDirectory from 'require-directory';
 import Router from 'koa-router';
 import config from '../config';
+import { Route } from './route/route';
 
 export default class InitManager {
-  static app: Koa;
+  private app: Koa;
 
-  static initCore(app: Koa) {
+  constructor(app: Koa) {
     this.app = app;
+    this.initCore(app);
+  }
+
+  initCore(app: Koa) {
     app.use(Koa2Cors()); // 跨域处理
     app.use(KoaBodyParser()); // body数据处理
     // 全局异常处理
     // 路由加载
-    console.log(app);
-    InitManager.initLoadRouters();
-    // InitManager.loadHttpException()
-    // InitManager.loadConfig()
-  }
-
-  // static loadConfig() {
-  //     global.config = config
-  // }
-
-  static initLoadRouters() {
-    //path config
-    const apiDirectory = `${process.cwd()}/app/api`;
-    console.log(apiDirectory);
-    // requireDirectory(module, apiDirectory, {
-    //     visit: whenLoadModule
-    // })
-
-    // function whenLoadModule(obj) {
-    //     if(obj instanceof Router ){
-    //         InitManager.app.use(obj.routes())
-    //     }
-    // }
+    const router = new Route(this.app);
+    router.init();
   }
 }
