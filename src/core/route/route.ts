@@ -6,7 +6,7 @@ import { sureIsArray, toPath } from '../tool';
 
 const router = new Router();
 
-export const symbolRoutePrefix: symbol = Symbol('routePrefix');
+export const routePrefix: symbol = Symbol('route-prefix');
 
 export class Route {
   static __DecoratedRouters: Map<any, Function | Function[]> = new Map();
@@ -24,7 +24,7 @@ export class Route {
 
     for (let [config, controller] of Route.__DecoratedRouters) {
       let controllers: any[] = sureIsArray(controller);
-      let prefixPath = config.target[symbolRoutePrefix];
+      let prefixPath = config.target[routePrefix];
       let routerPaths: string[] = [];
       routerPaths.push(toPath(prefixPath, config.path));
 

@@ -1,11 +1,10 @@
 import Koa from 'koa';
 import { sureIsArray } from '../tool';
-import { symbolRoutePrefix, Route } from './route';
+import { routePrefix, Route } from './route';
 
 export function Prefix(prefix: string) {
-  console.log('prefix');
   return (target: any) => {
-    target.prototype[symbolRoutePrefix] = prefix;
+    target.prototype[routePrefix] = prefix;
   };
 }
 
