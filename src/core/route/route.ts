@@ -2,6 +2,7 @@ import Koa from 'koa';
 import Router from 'koa-router';
 import path from 'path';
 import glob from 'glob';
+import { sureIsArray, toPath } from '../tool';
 
 const router = new Router();
 
@@ -21,6 +22,18 @@ export class Route {
       require(item);
     });
 
+    for (let [config, controller] of Route.__DecoratedRouters) {
+      let controllers: any[] = sureIsArray(controller);
+      let prefixPath = config.target[symbolRoutePrefix];
+      let routerPaths: string[] = [];
+      routerPaths.push(toPath(prefixPath, config.path));
+
+      controllers.forEach((controller) => {
+        routerPaths.forEach((routerPath) => {
+          this.router[config.method](routerPath, controller);
+        });
+      });
+    }
     this.app.use(this.router.routes());
     this.app.use(this.router.allowedMethods());
   }

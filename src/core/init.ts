@@ -1,9 +1,6 @@
 import Koa from 'koa';
 import Koa2Cors from 'koa2-cors';
 import KoaBodyParser from 'koa-bodyparser';
-import requireDirectory from 'require-directory';
-import Router from 'koa-router';
-import config from '../config';
 import { Route } from './route/route';
 
 export default class InitManager {

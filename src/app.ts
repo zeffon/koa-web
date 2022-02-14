@@ -1,7 +1,6 @@
 import Koa from 'koa';
 import InitManager from './core/init';
 import CONFIG from './config';
-import Router from 'koa-router';
 
 const app = new Koa();
 
