@@ -19,11 +19,6 @@
     $ pnpm lint
     ```
 
-4. 打包
-    ```
-    $ pnpm build
-    ```
-
 ## TODO
 
 - [x] 支持TypeScript
