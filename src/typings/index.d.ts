@@ -9,6 +9,11 @@ interface RequiredRoute {
   path: string;
 }
 
+interface OptionItem {
+  label: string;
+  value: string | number;
+}
+
 declare namespace NodeJS {
   interface Global {}
 }
