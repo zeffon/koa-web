@@ -11,6 +11,7 @@ specifiers:
   '@types/koa2-cors': ^2.0.2
   '@types/lodash-es': ^4.17.6
   '@types/node': ^16.11.12
+  '@types/redis': 2.8.28
   '@types/require-directory': ^2.1.2
   async: ^3.2.3
   commitlint-config-cz: ^0.13.3
@@ -28,6 +29,7 @@ specifiers:
   mysql2: ^2.3.3
   nodemon: ^2.0.15
   prettier: 2.5.1
+  redis: 3.0.2
   ts-node: ^10.5.0
   typescript: ^4.5.5
 
@@ -40,6 +42,7 @@ dependencies:
   koa2-cors: 2.0.6
   lodash-es: 4.17.21
   mysql2: 2.3.3
+  redis: 3.0.2
 
 devDependencies:
   '@commitlint/cli': 16.1.0_@types+node@16.11.22
@@ -52,6 +55,7 @@ devDependencies:
   '@types/koa2-cors': 2.0.2
   '@types/lodash-es': 4.17.6
   '@types/node': 16.11.22
+  '@types/redis': 2.8.28
   '@types/require-directory': 2.1.2
   commitlint-config-cz: 0.13.3
   concurrently: 7.0.0
@@ -440,6 +444,12 @@ packages:
 
   /@types/range-parser/1.2.4:
     resolution: {integrity: sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==}
+    dev: true
+
+  /@types/redis/2.8.28:
+    resolution: {integrity: sha512-8l2gr2OQ969ypa7hFOeKqtFoY70XkHxISV0pAwmQ2nm6CSPb1brmTmqJCGGrekCo+pAZyWlNXr+Kvo6L/1wijA==}
+    dependencies:
+      '@types/node': 17.0.16
     dev: true
 
   /@types/require-directory/2.1.2:
@@ -1134,6 +1144,11 @@ packages:
 
   /delegates/1.0.0:
     resolution: {integrity: sha1-hMbhWbgZBP3KWaDvRM2HDTElD5o=}
+    dev: false
+
+  /denque/1.5.1:
+    resolution: {integrity: sha512-XwE+iZ4D6ZUB7mfYRMb5wByE8L74HCn30FBN7sWnXksWc1LO1bPDl67pBR9o/kC4z/xSNAwkMYcGgqDV3BE3Hw==}
+    engines: {node: '>=0.10'}
     dev: false
 
   /denque/2.0.1:
@@ -2549,6 +2564,32 @@ packages:
       indent-string: 4.0.0
       strip-indent: 3.0.0
     dev: true
+
+  /redis-commands/1.7.0:
+    resolution: {integrity: sha512-nJWqw3bTFy21hX/CPKHth6sfhZbdiHP6bTawSgQBlKOVRG7EZkfHbbHwQJnrE4vsQf0CMNE+3gJ4Fmm16vdVlQ==}
+    dev: false
+
+  /redis-errors/1.2.0:
+    resolution: {integrity: sha1-62LSrbFeTq9GEMBK/hUpOEJQq60=}
+    engines: {node: '>=4'}
+    dev: false
+
+  /redis-parser/3.0.0:
+    resolution: {integrity: sha1-tm2CjNyv5rS4pCin3vTGvKwxyLQ=}
+    engines: {node: '>=4'}
+    dependencies:
+      redis-errors: 1.2.0
+    dev: false
+
+  /redis/3.0.2:
+    resolution: {integrity: sha512-PNhLCrjU6vKVuMOyFu7oSP296mwBkcE6lrAjruBYG5LgdSqtRBoVQIylrMyVZD/lkF24RSNNatzvYag6HRBHjQ==}
+    engines: {node: '>=6'}
+    dependencies:
+      denque: 1.5.1
+      redis-commands: 1.7.0
+      redis-errors: 1.2.0
+      redis-parser: 3.0.0
+    dev: false
 
   /registry-auth-token/4.2.1:
     resolution: {integrity: sha512-6gkSb4U6aWJB4SF2ZvLb76yCBjcvufXBqvvEx1HbmKPkutswjW1xNVRY0+daljIYRbogN7O0etYSlbiaEQyMyw==}

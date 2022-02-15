@@ -20,7 +20,8 @@
     "koa-router": "^10.1.1",
     "koa2-cors": "^2.0.6",
     "lodash-es": "^4.17.21",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "redis": "3.0.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
@@ -33,6 +34,7 @@
     "@types/koa2-cors": "^2.0.2",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^16.11.12",
+    "@types/redis": "2.8.28",
     "@types/require-directory": "^2.1.2",
     "commitlint-config-cz": "^0.13.3",
     "concurrently": "^7.0.0",

@@ -24,7 +24,7 @@
 - [x] 支持TypeScript
 - [x] git commit规范提交
 - [x] prettier规范代码格式
-- [ ] 路由封装
+- [x] 路由封装
 - [ ] 统一异常处理
 - [ ] 数据校验
 - [ ] MySQL数据库连接
