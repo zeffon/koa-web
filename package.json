@@ -13,16 +13,19 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "async": "^3.2.3",
     "glob": "^7.2.0",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^10.1.1",
     "koa2-cors": "^2.0.6",
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.21",
+    "mysql2": "^2.3.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
+    "@types/async": "^3.2.12",
     "@types/glob": "^7.2.0",
     "@types/koa": "^2.13.4",
     "@types/koa-bodyparser": "^4.3.5",
