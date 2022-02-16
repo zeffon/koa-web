@@ -2,7 +2,7 @@ import Koa from 'koa';
 import Koa2Cors from 'koa2-cors';
 import KoaBodyParser from 'koa-bodyparser';
 import { Route } from './route/route';
-import { catchError } from './exception';
+import catchError from './exception';
 
 export default class InitManager {
   private app: Koa;

@@ -5,7 +5,7 @@ import { HttpException } from './http-exception';
 /**
  * 全局异常捕获
  */
-export async function catchError(ctx: Koa.Context, next: any) {
+export default async function catchError(ctx: Koa.Context, next: any) {
   try {
     await next();
   } catch (error) {
