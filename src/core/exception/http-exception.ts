@@ -1,84 +1,81 @@
 export class HttpException extends Error {
   code: number;
-  message: string;
-  httpStatusCode: number;
-  constructor(config: any = {}) {
+  status: number;
+  constructor(code: number) {
     super();
-    this.message = config.message;
-    this.code = config.code;
-    this.httpStatusCode = config.httpStatusCode;
+    this.code = code;
+    this.status = 500;
   }
 }
 
 export class ParameterException extends HttpException {
-  constructor(config: any = {}) {
-    super();
-    this.code = config.code;
-    this.message = config.message;
-    this.httpStatusCode = config.httpStatusCode;
+  constructor(code: number) {
+    super(code);
+    this.code = code;
+    this.status = 400;
   }
 }
 
 export class UnAuthenticatedException extends HttpException {
-  constructor(config: any = {}) {
-    super();
-    this.code = config.code;
-    this.message = config.message;
-    this.httpStatusCode = config.httpStatusCode;
+  constructor(code: number) {
+    super(code);
+    this.code = code;
+    this.status = 401;
   }
 }
 
 export class ForbiddenException extends HttpException {
-  constructor(config: any = {}) {
-    super();
-    this.code = config.code;
-    this.message = config.message;
-    this.httpStatusCode = config.httpStatusCode;
+  constructor(code: number) {
+    super(code);
+    this.code = code;
+    this.status = 403;
   }
 }
 
 export class NotFoundException extends HttpException {
-  constructor(config: any = {}) {
-    super();
-    this.code = config.code;
-    this.message = config.message;
-    this.httpStatusCode = config.httpStatusCode;
+  constructor(code: number) {
+    super(code);
+    this.code = code;
+    this.status = 404;
   }
 }
 
 export class ServerErrorException extends HttpException {
-  constructor(config: any = {}) {
-    super();
-    this.code = config.code;
-    this.message = config.message;
-    this.httpStatusCode = config.httpStatusCode;
+  constructor(code: number) {
+    super(code);
+    this.code = code;
+    this.status = 500;
   }
 }
 
 export class GetSuccess extends HttpException {
-  GetSuccess(code: number) {
+  constructor(code: number) {
+    super(code);
     this.code = code;
-    this.httpStatusCode = 200;
+    this.status = 200;
   }
 }
 
 export class CreateSuccess extends HttpException {
-  CreateSuccess(code: number) {
+  constructor(code: number) {
+    super(code);
     this.code = code;
-    this.httpStatusCode = 201;
+    this.status = 201;
   }
 }
 
 export class UpdateSuccess extends HttpException {
-  UpdateSuccess(code: number) {
+  constructor(code: number) {
+    super(code);
     this.code = code;
-    this.httpStatusCode = 200;
+    this.status = 200;
   }
 }
 
 export class DeleteSuccess extends HttpException {
-  DeleteSuccess(code: number) {
+  constructor(code: number) {
+    super(code);
     this.code = code;
-    this.httpStatusCode = 200;
+    this.status = 200;
   }
 }

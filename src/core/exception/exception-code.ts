@@ -1,4 +1,6 @@
-export const EXCEPTION_CODE = new Map([
+import { objectMapToArray } from '../tool';
+
+const CODE = new Map([
   [0, 'ok'],
   [9999, '服务器未知异常'],
 
@@ -12,3 +14,5 @@ export const EXCEPTION_CODE = new Map([
 
   [20000, '用户类通用错误']
 ]);
+
+export default CODE;
