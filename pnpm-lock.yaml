@@ -9,7 +9,7 @@ specifiers:
   '@types/koa-bodyparser': ^4.3.5
   '@types/koa-router': ^7.4.4
   '@types/koa2-cors': ^2.0.2
-  '@types/lodash-es': ^4.17.6
+  '@types/lodash': ^4.14.178
   '@types/node': ^16.11.12
   '@types/redis': 2.8.28
   '@types/require-directory': ^2.1.2
@@ -25,7 +25,7 @@ specifiers:
   koa-router: ^10.1.1
   koa2-cors: ^2.0.6
   lint-staged: ^12.3.3
-  lodash-es: ^4.17.21
+  lodash: ^4.17.21
   mysql2: ^2.3.3
   nodemon: ^2.0.15
   prettier: 2.5.1
@@ -40,7 +40,7 @@ dependencies:
   koa-bodyparser: 4.3.0
   koa-router: 10.1.1
   koa2-cors: 2.0.6
-  lodash-es: 4.17.21
+  lodash: 4.17.21
   mysql2: 2.3.3
   redis: 3.0.2
 
@@ -53,7 +53,7 @@ devDependencies:
   '@types/koa-bodyparser': 4.3.5
   '@types/koa-router': 7.4.4
   '@types/koa2-cors': 2.0.2
-  '@types/lodash-es': 4.17.6
+  '@types/lodash': 4.14.178
   '@types/node': 16.11.22
   '@types/redis': 2.8.28
   '@types/require-directory': 2.1.2
@@ -398,12 +398,6 @@ packages:
     resolution: {integrity: sha512-S7D//zbF0oJJJ7l6eFT2ThXPCjxHOv84HKMKiZPmVu51Bf4GWZGbTZDedIoUo/aXEIwTnfKbSiod/vqidfDwjg==}
     dependencies:
       '@types/koa': 2.13.4
-    dev: true
-
-  /@types/lodash-es/4.17.6:
-    resolution: {integrity: sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg==}
-    dependencies:
-      '@types/lodash': 4.14.178
     dev: true
 
   /@types/lodash/4.14.178:
@@ -2013,10 +2007,6 @@ packages:
       p-locate: 5.0.0
     dev: true
 
-  /lodash-es/4.17.21:
-    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
-    dev: false
-
   /lodash.clonedeep/4.5.0:
     resolution: {integrity: sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=}
     dev: true
@@ -2027,7 +2017,6 @@ packages:
 
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: true
 
   /log-update/4.0.0:
     resolution: {integrity: sha512-9fkkDevMefjg0mmzWFBW8YkFP91OrizzkW3diF7CpG+S2EYdy4+TVfGwz1zeF8x7hCx1ovSPTOE9Ngib74qqUg==}

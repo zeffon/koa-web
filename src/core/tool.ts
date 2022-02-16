@@ -1,4 +1,4 @@
-import { isArray, isPlainObject } from 'lodash-es';
+import { isArray, isPlainObject } from 'lodash';
 
 /**
  * 返回路径
