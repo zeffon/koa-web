@@ -6,12 +6,12 @@ import UnifyResponse from '../../../core/exception/unify-response';
 export default class TestController {
   @Get('test')
   async test(ctx: Koa.Context, next: any) {
-    UnifyResponse.parameterException('自定义措辞有');
+    UnifyResponse.updateSuccess(3);
   }
 
   @Get('test1')
   async test1(ctx: Koa.Context, next: any) {
-    UnifyResponse.parameterException(10003);
+    UnifyResponse.updateSuccess(2, '更新成功');
   }
 
   @Get('test2')

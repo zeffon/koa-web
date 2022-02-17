@@ -49,33 +49,37 @@ export class ServerErrorException extends HttpException {
 }
 
 export class GetSuccess extends HttpException {
-  constructor(code: number) {
+  constructor(code: number, message: string) {
     super(code);
     this.code = code;
     this.status = 200;
+    this.message = message;
   }
 }
 
 export class CreateSuccess extends HttpException {
-  constructor(code: number) {
+  constructor(code: number, message: string) {
     super(code);
     this.code = code;
     this.status = 201;
+    this.message = message;
   }
 }
 
 export class UpdateSuccess extends HttpException {
-  constructor(code: number) {
+  constructor(code: number, message: string) {
     super(code);
     this.code = code;
     this.status = 200;
+    this.message = message;
   }
 }
 
 export class DeleteSuccess extends HttpException {
-  constructor(code: number) {
+  constructor(code: number, message: string) {
     super(code);
     this.code = code;
     this.status = 200;
+    this.message = message;
   }
 }
