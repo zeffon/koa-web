@@ -27,7 +27,7 @@ export default class UnifyResponse {
     throw new DeleteSuccess(code);
   }
 
-  static parameterException(code: number) {
+  static parameterException(code: number | string) {
     throw new ParameterException(code);
   }
 

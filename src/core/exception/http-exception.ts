@@ -1,7 +1,7 @@
 export class HttpException extends Error {
-  code: number;
+  code: number | string;
   status: number;
-  constructor(code: number) {
+  constructor(code: number | string) {
     super();
     this.code = code;
     this.status = 500;
@@ -9,7 +9,7 @@ export class HttpException extends Error {
 }
 
 export class ParameterException extends HttpException {
-  constructor(code: number) {
+  constructor(code: number | string) {
     super(code);
     this.code = code;
     this.status = 400;

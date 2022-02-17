@@ -1,4 +1,5 @@
 import Koa from 'koa';
+import { isNumber } from 'lodash';
 import CODE from './exception-code';
 import { HttpException } from './http-exception';
 
@@ -14,10 +15,12 @@ export default async function catchError(ctx: Koa.Context, next: any) {
     logError(error, isHttpException);
 
     if (isHttpException) {
+      const message = isNumber(error.code) ? CODE.get(error.code) : error.code;
+      const code = isNumber(error.code) ? error.code : 10000;
       ctx.status = error.status;
       const data = {
-        code: error.code,
-        message: CODE.get(error.code) || '',
+        code,
+        message,
         request
       };
       ctx.body = data;
