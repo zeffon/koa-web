@@ -9,5 +9,4 @@ new InitManager(app);
 app.listen(CONFIG.PORT, () => {
   console.log(`Please open ${CONFIG.BASE_URL}:${CONFIG.PORT}/`);
 });
-console.log(app);
 export default app;

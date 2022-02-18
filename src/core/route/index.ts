@@ -150,7 +150,7 @@ function ValidatorRequiredParams(params: any[]) {
     }
     return {
       key,
-      rules: [rule, '参数格式错误']
+      rules: [rule, global.Validator[rule] || '参数格式错误']
     };
   });
 }

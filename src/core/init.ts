@@ -13,11 +13,11 @@ export default class InitManager {
   }
 
   initCore() {
+    // valid.init(); // 异常校验器信息
     this.app.use(Koa2Cors()); // 跨域处理
     this.app.use(KoaBodyParser()); // body数据处理
     this.app.use(catchError); // 全局异常处理
-    // 路由加载
-    const router = new Route(this.app);
+    const router = new Route(this.app); // 路由加载
     router.init();
   }
 }

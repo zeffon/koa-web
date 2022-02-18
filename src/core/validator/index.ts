@@ -24,9 +24,8 @@ class ValidatorParam extends LinValidator {
 }
 
 /**
+ * 校验一个参数
  * @params { key, rules => [type, msg, rule] || [ [type, msg, rule], ... ] }
- * @description: 校验一个参数
- * @update 2021-01-20 15:52:12
  */
 export class ValidatorParameter extends ValidatorParam {
   constructor(rules: any) {

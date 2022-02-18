@@ -14,6 +14,21 @@ interface OptionItem {
   value: string | number;
 }
 
+interface ValidatorOption {
+  isLength: string;
+  isString: string;
+  isBoolean: string;
+  isInt: string;
+  isFloat: string;
+  isEmail: string;
+  [x: string]: any;
+}
+
 declare namespace NodeJS {
-  interface Global {}
+  interface Global {
+    Validator: ValidatorOption;
+    requestCount: number;
+    requestStart: any;
+    requestEnd: any;
+  }
 }
