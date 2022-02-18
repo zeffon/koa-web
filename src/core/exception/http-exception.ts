@@ -41,14 +41,14 @@ export class NotFoundException extends HttpException {
 }
 
 export class ServerErrorException extends HttpException {
-  constructor(code: number) {
+  constructor(code: number | string) {
     super(code);
     this.code = code;
     this.status = 500;
   }
 }
 
-export class GetSuccess extends HttpException {
+export class Success extends HttpException {
   constructor(code: number, message: string) {
     super(code);
     this.code = code;
@@ -57,27 +57,36 @@ export class GetSuccess extends HttpException {
   }
 }
 
-export class CreateSuccess extends HttpException {
+export class GetSuccess extends Success {
   constructor(code: number, message: string) {
-    super(code);
+    super(code, message);
+    this.code = code;
+    this.status = 200;
+    this.message = message;
+  }
+}
+
+export class CreateSuccess extends Success {
+  constructor(code: number, message: string) {
+    super(code, message);
     this.code = code;
     this.status = 201;
     this.message = message;
   }
 }
 
-export class UpdateSuccess extends HttpException {
+export class UpdateSuccess extends Success {
   constructor(code: number, message: string) {
-    super(code);
+    super(code, message);
     this.code = code;
     this.status = 200;
     this.message = message;
   }
 }
 
-export class DeleteSuccess extends HttpException {
+export class DeleteSuccess extends Success {
   constructor(code: number, message: string) {
-    super(code);
+    super(code, message);
     this.code = code;
     this.status = 200;
     this.message = message;

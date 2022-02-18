@@ -1,5 +1,6 @@
 import Redis from 'redis';
 import CONFIG from '../../config';
+import Logger from '../log';
 import { jsonToObject, objectToJson } from '../tool';
 
 const REDIS = CONFIG.REDIS;
@@ -14,8 +15,7 @@ redisClient.auth(CONFIG.REDIS.PASSWORD, () => {
 
 // 监听 redis 错误事件
 redisClient.on('error', (err) => {
-  // TODO
-  console.log(err);
+  Logger.error('redis 发生错误', err, 'redis 发生错误');
 });
 
 // 保存 redis 值

@@ -85,7 +85,7 @@ export default class UnifyResponse {
    * 服务器异常
    * @param code 错误码
    */
-  static serverErrorException(code: number) {
+  static serverErrorException(code: number | string) {
     throw new ServerErrorException(code);
   }
 }

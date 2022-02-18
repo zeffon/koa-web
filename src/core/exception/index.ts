@@ -1,7 +1,8 @@
 import Koa from 'koa';
 import { isNumber } from 'lodash';
+import Logger from '../log';
 import CODE from './exception-code';
-import { HttpException } from './http-exception';
+import { HttpException, Success } from './http-exception';
 
 const UNDEDINED_ERROR_TIP = '未定义的错误码';
 
@@ -41,5 +42,11 @@ export default async function catchError(ctx: Koa.Context, next: any) {
 }
 
 function logError(error: any, isHttpException: boolean) {
-  // TODO
+  let isSuccess = error instanceof Success;
+  if (isSuccess) return;
+  if (isHttpException) {
+    Logger.error('自定义异常', error, '自定义异常');
+  } else {
+    Logger.error('未知错误', error, '未知错误');
+  }
 }

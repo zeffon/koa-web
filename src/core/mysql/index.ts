@@ -1,6 +1,8 @@
 import MySQL from 'mysql2';
 import Async from 'async';
 import CONFIG from '../../config';
+import Logger from '../log';
+import UnifyResponse from '../exception/unify-response';
 
 const DATABASE = CONFIG.DATABASE;
 
@@ -14,7 +16,8 @@ const pool = MySQL.createPool({
 
 /**
  * 普通查询
- * 参数 sql 查询语句；data? 查询数据 字符串或数据
+ * @param sql 查询语句
+ * @param data 数据
  */
 export function query(sql: string, data?: any) {
   return new Promise((resolve, reject) => {
@@ -22,7 +25,7 @@ export function query(sql: string, data?: any) {
       console.log(err);
       console.log(results);
       if (err) {
-        // TODO
+        return throwError(reject, '服务器发生错误: 数据库查询语句出错');
       }
       resolve(results);
     });
@@ -31,23 +34,31 @@ export function query(sql: string, data?: any) {
 
 /**
  * 事务查询 按顺序查询但不依赖上一条查询结果 返回对应查询语句数量的数组
- * 参数 sqlList 查询列表 [{sql, data}, ...]
+ * @param sqlList 查询列表 [{sql, data}, ...]
  */
 export function execTrans(sqlList: any[]) {
   return new Promise((resolve, reject) => {
     pool.getConnection((err, connection) => {
-      if (err) return 'error';
+      if (err) return throwError(reject, '服务器发生错误: 创建数据库连接失败');
       connection.beginTransaction((err) => {
-        if (err) return 'error';
+        if (err) return throwError(reject, '服务器发生错误: 事务开启失败');
         let params = handleExceTransSQLParams(reject, connection, sqlList);
         // 串联执行多个异步
         Async.series(params, (err, results) => {
           if (err) {
-            // TODO
+            return handleExceTransRoolback(
+              reject,
+              connection,
+              '服务器发生错误: 事务执行失败'
+            );
           }
           connection.commit((err) => {
             if (err) {
-              // TODO
+              return handleExceTransRoolback(
+                reject,
+                connection,
+                '服务器发生错误: 事务执行失败'
+              );
             }
             connection.release();
             resolve(results);
@@ -71,11 +82,36 @@ function handleExceTransSQLParams(
     let temp = function (cb: Function) {
       connection.query(item.sql, item.data, (err: any, results: any) => {
         if (err) {
-          // TODO
+          handleExceTransRoolback(
+            reject,
+            connection,
+            '服务器发生错误: 数据库查询语句出错',
+            item
+          );
         } else cb(null, results);
       });
     };
     queryArr.push(temp);
   });
   return queryArr;
+}
+
+// 普通错误抛出异常
+function throwError(reject: any, message: string, ...arg: any) {
+  Logger.error(message, ...arg);
+  reject(UnifyResponse.serverErrorException(message));
+}
+
+// 事务查询发生错误时回滚并返回错误
+function handleExceTransRoolback(
+  reject: any,
+  connection: any,
+  message: string,
+  ...arg: any
+) {
+  connection.roolback(() => {
+    Logger.error(message, ...arg);
+    connection.release();
+    reject(UnifyResponse.serverErrorException(message));
+  });
 }
