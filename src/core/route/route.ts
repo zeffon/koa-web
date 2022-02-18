@@ -3,9 +3,11 @@ import Router from 'koa-router';
 import path from 'path';
 import glob from 'glob';
 import { sureIsArray, toPath } from '../tool';
+import CONFIG from '../../config';
 
 const router = new Router();
 
+const fileType = CONFIG.IS_TEST ? 'ts' : 'js';
 export const routePrefix: symbol = Symbol('route-prefix');
 
 export class Route {
@@ -18,9 +20,11 @@ export class Route {
     this.router = router;
   }
   init() {
-    glob.sync(path.join(__dirname, '../../app/api/**/*.js')).forEach((item) => {
-      require(item);
-    });
+    glob
+      .sync(path.join(__dirname, `../../app/api/**/*.${fileType}`))
+      .forEach((item) => {
+        require(item);
+      });
 
     for (let [config, controller] of Route.__DecoratedRouters) {
       let controllers: any[] = sureIsArray(controller);

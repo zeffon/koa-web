@@ -1,6 +1,7 @@
 export const prodConf = {
   ENV: 'prod',
-  PORT: 3000,
+  PORT: 3200,
+  IS_TEST: false,
   DATABASE: {
     DB_NAME: 'root',
     HOST: '127.0.0.1',
@@ -13,5 +14,5 @@ export const prodConf = {
     PORT: 6379,
     PASSWORD: '123456'
   },
-  BASE_URL: 'http://127.0.0.1:3000/'
+  BASE_URL: 'http://127.0.0.1'
 };
