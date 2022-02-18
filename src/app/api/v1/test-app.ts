@@ -1,4 +1,4 @@
-import { Prefix, Get, Post } from '../../../core/route';
+import { Prefix, Get, Post, Required } from '../../../core/route';
 import Koa from 'koa';
 import UnifyResponse from '../../../core/exception/unify-response';
 
@@ -9,18 +9,20 @@ export default class TestController {
     ctx.body = 'Hello World';
   }
 
-  // @Get('test')
-  // async test(ctx: Koa.Context, next: any) {
-  //   UnifyResponse.updateSuccess(3);
-  // }
+  @Get('number')
+  async numberValid(ctx: Koa.Context, next: any) {
+    UnifyResponse.updateSuccess(3);
+  }
 
-  // @Get('test1')
-  // async test1(ctx: Koa.Context, next: any) {
-  //   UnifyResponse.updateSuccess(2, '更新成功');
-  // }
+  @Get('string')
+  async stringValid(ctx: Koa.Context, next: any) {
+    UnifyResponse.updateSuccess(2, '更新成功');
+  }
 
-  // @Get('test2')
-  // async test2(ctx: Koa.Context, next: any) {
-  //   UnifyResponse.parameterException(10006);
-  // }
+  @Get('test1')
+  @Required(['id'])
+  async test2(ctx: Koa.Context, next: any) {
+    // UnifyResponse.parameterException(10006);
+    UnifyResponse.updateSuccess(2, '更新成功');
+  }
 }

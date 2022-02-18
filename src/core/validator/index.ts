@@ -40,10 +40,7 @@ export class ValidatorParameter extends ValidatorParam {
 }
 
 /**
- * @author chen
- * @params
- * @description: 校验多个参数
- * @update 2021-01-20 15:53:45
+ * 校验多个参数
  */
 export class ValidatorParameters extends ValidatorParam {
   constructor(rules: any) {
