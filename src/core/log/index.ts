@@ -14,6 +14,7 @@ log4js.configure(logConfig);
 
 // 调用预先定义的日志名称
 let infoLogger = log4js.getLogger('infoLogger');
+let errorLogger = log4js.getLogger('errorLogger');
 
 // 格式化日志文本
 let formatText = {
@@ -98,7 +99,7 @@ const Logger: LoggerOptions = {
 
   /** 打印数据库查询错误信息 */
   error: function (...arg: any) {
-    infoLogger.info(formatText.error(...arg));
+    errorLogger.error(formatText.error(...arg));
   }
 };
 export default Logger;

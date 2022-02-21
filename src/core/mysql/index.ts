@@ -20,6 +20,7 @@ const pool = MySQL.createPool({
  */
 export function query(sql: string, data?: any) {
   return new Promise((resolve, reject) => {
+    Logger.query(sql, data);
     pool.query(sql, data, async (err, results) => {
       console.log(err);
       console.log(results);
@@ -78,6 +79,7 @@ function handleExceTransSQLParams(
 ) {
   let queryArr: any[] = [];
   sqlList.forEach((item) => {
+    Logger.query(item.sql, item.data);
     let temp = function (cb: Function) {
       connection.query(item.sql, item.data, (err: any, results: any) => {
         if (err) {
