@@ -19,7 +19,7 @@ redisClient.on('error', (err) => {
 });
 
 // 保存 redis 值
-export const set = (key: string, value: any) => {
+export const redisSet = (key: string, value: any) => {
   if (!key) return;
   return new Promise((resolve, reject) => {
     let newValue = objectToJson(value);
@@ -31,7 +31,7 @@ export const set = (key: string, value: any) => {
 };
 
 // 获取 redis 值
-export const get = (key: string) => {
+export const redisGet = (key: string) => {
   if (!key) return;
   return new Promise((resolve, reject) => {
     redisClient.get(key, (err: any, value) => {
@@ -42,7 +42,7 @@ export const get = (key: string) => {
 };
 
 // 删除 redis 值
-export const del = (key: string) => {
+export const redisDel = (key: string) => {
   if (!key) return;
   return new Promise((resolve, reject) => {
     try {
