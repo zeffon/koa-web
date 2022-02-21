@@ -12,7 +12,20 @@ import {
 
 const SUCCESS_CODE = 0;
 
-export default class UnifyResponse {
+export interface IUnifyResponse {
+  getSuccess: Function;
+  createSuccess: Function;
+  updateSuccess: Function;
+  deleteSuccess: Function;
+  parameterException: Function;
+  unAuthenticatedException: Function;
+  forbiddenException: Function;
+  notFoundException: Function;
+  serverErrorException: Function;
+  [x: string]: any;
+}
+
+export class UnifyResponse {
   /**
    * 获取成功
    * @param code 错误码

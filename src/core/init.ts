@@ -3,7 +3,7 @@ import Koa2Cors from 'koa2-cors';
 import KoaBodyParser from 'koa-bodyparser';
 import { Route } from './route/route';
 import catchError from './exception';
-import InitGlobal from './validator/valid-tip';
+import InitGlobal from './global';
 
 export default class InitManager {
   private app: Koa;
@@ -14,7 +14,7 @@ export default class InitManager {
   }
 
   initCore() {
-    InitGlobal.init(); // 异常校验器信息
+    InitGlobal.init(); // 全局变量和方法
     this.app.use(Koa2Cors()); // 跨域处理
     this.app.use(KoaBodyParser()); // body数据处理
     this.app.use(catchError); // 全局异常处理

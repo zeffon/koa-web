@@ -15,12 +15,3 @@ export enum Validator {
   isString = '参数必须为字符串',
   isURL = '参数必须为URL格式'
 }
-
-class InitGlobal {
-  constructor() {}
-  init() {
-    global.Validator = Validator;
-  }
-}
-
-export default new InitGlobal();
