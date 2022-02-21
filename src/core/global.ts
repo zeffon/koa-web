@@ -5,7 +5,7 @@ class InitGlobal {
   constructor() {}
   init() {
     global.Validator = Validator;
-    global.UnifyResponse = UnifyResponse;
+    global.UnifyResponse = new UnifyResponse();
   }
 }
 

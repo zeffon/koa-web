@@ -2,7 +2,6 @@ import MySQL from 'mysql2';
 import Async from 'async';
 import CONFIG from '../../config';
 import Logger from '../log';
-import UnifyResponse from '../exception/unify-response';
 
 const DATABASE = CONFIG.DATABASE;
 
@@ -99,7 +98,7 @@ function handleExceTransSQLParams(
 // 普通错误抛出异常
 function throwError(reject: any, message: string, ...arg: any) {
   Logger.error(message, ...arg);
-  reject(UnifyResponse.serverErrorException(message));
+  reject(global.UnifyResponse.serverErrorException(message));
 }
 
 // 事务查询发生错误时回滚并返回错误
@@ -112,6 +111,6 @@ function handleExceTransRoolback(
   connection.roolback(() => {
     Logger.error(message, ...arg);
     connection.release();
-    reject(UnifyResponse.serverErrorException(message));
+    reject(global.UnifyResponse.serverErrorException(message));
   });
 }

@@ -1,5 +1,4 @@
 import { Rule, LinValidator } from './validator';
-import UnifyResponse from '../exception/unify-response';
 import _ from 'lodash';
 
 class ValidatorParam extends LinValidator {
@@ -9,7 +8,7 @@ class ValidatorParam extends LinValidator {
 
   protected setRule(rule: any) {
     if (!_.isArray(rule.rules) || rule.rules.length === 0)
-      UnifyResponse.parameterException(10001);
+      global.UnifyResponse.parameterException(10001);
     let ruleList = [];
     if (_.isArray(rule.rules[0])) {
       rule.rules.forEach((item: any) => {
@@ -33,7 +32,7 @@ export class ValidatorParameter extends ValidatorParam {
     if (_.isPlainObject(rules)) {
       this.setRule(rules);
     } else {
-      UnifyResponse.parameterException(10001);
+      global.UnifyResponse.parameterException(10001);
     }
   }
 }
@@ -50,7 +49,7 @@ export class ValidatorParameters extends ValidatorParam {
         this.setRule(rule);
       }
     } else {
-      UnifyResponse.parameterException(10001);
+      global.UnifyResponse.parameterException(10001);
     }
   }
 }
@@ -68,6 +67,6 @@ export const validateRange = (value: any, data: any[], message?: string) => {
       }
     });
     if (flag) return value;
-    else UnifyResponse.parameterException(10001);
+    else global.UnifyResponse.parameterException(10001);
   } else return value;
 };

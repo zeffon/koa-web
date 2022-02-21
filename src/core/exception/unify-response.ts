@@ -12,26 +12,13 @@ import {
 
 const SUCCESS_CODE = 0;
 
-export interface IUnifyResponse {
-  getSuccess: Function;
-  createSuccess: Function;
-  updateSuccess: Function;
-  deleteSuccess: Function;
-  parameterException: Function;
-  unAuthenticatedException: Function;
-  forbiddenException: Function;
-  notFoundException: Function;
-  serverErrorException: Function;
-  [x: string]: any;
-}
-
 export class UnifyResponse {
   /**
    * 获取成功
    * @param code 错误码
    * @param message 自定义错误提示
    */
-  static getSuccess(code = SUCCESS_CODE, message = '') {
+  getSuccess(code = SUCCESS_CODE, message = '') {
     throw new GetSuccess(code, message);
   }
 
@@ -40,7 +27,7 @@ export class UnifyResponse {
    * @param code 错误码
    * @param message 自定义错误提示
    */
-  static createSuccess(code = SUCCESS_CODE, message = '') {
+  createSuccess(code = SUCCESS_CODE, message = '') {
     throw new CreateSuccess(code, message);
   }
 
@@ -49,7 +36,7 @@ export class UnifyResponse {
    * @param code 错误码
    * @param message 自定义错误提示
    */
-  static updateSuccess(code = SUCCESS_CODE, message = '') {
+  updateSuccess(code = SUCCESS_CODE, message = '') {
     throw new UpdateSuccess(code, message);
   }
 
@@ -58,7 +45,7 @@ export class UnifyResponse {
    * @param code 错误码
    * @param message 自定义错误提示
    */
-  static deleteSuccess(code = SUCCESS_CODE, message = '') {
+  deleteSuccess(code = SUCCESS_CODE, message = '') {
     throw new DeleteSuccess(code, message);
   }
 
@@ -66,7 +53,7 @@ export class UnifyResponse {
    * 参数异常
    * @param code 错误码 | 自定义错误提示
    */
-  static parameterException(code: number | string) {
+  parameterException(code: number | string) {
     throw new ParameterException(code);
   }
 
@@ -74,7 +61,7 @@ export class UnifyResponse {
    * 授权异常
    * @param code 错误码
    */
-  static unAuthenticatedException(code: number) {
+  unAuthenticatedException(code: number) {
     throw new UnAuthenticatedException(code);
   }
 
@@ -82,7 +69,7 @@ export class UnifyResponse {
    * 访问异常
    * @param code 错误码
    */
-  static forbiddenException(code: number) {
+  forbiddenException(code: number) {
     throw new ForbiddenException(code);
   }
 
@@ -90,7 +77,7 @@ export class UnifyResponse {
    * 资源获取不到异常
    * @param code 错误码
    */
-  static notFoundException(code: number) {
+  notFoundException(code: number) {
     throw new NotFoundException(code);
   }
 
@@ -98,7 +85,7 @@ export class UnifyResponse {
    * 服务器异常
    * @param code 错误码
    */
-  static serverErrorException(code: number | string) {
+  serverErrorException(code: number | string) {
     throw new ServerErrorException(code);
   }
 }

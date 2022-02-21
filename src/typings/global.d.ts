@@ -1,4 +1,4 @@
-import { IUnifyResponse } from '../core/exception/unify-response';
+import { UnifyResponse } from '../core/exception/unify-response';
 
 export {};
 
@@ -14,5 +14,5 @@ interface ValidatorOption {
 
 declare global {
   var Validator: ValidatorOption;
-  var UnifyResponse: IUnifyResponse;
+  var UnifyResponse: UnifyResponse;
 }

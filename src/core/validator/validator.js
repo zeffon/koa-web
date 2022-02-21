@@ -1,7 +1,6 @@
 import validator from 'validator'
 import { findMembers } from '../tool'
 import { get, last, set, cloneDeep } from 'lodash'
-import UnifyResponse from '../exception/unify-response';
 
 export class LinValidator {
   constructor() {
@@ -66,7 +65,7 @@ export class LinValidator {
       }
     }
     if (errorMsgs.length != 0) {
-      UnifyResponse.parameterException(10001)
+      global.UnifyResponse.parameterException(10001)
     }
     ctx.v = this
     return this
