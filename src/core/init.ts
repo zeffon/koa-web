@@ -1,10 +1,9 @@
 import Koa from 'koa';
 import Koa2Cors from 'koa2-cors';
 import KoaBody from 'koa-body';
-import { Route } from './route/route';
 import catchError from './exception';
 import InitGlobal from './global';
-import KoaDoc from './swagger';
+import swaggerRouter from './swagger';
 
 export default class InitManager {
   private app: Koa;
@@ -19,9 +18,11 @@ export default class InitManager {
     this.app.use(Koa2Cors()); // 跨域处理
     this.app.use(KoaBody({ multipart: true })); // body参数处理
     this.app.use(catchError); // 全局异常处理
-    // const route = new Route(this.app); // 路由加载
-    // route.init();
-    const koaDoc = new KoaDoc(this.app);
-    koaDoc.init();
+    this.buildRouteAndSwagger(); // 路由与api文档
+  }
+
+  buildRouteAndSwagger() {
+    // TODO 拼接url
+    this.app.use(swaggerRouter.routes()).use(swaggerRouter.allowedMethods());
   }
 }

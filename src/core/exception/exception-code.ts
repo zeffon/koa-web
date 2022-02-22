@@ -1,5 +1,3 @@
-import { objectMapToArray } from '../tool';
-
 const CODE = new Map([
   [0, 'ok'],
   [9999, '服务器未知异常'],
