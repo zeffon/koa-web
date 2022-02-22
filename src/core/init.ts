@@ -4,6 +4,7 @@ import KoaBody from 'koa-body';
 import { Route } from './route/route';
 import catchError from './exception';
 import InitGlobal from './global';
+import KoaDoc from './swagger';
 
 export default class InitManager {
   private app: Koa;
@@ -18,7 +19,9 @@ export default class InitManager {
     this.app.use(Koa2Cors()); // 跨域处理
     this.app.use(KoaBody({ multipart: true })); // body参数处理
     this.app.use(catchError); // 全局异常处理
-    const router = new Route(this.app); // 路由加载
-    router.init();
+    // const route = new Route(this.app); // 路由加载
+    // route.init();
+    const koaDoc = new KoaDoc(this.app);
+    koaDoc.init();
   }
 }
