@@ -47,6 +47,7 @@
 │       ├── mysql           // mysql模块
 │       ├── redis           // redis模块
 │       ├── route           // 路由模块
+│       ├── swagger         // API文档模块
 │       └── validator       // 数据校验
 ├── test                    // 单元测试编写目录集合
 ├── .cz-config.js           // 配置 commit 信息引导提示
@@ -68,7 +69,6 @@
 - [x] 支持TypeScript
 - [x] git commit规范提交
 - [x] prettier规范代码格式
-- [x] 路由封装
 - [x] 统一异常处理
 - [x] 统一响应格式
 - [x] 数据校验
@@ -76,3 +76,4 @@
 - [x] Redis数据库连接
 - [x] SQL日志记录
 - [x] 支持单元测试
+- [x] API文档测试
