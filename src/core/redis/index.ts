@@ -8,7 +8,7 @@ const REDIS = CONFIG.REDIS;
 // 创建 redis 连接
 const redisClient = Redis.createClient(REDIS.PORT, REDIS.HOST);
 
-// 登录
+// 认证
 redisClient.auth(CONFIG.REDIS.PASSWORD, () => {
   console.log('redis 登录成功');
 });

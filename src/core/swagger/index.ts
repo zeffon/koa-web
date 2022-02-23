@@ -7,8 +7,8 @@ swaggerRouter.swagger({
   title: 'API文档',
   description: 'API DOC',
   version: '1.0.0',
+  // [optional] default is /swagger-html
   swaggerHtmlEndpoint: '/doc.html',
-
   // [optional] default is /swagger-json
   swaggerJsonEndpoint: '/json.html'
 });

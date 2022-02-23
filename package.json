@@ -1,6 +1,6 @@
 {
   "name": "koa2-plus",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "koa开发web项目模块",
   "main": "./src/app.ts",
   "scripts": {

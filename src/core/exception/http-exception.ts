@@ -1,3 +1,6 @@
+/**
+ * 自定义HTTP异常
+ */
 export class HttpException extends Error {
   code: number | string;
   status: number;

@@ -1,6 +1,6 @@
 # koa2-plus
 
-`koa2` 开发web项目**API**接口的模板仓库
+使用 `TypeScript` 构建 `Koa2` RESTful API 的最佳脚手架。
 
 ## 运行
 

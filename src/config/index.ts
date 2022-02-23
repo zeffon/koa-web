@@ -1,3 +1,6 @@
+/**
+ * 系统环境配置
+ */
 import { devConf } from './dev';
 import { prodConf } from './prod';
 import { testConf } from './tested';

@@ -1,7 +1,6 @@
 /**
  * 日志处理模块
  */
-
 import log4js from 'log4js';
 import logConfig from './log-config';
 import CONFIG from '../../config';

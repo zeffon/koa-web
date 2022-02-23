@@ -1,5 +1,8 @@
 import { Rule, LinValidator } from '../../core/validator/validator';
 
+/**
+ * 注册校验器
+ */
 export class RegisterValidator extends LinValidator {
   private email;
   private nickname;
