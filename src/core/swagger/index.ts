@@ -7,7 +7,11 @@ const swaggerRouter = new SwaggerRouter();
 swaggerRouter.swagger({
   title: 'API文档',
   description: 'API DOC',
-  version: '1.0.0'
+  version: '1.0.0',
+  swaggerHtmlEndpoint: '/doc.html',
+
+  // [optional] default is /swagger-json
+  swaggerJsonEndpoint: '/json.html'
 });
 
 // 查找对应目录下的api文件夹

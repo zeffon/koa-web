@@ -1,20 +1,38 @@
 import Koa from 'koa';
 import { redisGet, redisSet } from '../../../core/redis';
-import { Prefix, Get, Required } from '../../../core/route';
+import {
+  request,
+  summary,
+  path,
+  tags,
+  body,
+  prefix
+} from 'koa-swagger-decorator';
 
-@Prefix('redis')
-export default class TestRedis {
-  @Get('set')
-  @Required(['id'])
+const tag = tags(['redis']);
+
+const idSchema = {
+  id: { type: 'number', required: true }
+};
+
+@prefix('/api/redis')
+export default class RedisController {
+  @request('post', '/user')
+  @summary('Redis赋值')
+  @tag
+  @body(idSchema)
   async setValue(ctx: Koa.Context, next: any) {
-    const id = ctx.query.id + '';
-    await redisSet(id, 'token');
+    const id = ctx.request.body.id;
+    await redisSet(id, `this user is ${id}`);
+    global.UnifyResponse.createSuccess();
   }
 
-  @Get('get')
-  @Required(['id'])
+  @request('get', '/user/{id}')
+  @summary('Redis获取')
+  @tag
+  @path(idSchema)
   async getValue(ctx: Koa.Context, next: any) {
-    const id = ctx.query.id + '';
+    const id = ctx.params.id + '';
     const res = await redisGet(id);
     ctx.body = res;
   }

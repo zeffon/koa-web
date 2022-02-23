@@ -18,7 +18,7 @@ const pool = MySQL.createPool({
  * @param sql 查询语句
  * @param data 数据
  */
-export function query(sql: string, data?: any) {
+export function loadBySql(sql: string, data?: any) {
   return new Promise((resolve, reject) => {
     Logger.query(sql, data);
     pool.query(sql, data, async (err, results) => {

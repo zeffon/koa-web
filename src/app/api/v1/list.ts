@@ -5,7 +5,8 @@ import {
   query,
   path,
   body,
-  tags
+  tags,
+  prefix
 } from 'koa-swagger-decorator';
 import Koa from 'koa';
 
@@ -15,8 +16,10 @@ const getListSchema = {
   keyword: { type: 'string', required: true },
   status: { type: 'number', required: true }
 };
+
+@prefix('/api/list')
 export default class ListController {
-  @request('get', '/list/list')
+  @request('get', '/list')
   @summary('返回一个列表')
   @description('example of api')
   @tag
