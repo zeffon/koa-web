@@ -1,4 +1,3 @@
-import Koa from 'koa';
 import path from 'path';
 import { SwaggerRouter } from 'koa-swagger-decorator';
 

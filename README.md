@@ -46,7 +46,6 @@
 │       ├── log             // 日志模块
 │       ├── mysql           // mysql模块
 │       ├── redis           // redis模块
-│       ├── route           // 路由模块
 │       ├── swagger         // API文档模块
 │       └── validator       // 数据校验
 ├── test                    // 单元测试编写目录集合
