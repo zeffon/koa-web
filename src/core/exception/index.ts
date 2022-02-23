@@ -12,7 +12,7 @@ const UNDEDINED_ERROR_TIP = '未定义的错误码';
 export default async function catchError(ctx: Koa.Context, next: any) {
   try {
     await next();
-  } catch (error) {
+  } catch (error: any) {
     const isHttpException = error instanceof HttpException;
     const request = `${ctx.request.method} ${ctx.request.originalUrl}`;
     logError(error, isHttpException);
@@ -27,6 +27,14 @@ export default async function catchError(ctx: Koa.Context, next: any) {
         request
       };
       ctx.body = data;
+    } else if (error.status !== 500) {
+      const data = {
+        code: 10001,
+        message: error.message || CODE.get(10001),
+        request
+      };
+      ctx.body = data;
+      ctx.status = error.status;
     } else {
       const data = {
         code: 9999,
@@ -34,7 +42,7 @@ export default async function catchError(ctx: Koa.Context, next: any) {
         request
       };
       ctx.body = data;
-      ctx.status = 500;
+      ctx.status = error.status;
     }
   }
 }

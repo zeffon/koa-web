@@ -22,7 +22,6 @@ export default class InitManager {
   }
 
   buildRouteAndSwagger() {
-    // TODO 拼接url
     this.app.use(swaggerRouter.routes()).use(swaggerRouter.allowedMethods());
   }
 }

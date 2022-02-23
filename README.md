@@ -24,6 +24,11 @@
     $ pnpm test
     ```
 
+## 在线文档
+使用 koa-swagger-decorator 实现API文档。该工具侵入性很强，导致原先注释性的文档可以使用装饰器的方式进行使用。这也一定程度上简化了使用。
+
+API文档的地址：http://localhost:3000/doc.html
+
 ## 目录结构
 
 ```
