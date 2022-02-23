@@ -14,7 +14,7 @@ export default async function catchError(ctx: Koa.Context, next: any) {
     await next();
   } catch (error: any) {
     const isHttpException = error instanceof HttpException;
-    const request = `${ctx.request.method} ${ctx.request.originalUrl}`;
+    const request = `${ctx.method} ${ctx.path}`;
     logError(error, isHttpException);
 
     if (isHttpException) {
