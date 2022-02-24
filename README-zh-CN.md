@@ -6,11 +6,11 @@ Language : [English](./README.md) | 简体中文
 
 使用 `TypeScript` 构建 `Koa2` RESTful API 的最佳脚手架。
 
-[![Build Status](https://dev.azure.com/ant-design/ant-design-pro/_apis/build/status/ant-design.ant-design-pro?branchName=master)](https://dev.azure.com/ant-design/ant-design-pro/_build/latest?definitionId=1?branchName=master) ![Github Action](https://github.com/ant-design/ant-design-pro/workflows/Node%20CI/badge.svg) ![Deploy](https://github.com/ant-design/ant-design-pro/workflows/Deploy%20CI/badge.svg) ![license](https://img.shields.io/npm/l/express.svg)
+![license](https://img.shields.io/npm/l/express.svg)
 
 </div>
 
-- 预览：http://preview.pro.ant.design
+- 预览：http://localhost:3000/doc.html
 
 ## 运行
 
@@ -39,11 +39,18 @@ Language : [English](./README.md) | 简体中文
    $ pnpm test
    ```
 
-## 在线文档
+## 特性
 
-使用 `koa-swagger-decorator` 实现 API 文档。该工具侵入性很强，导致原先注释性的文档可以使用装饰器的方式进行使用。我们可以借助 `koa-swagger-decorator` 进行校验路由的参数校验，这也一定程度上简化了使用。
-
-API 文档：http://localhost:3000/doc.html
+- :bulb: **TypeScript**: 支持 TypeScript
+- :anchor: **commitlint**：git commit 规范提交
+- :art: **prettier**：prettier 规范代码格式
+- :rocket: **全局异常**：全局异常统一处理
+- :airplane: **数据校验**：实用且高效的数据校验方式
+- :zap: **MySQL**：支持 MySQL 数据库连接
+- :fire: **Redis**：支持 Redis 数据库连接
+- :book: **日志**：记录 SQL 日志和错误日志
+- :white_check_mark: **Mock Test**：支持单元测试
+- :memo: **API 文档**：API 文档测试
 
 ## 项目结构
 
@@ -83,19 +90,6 @@ API 文档：http://localhost:3000/doc.html
 ├── README.md
 └── tsconfig.json
 ```
-
-## 特性
-
-- :bulb: **TypeScript**: 支持 TypeScript
-- :anchor: **commitlint**：git commit 规范提交
-- :art: **prettier**：prettier 规范代码格式
-- :rocket: **全局异常**：全局异常统一处理
-- :airplane: **数据校验**：实用且高效的数据校验方式
-- :zap: **MySQL**：支持 MySQL 数据库连接
-- :fire: **Redis**：支持 Redis 数据库连接
-- :book: **日志**：记录 SQL 日志和错误日志
-- :white_check_mark: **Mock Test**：支持单元测试
-- :memo: **API 文档**：API 文档测试
 
 ## License
 

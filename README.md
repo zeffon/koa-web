@@ -7,13 +7,15 @@ Language : English | [简体中文](./README-zh-CN.md)
 
 The best scaffolding of building `Koa2` restful API with `TypeScript`.
 
-[![Build Status](https://dev.azure.com/ant-design/ant-design-pro/_apis/build/status/ant-design.ant-design-pro?branchName=master)](https://dev.azure.com/ant-design/ant-design-pro/_build/latest?definitionId=1?branchName=master) ![Github Action](https://github.com/ant-design/ant-design-pro/workflows/Node%20CI/badge.svg) ![Deploy](https://github.com/ant-design/ant-design-pro/workflows/Deploy%20CI/badge.svg) ![license](https://img.shields.io/npm/l/express.svg)
+![license](https://img.shields.io/npm/l/express.svg)
 
 </div>
 
-- Preview: http://preview.pro.ant.design
+- Preview: http://localhost:3000/doc.html
 
 ## Usage
+
+> If you are not using the `pnpm` tool, using `npm` and `yarn` are the same to achieve the same performance.
 
 1. install dependencies
 
@@ -38,11 +40,18 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
    $ pnpm test
    ```
 
-## DEMO DOC
+## Features
 
-Implement API documentation using `koa-swagger-decorator`. This tool is very intrusive, resulting in the use of decorators in previously annotated documents. We can use `koa-swagger-decorator` to verify the parameters of the verification route, which also simplifies the use to a certain extent.
-
-API DOC：http://localhost:3000/doc.html
+- :bulb: **TypeScript**: support TypeScript
+- :anchor: **Commitlint**：git commitlint
+- :art: **Prettier**：prettier lint code
+- :rocket: **Exception**：Global exception handling
+- :airplane: **Validator**：Practical and efficient data validation usage
+- :zap: **MySQL**：Support for MySQL database connections
+- :fire: **Redis**：Support for Redis database connections
+- :1234: **Log**：Log SQL and error logs
+- :white_check_mark: **Mock Test**：Support unit testing
+- :memo: **API Doc**：API Doc UI
 
 ## Project Layout
 
@@ -82,19 +91,6 @@ API DOC：http://localhost:3000/doc.html
 ├── README.md
 └── tsconfig.json
 ```
-
-## Features
-
-- :bulb: **TypeScript**: support TypeScript
-- :anchor: **Commitlint**：git commitlint
-- :art: **Prettier**：prettier lint code
-- :rocket: **Exception**：Global exception handling
-- :airplane: **Validator**：Practical and efficient data validation usage
-- :zap: **MySQL**：Support for MySQL database connections
-- :fire: **Redis**：Support for Redis database connections
-- :1234: **Log**：Log SQL and error logs
-- :white_check_mark: **Mock Test**：Support unit testing
-- :memo: **API Doc**：API Doc UI
 
 ## License
 
