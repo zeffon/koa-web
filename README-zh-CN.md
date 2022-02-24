@@ -12,6 +12,21 @@ Language : [English](./README.md) | 简体中文
 
 - 预览：http://localhost:3000/doc.html
 
+- 快速上手：[![Edit koa2-plus](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/koa2-plus-kn0lic)
+
+## 特性
+
+- :bulb: **TypeScript**: 支持 TypeScript
+- :anchor: **commitlint**：git commit 规范提交
+- :art: **prettier**：prettier 规范代码格式
+- :rocket: **全局异常**：全局异常统一处理
+- :airplane: **数据校验**：实用且高效的数据校验方式
+- :zap: **MySQL**：支持 MySQL 数据库连接
+- :fire: **Redis**：支持 Redis 数据库连接
+- :book: **日志**：记录 SQL 日志和错误日志
+- :white_check_mark: **单元测试**：支持单元测试
+- :memo: **API 文档**：API 文档测试
+
 ## 运行
 
 > 如果你使用的不是 `pnpm` 工具的话，使用 `npm` 和 `yarn` 是一样可达到相同的执行效果。
@@ -26,6 +41,8 @@ Language : [English](./README.md) | 简体中文
 
    ```
    $ pnpm start
+   或者
+   $ pnpm prod
    ```
 
 3. 代码格式化
@@ -38,19 +55,6 @@ Language : [English](./README.md) | 简体中文
    ```
    $ pnpm test
    ```
-
-## 特性
-
-- :bulb: **TypeScript**: 支持 TypeScript
-- :anchor: **commitlint**：git commit 规范提交
-- :art: **prettier**：prettier 规范代码格式
-- :rocket: **全局异常**：全局异常统一处理
-- :airplane: **数据校验**：实用且高效的数据校验方式
-- :zap: **MySQL**：支持 MySQL 数据库连接
-- :fire: **Redis**：支持 Redis 数据库连接
-- :book: **日志**：记录 SQL 日志和错误日志
-- :white_check_mark: **Mock Test**：支持单元测试
-- :memo: **API 文档**：API 文档测试
 
 ## 项目结构
 

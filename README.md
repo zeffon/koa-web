@@ -13,6 +13,22 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
 
 - Preview: http://localhost:3000/doc.html
 
+- Getting Started: [![Edit koa2-plus](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/koa2-plus-kn0lic)
+
+
+## Features
+
+- :bulb: **TypeScript**: support TypeScript
+- :anchor: **Commitlint**：git commitlint
+- :art: **Prettier**：prettier lint code
+- :rocket: **Exception**：Global exception handling
+- :airplane: **Validator**：Practical and efficient data validation usage
+- :zap: **MySQL**：Support for MySQL database connections
+- :fire: **Redis**：Support for Redis database connections
+- :1234: **Log**：Log SQL and error logs
+- :white_check_mark: **Unit Test**：Support unit test
+- :memo: **API Doc**：API Doc UI
+
 ## Usage
 
 > If you are not using the `pnpm` tool, using `npm` and `yarn` are the same to achieve the same performance.
@@ -27,6 +43,8 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
 
    ```
    $ pnpm start
+   or
+   $ pnpm prod
    ```
 
 3. lint code
@@ -39,19 +57,6 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
    ```
    $ pnpm test
    ```
-
-## Features
-
-- :bulb: **TypeScript**: support TypeScript
-- :anchor: **Commitlint**：git commitlint
-- :art: **Prettier**：prettier lint code
-- :rocket: **Exception**：Global exception handling
-- :airplane: **Validator**：Practical and efficient data validation usage
-- :zap: **MySQL**：Support for MySQL database connections
-- :fire: **Redis**：Support for Redis database connections
-- :1234: **Log**：Log SQL and error logs
-- :white_check_mark: **Mock Test**：Support unit testing
-- :memo: **API Doc**：API Doc UI
 
 ## Project Layout
 
