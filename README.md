@@ -1,69 +1,81 @@
 
-## [English](./README-en.md) | 简体中文
+Language : English | [简体中文](./README-zh-CN.md)
 
-使用 `TypeScript` 构建 `Koa2` RESTful API 的最佳脚手架。
+<h1 align="center">Koa Plus</h1>
 
-## 运行
+<div align="center">
 
-> 如果你使用的不是 `pnpm` 工具的话，使用 `npm` 和 `yarn` 是一样可达到相同的执行效果。
+The best scaffolding of building `Koa2` restful API with `TypeScript`.
 
-1. 安装依赖
-    ```
-    $ pnpm install
-    ```
+[![Build Status](https://dev.azure.com/ant-design/ant-design-pro/_apis/build/status/ant-design.ant-design-pro?branchName=master)](https://dev.azure.com/ant-design/ant-design-pro/_build/latest?definitionId=1?branchName=master) ![Github Action](https://github.com/ant-design/ant-design-pro/workflows/Node%20CI/badge.svg) ![Deploy](https://github.com/ant-design/ant-design-pro/workflows/Deploy%20CI/badge.svg) ![license](https://img.shields.io/npm/l/express.svg)
 
-2. 启动服务
-    ```
-    $ pnpm start
-    ```
+</div>
 
-3. 代码格式化
-    ```
-    $ pnpm lint
-    ```
+- Preview: http://preview.pro.ant.design
 
-4. 单元测试
-    ```
-    $ pnpm test
-    ```
+## Usage
 
-## 在线文档
-使用 `koa-swagger-decorator` 实现API文档。该工具侵入性很强，导致原先注释性的文档可以使用装饰器的方式进行使用。这也一定程度上简化了使用。
+1. install dependencies
 
-API 文档：http://localhost:3000/doc.html
+   ```
+   $ pnpm install
+   ```
 
-## 项目结构
+2. start app
+
+   ```
+   $ pnpm start
+   ```
+
+3. lint code
+
+   ```
+   $ pnpm lint
+   ```
+
+4. run test
+   ```
+   $ pnpm test
+   ```
+
+## DEMO DOC
+
+Implement API documentation using `koa-swagger-decorator`. This tool is very intrusive, resulting in the use of decorators in previously annotated documents. We can use `koa-swagger-decorator` to verify the parameters of the verification route, which also simplifies the use to a certain extent.
+
+API DOC：http://localhost:3000/doc.html
+
+## Project Layout
 
 ```
-├── .husky                  // hooks 相关文件 可在对应的脚本文件开启pre-commit和commitlint
-├── coverage                // 单元测试生成的文件目录
-├── dist                    // 编译输出的目录
-├── logs                    // 日志记录的目录
-│   ├── error               // 错误日志
-│   └── info                // 查询日志
+├── .husky                  // hooks - here start pre-commit and commitlint
+├── coverage                // test output
+├── dist                    // build output
+├── logs                    // log output
+│   ├── error               // error log
+│   └── info                // info log
 ├── src
-│   ├── app.ts              // koa 入口文件
-│   ├── app                 // 应用目录
-│   ├── config              // 环境配置
-│   ├── typings             // 变量声明目录
-│   └── core                // 核心模块目录
-│       ├── init.ts         // 核心模块入口
-│       ├── global.ts       // 全局变量
-│       ├── tool.ts         // 工具类
-│       ├── exception       // 统一异常
-│       ├── log             // 日志模块
-│       ├── mysql           // mysql模块
-│       ├── redis           // redis模块
-│       ├── swagger         // API文档模块
-│       └── validator       // 数据校验
-├── test                    // 单元测试编写目录集合
-├── .cz-config.js           // 配置 commit 信息引导提示
-├── .editorconfig           // lint 自定义格式化
+│   ├── app.ts              // koa start
+│   ├── app                 // app modules
+│   ├── config              // env config
+│   ├── typings             // ts type
+│   └── core                // core mudules
+│       ├── init.ts         // core start
+│       ├── global.ts       // global var
+│       ├── tool.ts         // tool
+│       ├── exception       // global exception
+│       ├── log             // log modules
+│       ├── mysql           // mysql modules
+│       ├── redis           // redis modules
+│       ├── swagger         // api docs
+│       └── validator       // data validator
+├── test                    // jest test.ts
+├── .cz-config.js           // commitlint tip
+├── .editorconfig           // lint config
 ├── .gitignore
 ├── .prettierignore
-├── .prettierrc             // 配置代码格式化风格
-├── commitlint.config.ts    // commit-lint 配置文件
-├── jest.config.js          // jest单元测试配置
+├── .prettierrc             // prettier style config
+├── commitlint.config.ts    // commit-lint config
+├── jest.config.js          // jest test config
 ├── LICENSE
 ├── package.json
 ├── pnpm-lock.yaml
@@ -71,15 +83,21 @@ API 文档：http://localhost:3000/doc.html
 └── tsconfig.json
 ```
 
-## 计划
+## Features
 
-- [x] 支持TypeScript
-- [x] git commit规范提交
-- [x] prettier规范代码格式
-- [x] 统一异常处理
-- [x] 数据校验
-- [x] MySQL数据库连接
-- [x] Redis数据库连接
-- [x] 日志记录
-- [x] 支持单元测试
-- [x] API文档测试
+- :bulb: **TypeScript**: support TypeScript
+- :anchor: **Commitlint**：git commitlint
+- :art: **Prettier**：prettier lint code
+- :rocket: **Exception**：Global exception handling
+- :airplane: **Validator**：Practical and efficient data validation usage
+- :zap: **MySQL**：Support for MySQL database connections
+- :fire: **Redis**：Support for Redis database connections
+- :1234: **Log**：Log SQL and error logs
+- :white_check_mark: **Mock Test**：Support unit testing
+- :memo: **API Doc**：API Doc UI
+
+## License
+
+[MIT](https://opensource.org/licenses/MIT)
+
+Copyright (c) 2022-present, Zeffon Wu
