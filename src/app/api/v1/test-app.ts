@@ -7,13 +7,33 @@ import {
   body
 } from 'koa-swagger-decorator';
 import Koa from 'koa';
+import { ParamValidator, Rule } from '../../../core/validator';
 import { RegisterValidator } from '../../valid/user';
 
 const tag = tags(['test']);
 
 const registerSchema = {
-  email: { type: 'string', required: true },
-  nickname: { type: 'string', required: true },
+  email: {
+    type: 'string',
+    required: true,
+    rules: [
+      new Rule('isLength', '至少12个字符，最多32个字符', {
+        min: 12,
+        max: 32
+      }),
+      new Rule('isEmail', '不符合Email规范')
+    ]
+  },
+  nickname: {
+    type: 'string',
+    required: true,
+    rules: [
+      new Rule('isLength', '昵称不符合长度规范', {
+        min: 4,
+        max: 32
+      })
+    ]
+  },
   password1: { type: 'string', required: true },
   password2: { type: 'string', required: true }
 };
@@ -34,7 +54,7 @@ export default class TestController {
   @tag
   @body(registerSchema)
   static async register(ctx: Koa.Context) {
-    const v = await new RegisterValidator().validate(ctx);
+    const v = await new ParamValidator(registerSchema).validate(ctx);
     const email = v.get('body.email');
     console.log(email);
     const user = {
@@ -43,6 +63,6 @@ export default class TestController {
       password: v.get('body.password2')
     };
     console.log(user);
-    global.UnifyResponse.createSuccess();
+    global.UnifyResponse.createSuccess({ message: '注册成功' });
   }
 }

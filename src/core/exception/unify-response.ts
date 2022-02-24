@@ -18,7 +18,7 @@ export class UnifyResponse {
    * @param code 错误码
    * @param message 自定义错误提示
    */
-  getSuccess(code = SUCCESS_CODE, message = '') {
+  getSuccess({ code = SUCCESS_CODE, message = '' }) {
     throw new GetSuccess(code, message);
   }
 
@@ -27,7 +27,7 @@ export class UnifyResponse {
    * @param code 错误码
    * @param message 自定义错误提示
    */
-  createSuccess(code = SUCCESS_CODE, message = '') {
+  createSuccess({ code = SUCCESS_CODE, message = '' }) {
     throw new CreateSuccess(code, message);
   }
 
@@ -36,7 +36,7 @@ export class UnifyResponse {
    * @param code 错误码
    * @param message 自定义错误提示
    */
-  updateSuccess(code = SUCCESS_CODE, message = '') {
+  updateSuccess({ code = SUCCESS_CODE, message = '' }) {
     throw new UpdateSuccess(code, message);
   }
 
@@ -45,7 +45,7 @@ export class UnifyResponse {
    * @param code 错误码
    * @param message 自定义错误提示
    */
-  deleteSuccess(code = SUCCESS_CODE, message = '') {
+  deleteSuccess({ code = SUCCESS_CODE, message = '' }) {
     throw new DeleteSuccess(code, message);
   }
 

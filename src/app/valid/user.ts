@@ -10,7 +10,13 @@ export class RegisterValidator extends LinValidator {
   private password2;
   constructor() {
     super();
-    this.email = [new Rule('isEmail', '不符合Email规范')];
+    this.email = [
+      new Rule('isLength', '至少12个字符，最多32个字符', {
+        min: 12,
+        max: 32
+      }),
+      new Rule('isEmail', '不符合Email规范')
+    ];
     this.password1 = [
       // 用户指定范围 123456 $^
       new Rule('isLength', '密码至少6个字符，最多32个字符', {
