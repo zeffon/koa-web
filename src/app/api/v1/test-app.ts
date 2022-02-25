@@ -49,6 +49,21 @@ export default class TestController {
     ctx.body = 'Hello World!';
   }
 
+  @request('get', '/register2')
+  @summary('注册')
+  @description('自定义校验类进行校验方式')
+  @tag
+  @query(registerSchema)
+  static async register2(ctx: Koa.Context) {
+    const v = await new RegisterValidator().validate(ctx);
+    const user = {
+      email: v.get('query.email'),
+      nickname: v.get('query.nickname'),
+      password: v.get('query.password2')
+    };
+    global.UnifyResponse.createSuccess({ message: '注册成功' });
+  }
+
   @request('post', '/register')
   @summary('注册')
   @description('配合Swagger的Schema进行校验')
@@ -64,23 +79,6 @@ export default class TestController {
       password: v.get('body.password2')
     };
     console.log(user);
-    global.UnifyResponse.createSuccess({ message: '注册成功' });
-  }
-
-  @request('get', '/register2')
-  @summary('注册')
-  @description('自定义校验类进行校验方式')
-  @tag
-  @query(registerSchema)
-  static async register2(ctx: Koa.Context) {
-    const v = await new RegisterValidator().validate(ctx);
-    const email = v.get('body.email');
-    console.log(email);
-    const user = {
-      email: v.get('body.email'),
-      nickname: v.get('body.nickname'),
-      password: v.get('body.password2')
-    };
     global.UnifyResponse.createSuccess({ message: '注册成功' });
   }
 }
