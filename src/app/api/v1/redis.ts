@@ -17,16 +17,6 @@ const idSchema = {
 
 @prefix('/api/redis')
 export default class RedisController {
-  @request('post', '/user')
-  @summary('Redis赋值')
-  @tag
-  @body(idSchema)
-  async setValue(ctx: Koa.Context, next: any) {
-    const id = ctx.request.body.id;
-    await redisSet(id, `this user is ${id}`);
-    global.UnifyResponse.createSuccess();
-  }
-
   @request('get', '/user/{id}')
   @summary('Redis获取')
   @tag
@@ -35,5 +25,15 @@ export default class RedisController {
     const id = ctx.params.id + '';
     const res = await redisGet(id);
     ctx.body = res;
+  }
+
+  @request('post', '/user')
+  @summary('Redis赋值')
+  @tag
+  @body(idSchema)
+  async setValue(ctx: Koa.Context, next: any) {
+    const id = ctx.request.body.id;
+    await redisSet(id, `this user is ${id}`);
+    global.UnifyResponse.createSuccess({});
   }
 }

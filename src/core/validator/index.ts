@@ -19,7 +19,7 @@ class ParamValidator extends LinValidator {
     const array = [];
     for (const key in schema) {
       const rules = schema[key].rules;
-      if (rules) {
+      if (rules && rules.length !== 0) {
         const obj = { key, rules };
         array.push(obj);
       }
