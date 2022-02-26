@@ -9,7 +9,8 @@
     "start": "tsc && concurrently npm:dev:*",
     "prod": "set NODE_ENV=production&&concurrently npm:start&& node dist/app.js",
     "lint": "prettier --write \"./src/**/*.ts\"",
-    "test": "set NODE_ENV=test&&jest --coverage"
+    "test": "set NODE_ENV=test&&jest --coverage",
+    "build": "tsc && concurrently npm:dev:*"
   },
   "dependencies": {
     "async": "^3.2.3",
