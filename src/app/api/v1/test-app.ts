@@ -49,12 +49,12 @@ export default class TestController {
     ctx.body = 'Hello World!';
   }
 
-  @request('get', '/register2')
+  @request('get', '/register')
   @summary('注册')
   @description('自定义校验类进行校验方式')
   @tag
   @query(registerSchema)
-  static async register2(ctx: Koa.Context) {
+  static async register(ctx: Koa.Context) {
     const v = await new RegisterValidator().validate(ctx);
     const user = {
       email: v.get('query.email'),
@@ -64,12 +64,12 @@ export default class TestController {
     global.UnifyResponse.createSuccess({ message: '注册成功' });
   }
 
-  @request('post', '/register')
+  @request('post', '/register2')
   @summary('注册')
   @description('配合Swagger的Schema进行校验')
   @tag
   @body(registerSchema)
-  static async register(ctx: Koa.Context) {
+  static async register2(ctx: Koa.Context) {
     const v = await new ParamValidator(registerSchema).validate(ctx);
     const email = v.get('body.email');
     console.log(email);
