@@ -6,7 +6,7 @@
     "lib": [],
     "allowJs": true,
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "build",
     "noImplicitAny": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
@@ -16,5 +16,5 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*"],
-  "exclude": ["node_module", "dist"]
+  "exclude": ["node_module", "build"]
 }

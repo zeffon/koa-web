@@ -63,7 +63,7 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
 ```
 ├── .husky                  // hooks - here start pre-commit and commitlint
 ├── coverage                // test output
-├── dist                    // build output
+├── build                    // build output
 ├── logs                    // log output
 │   ├── error               // error log
 │   └── info                // info log

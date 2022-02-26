@@ -61,7 +61,7 @@ Language : [English](./README.md) | 简体中文
 ```
 ├── .husky                  // hooks 相关文件 可在对应的脚本文件开启pre-commit和commitlint
 ├── coverage                // 单元测试生成的文件目录
-├── dist                    // 编译输出的目录
+├── build                    // 编译输出的目录
 ├── logs                    // 日志记录的目录
 │   ├── error               // 错误日志
 │   └── info                // 查询日志
