@@ -4,7 +4,7 @@ Language : [English](./README.md) | 简体中文
 
 <div align="center">
 
-使用 `TypeScript` 构建 `Koa2` RESTful API 的最佳脚手架。
+使用 `TypeScript` 构建 `Koa2` RESTful API 最佳的脚手架。
 
 <a href="https://github.com/zeffon/koa-web/blob/master/LICENSE">
   <img src="https://img.shields.io/github/license/zeffon/koa-web?style=flat-square" alt="license">
@@ -12,11 +12,11 @@ Language : [English](./README.md) | 简体中文
 <a href="https://gitter.im/zeffon/koa-web">
   <img alt="Gitter" src="https://badges.gitter.im/zeffon/koa-web.svg">
 </a>
+<a href="https://github.com/zeffon/koa-web/actions/workflows/build.yml">
+  <img alt="GitHub Workflow Status (branch)" src="https://github.com/zeffon/koa-web/actions/workflows/build.yml/badge.svg?style=flat-square">
+</a>
 <a href="https://github.com/zeffon/koa-web/releases/latest">
   <img alt="GitHub Release" src="https://img.shields.io/github/v/release/zeffon/koa-web.svg">
-</a>
-<a href="https://github.com/zeffon/koa-web/actions/workflows/build.yml">
-  <img alt="GitHub Workflow Status (branch)" src="https://github.com/zeffon/koa-web/workflows/build/badge.svg?style=flat-square">
 </a>
 
 </div>

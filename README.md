@@ -13,13 +13,12 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
 <a href="https://gitter.im/zeffon/koa-web">
   <img alt="Gitter" src="https://badges.gitter.im/zeffon/koa-web.svg">
 </a>
+<a href="https://github.com/zeffon/koa-web/actions/workflows/build.yml">
+  <img alt="GitHub Workflow Status (branch)" src="https://github.com/zeffon/koa-web/actions/workflows/build.yml/badge.svg?style=flat-square">
+</a>
 <a href="https://github.com/zeffon/koa-web/releases/latest">
   <img alt="GitHub Release" src="https://img.shields.io/github/v/release/zeffon/koa-web.svg">
 </a>
-<a href="https://github.com/zeffon/koa-web/actions/workflows/build.yml">
-  <img alt="GitHub Workflow Status (branch)" src="https://github.com/zeffon/koa-web/workflows/build/badge.svg?style=flat-square">
-</a>
-
 </div>
 
 - Preview: http://localhost:3000/doc.html
