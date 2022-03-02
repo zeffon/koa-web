@@ -22,4 +22,3 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: build
           FOLDER: build
-          BUILD_SCRIPT: npm install && npm run build
