@@ -1,18 +1,29 @@
 Language : [English](./README.md) | 简体中文
 
-<h1 align="center">Koa Plus</h1>
+<h1 align="center">Koa Web</h1>
 
 <div align="center">
 
 使用 `TypeScript` 构建 `Koa2` RESTful API 的最佳脚手架。
 
-![license](https://img.shields.io/npm/l/express.svg)
+<a href="https://github.com/zeffon/koa-web/blob/master/LICENSE">
+  <img src="https://img.shields.io/github/license/zeffon/koa-web?style=flat-square" alt="license">
+</a>
+<a href="https://gitter.im/zeffon/koa-web">
+  <img alt="Gitter" src="https://badges.gitter.im/zeffon/koa-web.svg">
+</a>
+<a href="https://github.com/zeffon/koa-web/releases/latest">
+  <img alt="GitHub Release" src="https://img.shields.io/github/v/release/zeffon/koa-web.svg">
+</a>
+<a href="https://github.com/zeffon/koa-web/actions/workflows/build.yml">
+  <img alt="GitHub Workflow Status (branch)" src="https://github.com/zeffon/koa-web/workflows/build/badge.svg?style=flat-square">
+</a>
 
 </div>
 
 - 预览：http://localhost:3000/doc.html
 
-- 快速上手：[![Edit koa2-plus](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/koa2-plus-kn0lic)
+- 快速上手：[![Edit koa-web](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/zeffon-koa-web-vjojoe)
 
 ## 特性
 

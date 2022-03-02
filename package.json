@@ -1,7 +1,7 @@
 {
-  "name": "koa2-plus",
+  "name": "koa-web",
   "version": "0.1.0",
-  "description": "koa开发web项目模块",
+  "description": "The best scaffolding of building Koa2 restful API with TypeScript.",
   "main": "./src/app.ts",
   "scripts": {
     "dev:tsc": "tsc -W",
