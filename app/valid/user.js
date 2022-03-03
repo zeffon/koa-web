@@ -10,7 +10,7 @@ class RegisterValidator extends validator_1.LinValidator {
         super();
         this.email = [
             new validator_1.Rule('isLength', '至少12个字符，最多32个字符', {
-                min: 12,
+                min: 6,
                 max: 32
             }),
             new validator_1.Rule('isEmail', '不符合Email规范')
