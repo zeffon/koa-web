@@ -1,4 +1,4 @@
-name: Deploy Github pages
+name: build
 on:
   push:
     branches:
@@ -11,10 +11,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.15.1
+
+      - name: Set node version to 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
       - name: Install and Build
         run: |
-          yarn install
-          yarn run build
+          pnpm install
+          pnpm run build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@releases/v3
