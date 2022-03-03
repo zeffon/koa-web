@@ -10,13 +10,13 @@ describe('测试koa2服务器', () => {
   });
 
   it('POST /api/test/register', async () => {
-    const res = await request(app.callback()).post('/api/test/register').send({
+    const res = await request(app.callback()).post('/api/test/register2').send({
       email: 'string@qq.com',
       nickname: 'string',
       password1: 'string123',
       password2: 'string123'
     });
-    console.log(res.body.code);
+    console.log(res.body);
     expect(res.body.code).toEqual(0);
     expect(res.status).toEqual(201);
   });
