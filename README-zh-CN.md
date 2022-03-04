@@ -7,18 +7,20 @@ Language : [English](./README.md) | 简体中文
 使用 `TypeScript` 构建 `Koa2` RESTful API 最佳的脚手架。
 
 <a href="https://github.com/zeffon/koa-web/blob/master/LICENSE">
-  <img src="https://img.shields.io/github/license/zeffon/koa-web?style=flat-square" alt="license">
+<img src="https://img.shields.io/github/license/zeffon/koa-web?style=flat-square" alt="license">
 </a>
 <a href="https://github.com/zeffon/koa-web/actions/workflows/build.yml">
-  <img alt="build" src="https://github.com/zeffon/koa-web/actions/workflows/build.yml/badge.svg?style=flat-square">
+<img alt="build" src="https://github.com/zeffon/koa-web/actions/workflows/build.yml/badge.svg?style=flat-square">
 </a>
 <a href="https://github.com/zeffon/koa-web/actions/workflows/tests.yml">
-  <img alt="unit tests" src="https://github.com/zeffon/koa-web/actions/workflows/tests.yml/badge.svg?style=flat-square">
+<img alt="unit tests" src="https://github.com/zeffon/koa-web/actions/workflows/tests.yml/badge.svg?style=flat-square">
 </a>
 <a href="https://codebeat.co/projects/github-com-zeffon-koa-web-master">
-  <img alt="codebeat badge" src="https://codebeat.co/badges/c0f9ed98-2950-46f0-b4ab-69999af65e7c" />
+<img alt="codebeat badge" src="https://codebeat.co/badges/c0f9ed98-2950-46f0-b4ab-69999af65e7c" />
 </a>
+</div>
 
+<div align="center">
 <a href="https://codecov.io/gh/zeffon/koa-web">
   <img src="https://codecov.io/gh/zeffon/koa-web/graph/badge.svg" alt="Code coverage status badge">
 </a>
@@ -28,7 +30,9 @@ Language : [English](./README.md) | 简体中文
 <a href="https://github.com/zeffon/koa-web/releases/latest">
   <img alt="GitHub Release" src="https://img.shields.io/github/v/release/zeffon/koa-web.svg">
 </a>
-
+<a href="https://app.fossa.com/projects/git%2Bgithub.com%2Fzeffon%2Fkoa-web?ref=badge_shield" alt="FOSSA Status">
+  <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Fzeffon%2Fkoa-web.svg?type=shield"/>
+</a>
 </div>
 
 - 预览：http://localhost:3000/doc.html
