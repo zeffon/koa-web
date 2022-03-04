@@ -6,6 +6,5 @@ node_modules
 dist
 build
 coverage/
-README.md
 
 LICENSE
