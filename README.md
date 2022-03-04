@@ -1,4 +1,3 @@
-
 Language : English | [简体中文](./README-zh-CN.md)
 
 <h1 align="center">Koa Web</h1>
@@ -19,12 +18,16 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
 <a href="https://github.com/zeffon/koa-web/releases/latest">
   <img alt="GitHub Release" src="https://img.shields.io/github/v/release/zeffon/koa-web.svg">
 </a>
+<a href="https://app.fossa.com/projects/git%2Bgithub.com%2Fzeffon%2Fkoa-web?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Fzeffon%2Fkoa-web.svg?type=shield"/></a>
 </div>
 
 - Preview: http://localhost:3000/doc.html
 
 - Getting Started: [![Edit koa-web](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/zeffon-koa-web-vjojoe)
 
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fzeffon%2Fkoa-web.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fzeffon%2Fkoa-web?ref=badge_large)
 
 ## Features
 
