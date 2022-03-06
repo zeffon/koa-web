@@ -9,7 +9,7 @@ const config_1 = __importDefault(require("./config"));
 const app = new koa_1.default();
 new init_1.default(app);
 app.listen(config_1.default.PORT, () => {
-    console.log(`Please open ${config_1.default.BASE_URL}:${config_1.default.PORT}/`);
+    console.log(`Please open ${config_1.default.BASE_URL}:${config_1.default.PORT}${config_1.default.PREFIX}/v1/doc.html`);
 });
 exports.default = app;
 //# sourceMappingURL=app.js.map

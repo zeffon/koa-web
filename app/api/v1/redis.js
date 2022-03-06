@@ -50,7 +50,7 @@ __decorate([
     (0, koa_swagger_decorator_1.body)(idSchema)
 ], RedisController.prototype, "setValue", null);
 RedisController = __decorate([
-    (0, koa_swagger_decorator_1.prefix)('/api/redis')
+    (0, koa_swagger_decorator_1.prefix)('/redis')
 ], RedisController);
 exports.default = RedisController;
 //# sourceMappingURL=redis.js.map

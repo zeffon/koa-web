@@ -17,6 +17,7 @@ exports.devConf = {
         PORT: 6379,
         PASSWORD: '123456'
     },
-    BASE_URL: 'http://localhost'
+    BASE_URL: 'http://localhost',
+    PREFIX: '/koa-web'
 };
 //# sourceMappingURL=dev.js.map

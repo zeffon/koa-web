@@ -74,7 +74,7 @@ __decorate([
     (0, koa_swagger_decorator_1.body)(idSchema)
 ], MysqlController.prototype, "body", null);
 MysqlController = __decorate([
-    (0, koa_swagger_decorator_1.prefix)('/api/mysql')
+    (0, koa_swagger_decorator_1.prefix)('/mysql')
 ], MysqlController);
 exports.default = MysqlController;
 //# sourceMappingURL=mysql.js.map

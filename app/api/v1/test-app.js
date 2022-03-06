@@ -97,7 +97,7 @@ __decorate([
     (0, koa_swagger_decorator_1.body)(registerSchema)
 ], TestController, "register2", null);
 TestController = __decorate([
-    (0, koa_swagger_decorator_1.prefix)('/api/test')
+    (0, koa_swagger_decorator_1.prefix)('/test')
 ], TestController);
 exports.default = TestController;
 //# sourceMappingURL=test-app.js.map
