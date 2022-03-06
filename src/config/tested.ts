@@ -18,5 +18,6 @@ export const testConf = {
     PORT: 6379,
     PASSWORD: '123456'
   },
-  BASE_URL: 'http://localhost'
+  BASE_URL: 'http://localhost',
+  PREFIX: '/koa-web'
 };

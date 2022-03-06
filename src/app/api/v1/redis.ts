@@ -15,7 +15,7 @@ const idSchema = {
   id: { type: 'number', required: true }
 };
 
-@prefix('/api/redis')
+@prefix('/redis')
 export default class RedisController {
   @request('get', '/user/{id}')
   @summary('Redis获取')

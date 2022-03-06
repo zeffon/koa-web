@@ -14,5 +14,6 @@ export const prodConf = {
     PORT: 6379,
     PASSWORD: '123456'
   },
-  BASE_URL: 'http://127.0.0.1'
+  BASE_URL: 'http://127.0.0.1',
+  PREFIX: '/koa-web'
 };

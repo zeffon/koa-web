@@ -1,19 +1,25 @@
 import path from 'path';
 import { SwaggerRouter } from 'koa-swagger-decorator';
+import CONFIG from '../../config';
 
-const swaggerRouter = new SwaggerRouter();
+const topRouter = new SwaggerRouter({ prefix: CONFIG.PREFIX });
 
-swaggerRouter.swagger({
+/** This is v1 routers */
+const v1 = new SwaggerRouter();
+const v1Prefix = '/v1';
+v1.swagger({
+  prefix: `${CONFIG.PREFIX}${v1Prefix}`,
   title: 'API文档',
   description: 'API DOC',
   version: '1.0.0',
-  // [optional] default is /swagger-html
   swaggerHtmlEndpoint: '/doc.html',
-  // [optional] default is /swagger-json
   swaggerJsonEndpoint: '/json.html'
 });
+// point to v1 apis directory
+v1.mapDir(path.resolve(__dirname, `../../app/api/v1/`));
 
-// 查找对应目录下的api文件夹
-swaggerRouter.mapDir(path.resolve(__dirname, `../../app/api/`));
+/** This is v2 routers */
+// ...
 
-export default swaggerRouter;
+topRouter.use(v1Prefix, v1.routes());
+export default topRouter;

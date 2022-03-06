@@ -18,7 +18,7 @@ const idSchema = {
   id: { type: 'number', required: true }
 };
 
-@prefix('/api/mysql')
+@prefix('/mysql')
 export default class MysqlController {
   @request('get', '/user/{id}')
   @summary('URL上传参')

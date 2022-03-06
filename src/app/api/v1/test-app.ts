@@ -39,7 +39,7 @@ const registerSchema = {
   password2: { type: 'string', required: true }
 };
 
-@prefix('/api/test')
+@prefix('/test')
 export default class TestController {
   @request('get', '')
   @summary('应用连接测试')
