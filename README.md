@@ -9,8 +9,8 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
 <a href="https://github.com/zeffon/koa-web/blob/master/LICENSE">
 <img src="https://img.shields.io/github/license/zeffon/koa-web?style=flat-square" alt="license">
 </a>
-<a href="https://github.com/zeffon/koa-web/actions/workflows/build.yml">
-<img alt="build" src="https://github.com/zeffon/koa-web/actions/workflows/build.yml/badge.svg?style=flat-square">
+<a href="https://github.com/zeffon/koa-web/actions/workflows/ci.yml">
+<img alt="node ci" src="https://github.com/zeffon/koa-web/actions/workflows/ci.yml/badge.svg?style=flat-square">
 </a>
 <a href="https://github.com/zeffon/koa-web/actions/workflows/tests.yml">
 <img alt="unit tests" src="https://github.com/zeffon/koa-web/actions/workflows/tests.yml/badge.svg?style=flat-square">
