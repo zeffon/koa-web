@@ -15,27 +15,27 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
 <a href="https://github.com/zeffon/koa-web/actions/workflows/tests.yml">
 <img alt="unit tests" src="https://github.com/zeffon/koa-web/actions/workflows/tests.yml/badge.svg?style=flat-square">
 </a>
-<a href="https://codebeat.co/projects/github-com-zeffon-koa-web-master">
-<img alt="codebeat badge" src="https://codebeat.co/badges/c0f9ed98-2950-46f0-b4ab-69999af65e7c" />
+<a href="https://codecov.io/gh/zeffon/koa-web">
+  <img src="https://codecov.io/gh/zeffon/koa-web/graph/badge.svg" alt="Code coverage status badge">
 </a>
 </div>
 
 <div align="center">
-<a href="https://codecov.io/gh/zeffon/koa-web">
-  <img src="https://codecov.io/gh/zeffon/koa-web/graph/badge.svg" alt="Code coverage status badge">
-</a>
-<a href="https://gitter.im/zeffon/koa-web">
-  <img alt="Gitter" src="https://badges.gitter.im/zeffon/koa-web.svg">
-</a>
-<a href="https://github.com/zeffon/koa-web/releases/latest">
-  <img alt="GitHub Release" src="https://img.shields.io/github/v/release/zeffon/koa-web.svg">
+<a href="https://codebeat.co/projects/github-com-zeffon-koa-web-master">
+<img alt="codebeat badge" src="https://codebeat.co/badges/c0f9ed98-2950-46f0-b4ab-69999af65e7c" />
 </a>
 <a href="https://app.fossa.com/projects/git%2Bgithub.com%2Fzeffon%2Fkoa-web?ref=badge_shield" alt="FOSSA Status">
   <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Fzeffon%2Fkoa-web.svg?type=shield"/>
 </a>
+<a href="https://github.com/zeffon/koa-web/releases/latest">
+  <img alt="GitHub Release" src="https://img.shields.io/github/v/release/zeffon/koa-web.svg">
+</a>
+<a href="https://gitter.im/zeffon/koa-web">
+  <img alt="Gitter" src="https://badges.gitter.im/zeffon/koa-web.svg">
+</a>
 </div>
 
-- Preview: http://localhost:3000/doc.html
+- Preview: https://zeffon.cn/koa-web/v1/doc.html
 
 - Getting Started: [![Edit koa-web](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/zeffon-koa-web-vjojoe)
 
