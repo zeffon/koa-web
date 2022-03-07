@@ -16,7 +16,7 @@ const tag = tags(['test']);
 const registerSchema = {
   email: {
     type: 'string',
-    required: true,
+    required: false,
     rules: [
       new Rule('isLength', '至少12个字符，最多32个字符', {
         min: 6,
@@ -27,12 +27,13 @@ const registerSchema = {
   },
   nickname: {
     type: 'string',
-    required: true,
+    required: false,
     rules: [
-      new Rule('isLength', '昵称不符合长度规范', {
-        min: 4,
+      new Rule('isLength', '至少12个字符，最多32个字符', {
+        min: 6,
         max: 32
-      })
+      }),
+      new Rule('isEmail', '不符合Email规范')
     ]
   },
   password1: { type: 'string', required: true, rules: [] },
