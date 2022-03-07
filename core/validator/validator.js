@@ -21,16 +21,29 @@ class LinValidator {
         this.data = {};
         this.parsed = {};
         this.alias = {};
-        this.data = {};
-        this.parsed = {};
     }
-    _assembleAllParams(ctx) {
-        return {
-            body: ctx.request.body,
-            query: ctx.request.query,
-            path: ctx.params,
-            header: ctx.request.header
-        };
+    validate(ctx, alias = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.alias = alias;
+            let params = this._assembleAllParams(ctx);
+            this.data = (0, lodash_1.cloneDeep)(params);
+            this.parsed = (0, lodash_1.cloneDeep)(params);
+            const memberKeys = (0, tool_1.findMembers)(this, {
+                filter: this._findMembersFilter.bind(this)
+            });
+            const errorMsgs = [];
+            for (let key of memberKeys) {
+                const result = yield this._check(key, alias);
+                if (!result.success) {
+                    errorMsgs.push(result.msg);
+                }
+            }
+            if (errorMsgs.length !== 0) {
+                global.UnifyResponse.parameterException(errorMsgs.join(', '));
+            }
+            ctx.v = this;
+            return this;
+        });
     }
     get(path, parsed = true) {
         if (parsed) {
@@ -46,6 +59,14 @@ class LinValidator {
             return (0, lodash_1.get)(this.data, path);
         }
     }
+    _assembleAllParams(ctx) {
+        return {
+            body: ctx.request.body,
+            query: ctx.request.query,
+            path: ctx.params,
+            header: ctx.request.header
+        };
+    }
     _findMembersFilter(key) {
         if (/validate([A-Z])\w+/g.test(key)) {
             return true;
@@ -56,36 +77,12 @@ class LinValidator {
             this[key].forEach((value) => {
                 const isRuleType = value instanceof Rule;
                 if (!isRuleType) {
-                    throw new Error('验证数组必须全部为Rule类型');
+                    throw new Error('The validation array must all be of type Rule');
                 }
             });
             return true;
         }
         return false;
-    }
-    validate(ctx, alias = {}) {
-        return __awaiter(this, void 0, void 0, function* () {
-            this.alias = alias;
-            let params = this._assembleAllParams(ctx);
-            this.data = (0, lodash_1.cloneDeep)(params);
-            this.parsed = (0, lodash_1.cloneDeep)(params);
-            const memberKeys = (0, tool_1.findMembers)(this, {
-                filter: this._findMembersFilter.bind(this)
-            });
-            const errorMsgs = [];
-            // const map = new Map(memberKeys)
-            for (let key of memberKeys) {
-                const result = yield this._check(key, alias);
-                if (!result.success) {
-                    errorMsgs.push(result.msg);
-                }
-            }
-            if (errorMsgs.length !== 0) {
-                global.UnifyResponse.parameterException(errorMsgs.join(' '));
-            }
-            ctx.v = this;
-            return this;
-        });
     }
     _check(key, alias = {}) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -101,22 +98,18 @@ class LinValidator {
                 }
                 catch (error) {
                     // @ts-ignore
-                    result = new RuleResult(false, error.msg || error.message || '参数错误');
+                    result = new RuleResult(false, error.msg || error.message || 'parameters error');
                 }
-                // 函数验证
             }
             else {
-                // 属性验证, 数组，内有一组Rule
                 // @ts-ignore
                 const rules = this[key];
                 const ruleField = new RuleField(rules);
-                // 别名替换
                 // @ts-ignore
                 key = alias[key] ? alias[key] : key;
                 const param = this._findParam(key);
                 result = ruleField.validate(param.value);
                 if (result.pass) {
-                    // 如果参数路径不存在，往往是因为用户传了空值，而又设置了默认值
                     if (param.path.length === 0) {
                         (0, lodash_1.set)(this.parsed, ['default', key], result.legalValue);
                     }
@@ -126,7 +119,8 @@ class LinValidator {
                 }
             }
             if (!result.pass) {
-                const msg = `${isCustomFunc ? '' : key}${result.msg}`;
+                const field = isCustomFunc ? '' : key;
+                const msg = `${result.msg}: '${field}', please check again!`;
                 return {
                     msg: msg,
                     success: false
@@ -177,6 +171,8 @@ class LinValidator {
 exports.LinValidator = LinValidator;
 class RuleResult {
     constructor(pass, msg = '') {
+        this.pass = true;
+        this.msg = '';
         Object.assign(this, {
             pass,
             msg
@@ -184,13 +180,13 @@ class RuleResult {
     }
 }
 class RuleFieldResult extends RuleResult {
+    legalValue(parsed, arg1, legalValue) {
+        throw new Error('Method not implemented.');
+    }
     constructor(pass, msg = '', legalValue = null) {
         super(pass, msg);
         // @ts-ignore
         this.legalValue = legalValue;
-    }
-    legalValue(parsed, arg1, legalValue) {
-        throw new Error('Method not implemented.');
     }
 }
 class Rule {
@@ -202,11 +198,11 @@ class Rule {
         });
     }
     validate(field) {
-        if (this.name === 'isOptional')
+        if (this.name === 'isOptional') {
             return new RuleResult(true);
-        // @ts-ignore
+        }
         if (!validator_1.default[this.name](field + '', ...this.params)) {
-            return new RuleResult(false, this.msg || this.message || '参数错误');
+            return new RuleResult(false, this.msg || this.message || 'parameters error');
         }
         return new RuleResult(true, '');
     }
@@ -218,14 +214,13 @@ class RuleField {
     }
     validate(field) {
         if (field == null) {
-            // 如果字段为空
             const allowEmpty = this._allowEmpty();
             const defaultValue = this._hasDefault();
             if (allowEmpty) {
                 return new RuleFieldResult(true, '', defaultValue);
             }
             else {
-                return new RuleFieldResult(false, '字段是必填参数');
+                return new RuleFieldResult(false, 'incorrect field');
             }
         }
         const filedResult = new RuleFieldResult(false);
@@ -235,7 +230,6 @@ class RuleField {
                 filedResult.msg = result.msg;
                 // @ts-ignore
                 filedResult.legalValue = null;
-                // 一旦一条校验规则不通过，则立即终止这个字段的验证
                 return filedResult;
             }
         }
