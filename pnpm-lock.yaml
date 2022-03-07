@@ -24,7 +24,7 @@ specifiers:
   koa: ^2.13.4
   koa-body: ^4.2.0
   koa-router: ^10.1.1
-  koa-swagger-decorator: ^1.8.4
+  koa-swagger-decorator: ^1.8.5
   koa2-cors: ^2.0.6
   lint-staged: ^12.3.3
   lodash: ^4.17.21
@@ -71,7 +71,7 @@ devDependencies:
   cz-customizable: 6.3.0
   husky: 7.0.4
   jest: 27.5.1_ts-node@10.5.0
-  koa-swagger-decorator: 1.8.4
+  koa-swagger-decorator: 1.8.5
   lint-staged: 12.3.3
   nodemon: 2.0.15
   prettier: 2.5.1
@@ -3689,8 +3689,8 @@ packages:
       - supports-color
     dev: false
 
-  /koa-swagger-decorator/1.8.4:
-    resolution: {integrity: sha512-E6+ZayMmG1aPHT2NaryeyL6Gqqx5TurM5k2sR4n5SBYHlYs8BNh4tOS9QHdatAIfkn20NTxCMYNGWTzVWz3Vdg==}
+  /koa-swagger-decorator/1.8.5:
+    resolution: {integrity: sha512-GcoqQHg736SCzYXoQL3q4om4v10zmFbf1ndG6k7Y+0YZjY1CAxYM8njnCzhL0VM/iGStua+m1VLgceSc6Xh4Zw==}
     dependencies:
       '@koa/router': 10.1.1
       '@types/koa__router': 8.0.11
