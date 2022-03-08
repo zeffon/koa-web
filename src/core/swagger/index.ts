@@ -9,9 +9,9 @@ const v1 = new SwaggerRouter();
 const v1Prefix = '/v1';
 v1.swagger({
   prefix: `${CONFIG.PREFIX}${v1Prefix}`,
-  title: 'API文档',
-  description: 'API DOC',
-  version: '1.0.0',
+  title: 'V1 API DOC',
+  description: 'This is v1 api doc.',
+  version: '0.1.0',
   swaggerHtmlEndpoint: '/doc.html',
   swaggerJsonEndpoint: '/json.html'
 });
