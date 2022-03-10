@@ -32,8 +32,7 @@ const registerSchema = {
       new Rule('isLength', '至少12个字符，最多32个字符', {
         min: 6,
         max: 32
-      }),
-      new Rule('isEmail', '不符合Email规范')
+      })
     ]
   },
   password1: { type: 'string', required: true, rules: [] },
