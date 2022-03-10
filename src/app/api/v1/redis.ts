@@ -1,5 +1,5 @@
-import Koa from 'koa';
-import { redisGet, redisSet } from '../../../core/redis';
+import Koa from 'koa'
+import { redisGet, redisSet } from '../../../core/redis'
 import {
   request,
   summary,
@@ -7,13 +7,13 @@ import {
   tags,
   body,
   prefix
-} from 'koa-swagger-decorator';
+} from 'koa-swagger-decorator'
 
-const tag = tags(['redis']);
+const tag = tags(['redis'])
 
 const idSchema = {
   id: { type: 'number', required: true }
-};
+}
 
 @prefix('/redis')
 export default class RedisController {
@@ -22,9 +22,9 @@ export default class RedisController {
   @tag
   @path(idSchema)
   async getValue(ctx: Koa.Context, next: any) {
-    const id = ctx.params.id + '';
-    const res = await redisGet(id);
-    ctx.body = res;
+    const id = ctx.params.id + ''
+    const res = await redisGet(id)
+    ctx.body = res
   }
 
   @request('post', '/user')
@@ -32,8 +32,8 @@ export default class RedisController {
   @tag
   @body(idSchema)
   async setValue(ctx: Koa.Context, next: any) {
-    const id = ctx.request.body.id;
-    await redisSet(id, `this user is ${id}`);
-    global.UnifyResponse.createSuccess({});
+    const id = ctx.request.body.id
+    await redisSet(id, `this user is ${id}`)
+    global.UnifyResponse.createSuccess({})
   }
 }

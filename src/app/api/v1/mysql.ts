@@ -1,5 +1,5 @@
-import Koa from 'koa';
-import { loadBySql } from '../../../core/mysql';
+import Koa from 'koa'
+import { loadBySql } from '../../../core/mysql'
 
 import {
   request,
@@ -10,13 +10,13 @@ import {
   body,
   tags,
   prefix
-} from 'koa-swagger-decorator';
+} from 'koa-swagger-decorator'
 
-const tag = tags(['mysql']);
+const tag = tags(['mysql'])
 
 const idSchema = {
   id: { type: 'number', required: true }
-};
+}
 
 @prefix('/mysql')
 export default class MysqlController {
@@ -28,11 +28,11 @@ export default class MysqlController {
     id: { type: 'number', required: true, default: 1, description: 'id' }
   })
   async path(ctx: Koa.Context, next: any) {
-    console.log(ctx.params);
-    const id = ctx.params.id;
-    let sql = `SELECT * FROM user WHERE id = ${id}`;
-    const res = await loadBySql(sql);
-    ctx.body = res;
+    console.log(ctx.params)
+    const id = ctx.params.id
+    let sql = `SELECT * FROM user WHERE id = ${id}`
+    const res = await loadBySql(sql)
+    ctx.body = res
   }
 
   @request('get', '/user')
@@ -41,11 +41,11 @@ export default class MysqlController {
   @tag
   @query(idSchema)
   async query(ctx: Koa.Context, next: any) {
-    console.log(ctx.query);
-    const id = ctx.query.id;
-    let sql = `SELECT * FROM user WHERE id = ${id}`;
-    const res = await loadBySql(sql);
-    ctx.body = res;
+    console.log(ctx.query)
+    const id = ctx.query.id
+    let sql = `SELECT * FROM user WHERE id = ${id}`
+    const res = await loadBySql(sql)
+    ctx.body = res
   }
 
   @request('post', '/user')
@@ -54,10 +54,10 @@ export default class MysqlController {
   @tag
   @body(idSchema)
   async body(ctx: Koa.Context, next: any) {
-    console.log(ctx.request.body);
-    const id = ctx.request.body.id;
-    let sql = `SELECT * FROM user WHERE id = ${id}`;
-    const res = await loadBySql(sql);
-    ctx.body = res;
+    console.log(ctx.request.body)
+    const id = ctx.request.body.id
+    let sql = `SELECT * FROM user WHERE id = ${id}`
+    const res = await loadBySql(sql)
+    ctx.body = res
   }
 }

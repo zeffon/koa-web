@@ -1,17 +1,17 @@
-import path from 'path';
+import path from 'path'
 
 /** 日志根目录 */
-const BASE_LOG_PATH = path.resolve(__dirname, '../../../logs');
+const BASE_LOG_PATH = path.resolve(__dirname, '../../../logs')
 
 /** 普通日志信息 */
-const INFO_PATH = '/info';
-const INFO_FILE_NAME = 'info';
-const INFO_LOG_PATH = BASE_LOG_PATH + INFO_PATH + '/' + INFO_FILE_NAME;
+const INFO_PATH = '/info'
+const INFO_FILE_NAME = 'info'
+const INFO_LOG_PATH = BASE_LOG_PATH + INFO_PATH + '/' + INFO_FILE_NAME
 
 /** 错误日志信息 */
-const ERROR_PATH = '/error';
-const ERROR_FILE_NAME = 'error';
-const ERROR_LOG_PATH = BASE_LOG_PATH + ERROR_PATH + '/' + ERROR_FILE_NAME;
+const ERROR_PATH = '/error'
+const ERROR_FILE_NAME = 'error'
+const ERROR_LOG_PATH = BASE_LOG_PATH + ERROR_PATH + '/' + ERROR_FILE_NAME
 
 export default {
   // 日志格式等设置
@@ -46,4 +46,4 @@ export default {
     http: { appenders: ['infoLogger'], level: 'info' }
   },
   baseLogPath: BASE_LOG_PATH
-};
+}

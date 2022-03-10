@@ -14,6 +14,6 @@ const CODE = new Map([
   [10006, '登陆失败'],
 
   [20000, '用户类通用错误']
-]);
+])
 
-export default CODE;
+export default CODE

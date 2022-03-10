@@ -1,5 +1,5 @@
-import { Rule, LinValidator } from './validator';
-import _ from 'lodash';
+import { Rule, LinValidator } from './validator'
+import _ from 'lodash'
 
 /**
  * 校验一个Schema模型对象
@@ -7,25 +7,25 @@ import _ from 'lodash';
  */
 class ParamValidator extends LinValidator {
   constructor(schema: any) {
-    super();
-    const rules = this._getRules(schema);
+    super()
+    const rules = this._getRules(schema)
     rules.forEach((item) => {
       // @ts-ignore
-      this[item.key] = item.rules;
-    });
+      this[item.key] = item.rules
+    })
   }
 
   _getRules(schema: any) {
-    const array = [];
+    const array = []
     for (const key in schema) {
-      const rules = schema[key].rules;
+      const rules = schema[key].rules
       if (rules && rules.length !== 0) {
-        const obj = { key, rules };
-        array.push(obj);
+        const obj = { key, rules }
+        array.push(obj)
       }
     }
-    return array;
+    return array
   }
 }
 
-export { ParamValidator, Rule };
+export { ParamValidator, Rule }

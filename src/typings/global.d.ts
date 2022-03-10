@@ -1,18 +1,18 @@
-import { UnifyResponse } from '../core/exception/unify-response';
+import { UnifyResponse } from '../core/exception/unify-response'
 
-export {};
+export {}
 
 interface ValidatorOption {
-  isLength: string;
-  isString: string;
-  isBoolean: string;
-  isInt: string;
-  isFloat: string;
-  isEmail: string;
-  [x: string]: any;
+  isLength: string
+  isString: string
+  isBoolean: string
+  isInt: string
+  isFloat: string
+  isEmail: string
+  [x: string]: any
 }
 
 declare global {
-  var Validator: ValidatorOption;
-  var UnifyResponse: UnifyResponse;
+  var Validator: ValidatorOption
+  var UnifyResponse: UnifyResponse
 }

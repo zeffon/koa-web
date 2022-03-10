@@ -6,12 +6,12 @@ import {
   prefix,
   body,
   query
-} from 'koa-swagger-decorator';
-import Koa from 'koa';
-import { ParamValidator, Rule } from '../../../core/validator';
-import { RegisterValidator } from '../../valid/user';
+} from 'koa-swagger-decorator'
+import Koa from 'koa'
+import { ParamValidator, Rule } from '../../../core/validator'
+import { RegisterValidator } from '../../valid/user'
 
-const tag = tags(['test']);
+const tag = tags(['test'])
 
 const registerSchema = {
   email: {
@@ -37,7 +37,7 @@ const registerSchema = {
   },
   password1: { type: 'string', required: true, rules: [] },
   password2: { type: 'string', required: true }
-};
+}
 
 @prefix('/test')
 export default class TestController {
@@ -46,7 +46,7 @@ export default class TestController {
   @description('测试系统是否连接成功, 同时验证单元测试')
   @tag
   static async testApp(ctx: Koa.Context) {
-    ctx.body = 'Hello World!';
+    ctx.body = 'Hello World!'
   }
 
   @request('get', '/register')
@@ -55,13 +55,13 @@ export default class TestController {
   @tag
   @query(registerSchema)
   static async register(ctx: Koa.Context) {
-    const v = await new RegisterValidator().validate(ctx);
+    const v = await new RegisterValidator().validate(ctx)
     const user = {
       email: v.get('query.email'),
       nickname: v.get('query.nickname'),
       password: v.get('query.password2')
-    };
-    global.UnifyResponse.createSuccess({ message: '注册成功' });
+    }
+    global.UnifyResponse.createSuccess({ message: '注册成功' })
   }
 
   @request('post', '/register2')
@@ -70,15 +70,15 @@ export default class TestController {
   @tag
   @body(registerSchema)
   static async register2(ctx: Koa.Context) {
-    const v = await new ParamValidator(registerSchema).validate(ctx);
-    const email = v.get('body.email');
-    console.log(email);
+    const v = await new ParamValidator(registerSchema).validate(ctx)
+    const email = v.get('body.email')
+    console.log(email)
     const user = {
       email: v.get('body.email'),
       nickname: v.get('body.nickname'),
       password: v.get('body.password2')
-    };
-    console.log(user);
-    global.UnifyResponse.createSuccess({ message: '注册成功' });
+    }
+    console.log(user)
+    global.UnifyResponse.createSuccess({ message: '注册成功' })
   }
 }

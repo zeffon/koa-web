@@ -8,9 +8,9 @@ import {
   ServerErrorException,
   UnAuthenticatedException,
   UpdateSuccess
-} from './http-exception';
+} from './http-exception'
 
-const SUCCESS_CODE = 0;
+const SUCCESS_CODE = 0
 
 export class UnifyResponse {
   /**
@@ -19,7 +19,7 @@ export class UnifyResponse {
    * @param message 自定义错误提示
    */
   getSuccess({ code = SUCCESS_CODE, message = '' }) {
-    throw new GetSuccess(code, message);
+    throw new GetSuccess(code, message)
   }
 
   /**
@@ -28,7 +28,7 @@ export class UnifyResponse {
    * @param message 自定义错误提示
    */
   createSuccess({ code = SUCCESS_CODE, message = '' }) {
-    throw new CreateSuccess(code, message);
+    throw new CreateSuccess(code, message)
   }
 
   /**
@@ -37,7 +37,7 @@ export class UnifyResponse {
    * @param message 自定义错误提示
    */
   updateSuccess({ code = SUCCESS_CODE, message = '' }) {
-    throw new UpdateSuccess(code, message);
+    throw new UpdateSuccess(code, message)
   }
 
   /**
@@ -46,7 +46,7 @@ export class UnifyResponse {
    * @param message 自定义错误提示
    */
   deleteSuccess({ code = SUCCESS_CODE, message = '' }) {
-    throw new DeleteSuccess(code, message);
+    throw new DeleteSuccess(code, message)
   }
 
   /**
@@ -54,7 +54,7 @@ export class UnifyResponse {
    * @param code 错误码 | 自定义错误提示
    */
   parameterException(code: number | string) {
-    throw new ParameterException(code);
+    throw new ParameterException(code)
   }
 
   /**
@@ -62,7 +62,7 @@ export class UnifyResponse {
    * @param code 错误码
    */
   unAuthenticatedException(code: number) {
-    throw new UnAuthenticatedException(code);
+    throw new UnAuthenticatedException(code)
   }
 
   /**
@@ -70,7 +70,7 @@ export class UnifyResponse {
    * @param code 错误码
    */
   forbiddenException(code: number) {
-    throw new ForbiddenException(code);
+    throw new ForbiddenException(code)
   }
 
   /**
@@ -78,7 +78,7 @@ export class UnifyResponse {
    * @param code 错误码
    */
   notFoundException(code: number) {
-    throw new NotFoundException(code);
+    throw new NotFoundException(code)
   }
 
   /**
@@ -86,6 +86,6 @@ export class UnifyResponse {
    * @param code 错误码
    */
   serverErrorException(code: number | string) {
-    throw new ServerErrorException(code);
+    throw new ServerErrorException(code)
   }
 }

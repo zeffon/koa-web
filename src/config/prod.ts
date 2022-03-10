@@ -16,4 +16,4 @@ export const prodConf = {
   },
   BASE_URL: 'http://127.0.0.1',
   PREFIX: '/koa-web'
-};
+}

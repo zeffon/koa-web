@@ -20,4 +20,4 @@ export const testConf = {
   },
   BASE_URL: 'http://localhost',
   PREFIX: '/koa-web'
-};
+}

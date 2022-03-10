@@ -1,9 +1,9 @@
-import MySQL from 'mysql2';
-import Async from 'async';
-import CONFIG from '../../config';
-import Logger from '../log';
+import MySQL from 'mysql2'
+import Async from 'async'
+import CONFIG from '../../config'
+import Logger from '../log'
 
-const DATABASE = CONFIG.DATABASE;
+const DATABASE = CONFIG.DATABASE
 
 const pool = MySQL.createPool({
   host: DATABASE.HOST,
@@ -11,7 +11,7 @@ const pool = MySQL.createPool({
   password: DATABASE.PASSWORD,
   database: DATABASE.DB_NAME,
   port: DATABASE.PORT
-});
+})
 
 /**
  * 普通查询
@@ -20,16 +20,16 @@ const pool = MySQL.createPool({
  */
 export function loadBySql(sql: string, data?: any) {
   return new Promise((resolve, reject) => {
-    Logger.query(sql, data);
+    Logger.query(sql, data)
     pool.query(sql, data, async (err, results) => {
-      console.log(err);
-      console.log(results);
+      console.log(err)
+      console.log(results)
       if (err) {
-        return throwError(reject, '服务器发生错误: 数据库查询语句出错');
+        return throwError(reject, '服务器发生错误: 数据库查询语句出错')
       }
-      resolve(results);
-    });
-  });
+      resolve(results)
+    })
+  })
 }
 
 /**
@@ -39,10 +39,10 @@ export function loadBySql(sql: string, data?: any) {
 export function execTrans(sqlList: any[]) {
   return new Promise((resolve, reject) => {
     pool.getConnection((err, connection) => {
-      if (err) return throwError(reject, '服务器发生错误: 创建数据库连接失败');
+      if (err) return throwError(reject, '服务器发生错误: 创建数据库连接失败')
       connection.beginTransaction((err) => {
-        if (err) return throwError(reject, '服务器发生错误: 事务开启失败');
-        let params = handleExceTransSQLParams(reject, connection, sqlList);
+        if (err) return throwError(reject, '服务器发生错误: 事务开启失败')
+        let params = handleExceTransSQLParams(reject, connection, sqlList)
         // 串联执行多个异步
         Async.series(params, (err, results) => {
           if (err) {
@@ -50,7 +50,7 @@ export function execTrans(sqlList: any[]) {
               reject,
               connection,
               '服务器发生错误: 事务执行失败'
-            );
+            )
           }
           connection.commit((err) => {
             if (err) {
@@ -58,15 +58,15 @@ export function execTrans(sqlList: any[]) {
                 reject,
                 connection,
                 '服务器发生错误: 事务执行失败'
-              );
+              )
             }
-            connection.release();
-            resolve(results);
-          });
-        });
-      });
-    });
-  });
+            connection.release()
+            resolve(results)
+          })
+        })
+      })
+    })
+  })
 }
 
 /**
@@ -77,9 +77,9 @@ function handleExceTransSQLParams(
   connection: any,
   sqlList: any[]
 ) {
-  let queryArr: any[] = [];
+  let queryArr: any[] = []
   sqlList.forEach((item) => {
-    Logger.query(item.sql, item.data);
+    Logger.query(item.sql, item.data)
     let temp = function (cb: Function) {
       connection.query(item.sql, item.data, (err: any, results: any) => {
         if (err) {
@@ -88,19 +88,19 @@ function handleExceTransSQLParams(
             connection,
             '服务器发生错误: 数据库查询语句出错',
             item
-          );
-        } else cb(null, results);
-      });
-    };
-    queryArr.push(temp);
-  });
-  return queryArr;
+          )
+        } else cb(null, results)
+      })
+    }
+    queryArr.push(temp)
+  })
+  return queryArr
 }
 
 // 普通错误抛出异常
 function throwError(reject: any, message: string, ...arg: any) {
-  Logger.error(message, ...arg);
-  reject(global.UnifyResponse.serverErrorException(message));
+  Logger.error(message, ...arg)
+  reject(global.UnifyResponse.serverErrorException(message))
 }
 
 // 事务查询发生错误时回滚并返回错误
@@ -111,8 +111,8 @@ function handleExceTransRoolback(
   ...arg: any
 ) {
   connection.roolback(() => {
-    Logger.error(message, ...arg);
-    connection.release();
-    reject(global.UnifyResponse.serverErrorException(message));
-  });
+    Logger.error(message, ...arg)
+    connection.release()
+    reject(global.UnifyResponse.serverErrorException(message))
+  })
 }
