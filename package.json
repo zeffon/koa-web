@@ -25,8 +25,6 @@
     "validator": "^13.7.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^16.1.0",
-    "@commitlint/config-conventional": "^16.0.0",
     "@types/async": "^3.2.12",
     "@types/jest": "^27.4.0",
     "@types/koa": "^2.13.4",
@@ -38,10 +36,7 @@
     "@types/require-directory": "^2.1.2",
     "@types/supertest": "^2.0.11",
     "@types/validator": "^13.7.1",
-    "commitlint-config-cz": "^0.13.3",
     "concurrently": "^7.0.0",
-    "cz-conventional-changelog": "^3.3.0",
-    "cz-customizable": "^6.3.0",
     "husky": "^7.0.0",
     "jest": "^27.5.1",
     "koa-swagger-decorator": "^1.8.5",
@@ -55,10 +50,5 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $GIT_PARAMS"
-    }
   }
 }
