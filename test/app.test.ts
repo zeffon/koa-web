@@ -4,7 +4,7 @@ import CONFIG from '../src/config'
 
 const prefix = CONFIG.PREFIX
 
-describe('测试koa2服务器', () => {
+describe('ping koa-web', () => {
   it('GET /api/test', async () => {
     const result = await request(app.callback()).get(`${prefix}/v1/test`)
     console.log(result.text)

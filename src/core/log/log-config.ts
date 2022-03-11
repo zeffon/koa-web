@@ -1,20 +1,19 @@
 import path from 'path'
 
-/** 日志根目录 */
+/** log root path */
 const BASE_LOG_PATH = path.resolve(__dirname, '../../../logs')
 
-/** 普通日志信息 */
+/** info path */
 const INFO_PATH = '/info'
 const INFO_FILE_NAME = 'info'
 const INFO_LOG_PATH = BASE_LOG_PATH + INFO_PATH + '/' + INFO_FILE_NAME
 
-/** 错误日志信息 */
+/** error path */
 const ERROR_PATH = '/error'
 const ERROR_FILE_NAME = 'error'
 const ERROR_LOG_PATH = BASE_LOG_PATH + ERROR_PATH + '/' + ERROR_FILE_NAME
 
 export default {
-  // 日志格式等设置
   appenders: {
     'rule-console': { type: 'console' },
     infoLogger: {
@@ -38,7 +37,6 @@ export default {
       path: ERROR_PATH
     }
   },
-  // 供外部调用的名称与对应设置定义
   categories: {
     default: { appenders: ['rule-console'], level: 'all' },
     infoLogger: { appenders: ['infoLogger'], level: 'all' },

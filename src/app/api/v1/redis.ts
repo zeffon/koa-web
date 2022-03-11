@@ -18,7 +18,7 @@ const idSchema = {
 @prefix('/redis')
 export default class RedisController {
   @request('get', '/user/{id}')
-  @summary('Redis获取')
+  @summary('Get a Value for Redis')
   @tag
   @path(idSchema)
   async getValue(ctx: Koa.Context, next: any) {
@@ -28,7 +28,7 @@ export default class RedisController {
   }
 
   @request('post', '/user')
-  @summary('Redis赋值')
+  @summary('Set a key-value to Redis')
   @tag
   @body(idSchema)
   async setValue(ctx: Koa.Context, next: any) {

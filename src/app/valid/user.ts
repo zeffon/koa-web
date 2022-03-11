@@ -1,7 +1,7 @@
 import { Rule, LinValidator } from '../../core/validator/validator'
 
 /**
- * 注册校验器
+ * Register Validator
  */
 export class RegisterValidator extends LinValidator {
   private email
@@ -11,27 +11,26 @@ export class RegisterValidator extends LinValidator {
   constructor() {
     super()
     this.email = [
-      new Rule('isLength', '至少12个字符，最多32个字符', {
+      new Rule('isLength', 'Min 12 characters, max 32 characters', {
         min: 6,
         max: 32
       }),
-      new Rule('isEmail', '不符合Email规范')
+      new Rule('isEmail', 'Please enter email format')
     ]
     this.password1 = [
-      // 用户指定范围 123456 $^
-      new Rule('isLength', '密码至少6个字符，最多32个字符', {
+      new Rule('isLength', 'Password has min 6 characters, max 32 characters', {
         min: 6,
         max: 32
       }),
       new Rule(
         'matches',
-        '密码不符合规范',
+        'Password does not meet specifications',
         '^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]'
       )
     ]
     this.password2 = this.password1
     this.nickname = [
-      new Rule('isLength', '昵称不符合长度规范', {
+      new Rule('isLength', 'Nickname does not match the length', {
         min: 4,
         max: 32
       })
@@ -42,7 +41,7 @@ export class RegisterValidator extends LinValidator {
     const psw1 = vals.body.password1
     const psw2 = vals.body.password2
     if (psw1 !== psw2) {
-      throw new Error('两个密码必须相同')
+      throw new Error('Both passwords must be the same')
     }
   }
 }

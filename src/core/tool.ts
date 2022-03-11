@@ -1,7 +1,7 @@
 import { isArray, isPlainObject } from 'lodash'
 
 /**
- * 对象转字符串
+ * object to string
  **/
 export function objectToJson(val: any) {
   if (isArray(val) || isPlainObject(val)) return JSON.stringify(val)
@@ -9,7 +9,7 @@ export function objectToJson(val: any) {
 }
 
 /**
- * 字符串转对象
+ * string to object
  **/
 export function jsonToObject(val: any) {
   try {
@@ -20,7 +20,7 @@ export function jsonToObject(val: any) {
 }
 
 /**
- * map对象转为数组
+ * map object to array
  **/
 export function objectMapToArray(map: Map<string | number, string>) {
   const array: OptionItem[] = []
@@ -39,7 +39,7 @@ interface MembersOptions {
 }
 
 /**
- * 遍历寻找成员方法
+ * find function members
  */
 export function findMembers(instance: any, options: MembersOptions) {
   function _find(instance: any): any {

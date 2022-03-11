@@ -14,11 +14,11 @@ export default class InitManager {
   }
 
   initCore() {
-    InitGlobal.init() // 全局变量和方法
-    this.app.use(Koa2Cors()) // 跨域处理
-    this.app.use(KoaBody({ multipart: true })) // body参数处理
-    this.app.use(catchError) // 全局异常处理
-    this.buildRouteAndSwagger() // 路由与api文档
+    InitGlobal.init() // global var and methods
+    this.app.use(Koa2Cors()) // cross-domain processing
+    this.app.use(KoaBody({ multipart: true })) // body parameter processing
+    this.app.use(catchError) // global exception handling
+    this.buildRouteAndSwagger() // router and api docs
   }
 
   buildRouteAndSwagger() {

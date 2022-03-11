@@ -1,5 +1,5 @@
 /**
- * 自定义HTTP异常
+ * Custom HTTP Exception
  */
 export class HttpException extends Error {
   code: number | string

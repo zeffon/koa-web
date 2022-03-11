@@ -21,8 +21,8 @@ const idSchema = {
 @prefix('/mysql')
 export default class MysqlController {
   @request('get', '/user/{id}')
-  @summary('URL上传参')
-  @description('参数形式 /mysql/user/1')
+  @summary('URL param')
+  @description('example: /mysql/user/1')
   @tag
   @path({
     id: { type: 'number', required: true, default: 1, description: 'id' }
@@ -36,8 +36,8 @@ export default class MysqlController {
   }
 
   @request('get', '/user')
-  @summary('param上传参')
-  @description('参数形式 /mysql/user?id=1')
+  @summary('query param')
+  @description('example: /mysql/user?id=1')
   @tag
   @query(idSchema)
   async query(ctx: Koa.Context, next: any) {
@@ -49,8 +49,8 @@ export default class MysqlController {
   }
 
   @request('post', '/user')
-  @summary('body上传参')
-  @description('参数形式 /mysql/user  json: { id: 1 }')
+  @summary('body param')
+  @description('example: /mysql/user  json: { id: 1 }')
   @tag
   @body(idSchema)
   async body(ctx: Koa.Context, next: any) {

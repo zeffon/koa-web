@@ -5,20 +5,20 @@ import { jsonToObject, objectToJson } from '../tool'
 
 const REDIS = CONFIG.REDIS
 
-// 创建 redis 连接
+// init redis connect
 const redisClient = Redis.createClient(REDIS.PORT, REDIS.HOST)
 
-// 认证
+// redis client authentication
 redisClient.auth(CONFIG.REDIS.PASSWORD, () => {
-  console.log('redis 登录成功')
+  console.log('redis login success')
 })
 
-// 监听 redis 错误事件
+// Listen for redis error events
 redisClient.on('error', (err) => {
-  Logger.error('redis 发生错误', err, 'redis 发生错误')
+  Logger.error('redis error', err, 'error in redis')
 })
 
-// 保存 redis 值
+// save a key-value to redis
 export const redisSet = (key: string, value: any) => {
   if (!key) return
   return new Promise((resolve, reject) => {
@@ -30,7 +30,7 @@ export const redisSet = (key: string, value: any) => {
   })
 }
 
-// 获取 redis 值
+// get a value by key for redis
 export const redisGet = (key: string) => {
   if (!key) return
   return new Promise((resolve, reject) => {
@@ -41,7 +41,7 @@ export const redisGet = (key: string) => {
   })
 }
 
-// 删除 redis 值
+// delete a value by key for redis
 export const redisDel = (key: string) => {
   if (!key) return
   return new Promise((resolve, reject) => {

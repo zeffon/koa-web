@@ -1,6 +1,6 @@
 # Editor configuration, see http://editorconfig.org
-# webstorem 内置，而其他编辑器 vscode、ATOM、Sublime 需要安装插件
-# 使用 打开需要格式化的文件并手动格式化代码 ( shift + alt + f )
+# webstorem already built in, other like vscode, ATOM, Sublime need to install plugin
+# vscode use ( shift + alt + f )
 root = true
 
 [*] #

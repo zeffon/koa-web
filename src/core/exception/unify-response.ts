@@ -12,29 +12,32 @@ import {
 
 const SUCCESS_CODE = 0
 
+/**
+ * Unify Response
+ */
 export class UnifyResponse {
   /**
-   * 获取成功
-   * @param code 错误码
-   * @param message 自定义错误提示
+   * Get success
+   * @param code errorCode
+   * @param message tip message
    */
   getSuccess({ code = SUCCESS_CODE, message = '' }) {
     throw new GetSuccess(code, message)
   }
 
   /**
-   * 创建成功
-   * @param code 错误码
-   * @param message 自定义错误提示
+   * Create Success
+   * @param code errorCode
+   * @param message tip message
    */
   createSuccess({ code = SUCCESS_CODE, message = '' }) {
     throw new CreateSuccess(code, message)
   }
 
   /**
-   * 更新成功
-   * @param code 错误码
-   * @param message 自定义错误提示
+   * Update Success
+   * @param code errorCode
+   * @param message tip message
    */
   updateSuccess({ code = SUCCESS_CODE, message = '' }) {
     throw new UpdateSuccess(code, message)
@@ -42,48 +45,48 @@ export class UnifyResponse {
 
   /**
    * 删除成功
-   * @param code 错误码
-   * @param message 自定义错误提示
+   * @param code errorCode
+   * @param message tip message
    */
   deleteSuccess({ code = SUCCESS_CODE, message = '' }) {
     throw new DeleteSuccess(code, message)
   }
 
   /**
-   * 参数异常
-   * @param code 错误码 | 自定义错误提示
+   * Parameter Exception
+   * @param codeOrMessage errorCode | tip message
    */
-  parameterException(code: number | string) {
-    throw new ParameterException(code)
+  parameterException(codeOrMessage: number | string) {
+    throw new ParameterException(codeOrMessage)
   }
 
   /**
-   * 授权异常
-   * @param code 错误码
+   * Un Authenticated Exception
+   * @param code errorCode
    */
   unAuthenticatedException(code: number) {
     throw new UnAuthenticatedException(code)
   }
 
   /**
-   * 访问异常
-   * @param code 错误码
+   * Forbidden Exception
+   * @param code errorCode
    */
   forbiddenException(code: number) {
     throw new ForbiddenException(code)
   }
 
   /**
-   * 资源获取不到异常
-   * @param code 错误码
+   * Not Found Exception
+   * @param code errorCode
    */
   notFoundException(code: number) {
     throw new NotFoundException(code)
   }
 
   /**
-   * 服务器异常
-   * @param code 错误码
+   * server Error
+   * @param code errorCode
    */
   serverErrorException(code: number | string) {
     throw new ServerErrorException(code)

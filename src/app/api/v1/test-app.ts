@@ -18,18 +18,18 @@ const registerSchema = {
     type: 'string',
     required: false,
     rules: [
-      new Rule('isLength', '至少12个字符，最多32个字符', {
+      new Rule('isLength', 'Min 12 characters, max 32 characters', {
         min: 6,
         max: 32
       }),
-      new Rule('isEmail', '不符合Email规范')
+      new Rule('isEmail', 'Please enter email format')
     ]
   },
   nickname: {
     type: 'string',
     required: false,
     rules: [
-      new Rule('isLength', '至少12个字符，最多32个字符', {
+      new Rule('isLength', 'Min 12 characters, max 32 characters', {
         min: 6,
         max: 32
       })
@@ -42,16 +42,18 @@ const registerSchema = {
 @prefix('/test')
 export default class TestController {
   @request('get', '')
-  @summary('应用连接测试')
-  @description('测试系统是否连接成功, 同时验证单元测试')
+  @summary('test ping')
+  @description(
+    'Test whether the system is connected successfully, and verify the unit test'
+  )
   @tag
   static async testApp(ctx: Koa.Context) {
     ctx.body = 'Hello World!'
   }
 
   @request('get', '/register')
-  @summary('注册')
-  @description('自定义校验类进行校验方式')
+  @summary('register')
+  @description('Custom validation class for validation')
   @tag
   @query(registerSchema)
   static async register(ctx: Koa.Context) {
@@ -61,12 +63,12 @@ export default class TestController {
       nickname: v.get('query.nickname'),
       password: v.get('query.password2')
     }
-    global.UnifyResponse.createSuccess({ message: '注册成功' })
+    global.UnifyResponse.createSuccess({ message: 'register success' })
   }
 
   @request('post', '/register2')
-  @summary('注册')
-  @description('配合Swagger的Schema进行校验')
+  @summary('register2')
+  @description("Validate with Swagger's Schema")
   @tag
   @body(registerSchema)
   static async register2(ctx: Koa.Context) {
@@ -79,6 +81,6 @@ export default class TestController {
       password: v.get('body.password2')
     }
     console.log(user)
-    global.UnifyResponse.createSuccess({ message: '注册成功' })
+    global.UnifyResponse.createSuccess({ message: 'register success' })
   }
 }

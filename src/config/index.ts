@@ -1,5 +1,5 @@
 /**
- * 系统环境配置
+ * System env config
  */
 import { devConf } from './dev'
 import { prodConf } from './prod'

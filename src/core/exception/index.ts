@@ -4,10 +4,10 @@ import Logger from '../log'
 import CODE from './exception-code'
 import { HttpException, Success } from './http-exception'
 
-const UNDEDINED_ERROR_TIP = '未定义的错误码'
+const UNDEDINED_ERROR_TIP = 'undefined errorCode'
 
 /**
- * 全局异常捕获
+ * Global exception catch
  */
 export default async function catchError(ctx: Koa.Context, next: any) {
   try {
@@ -48,24 +48,24 @@ export default async function catchError(ctx: Koa.Context, next: any) {
 }
 
 /**
- * 日志记录
+ * logging
  * @param error error
- * @param isHttpException 是否为自定义的异常
+ * @param isHttpException isHttpException
  */
 function logError(error: any, isHttpException: boolean) {
   let isSuccess = error instanceof Success
   if (isSuccess) return
   if (isHttpException) {
-    const code = `错误码: ${getCode(error)}`
+    const code = `Error-Code: ${getCode(error)}`
     const message = getMessage(error)
-    Logger.error('自定义异常', code, message)
+    Logger.error('Custom-Exception', code, message)
   } else {
-    Logger.error('未知错误', error, '未知错误')
+    Logger.error('server error', error, 'unknown mistake')
   }
 }
 
 /**
- * 获取自定义的异常message
+ * Get custom exception message
  * @param error
  * @returns message
  */
@@ -77,7 +77,7 @@ function getMessage(error: any): string {
 }
 
 /**
- * 获取自定义的错误码
+ * Get custom error code
  * @param error
  * @returns code
  */
