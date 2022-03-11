@@ -1,7 +1,10 @@
 import colors from 'picocolors'
 import { readFileSync } from 'fs'
 
-// get $1 from commit-msg script
+/**
+ * get $1 from commit-msg script
+ * Please refer to usage: https://github.com/toplenboren/simple-git-hooks
+ */
 const msgPath = process.argv[2]
 const msg = readFileSync(msgPath, 'utf-8').trim()
 
