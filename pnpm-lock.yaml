@@ -1,5 +1,8 @@
 lockfileVersion: 5.3
 
+overrides:
+  koa-web: workspace:*
+
 specifiers:
   '@types/async': ^3.2.12
   '@types/jest': ^27.4.0
@@ -9,12 +12,10 @@ specifiers:
   '@types/lodash': ^4.14.178
   '@types/node': ^16.11.12
   '@types/redis': 2.8.28
-  '@types/require-directory': ^2.1.2
   '@types/supertest': ^2.0.11
   '@types/validator': ^13.7.1
   async: ^3.2.3
   concurrently: ^7.0.0
-  husky: ^7.0.0
   jest: ^27.5.1
   koa: ^2.13.4
   koa-body: ^4.2.0
@@ -26,8 +27,10 @@ specifiers:
   log4js: ^6.4.1
   mysql2: ^2.3.3
   nodemon: ^2.0.15
+  picocolors: ^1.0.0
   prettier: 2.5.1
   redis: 3.0.2
+  simple-git-hooks: ^2.7.0
   supertest: ^6.2.2
   ts-jest: ^27.1.3
   ts-node: ^10.5.0
@@ -55,16 +58,16 @@ devDependencies:
   '@types/lodash': 4.14.178
   '@types/node': 16.11.22
   '@types/redis': 2.8.28
-  '@types/require-directory': 2.1.2
   '@types/supertest': 2.0.11
   '@types/validator': 13.7.1
   concurrently: 7.0.0
-  husky: 7.0.4
   jest: 27.5.1_ts-node@10.5.0
   koa-swagger-decorator: 1.8.5
   lint-staged: 12.3.3
   nodemon: 2.0.15
+  picocolors: 1.0.0
   prettier: 2.5.1
+  simple-git-hooks: 2.7.0
   supertest: 6.2.2
   ts-jest: 27.1.3_1e2406a8ca2ae3dc934d01f9ee2aebbb
   ts-node: 10.5.0_247b6ed5e900a7cb1f087e65be0c3da9
@@ -923,12 +926,6 @@ packages:
 
   /@types/redis/2.8.28:
     resolution: {integrity: sha512-8l2gr2OQ969ypa7hFOeKqtFoY70XkHxISV0pAwmQ2nm6CSPb1brmTmqJCGGrekCo+pAZyWlNXr+Kvo6L/1wijA==}
-    dependencies:
-      '@types/node': 17.0.16
-    dev: true
-
-  /@types/require-directory/2.1.2:
-    resolution: {integrity: sha512-FUG5PJ2rsV2TssSspVZefTR8+wH3Ahr6KdAB6WanLNroSDu0A5ew4WVUxnnGU/E1k6nzip9ZawGAAe/ZqzGn5g==}
     dependencies:
       '@types/node': 17.0.16
     dev: true
@@ -2192,12 +2189,6 @@ packages:
   /human-signals/2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
-    dev: true
-
-  /husky/7.0.4:
-    resolution: {integrity: sha512-vbaCKN2QLtP/vD4yvs6iz6hBEo6wkSzs8HpRah1Z6aGmF2KW5PdYuAd7uX5a+OyBZHBhd+TFLqgjUgytQr4RvQ==}
-    engines: {node: '>=12'}
-    hasBin: true
     dev: true
 
   /iconv-lite/0.4.24:
@@ -3901,6 +3892,12 @@ packages:
 
   /signal-exit/3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
+    dev: true
+
+  /simple-git-hooks/2.7.0:
+    resolution: {integrity: sha512-nQe6ASMO9zn5/htIrU37xEIHGr9E6wikXelLbOeTcfsX2O++DHaVug7RSQoq+kO7DvZTH37WA5gW49hN9HTDmQ==}
+    hasBin: true
+    requiresBuild: true
     dev: true
 
   /sisteransi/1.0.5:
