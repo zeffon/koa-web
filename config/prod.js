@@ -4,7 +4,6 @@ exports.prodConf = void 0;
 exports.prodConf = {
     ENV: 'prod',
     PORT: 3200,
-    IS_TEST: false,
     DATABASE: {
         DB_NAME: 'root',
         HOST: '127.0.0.1',

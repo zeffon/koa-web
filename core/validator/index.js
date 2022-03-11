@@ -4,8 +4,8 @@ exports.Rule = exports.ParamValidator = void 0;
 const validator_1 = require("./validator");
 Object.defineProperty(exports, "Rule", { enumerable: true, get: function () { return validator_1.Rule; } });
 /**
- * 校验一个Schema模型对象
- * {key: {rules: [new Rule('isEmail', '不符合Email规范'), ...]}}
+ * The parameter from Schema Object
+ * {key: {rules: [new Rule('isEmail', 'Please enter email format'), ...]}}
  */
 class ParamValidator extends validator_1.LinValidator {
     constructor(schema) {

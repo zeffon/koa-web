@@ -24,18 +24,18 @@ const registerSchema = {
         type: 'string',
         required: false,
         rules: [
-            new validator_1.Rule('isLength', '至少12个字符，最多32个字符', {
+            new validator_1.Rule('isLength', 'Min 12 characters, max 32 characters', {
                 min: 6,
                 max: 32
             }),
-            new validator_1.Rule('isEmail', '不符合Email规范')
+            new validator_1.Rule('isEmail', 'Please enter email format')
         ]
     },
     nickname: {
         type: 'string',
         required: false,
         rules: [
-            new validator_1.Rule('isLength', '至少12个字符，最多32个字符', {
+            new validator_1.Rule('isLength', 'Min 12 characters, max 32 characters', {
                 min: 6,
                 max: 32
             })
@@ -58,7 +58,7 @@ let TestController = class TestController {
                 nickname: v.get('query.nickname'),
                 password: v.get('query.password2')
             };
-            global.UnifyResponse.createSuccess({ message: '注册成功' });
+            global.UnifyResponse.createSuccess({ message: 'register success' });
         });
     }
     static register2(ctx) {
@@ -72,27 +72,27 @@ let TestController = class TestController {
                 password: v.get('body.password2')
             };
             console.log(user);
-            global.UnifyResponse.createSuccess({ message: '注册成功' });
+            global.UnifyResponse.createSuccess({ message: 'register success' });
         });
     }
 };
 __decorate([
     (0, koa_swagger_decorator_1.request)('get', ''),
-    (0, koa_swagger_decorator_1.summary)('应用连接测试'),
-    (0, koa_swagger_decorator_1.description)('测试系统是否连接成功, 同时验证单元测试'),
+    (0, koa_swagger_decorator_1.summary)('test ping'),
+    (0, koa_swagger_decorator_1.description)('Test whether the system is connected successfully, and verify the unit test'),
     tag
 ], TestController, "testApp", null);
 __decorate([
     (0, koa_swagger_decorator_1.request)('get', '/register'),
-    (0, koa_swagger_decorator_1.summary)('注册'),
-    (0, koa_swagger_decorator_1.description)('自定义校验类进行校验方式'),
+    (0, koa_swagger_decorator_1.summary)('register'),
+    (0, koa_swagger_decorator_1.description)('Custom validation class for validation'),
     tag,
     (0, koa_swagger_decorator_1.query)(registerSchema)
 ], TestController, "register", null);
 __decorate([
     (0, koa_swagger_decorator_1.request)('post', '/register2'),
-    (0, koa_swagger_decorator_1.summary)('注册'),
-    (0, koa_swagger_decorator_1.description)('配合Swagger的Schema进行校验'),
+    (0, koa_swagger_decorator_1.summary)('register2'),
+    (0, koa_swagger_decorator_1.description)("Validate with Swagger's Schema"),
     tag,
     (0, koa_swagger_decorator_1.body)(registerSchema)
 ], TestController, "register2", null);

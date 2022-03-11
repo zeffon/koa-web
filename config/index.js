@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * 系统环境配置
+ * System env config
  */
 const dev_1 = require("./dev");
 const prod_1 = require("./prod");

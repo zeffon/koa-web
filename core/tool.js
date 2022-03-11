@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.findMembers = exports.objectMapToArray = exports.jsonToObject = exports.objectToJson = void 0;
 const lodash_1 = require("lodash");
 /**
- * 对象转字符串
+ * object to string
  **/
 function objectToJson(val) {
     if ((0, lodash_1.isArray)(val) || (0, lodash_1.isPlainObject)(val))
@@ -12,7 +12,7 @@ function objectToJson(val) {
 }
 exports.objectToJson = objectToJson;
 /**
- * 字符串转对象
+ * string to object
  **/
 function jsonToObject(val) {
     try {
@@ -24,7 +24,7 @@ function jsonToObject(val) {
 }
 exports.jsonToObject = jsonToObject;
 /**
- * map对象转为数组
+ * map object to array
  **/
 function objectMapToArray(map) {
     const array = [];
@@ -37,7 +37,7 @@ function objectMapToArray(map) {
 }
 exports.objectMapToArray = objectMapToArray;
 /**
- * 遍历寻找成员方法
+ * find function members
  */
 function findMembers(instance, options) {
     function _find(instance) {

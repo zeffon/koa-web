@@ -52,8 +52,8 @@ let MysqlController = class MysqlController {
 };
 __decorate([
     (0, koa_swagger_decorator_1.request)('get', '/user/{id}'),
-    (0, koa_swagger_decorator_1.summary)('URL上传参'),
-    (0, koa_swagger_decorator_1.description)('参数形式 /mysql/user/1'),
+    (0, koa_swagger_decorator_1.summary)('URL param'),
+    (0, koa_swagger_decorator_1.description)('example: /mysql/user/1'),
     tag,
     (0, koa_swagger_decorator_1.path)({
         id: { type: 'number', required: true, default: 1, description: 'id' }
@@ -61,15 +61,15 @@ __decorate([
 ], MysqlController.prototype, "path", null);
 __decorate([
     (0, koa_swagger_decorator_1.request)('get', '/user'),
-    (0, koa_swagger_decorator_1.summary)('param上传参'),
-    (0, koa_swagger_decorator_1.description)('参数形式 /mysql/user?id=1'),
+    (0, koa_swagger_decorator_1.summary)('query param'),
+    (0, koa_swagger_decorator_1.description)('example: /mysql/user?id=1'),
     tag,
     (0, koa_swagger_decorator_1.query)(idSchema)
 ], MysqlController.prototype, "query", null);
 __decorate([
     (0, koa_swagger_decorator_1.request)('post', '/user'),
-    (0, koa_swagger_decorator_1.summary)('body上传参'),
-    (0, koa_swagger_decorator_1.description)('参数形式 /mysql/user  json: { id: 1 }'),
+    (0, koa_swagger_decorator_1.summary)('body param'),
+    (0, koa_swagger_decorator_1.description)('example: /mysql/user  json: { id: 1 }'),
     tag,
     (0, koa_swagger_decorator_1.body)(idSchema)
 ], MysqlController.prototype, "body", null);

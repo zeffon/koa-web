@@ -26,9 +26,9 @@ const pool = mysql2_1.default.createPool({
     port: DATABASE.PORT
 });
 /**
- * 普通查询
- * @param sql 查询语句
- * @param data 数据
+ * common query by sql statement
+ * @param sql sql
+ * @param data data
  */
 function loadBySql(sql, data) {
     return new Promise((resolve, reject) => {
@@ -37,7 +37,7 @@ function loadBySql(sql, data) {
             console.log(err);
             console.log(results);
             if (err) {
-                return throwError(reject, '服务器发生错误: 数据库查询语句出错');
+                return throwError(reject, 'Database query statement error');
             }
             resolve(results);
         }));
@@ -45,26 +45,27 @@ function loadBySql(sql, data) {
 }
 exports.loadBySql = loadBySql;
 /**
- * 事务查询 按顺序查询但不依赖上一条查询结果 返回对应查询语句数量的数组
- * @param sqlList 查询列表 [{sql, data}, ...]
+ * Transaction query
+ * Query in order but do not depend on the previous query result Returns an array corresponding to the number of query statements.
+ * @param sqlList sql list [{sql, data}, ...]
  */
 function execTrans(sqlList) {
     return new Promise((resolve, reject) => {
         pool.getConnection((err, connection) => {
             if (err)
-                return throwError(reject, '服务器发生错误: 创建数据库连接失败');
+                return throwError(reject, 'Failed to create database connection');
             connection.beginTransaction((err) => {
                 if (err)
-                    return throwError(reject, '服务器发生错误: 事务开启失败');
+                    return throwError(reject, 'Failed to open database transaction');
                 let params = handleExceTransSQLParams(reject, connection, sqlList);
-                // 串联执行多个异步
+                // Execute multiple async in series
                 async_1.default.series(params, (err, results) => {
                     if (err) {
-                        return handleExceTransRoolback(reject, connection, '服务器发生错误: 事务执行失败');
+                        return handleExceTransRoolback(reject, connection, 'Transaction execution failed');
                     }
                     connection.commit((err) => {
                         if (err) {
-                            return handleExceTransRoolback(reject, connection, '服务器发生错误: 事务执行失败');
+                            return handleExceTransRoolback(reject, connection, 'Transaction execution failed');
                         }
                         connection.release();
                         resolve(results);
@@ -76,7 +77,7 @@ function execTrans(sqlList) {
 }
 exports.execTrans = execTrans;
 /**
- * 处理多条 SQL 语句查询
+ * Handle multiple SQL query queries
  */
 function handleExceTransSQLParams(reject, connection, sqlList) {
     let queryArr = [];
@@ -85,7 +86,7 @@ function handleExceTransSQLParams(reject, connection, sqlList) {
         let temp = function (cb) {
             connection.query(item.sql, item.data, (err, results) => {
                 if (err) {
-                    handleExceTransRoolback(reject, connection, '服务器发生错误: 数据库查询语句出错', item);
+                    handleExceTransRoolback(reject, connection, 'Database query statement error', item);
                 }
                 else
                     cb(null, results);
@@ -95,12 +96,12 @@ function handleExceTransSQLParams(reject, connection, sqlList) {
     });
     return queryArr;
 }
-// 普通错误抛出异常
+// Normal error throws exception
 function throwError(reject, message, ...arg) {
     log_1.default.error(message, ...arg);
     reject(global.UnifyResponse.serverErrorException(message));
 }
-// 事务查询发生错误时回滚并返回错误
+// Rollback and return error when transaction query fails
 function handleExceTransRoolback(reject, connection, message, ...arg) {
     connection.roolback(() => {
         log_1.default.error(message, ...arg);

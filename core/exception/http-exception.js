@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeleteSuccess = exports.UpdateSuccess = exports.CreateSuccess = exports.GetSuccess = exports.Success = exports.ServerErrorException = exports.NotFoundException = exports.ForbiddenException = exports.UnAuthenticatedException = exports.ParameterException = exports.HttpException = void 0;
 /**
- * 自定义HTTP异常
+ * Custom HTTP Exception
  */
 class HttpException extends Error {
     constructor(code) {

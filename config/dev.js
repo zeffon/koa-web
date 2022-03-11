@@ -4,7 +4,6 @@ exports.devConf = void 0;
 exports.devConf = {
     ENV: 'dev',
     PORT: 3000,
-    IS_TEST: false,
     DATABASE: {
         DB_NAME: 'root',
         HOST: 'localhost',

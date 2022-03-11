@@ -14,11 +14,11 @@ class InitManager {
         this.initCore();
     }
     initCore() {
-        global_1.default.init(); // 全局变量和方法
-        this.app.use((0, koa2_cors_1.default)()); // 跨域处理
-        this.app.use((0, koa_body_1.default)({ multipart: true })); // body参数处理
-        this.app.use(exception_1.default); // 全局异常处理
-        this.buildRouteAndSwagger(); // 路由与api文档
+        global_1.default.init(); // global var and methods
+        this.app.use((0, koa2_cors_1.default)()); // cross-domain processing
+        this.app.use((0, koa_body_1.default)({ multipart: true })); // body parameter processing
+        this.app.use(exception_1.default); // global exception handling
+        this.buildRouteAndSwagger(); // router and api docs
     }
     buildRouteAndSwagger() {
         this.app.use(swagger_1.default.routes()).use(swagger_1.default.allowedMethods());

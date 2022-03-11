@@ -39,13 +39,13 @@ let RedisController = class RedisController {
 };
 __decorate([
     (0, koa_swagger_decorator_1.request)('get', '/user/{id}'),
-    (0, koa_swagger_decorator_1.summary)('Redis获取'),
+    (0, koa_swagger_decorator_1.summary)('Get a Value for Redis'),
     tag,
     (0, koa_swagger_decorator_1.path)(idSchema)
 ], RedisController.prototype, "getValue", null);
 __decorate([
     (0, koa_swagger_decorator_1.request)('post', '/user'),
-    (0, koa_swagger_decorator_1.summary)('Redis赋值'),
+    (0, koa_swagger_decorator_1.summary)('Set a key-value to Redis'),
     tag,
     (0, koa_swagger_decorator_1.body)(idSchema)
 ], RedisController.prototype, "setValue", null);

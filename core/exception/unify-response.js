@@ -3,70 +3,73 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UnifyResponse = void 0;
 const http_exception_1 = require("./http-exception");
 const SUCCESS_CODE = 0;
+/**
+ * Unify Response
+ */
 class UnifyResponse {
     /**
-     * 获取成功
-     * @param code 错误码
-     * @param message 自定义错误提示
+     * Get success
+     * @param code errorCode
+     * @param message tip message
      */
     getSuccess({ code = SUCCESS_CODE, message = '' }) {
         throw new http_exception_1.GetSuccess(code, message);
     }
     /**
-     * 创建成功
-     * @param code 错误码
-     * @param message 自定义错误提示
+     * Create Success
+     * @param code errorCode
+     * @param message tip message
      */
     createSuccess({ code = SUCCESS_CODE, message = '' }) {
         throw new http_exception_1.CreateSuccess(code, message);
     }
     /**
-     * 更新成功
-     * @param code 错误码
-     * @param message 自定义错误提示
+     * Update Success
+     * @param code errorCode
+     * @param message tip message
      */
     updateSuccess({ code = SUCCESS_CODE, message = '' }) {
         throw new http_exception_1.UpdateSuccess(code, message);
     }
     /**
      * 删除成功
-     * @param code 错误码
-     * @param message 自定义错误提示
+     * @param code errorCode
+     * @param message tip message
      */
     deleteSuccess({ code = SUCCESS_CODE, message = '' }) {
         throw new http_exception_1.DeleteSuccess(code, message);
     }
     /**
-     * 参数异常
-     * @param code 错误码 | 自定义错误提示
+     * Parameter Exception
+     * @param codeOrMessage errorCode | tip message
      */
-    parameterException(code) {
-        throw new http_exception_1.ParameterException(code);
+    parameterException(codeOrMessage) {
+        throw new http_exception_1.ParameterException(codeOrMessage);
     }
     /**
-     * 授权异常
-     * @param code 错误码
+     * Un Authenticated Exception
+     * @param code errorCode
      */
     unAuthenticatedException(code) {
         throw new http_exception_1.UnAuthenticatedException(code);
     }
     /**
-     * 访问异常
-     * @param code 错误码
+     * Forbidden Exception
+     * @param code errorCode
      */
     forbiddenException(code) {
         throw new http_exception_1.ForbiddenException(code);
     }
     /**
-     * 资源获取不到异常
-     * @param code 错误码
+     * Not Found Exception
+     * @param code errorCode
      */
     notFoundException(code) {
         throw new http_exception_1.NotFoundException(code);
     }
     /**
-     * 服务器异常
-     * @param code 错误码
+     * server Error
+     * @param code errorCode
      */
     serverErrorException(code) {
         throw new http_exception_1.ServerErrorException(code);

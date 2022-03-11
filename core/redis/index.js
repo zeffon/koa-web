@@ -9,17 +9,17 @@ const config_1 = __importDefault(require("../../config"));
 const log_1 = __importDefault(require("../log"));
 const tool_1 = require("../tool");
 const REDIS = config_1.default.REDIS;
-// 创建 redis 连接
+// init redis connect
 const redisClient = redis_1.default.createClient(REDIS.PORT, REDIS.HOST);
-// 认证
+// redis client authentication
 redisClient.auth(config_1.default.REDIS.PASSWORD, () => {
-    console.log('redis 登录成功');
+    console.log('redis login success');
 });
-// 监听 redis 错误事件
+// Listen for redis error events
 redisClient.on('error', (err) => {
-    log_1.default.error('redis 发生错误', err, 'redis 发生错误');
+    log_1.default.error('redis error', err, 'error in redis');
 });
-// 保存 redis 值
+// save a key-value to redis
 const redisSet = (key, value) => {
     if (!key)
         return;
@@ -34,7 +34,7 @@ const redisSet = (key, value) => {
     });
 };
 exports.redisSet = redisSet;
-// 获取 redis 值
+// get a value by key for redis
 const redisGet = (key) => {
     if (!key)
         return;
@@ -48,7 +48,7 @@ const redisGet = (key) => {
     });
 };
 exports.redisGet = redisGet;
-// 删除 redis 值
+// delete a value by key for redis
 const redisDel = (key) => {
     if (!key)
         return;

@@ -16,9 +16,9 @@ const lodash_1 = require("lodash");
 const log_1 = __importDefault(require("../log"));
 const exception_code_1 = __importDefault(require("./exception-code"));
 const http_exception_1 = require("./http-exception");
-const UNDEDINED_ERROR_TIP = '未定义的错误码';
+const UNDEDINED_ERROR_TIP = 'undefined errorCode';
 /**
- * 全局异常捕获
+ * Global exception catch
  */
 function catchError(ctx, next) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -63,25 +63,25 @@ function catchError(ctx, next) {
 }
 exports.default = catchError;
 /**
- * 日志记录
+ * logging
  * @param error error
- * @param isHttpException 是否为自定义的异常
+ * @param isHttpException isHttpException
  */
 function logError(error, isHttpException) {
     let isSuccess = error instanceof http_exception_1.Success;
     if (isSuccess)
         return;
     if (isHttpException) {
-        const code = `错误码: ${getCode(error)}`;
+        const code = `Error-Code: ${getCode(error)}`;
         const message = getMessage(error);
-        log_1.default.error('自定义异常', code, message);
+        log_1.default.error('Custom-Exception', code, message);
     }
     else {
-        log_1.default.error('未知错误', error, '未知错误');
+        log_1.default.error('server error', error, 'unknown mistake');
     }
 }
 /**
- * 获取自定义的异常message
+ * Get custom exception message
  * @param error
  * @returns message
  */
@@ -92,7 +92,7 @@ function getMessage(error) {
     return message;
 }
 /**
- * 获取自定义的错误码
+ * Get custom error code
  * @param error
  * @returns code
  */
