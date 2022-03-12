@@ -3,7 +3,22 @@
   "name": "koa-web",
   "version": "0.1.0",
   "description": "The best scaffolding of building Koa2 restful API with TypeScript.",
-  "main": "./src/app.ts",
+  "author": "Zeffon <ZeffonWu@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zeffon/koa-web.git"
+  },
+  "keywords": [
+    "koa2",
+    "typescript",
+    "koa-demo",
+    "koa-start",
+    "koa-ts"
+  ],
+  "engines": {
+    "node": ">= 14.x"
+  },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "format": "prettier --write .",

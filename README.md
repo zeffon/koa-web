@@ -6,7 +6,7 @@ Language : English | [简体中文](./README-zh-CN.md)
 
 The best scaffolding of building `Koa2` restful API with `TypeScript`.
 
-<a href="https://github.com/zeffon/koa-web/blob/master/LICENSE">
+<a href="https://github.com/zeffon/koa-web/blob/main/LICENSE">
 <img src="https://img.shields.io/github/license/zeffon/koa-web?style=flat-square" alt="license">
 </a>
 <a href="https://github.com/zeffon/koa-web/actions/workflows/ci.yml">
@@ -21,7 +21,7 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
 </div>
 
 <div align="center">
-<a href="https://codebeat.co/projects/github-com-zeffon-koa-web-master">
+<a href="https://codebeat.co/projects/github-com-zeffon-koa-web-main">
 <img alt="codebeat badge" src="https://codebeat.co/badges/c0f9ed98-2950-46f0-b4ab-69999af65e7c" />
 </a>
 <a href="https://app.fossa.com/projects/git%2Bgithub.com%2Fzeffon%2Fkoa-web?ref=badge_shield" alt="FOSSA Status">
@@ -70,13 +70,13 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
    $ pnpm prod
    ```
 
-3. lint code
+3. code format
 
    ```
-   $ pnpm lint
+   $ pnpm format
    ```
 
-4. run test
+4. run unit tests
    ```
    $ pnpm test
    ```

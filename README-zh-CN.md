@@ -6,7 +6,7 @@ Language : [English](./README.md) | 简体中文
 
 使用 `TypeScript` 构建 `Koa2` RESTful API 最佳的脚手架。
 
-<a href="https://github.com/zeffon/koa-web/blob/master/LICENSE">
+<a href="https://github.com/zeffon/koa-web/blob/main/LICENSE">
 <img src="https://img.shields.io/github/license/zeffon/koa-web?style=flat-square" alt="license">
 </a>
 <a href="https://github.com/zeffon/koa-web/actions/workflows/ci.yml">
@@ -21,7 +21,7 @@ Language : [English](./README.md) | 简体中文
 </div>
 
 <div align="center">
-<a href="https://codebeat.co/projects/github-com-zeffon-koa-web-master">
+<a href="https://codebeat.co/projects/github-com-zeffon-koa-web-main">
 <img alt="codebeat badge" src="https://codebeat.co/badges/c0f9ed98-2950-46f0-b4ab-69999af65e7c" />
 </a>
 <a href="https://app.fossa.com/projects/git%2Bgithub.com%2Fzeffon%2Fkoa-web?ref=badge_shield" alt="FOSSA Status">
@@ -73,7 +73,7 @@ Language : [English](./README.md) | 简体中文
 3. 代码格式化
 
    ```
-   $ pnpm lint
+   $ pnpm format
    ```
 
 4. 单元测试
