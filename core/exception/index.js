@@ -72,12 +72,12 @@ function logError(error, isHttpException) {
     if (isSuccess)
         return;
     if (isHttpException) {
-        const code = `Error-Code: ${getCode(error)}`;
+        const code = `ERROR_CODE: ${getCode(error)}`;
         const message = getMessage(error);
-        log_1.default.error('Custom-Exception', code, message);
+        log_1.default.error('CUSTOM_EXCEPTION', code, message);
     }
     else {
-        log_1.default.error('server error', error, 'unknown mistake');
+        log_1.default.error('SERVER_ERROR', error, 'unknown mistake');
     }
 }
 /**

@@ -22,26 +22,29 @@ const tag = (0, koa_swagger_decorator_1.tags)(['test']);
 const registerSchema = {
     email: {
         type: 'string',
-        required: false,
+        required: true,
         rules: [
-            new validator_1.Rule('isLength', 'Min 12 characters, max 32 characters', {
+            {
+                type: 'isLength',
                 min: 6,
-                max: 32
-            }),
-            new validator_1.Rule('isEmail', 'Please enter email format')
+                max: 32,
+                message: '长度不匹配'
+            },
+            { type: 'isEmail' }
         ]
     },
     nickname: {
         type: 'string',
         required: false,
+        rules: []
+    },
+    password1: {
+        type: 'string',
+        required: true,
         rules: [
-            new validator_1.Rule('isLength', 'Min 12 characters, max 32 characters', {
-                min: 6,
-                max: 32
-            })
+            { type: 'matches', pattern: '^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]' }
         ]
     },
-    password1: { type: 'string', required: true, rules: [] },
     password2: { type: 'string', required: true }
 };
 let TestController = class TestController {
