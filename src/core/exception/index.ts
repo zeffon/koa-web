@@ -56,11 +56,11 @@ function logError(error: any, isHttpException: boolean) {
   let isSuccess = error instanceof Success
   if (isSuccess) return
   if (isHttpException) {
-    const code = `Error-Code: ${getCode(error)}`
+    const code = `ERROR_CODE: ${getCode(error)}`
     const message = getMessage(error)
-    Logger.error('Custom-Exception', code, message)
+    Logger.error('CUSTOM_EXCEPTION', code, message)
   } else {
-    Logger.error('server error', error, 'unknown mistake')
+    Logger.error('SERVER_ERROR', error, 'unknown mistake')
   }
 }
 
