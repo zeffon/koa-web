@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RegisterValidator = void 0;
-const validator_1 = require("../../core/validator/validator");
+const validator_1 = require("../../core/validator");
 /**
  * Register Validator
  */

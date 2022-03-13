@@ -16,22 +16,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const koa_swagger_decorator_1 = require("koa-swagger-decorator");
-const validator_1 = require("../../../core/validator");
 const user_1 = require("../../valid/user");
 const tag = (0, koa_swagger_decorator_1.tags)(['test']);
 const registerSchema = {
     email: {
         type: 'string',
-        required: true,
-        rules: [
-            {
-                type: 'isLength',
-                min: 6,
-                max: 32,
-                message: '长度不匹配'
-            },
-            { type: 'isEmail' }
-        ]
+        required: true
     },
     nickname: {
         type: 'string',
@@ -40,10 +30,7 @@ const registerSchema = {
     },
     password1: {
         type: 'string',
-        required: true,
-        rules: [
-            { type: 'matches', pattern: '^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]' }
-        ]
+        required: true
     },
     password2: { type: 'string', required: true }
 };
@@ -66,7 +53,7 @@ let TestController = class TestController {
     }
     static register2(ctx) {
         return __awaiter(this, void 0, void 0, function* () {
-            const v = yield new validator_1.ParamValidator(registerSchema).validate(ctx);
+            const v = yield new user_1.RegisterValidator().validate(ctx);
             const email = v.get('body.email');
             console.log(email);
             const user = {
