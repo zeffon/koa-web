@@ -8,24 +8,14 @@ import {
   query
 } from 'koa-swagger-decorator'
 import Koa from 'koa'
-import { ParamValidator, Rule } from '../../../core/validator'
 import { RegisterValidator } from '../../valid/user'
 
 const tag = tags(['test'])
 
-const registerSchema: Schema = {
+const registerSchema = {
   email: {
     type: 'string',
-    required: true,
-    rules: [
-      {
-        type: 'isLength',
-        min: 6,
-        max: 32,
-        message: '长度不匹配'
-      },
-      { type: 'isEmail' }
-    ]
+    required: true
   },
   nickname: {
     type: 'string',
@@ -34,10 +24,7 @@ const registerSchema: Schema = {
   },
   password1: {
     type: 'string',
-    required: true,
-    rules: [
-      { type: 'matches', pattern: '^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]' }
-    ]
+    required: true
   },
   password2: { type: 'string', required: true }
 }
@@ -75,7 +62,7 @@ export default class TestController {
   @tag
   @body(registerSchema)
   static async register2(ctx: Koa.Context) {
-    const v = await new ParamValidator(registerSchema).validate(ctx)
+    const v = await new RegisterValidator().validate(ctx)
     const email = v.get('body.email')
     console.log(email)
     const user = {
