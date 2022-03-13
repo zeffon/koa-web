@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zeffon/koa-web.git"
+    "url": "git+https://github.com/zeffon/koa-web.git"
   },
   "keywords": [
     "koa2",
@@ -26,7 +26,8 @@
     "dev:nodemon": "nodemon build/app.js dev",
     "start": "tsc && concurrently npm:dev:*",
     "prod": "set NODE_ENV=production&&concurrently npm:start&& node build/app.js",
-    "test": "set NODE_ENV=test&&jest --coverage --detectOpenHandles --forceExit",
+    "test": "set NODE_ENV=test&&jest",
+    "cov": "jest --coverage --detectOpenHandles --forceExit",
     "build": "tsc --build",
     "ci-publish": "ts-node scripts/publishCI.ts"
   },
