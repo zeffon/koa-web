@@ -84,12 +84,10 @@ Language : [English](./README.md) | 简体中文
 ## 项目结构
 
 ```
-├── .husky                  // hooks 相关文件 可在对应的脚本文件开启pre-commit和commitlint
+├── build                   // 编译输出的目录
 ├── coverage                // 单元测试生成的文件目录
-├── build                    // 编译输出的目录
 ├── logs                    // 日志记录的目录
-│   ├── error               // 错误日志
-│   └── info                // 查询日志
+├── scripts                 // 脚本目录
 ├── src
 │   ├── app.ts              // koa 入口文件
 │   ├── app                 // 应用目录
@@ -106,16 +104,12 @@ Language : [English](./README.md) | 简体中文
 │       ├── swagger         // API文档模块
 │       └── validator       // 数据校验
 ├── test                    // 单元测试编写目录集合
-├── .cz-config.js           // 配置 commit 信息引导提示
 ├── .editorconfig           // lint 自定义格式化
 ├── .gitignore
 ├── .prettierignore
 ├── .prettierrc             // 配置代码格式化风格
-├── commitlint.config.ts    // commit-lint 配置文件
 ├── jest.config.js          // jest单元测试配置
-├── LICENSE
 ├── package.json
-├── pnpm-lock.yaml
 ├── README.md
 └── tsconfig.json
 ```

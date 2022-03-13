@@ -84,12 +84,10 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
 ## Project Layout
 
 ```
-├── .husky                  // hooks - here start pre-commit and commitlint
-├── coverage                // test output
-├── build                    // build output
+├── build                   // build output
+├── coverage                // unit tests output
 ├── logs                    // log output
-│   ├── error               // error log
-│   └── info                // info log
+├── scripts                 // script directory
 ├── src
 │   ├── app.ts              // koa start
 │   ├── app                 // app modules
@@ -106,16 +104,12 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
 │       ├── swagger         // api docs
 │       └── validator       // data validator
 ├── test                    // jest test.ts
-├── .cz-config.js           // commitlint tip
 ├── .editorconfig           // lint config
 ├── .gitignore
 ├── .prettierignore
 ├── .prettierrc             // prettier style config
-├── commitlint.config.ts    // commit-lint config
 ├── jest.config.js          // jest test config
-├── LICENSE
 ├── package.json
-├── pnpm-lock.yaml
 ├── README.md
 └── tsconfig.json
 ```
