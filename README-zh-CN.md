@@ -84,10 +84,10 @@ Language : [English](./README.md) | 简体中文
 ## 项目结构
 
 ```
+├── __tests__               // 单元测试编写目录集合
 ├── build                   // 编译输出的目录
 ├── coverage                // 单元测试生成的文件目录
 ├── logs                    // 日志记录的目录
-├── scripts                 // 脚本目录
 ├── src
 │   ├── app.ts              // koa 入口文件
 │   ├── app                 // 应用目录
@@ -103,7 +103,6 @@ Language : [English](./README.md) | 简体中文
 │       ├── redis           // redis模块
 │       ├── swagger         // API文档模块
 │       └── validator       // 数据校验
-├── test                    // 单元测试编写目录集合
 ├── .editorconfig           // lint 自定义格式化
 ├── .gitignore
 ├── .prettierignore

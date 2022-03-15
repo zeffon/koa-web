@@ -84,10 +84,10 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
 ## Project Layout
 
 ```
+├── __tests__               // jest test.ts
 ├── build                   // build output
 ├── coverage                // unit tests output
 ├── logs                    // log output
-├── scripts                 // script directory
 ├── src
 │   ├── app.ts              // koa start
 │   ├── app                 // app modules
@@ -103,7 +103,6 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
 │       ├── redis           // redis modules
 │       ├── swagger         // api docs
 │       └── validator       // data validator
-├── test                    // jest test.ts
 ├── .editorconfig           // lint config
 ├── .gitignore
 ├── .prettierignore
