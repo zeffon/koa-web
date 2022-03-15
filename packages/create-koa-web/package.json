@@ -1,0 +1,31 @@
+{
+  "name": "create-koa-web",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Zeffon Wu",
+  "bin": {
+    "create-koa-web": "index.js"
+  },
+  "files": [
+    "index.js",
+    "template-*"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeffon/koa-web.git",
+    "directory": "packages/create-koa-web"
+  },
+  "bugs": {
+    "url": "https://github.com/zeffon/koa-web/issues"
+  },
+  "homepage": "https://github.com/zeffon/koa-web/tree/main/packages/create-koa-web#readme",
+  "dependencies": {
+    "kolorist": "^1.5.1",
+    "minimist": "^1.2.5",
+    "prompts": "^2.4.2"
+  }
+}
