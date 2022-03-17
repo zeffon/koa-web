@@ -1,1 +1,1 @@
-{"version":3,"file":"global.js","sourceRoot":"","sources":["../../src/core/global.ts"],"names":[],"mappings":";;AAAA,+DAA0D;AAE1D,MAAM,UAAU;IACd,gBAAe,CAAC;IAChB,IAAI;QACF,MAAM,CAAC,aAAa,GAAG,IAAI,8BAAa,EAAE,CAAA;IAC5C,CAAC;CACF;AAED,kBAAe,IAAI,UAAU,EAAE,CAAA"}
+{"version":3,"file":"global.js","sourceRoot":"","sources":["../../packages/create-koa-web/template-ts/src/core/global.ts"],"names":[],"mappings":";;AAAA,+DAA0D;AAE1D,MAAM,UAAU;IACd,gBAAe,CAAC;IAChB,IAAI;QACF,MAAM,CAAC,aAAa,GAAG,IAAI,8BAAa,EAAE,CAAA;IAC5C,CAAC;CACF;AAED,kBAAe,IAAI,UAAU,EAAE,CAAA"}
