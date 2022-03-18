@@ -15,6 +15,7 @@ v1.swagger({
   swaggerHtmlEndpoint: '/doc.html',
   swaggerJsonEndpoint: '/json.html'
 })
+
 // point to v1 apis directory
 v1.mapDir(path.resolve(__dirname, `../../app/api/v1/`))
 

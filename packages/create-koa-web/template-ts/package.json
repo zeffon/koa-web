@@ -1,8 +1,11 @@
 {
-  "name": "create-koa-web",
+  "name": "koa-web-ts",
   "private": true,
   "version": "0.0.0",
   "description": "The best scaffolding of building Koa2 restful API with TypeScript.",
+  "engines": {
+    "node": ">=12.2.0"
+  },
   "scripts": {
     "format": "prettier --write .",
     "dev:tsc": "tsc -W",
