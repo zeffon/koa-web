@@ -29,6 +29,7 @@
     "test": "set NODE_ENV=test&&jest",
     "cov": "jest --coverage --detectOpenHandles --forceExit",
     "build": "tsc --build",
+    "release": "ts-node scripts/release.ts",
     "ci-publish": "ts-node scripts/publishCI.ts"
   },
   "devDependencies": {
