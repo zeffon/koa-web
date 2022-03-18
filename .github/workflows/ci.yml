@@ -27,13 +27,6 @@ jobs:
           pnpm install
           pnpm run build
 
-      - name: Deploy to GitHub
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: build
-          FOLDER: build
-
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@v2.1.5
         env:
