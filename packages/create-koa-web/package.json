@@ -23,6 +23,13 @@
     "url": "https://github.com/zeffon/koa-web/issues"
   },
   "homepage": "https://github.com/zeffon/koa-web/tree/main/packages/create-koa-web#readme",
+  "keywords": [
+    "koa2",
+    "koa-typescript",
+    "koa-demo",
+    "koa-start",
+    "koa-ts"
+  ],
   "dependencies": {
     "kolorist": "^1.5.1",
     "minimist": "^1.2.5",

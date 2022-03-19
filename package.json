@@ -1,24 +1,18 @@
 {
+  "name": "koa-web-monorepo",
   "private": true,
-  "name": "koa-web",
-  "version": "0.1.0",
-  "description": "The best scaffolding of building Koa2 restful API with TypeScript.",
-  "author": "Zeffon <ZeffonWu@gmail.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zeffon/koa-web.git"
+  "engines": {
+    "node": ">=12.2.0"
   },
+  "author": "Zeffon Wu",
+  "license": "MIT",
   "keywords": [
     "koa2",
-    "typescript",
+    "koa-typescript",
     "koa-demo",
     "koa-start",
     "koa-ts"
   ],
-  "engines": {
-    "node": ">=12.2.0"
-  },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "format": "prettier --write .",
