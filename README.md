@@ -54,34 +54,43 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
 
 ## Usage
 
-> If you are not using the `pnpm` tool, using `npm` and `yarn` are the same to achieve the same performance.
+The `koa-web` supports quick creation of project through the `create` command.
 
-1. install dependencies
+**Scaffolding Your First koa-web Project**
 
-   ```
-   $ pnpm install
-   ```
+With NPM:
 
-2. start app
+```bash
+$ npm create koa-web@latest
+```
 
-   ```
-   $ pnpm start
-   or
-   $ pnpm prod
-   ```
+With Yarn:
 
-3. code format
+```bash
+$ yarn create koa-web
+```
 
-   ```
-   $ pnpm format
-   ```
+With PNPM:
 
-4. run unit tests
-   ```
-   $ pnpm test
-   ```
+```bash
+$ pnpm create koa-web
+```
+
+run app
+
+```bash
+cd koa-web-project
+
+npm install
+
+npm run start
+
+open http://127.0.0.1:3000/koa-web/v1/doc.html
+```
 
 ## Project Layout
+
+This is `template-ts` layout
 
 ```
 ├── __tests__               // jest test.ts

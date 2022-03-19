@@ -54,34 +54,43 @@ Language : [English](./README.md) | 简体中文
 
 ## 运行
 
-> 如果你使用的不是 `pnpm` 工具的话，使用 `npm` 和 `yarn` 是一样可达到相同的执行效果。
+`koa-web` 支持通过 `create` 指令快速搭建项目.
 
-1. 安装依赖
+**搭建你的第一个 koa-web 项目**
 
-   ```
-   $ pnpm install
-   ```
+使用 NPM:
 
-2. 启动服务
+```bash
+$ npm create koa-web@latest
+```
 
-   ```
-   $ pnpm start
-   或者
-   $ pnpm prod
-   ```
+使用 Yarn:
 
-3. 代码格式化
+```bash
+$ yarn create koa-web
+```
 
-   ```
-   $ pnpm format
-   ```
+使用 PNPM:
 
-4. 单元测试
-   ```
-   $ pnpm test
-   ```
+```bash
+$ pnpm create koa-web
+```
+
+启动项目
+
+```bash
+cd koa-web-project
+
+npm install
+
+npm run start
+
+open http://127.0.0.1:3000/koa-web/v1/doc.html
+```
 
 ## 项目结构
+
+`template-ts` 模板结构
 
 ```
 ├── __tests__               // 单元测试编写目录集合
