@@ -1,5 +1,5 @@
 import Koa from 'koa'
-import { redisGet, redisSet } from '../../../core/redis'
+import RedisClient from '../../../core/redis'
 import {
   request,
   summary,
@@ -23,7 +23,7 @@ export default class RedisController {
   @path(idSchema)
   async getValue(ctx: Koa.Context, next: any) {
     const id = ctx.params.id + ''
-    const res = await redisGet(id)
+    const res = await RedisClient.get(id)
     ctx.body = res
   }
 
@@ -33,7 +33,7 @@ export default class RedisController {
   @body(idSchema)
   async setValue(ctx: Koa.Context, next: any) {
     const id = ctx.request.body.id
-    await redisSet(id, `this user is ${id}`)
+    await RedisClient.set(id, `this user is ${id}`)
     global.UnifyResponse.createSuccess({})
   }
 }

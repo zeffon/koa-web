@@ -5,53 +5,61 @@ import { jsonToObject, objectToJson } from '../tool'
 
 const REDIS = CONFIG.REDIS
 
-// init redis connect
-const redisClient = Redis.createClient(REDIS.PORT, REDIS.HOST)
+class RedisClient {
+  static instance: {
+    get: (arg0: string, arg1: (err: any, value: any) => void) => void
+    set: (arg0: string, arg1: any, arg2: (err: any) => void) => void
+    del: (arg0: string, arg1: (err: any) => void) => void
+  }
+  static getInstance() {
+    if (!this.instance) {
+      const redisClient = Redis.createClient(REDIS.PORT, REDIS.HOST)
+      redisClient.auth(CONFIG.REDIS.PASSWORD, () => {
+        console.log('redis login success')
+      })
+      redisClient.on('error', (err) => {
+        global.UnifyResponse.serverErrorException('redis error')
+        Logger.error('redis error', err, 'error in redis')
+      })
+      this.instance = redisClient
+    }
+    return this.instance
+  }
 
-// redis client authentication
-redisClient.auth(CONFIG.REDIS.PASSWORD, () => {
-  console.log('redis login success')
-})
-
-// Listen for redis error events
-redisClient.on('error', (err) => {
-  Logger.error('redis error', err, 'error in redis')
-})
-
-// save a key-value to redis
-export const redisSet = (key: string, value: any) => {
-  if (!key) return
-  return new Promise((resolve, reject) => {
-    let newValue = objectToJson(value)
-    redisClient.set(key, newValue, (err: any) => {
-      if (err) reject(err)
-      else resolve(null)
+  get(key: string) {
+    if (!key) return
+    return new Promise((resolve, reject) => {
+      RedisClient.getInstance().get(key, (err: any, value: any) => {
+        if (err) reject(err)
+        else resolve(jsonToObject(value))
+      })
     })
-  })
-}
+  }
 
-// get a value by key for redis
-export const redisGet = (key: string) => {
-  if (!key) return
-  return new Promise((resolve, reject) => {
-    redisClient.get(key, (err: any, value) => {
-      if (err) reject(err)
-      else resolve(jsonToObject(value))
-    })
-  })
-}
-
-// delete a value by key for redis
-export const redisDel = (key: string) => {
-  if (!key) return
-  return new Promise((resolve, reject) => {
-    try {
-      redisClient.del(key, (err: any) => {
+  set(key: string, value: any) {
+    if (!key) return
+    return new Promise((resolve, reject) => {
+      let newValue = objectToJson(value)
+      RedisClient.getInstance().set(key, newValue, (err: any) => {
         if (err) reject(err)
         else resolve(null)
       })
-    } catch (e) {
-      resolve(null)
-    }
-  })
+    })
+  }
+
+  delete(key: string) {
+    if (!key) return
+    return new Promise((resolve, reject) => {
+      try {
+        RedisClient.getInstance().del(key, (err: any) => {
+          if (err) reject(err)
+          else resolve(null)
+        })
+      } catch (e) {
+        resolve(null)
+      }
+    })
+  }
 }
+
+export default new RedisClient()

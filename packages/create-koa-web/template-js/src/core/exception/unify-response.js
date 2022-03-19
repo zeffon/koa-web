@@ -54,7 +54,7 @@ export class UnifyResponse {
 
   /**
    * Parameter Exception
-   * @param codeOrMessage errorCode | tip message
+   * @param codeOrMessage errorCode | error message
    */
   parameterException(codeOrMessage) {
     throw new ParameterException(codeOrMessage)
@@ -86,9 +86,9 @@ export class UnifyResponse {
 
   /**
    * server Error
-   * @param code errorCode
+   * @param codeOrMessage errorCode | error message
    */
-  serverErrorException(code) {
-    throw new ServerErrorException(code)
+  serverErrorException(codeOrMessage) {
+    throw new ServerErrorException(codeOrMessage)
   }
 }

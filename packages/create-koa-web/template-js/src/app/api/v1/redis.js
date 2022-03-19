@@ -1,4 +1,4 @@
-import { redisGet, redisSet } from '../../../core/redis/index.js'
+import RedisClient from '../../../core/redis/index.js'
 import {
   request,
   summary,
@@ -22,7 +22,7 @@ export default class RedisController {
   @path(idSchema)
   async getValue(ctx, next) {
     const id = ctx.params.id + ''
-    const res = await redisGet(id)
+    const res = await RedisClient.get(id)
     ctx.body = res
   }
 
@@ -32,7 +32,7 @@ export default class RedisController {
   @body(idSchema)
   async setValue(ctx, next) {
     const id = ctx.request.body.id
-    await redisSet(id, `this user is ${id}`)
+    await RedisClient.set(id, `this user is ${id}`)
     global.UnifyResponse.createSuccess({})
   }
 }
