@@ -1,6 +1,6 @@
-# Koa-Web
+# Koa-Web + TypeScript
 
-This template should help get you started developing with koa2 and JavaScript in koa-web.
+This template should help get you started developing with koa2 and TypeScript in koa-web.
 
 ## Usage
 
@@ -38,25 +38,26 @@ This template should help get you started developing with koa2 and JavaScript in
 ├── coverage                // unit tests output
 ├── logs                    // log output
 ├── src
-│   ├── app.js              // koa start
+│   ├── app.ts              // koa start
 │   ├── app                 // app modules
 │   ├── config              // env config
+│   ├── typings             // global types
 │   └── core                // core mudules
-│       ├── init.js         // core start
-│       ├── global.js       // global var
-│       ├── tool.js         // tool
+│       ├── init.ts         // core start
+│       ├── global.ts       // global var
+│       ├── tool.ts         // tool
 │       ├── exception       // global exception
 │       ├── log             // log modules
 │       ├── mysql           // mysql modules
 │       ├── redis           // redis modules
 │       ├── swagger         // api docs
 │       └── validator       // data validator
-├── .babelrc
 ├── .editorconfig
 ├── .gitignore
 ├── .prettierignore
 ├── .prettierrc
 ├── jest.config.js
 ├── package.json
-└── README.md
+├── README.md
+└── tsconfig.json
 ```
