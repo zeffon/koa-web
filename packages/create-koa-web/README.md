@@ -51,11 +51,11 @@ Currently supported template presets include:
 ## Usage
 
 ```bash
-cd my-koa-web
+$ cd my-koa-web
 
-npm install
+$ npm install
 
-npm run start
+$ npm run start
 
-open http://127.0.0.1:3000/koa-web/v1/doc.html
+# please open in: http://127.0.0.1:3000/koa-web/v1/doc.html
 ```
