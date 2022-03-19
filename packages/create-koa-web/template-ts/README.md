@@ -33,7 +33,7 @@ This template should help get you started developing with koa2 and TypeScript in
 ## Project Layout
 
 ```
-├── __test__                // jest test.ts
+├── __tests__                // jest test.ts
 ├── build                   // build output
 ├── coverage                // unit tests output
 ├── logs                    // log output
