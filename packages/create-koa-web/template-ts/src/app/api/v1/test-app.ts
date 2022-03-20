@@ -5,10 +5,12 @@ import {
   tags,
   prefix,
   body,
-  query
+  query,
+  security
 } from 'koa-swagger-decorator'
 import Koa from 'koa'
 import { RegisterValidator } from '../../valid/user'
+import { generateToken } from '../../../core/auth'
 
 const tag = tags(['test'])
 
@@ -29,6 +31,17 @@ const registerSchema = {
   password2: { type: 'string', required: true }
 }
 
+const loginSchema = {
+  username: {
+    type: 'string',
+    required: true
+  },
+  password: {
+    type: 'string',
+    required: true
+  }
+}
+
 @prefix('/test')
 export default class TestController {
   @request('get', '')
@@ -37,6 +50,7 @@ export default class TestController {
     'Test whether the system is connected successfully, and verify the unit test'
   )
   @tag
+  @security([{ api_key: [] }])
   static async testApp(ctx: Koa.Context) {
     ctx.body = 'Hello World!'
   }
@@ -56,21 +70,15 @@ export default class TestController {
     global.UnifyResponse.createSuccess({ message: 'register success' })
   }
 
-  @request('post', '/register2')
-  @summary('register2')
-  @description("Validate with Swagger's Schema")
+  @request('post', '/login')
+  @summary('login')
+  @description('user login to get token')
   @tag
-  @body(registerSchema)
-  static async register2(ctx: Koa.Context) {
-    const v = await new RegisterValidator().validate(ctx)
-    const email = v.get('body.email')
-    console.log(email)
-    const user = {
-      email: v.get('body.email'),
-      nickname: v.get('body.nickname'),
-      password: v.get('body.password2')
-    }
-    console.log(user)
-    global.UnifyResponse.createSuccess({ message: 'register success' })
+  @body(loginSchema)
+  static async login(ctx: Koa.Context) {
+    const username = ctx.request.body.username
+    const password = ctx.request.body.password
+    const token = generateToken(username + password)
+    global.UnifyResponse.createSuccess({ message: token })
   }
 }

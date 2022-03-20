@@ -6,6 +6,10 @@ export const testConf = {
   PORT: 3100,
   BASE_URL: 'http://127.0.0.1',
   PREFIX: '/koa-web',
+  SECRET: {
+    JWT_KEY: 'zeffonwu',
+    EXPIRES_IN: '1h'
+  },
   DATABASE: {
     DB_NAME: 'root',
     HOST: '127.0.0.1',

@@ -3,6 +3,10 @@ export const devConf = {
   PORT: 3000,
   BASE_URL: 'http://127.0.0.1',
   PREFIX: '/koa-web',
+  SECRET: {
+    JWT_KEY: 'zeffonwu',
+    EXPIRES_IN: '1d'
+  },
   DATABASE: {
     DB_NAME: 'root',
     HOST: '127.0.0.1',

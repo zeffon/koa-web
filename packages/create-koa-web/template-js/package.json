@@ -16,6 +16,7 @@
     "@babel/plugin-proposal-decorators": "^7.17.2",
     "@babel/runtime": "^7.17.7",
     "async": "^3.2.3",
+    "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.4",
     "koa-body": "^4.2.0",
     "koa-router": "^10.1.1",

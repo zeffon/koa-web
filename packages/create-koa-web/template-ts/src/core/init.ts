@@ -4,6 +4,7 @@ import KoaBody from 'koa-body'
 import catchError from './exception'
 import InitGlobal from './global'
 import swaggerRouter from './swagger'
+import auth from './auth'
 
 export default class InitManager {
   private app: Koa
@@ -18,10 +19,11 @@ export default class InitManager {
     this.app.use(Koa2Cors()) // cross-domain processing
     this.app.use(KoaBody({ multipart: true })) // body parameter processing
     this.app.use(catchError) // global exception handling
-    this.buildRouteAndSwagger() // router and api docs
+    this.app.use(auth)
+    this._initRoutesAndSwagger() // router and api docs
   }
 
-  buildRouteAndSwagger() {
+  _initRoutesAndSwagger() {
     this.app.use(swaggerRouter.routes()).use(swaggerRouter.allowedMethods())
   }
 }

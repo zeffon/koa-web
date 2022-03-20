@@ -34,7 +34,7 @@ export default async function catchError(ctx, next) {
         request
       }
       ctx.body = data
-      ctx.status = error.status
+      ctx.status = error.status || 500
     } else {
       const data = {
         code: 9999,
@@ -42,7 +42,7 @@ export default async function catchError(ctx, next) {
         request
       }
       ctx.body = data
-      ctx.status = error.status
+      ctx.status = error.status || 500
     }
   }
 }

@@ -14,7 +14,16 @@ if (CONFIG.ENV !== 'prod') {
     description: 'This is v1 api doc.',
     version: '0.1.0',
     swaggerHtmlEndpoint: '/doc.html',
-    swaggerJsonEndpoint: '/json.html'
+    swaggerJsonEndpoint: '/json.html',
+    swaggerOptions: {
+      securityDefinitions: {
+        api_key: {
+          type: 'apiKey',
+          in: 'header',
+          name: 'Authorization'
+        }
+      }
+    }
   })
 }
 
