@@ -1,15 +1,14 @@
 import Redis from 'redis'
 import CONFIG from '../../config'
-import Logger from '../log'
 import { jsonToObject, objectToJson } from '../tool'
 
 const REDIS = CONFIG.REDIS
 
 class RedisClient {
   static instance: {
-    get: (arg0: string, arg1: (err: any, value: any) => void) => void
-    set: (arg0: string, arg1: any, arg2: (err: any) => void) => void
-    del: (arg0: string, arg1: (err: any) => void) => void
+    get: (key: string, arg1: (err: any, value: any) => void) => void
+    set: (key: string, value: any, arg2: (err: any) => void) => void
+    del: (key: string, arg1: (err: any) => void) => void
   }
   static getInstance() {
     if (!this.instance) {
@@ -18,8 +17,7 @@ class RedisClient {
         console.log('redis login success')
       })
       redisClient.on('error', (err) => {
-        global.UnifyResponse.serverErrorException('redis error')
-        Logger.error('redis error', err, 'error in redis')
+        console.log(err.message)
       })
       this.instance = redisClient
     }
@@ -29,7 +27,7 @@ class RedisClient {
   get(key: string) {
     if (!key) return
     return new Promise((resolve, reject) => {
-      RedisClient.getInstance().get(key, (err: any, value: any) => {
+      RedisClient.getInstance().get(key, (err: any, value) => {
         if (err) reject(err)
         else resolve(jsonToObject(value))
       })

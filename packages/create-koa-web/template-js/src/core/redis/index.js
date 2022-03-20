@@ -1,6 +1,5 @@
 import Redis from 'redis'
 import CONFIG from '../../config/index.js'
-import Logger from '../log/index.js'
 import { jsonToObject, objectToJson } from '../tool.js'
 
 const REDIS = CONFIG.REDIS
@@ -13,8 +12,7 @@ class RedisClient {
         console.log('redis login success')
       })
       redisClient.on('error', (err) => {
-        global.UnifyResponse.serverErrorException('redis error')
-        Logger.error('redis error', err, 'error in redis')
+        console.log(err.message)
       })
       this.instance = redisClient
     }
