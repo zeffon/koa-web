@@ -13,12 +13,16 @@ class RedisClient {
   static getInstance() {
     if (!this.instance) {
       const redisClient = Redis.createClient(REDIS.PORT, REDIS.HOST)
-      redisClient.auth(CONFIG.REDIS.PASSWORD, () => {
+      redisClient.auth(REDIS.PASSWORD, () => {
         console.log('redis login success')
       })
       redisClient.on('error', (err) => {
         console.log(err.message)
       })
+      if (!REDIS.ENABLED) {
+        redisClient.quit()
+        global.UnifyResponse.serverErrorException(11001)
+      }
       this.instance = redisClient
     }
     return this.instance
