@@ -45,16 +45,9 @@ function _verifyBearerToken(bearerToken) {
     global.UnifyResponse.unAuthenticatedException(10004)
   }
 
-  const token = tokens[1]
-  verifyToken(token)
+  verifyToken(tokens[1])
 }
 
 function _isUnless(path) {
-  let valid = false
-  unlessPaths.forEach((unlessPath) => {
-    if (unlessPath.test(path)) {
-      valid = true
-    }
-  })
-  return valid
+  return unlessPaths.some((item) => item.test(path))
 }
