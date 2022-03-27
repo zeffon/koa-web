@@ -1,21 +1,10 @@
 import { DataTypes, Model } from 'sequelize'
 import sequelizeClient from '../../core/mysql'
 
-export interface IUserModel {
-  id: number
-  username: string
-  password: string
-}
-
-export type CUserModel = Omit<IUserModel, 'id'>
-
-export default class User
-  extends Model<IUserModel, IUserModel>
-  implements IUserModel
-{
-  public id!: number
-  public username!: string
-  public password!: string
+export default class User extends Model {
+  id
+  username
+  password
 }
 
 User.init(

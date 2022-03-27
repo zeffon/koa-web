@@ -1,30 +1,29 @@
 import { User } from '../model'
-import { IUserModel } from '../model/user'
 
-export const create = async (user: IUserModel) => {
+export const create = async (user) => {
   return User.create(user)
 }
 
-export const update = async (id: number, payload: IUserModel) => {
+export const update = async (id, payload) => {
   const user = await User.findByPk(id)
 
   if (!user) {
     global.UnifyResponse.notFoundException(10020)
   }
 
-  return user!.update(payload)
+  return user.update(payload)
 }
 
-export const getById = async (id: number) => {
+export const getById = async (id) => {
   const user = await User.findByPk(id)
 
   if (!user) {
     global.UnifyResponse.notFoundException(10020)
   }
-  return user!
+  return user
 }
 
-export const deleteById = async (id: number) => {
+export const deleteById = async (id) => {
   const numDeleted = await User.destroy({
     where: { id }
   })

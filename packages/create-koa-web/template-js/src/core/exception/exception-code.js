@@ -13,6 +13,7 @@ const CODE = new Map([
   [10004, 'The token is invalid or expired'],
   [10005, 'The user is not authorized'],
   [10006, 'Failed to login'],
+  [10020, 'The user is not found'],
   [
     11001,
     'Redis is not enabled. If you want to use redis, please set config.REDIS.ENABLED=true'

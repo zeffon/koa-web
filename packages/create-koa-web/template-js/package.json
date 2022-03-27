@@ -15,7 +15,6 @@
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.17.2",
     "@babel/runtime": "^7.17.7",
-    "async": "^3.2.3",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.4",
     "koa-body": "^4.2.0",
@@ -25,6 +24,7 @@
     "log4js": "^6.4.1",
     "mysql2": "^2.3.3",
     "redis": "3.0.2",
+    "sequelize": "^6.17.0",
     "validator": "^13.7.0"
   },
   "devDependencies": {

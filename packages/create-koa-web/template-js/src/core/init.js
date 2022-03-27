@@ -4,6 +4,7 @@ import catchError from './exception/index.js'
 import InitGlobal from './global.js'
 import swaggerRouter from './swagger/index.js'
 import auth from './auth/index.js'
+import { initDB } from './mysql/init'
 
 export default class InitManager {
   app
@@ -20,6 +21,7 @@ export default class InitManager {
     this.app.use(catchError) // global exception handling
     this.app.use(auth)
     this._initRoutesAndSwagger() // router and api docs
+    initDB()
   }
 
   _initRoutesAndSwagger() {

@@ -4,8 +4,8 @@ import CONFIG from '../../config'
 let unlessPaths = [
   /^\/koa-web\/v1\/json\.html[\/#\?]?$/i,
   /^\/koa-web\/v1\/doc\.html[\/#\?]?$/i,
-  /^\/koa-web\/v1\/test\/login[\/#\?]?$/i,
-  /^\/koa-web\/v1\/test\/register[\/#\?]?$/i
+  /^\/koa-web\/v1\/user\/login[\/#\?]?$/i,
+  /^\/koa-web\/v1\/user\/register[\/#\?]?$/i
 ]
 
 export default async function auth(ctx, next) {

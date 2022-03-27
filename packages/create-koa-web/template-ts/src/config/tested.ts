@@ -11,6 +11,7 @@ export const testConf = {
     EXPIRES_IN: '1h'
   },
   DATABASE: {
+    DIALECT: 'mysql',
     DB_NAME: 'root',
     HOST: '127.0.0.1',
     PORT: 3306,

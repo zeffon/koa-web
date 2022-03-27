@@ -8,6 +8,7 @@ export const prodConf = {
     EXPIRES_IN: '1d'
   },
   DATABASE: {
+    DIALECT: 'mysql',
     DB_NAME: 'root',
     HOST: '127.0.0.1',
     PORT: 3306,
