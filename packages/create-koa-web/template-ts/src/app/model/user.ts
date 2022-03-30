@@ -1,5 +1,6 @@
 import { DataTypes, Model } from 'sequelize'
-import sequelizeClient from '../../core/mysql'
+import CONFIG from '../../config'
+import sequelizeClient from '../../core/database'
 
 export interface IUserModel {
   id: number
@@ -36,7 +37,7 @@ User.init(
   },
   {
     tableName: 'user',
-    sequelize: sequelizeClient,
+    sequelize: sequelizeClient.config(),
     paranoid: true
   }
 )

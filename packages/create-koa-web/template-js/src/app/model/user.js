@@ -1,5 +1,5 @@
 import { DataTypes, Model } from 'sequelize'
-import sequelizeClient from '../../core/mysql'
+import sequelizeClient from '../../core/database'
 
 export default class User extends Model {
   id

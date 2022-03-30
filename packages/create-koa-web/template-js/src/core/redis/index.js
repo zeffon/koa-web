@@ -12,7 +12,7 @@ class RedisClient {
     if (REDIS.ENABLED) {
       const redisClient = Redis.createClient(REDIS.PORT, REDIS.HOST)
       redisClient.auth(REDIS.PASSWORD, () => {
-        console.log('redis login success')
+        console.log('RedisClient has been login successfully')
       })
       redisClient.on('error', (err) => {
         redisClient.quit()

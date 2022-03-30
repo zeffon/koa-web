@@ -5,7 +5,7 @@ import catchError from './exception'
 import InitGlobal from './global'
 import swaggerRouter from './swagger'
 import auth from './auth'
-import { initDB } from './mysql/init'
+import { initDB } from './database/init'
 
 export default class InitManager {
   private app: Koa
