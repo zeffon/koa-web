@@ -1,54 +1,99 @@
 import Redis from 'redis'
-import CONFIG from '../../config/index.js'
-import { jsonToObject, objectToJson } from '../tool.js'
+import CONFIG from '../../config'
+import { jsonToObject, objectToJson } from '../tool'
 
 const REDIS = CONFIG.REDIS
 
 class RedisClient {
-  static getInstance() {
-    if (!this.instance) {
+  static _instance
+  redisClient
+
+  constructor() {
+    if (REDIS.ENABLED) {
       const redisClient = Redis.createClient(REDIS.PORT, REDIS.HOST)
       redisClient.auth(REDIS.PASSWORD, () => {
         console.log('redis login success')
       })
       redisClient.on('error', (err) => {
+        redisClient.quit()
         console.log(err.message)
       })
-      if (!REDIS.ENABLED) {
-        redisClient.quit()
-        global.UnifyResponse.serverErrorException(11001)
-      }
-      this.instance = redisClient
+      this.redisClient = redisClient
     }
-    return this.instance
   }
 
+  static getInstance() {
+    if (!this._instance) {
+      RedisClient._instance = new RedisClient()
+    }
+    return RedisClient._instance
+  }
+
+  /**
+   *
+   * @param key string
+   * @returns
+   */
   get(key) {
+    this.valid()
     if (!key) return
     return new Promise((resolve, reject) => {
-      RedisClient.getInstance().get(key, (err, value) => {
+      this.valid()
+      this.redisClient.get(key, (err, value) => {
         if (err) reject(err)
         else resolve(jsonToObject(value))
       })
     })
   }
 
-  set(key, value) {
+  /**
+   *
+   * @param key string
+   * @param value any
+   * @returns
+   */
+  setValue(key, value) {
+    this.valid()
     if (!key) return
     return new Promise((resolve, reject) => {
       let newValue = objectToJson(value)
-      RedisClient.getInstance().set(key, newValue, (err) => {
+      this.redisClient.set(key, newValue, (err) => {
         if (err) reject(err)
         else resolve(null)
       })
     })
   }
 
+  /**
+   *
+   * @param key string
+   * @param value any
+   * @param duration expire time (seconds)
+   * @returns
+   */
+  set(key, value, duration) {
+    this.valid()
+    if (!key) return
+    return new Promise((resolve, reject) => {
+      let newValue = objectToJson(value)
+      this.redisClient.set(key, newValue, 'EX', duration, (err) => {
+        if (err) reject(err)
+        else resolve(null)
+      })
+    })
+  }
+
+  /**
+   *
+   * @param key string
+   * @returns
+   */
   delete(key) {
+    this.valid()
     if (!key) return
     return new Promise((resolve, reject) => {
       try {
-        RedisClient.getInstance().del(key, (err) => {
+        this.redisClient.del(key, (err) => {
           if (err) reject(err)
           else resolve(null)
         })
@@ -57,6 +102,12 @@ class RedisClient {
       }
     })
   }
+
+  valid() {
+    if (this.redisClient === null) {
+      global.UnifyResponse.serverErrorException(11001)
+    }
+  }
 }
 
-export default new RedisClient()
+export default RedisClient.getInstance()
