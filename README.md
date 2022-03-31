@@ -46,8 +46,10 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
 - :art: **Prettier**：prettier lint code
 - :rocket: **Exception**：Global exception handling
 - :airplane: **Validator**：Practical and efficient data validation usage
-- :zap: **MySQL**：Support for MySQL database connections
+- :zap: **Database**：Support for Sequelize connections
 - :fire: **Redis**：Support for Redis database connections
+- :zap: **Cache**：Support for Local Cache
+- :zap: **Auth**：General JWT authorization
 - :1234: **Log**：Log SQL and error logs
 - :white_check_mark: **Unit Test**：Support unit test
 - :memo: **API Doc**：API Doc UI
@@ -106,9 +108,11 @@ This is `template-ts` layout
 │       ├── init.ts         // core start
 │       ├── global.ts       // global var
 │       ├── tool.ts         // tool
+│       ├── auth            // auth modules
+│       ├── database        // database modules
+│       ├── mysql           // mysql modules
 │       ├── exception       // global exception
 │       ├── log             // log modules
-│       ├── mysql           // mysql modules
 │       ├── redis           // redis modules
 │       ├── swagger         // api docs
 │       └── validator       // data validator

@@ -46,8 +46,10 @@ Language : [English](./README.md) | 简体中文
 - :art: **prettier**：prettier 规范代码格式
 - :rocket: **全局异常**：全局异常统一处理
 - :airplane: **数据校验**：实用且高效的数据校验方式
-- :zap: **MySQL**：支持 MySQL 数据库连接
+- :zap: **Database**：支持 Sequelize 连接
 - :fire: **Redis**：支持 Redis 数据库连接
+- :fire: **Cache**：支持 本地缓存
+- :fire: **Auth**：通用 JWT 授权
 - :book: **日志**：记录 SQL 日志和错误日志
 - :white_check_mark: **单元测试**：支持单元测试
 - :memo: **API 文档**：API 文档测试
@@ -106,9 +108,11 @@ $ npm run start
 │       ├── init.ts         // 核心模块入口
 │       ├── global.ts       // 全局变量
 │       ├── tool.ts         // 工具类
+│       ├── auth            // 授权模块
+│       ├── cache           // 本地缓存
+│       ├── database        // 数据库模块
 │       ├── exception       // 统一异常
 │       ├── log             // 日志模块
-│       ├── mysql           // mysql模块
 │       ├── redis           // redis模块
 │       ├── swagger         // API文档模块
 │       └── validator       // 数据校验
