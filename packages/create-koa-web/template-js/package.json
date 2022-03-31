@@ -23,6 +23,7 @@
     "lodash": "^4.17.21",
     "log4js": "^6.4.1",
     "mysql2": "^2.3.3",
+    "node-cache": "^5.1.2",
     "redis": "3.0.2",
     "sequelize": "^6.17.0",
     "validator": "^13.7.0"
