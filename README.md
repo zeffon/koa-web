@@ -46,11 +46,11 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
 - :art: **Prettier**：prettier lint code
 - :rocket: **Exception**：Global exception handling
 - :airplane: **Validator**：Practical and efficient data validation usage
-- :zap: **Database**：Support for Sequelize connections
+- :four_leaf_clover: **Database**：Support for Sequelize connections
 - :fire: **Redis**：Support for Redis database connections
 - :zap: **Cache**：Support for Local Cache
-- :zap: **Auth**：General JWT authorization
-- :1234: **Log**：Log SQL and error logs
+- :writing_hand: **Auth**：General JWT authorization
+- :book: **Log**：Log SQL and error logs
 - :white_check_mark: **Unit Test**：Support unit test
 - :memo: **API Doc**：API Doc UI
 
