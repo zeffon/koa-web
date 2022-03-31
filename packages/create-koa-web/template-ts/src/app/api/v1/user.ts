@@ -12,6 +12,8 @@ import {
 } from 'koa-swagger-decorator'
 import * as userSerivce from '../../service/user'
 import { generateToken } from '../../../core/auth'
+import RedisClient from '../../../core/redis'
+import CacheClient from '../../../core/cache'
 
 const tag = tags(['user'])
 
@@ -67,6 +69,76 @@ export default class UserController {
   async query(ctx: Context) {
     const id = ctx.query.id as any
     await userSerivce.deleteById(id)
+    global.UnifyResponse.deleteSuccess({ code: 0 })
+  }
+
+  @request('get', '/{id}/redis')
+  @summary('get redis')
+  @description('example: /user/1/redis')
+  @tag
+  @path({
+    id: { type: 'number', required: true, default: null, description: 'id' }
+  })
+  @security([{ api_key: [] }])
+  async getRedis(ctx: Context) {
+    const id = ctx.params.id
+    const res = (await RedisClient.get(id)) as any
+    global.UnifyResponse.deleteSuccess({ message: res })
+  }
+
+  @request('post', '/{id}/redis')
+  @summary('set redis')
+  @description('example: /user/1/redis')
+  @tag
+  @path({
+    id: { type: 'number', required: true, default: null, description: 'id' }
+  })
+  @security([{ api_key: [] }])
+  async setRedis(ctx: Context) {
+    const id = ctx.params.id
+    await RedisClient.set(id, 'this is user: ' + id, 10)
+    global.UnifyResponse.deleteSuccess({ code: 0 })
+  }
+
+  @request('get', '/{id}/cache')
+  @summary('get cache')
+  @description('example: /user/1/cache')
+  @tag
+  @path({
+    id: { type: 'number', required: true, default: null, description: 'id' }
+  })
+  @security([{ api_key: [] }])
+  async getCache(ctx: Context) {
+    const id = ctx.params.id
+    const res = (await CacheClient.get(id)) as any
+    global.UnifyResponse.deleteSuccess({ message: res })
+  }
+
+  @request('post', '/{id}/cache')
+  @summary('set cache')
+  @description('example: /user/1/cache')
+  @tag
+  @path({
+    id: { type: 'number', required: true, default: null, description: 'id' }
+  })
+  @security([{ api_key: [] }])
+  async setCache(ctx: Context) {
+    const id = ctx.params.id
+    CacheClient.set(id, 'this is user: ' + id)
+    global.UnifyResponse.deleteSuccess({ code: 0 })
+  }
+
+  @request('delete', '/{id}/cache')
+  @summary('set cache1')
+  @description('example: /user/1/cache')
+  @tag
+  @path({
+    id: { type: 'number', required: true, default: null, description: 'id' }
+  })
+  @security([{ api_key: [] }])
+  async delCache(ctx: Context) {
+    const id = ctx.params.id
+    CacheClient.delete(id)
     global.UnifyResponse.deleteSuccess({ code: 0 })
   }
 }
