@@ -50,36 +50,25 @@ class RedisClient {
    *
    * @param key string
    * @param value any
-   * @returns
-   */
-  public setValue(key: string, value: any) {
-    this.valid()
-    if (!key) return
-    return new Promise((resolve, reject) => {
-      let newValue = objectToJson(value)
-      this.redisClient!.set(key, newValue, (err: any) => {
-        if (err) reject(err)
-        else resolve(null)
-      })
-    })
-  }
-
-  /**
-   *
-   * @param key string
-   * @param value any
    * @param duration expire time (seconds)
    * @returns
    */
-  public set(key: string, value: any, duration: number) {
+  public set(key: string, value: any, duration?: number) {
     this.valid()
     if (!key) return
     return new Promise((resolve, reject) => {
       let newValue = objectToJson(value)
-      this.redisClient!.set(key, newValue, 'EX', duration, (err: any) => {
-        if (err) reject(err)
-        else resolve(null)
-      })
+      if (duration) {
+        this.redisClient!.set(key, newValue, 'EX', duration, (err: any) => {
+          if (err) reject(err)
+          else resolve(null)
+        })
+      } else {
+        this.redisClient!.set(key, newValue, (err: any) => {
+          if (err) reject(err)
+          else resolve(null)
+        })
+      }
     })
   }
 
