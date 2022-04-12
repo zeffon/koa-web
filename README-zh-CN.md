@@ -42,7 +42,6 @@ Language : [English](./README.md) | 简体中文
 ## 特性
 
 - :bulb: **TypeScript**: 支持 TypeScript
-- :anchor: **commitlint**：git commit 规范提交
 - :art: **prettier**：prettier 规范代码格式
 - :rocket: **全局异常**：全局异常统一处理
 - :airplane: **数据校验**：实用且高效的数据校验方式

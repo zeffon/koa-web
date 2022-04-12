@@ -42,7 +42,6 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
 ## Features
 
 - :bulb: **TypeScript**: support TypeScript
-- :anchor: **Commitlint**：git commitlint
 - :art: **Prettier**：prettier lint code
 - :rocket: **Exception**：Global exception handling
 - :airplane: **Validator**：Practical and efficient data validation usage
