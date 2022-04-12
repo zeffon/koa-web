@@ -29,24 +29,22 @@ You can also directly specify the project name and the template you want to use 
 
 ```bash
 # npm 6.x
-npm create koa-web@latest my-koa-web --template template-ts
+npm create koa-web@latest my-koa-web
 
 # npm 7+, extra double-dash is needed:
-npm create koa-web@latest my-koa-web -- --template template-ts
+npm create koa-web@latest my-koa-web
 
 # yarn
-yarn create koa-web my-koa-web --template template-ts
+yarn create koa-web my-koa-web
 
 # pnpm
-pnpm create koa-web my-koa-web --config.template=template-ts
+pnpm create koa-web my-koa-web
 ```
 
 Currently supported template presets include:
 
 - `template-ts`
-- `template-js`
-
-> I recommend using `template-ts`.
+- `template-js` (Deprecated)
 
 ## Usage
 

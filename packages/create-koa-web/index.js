@@ -8,24 +8,9 @@ const path = require('path')
 const argv = require('minimist')(process.argv.slice(2), { string: ['_'] })
 // eslint-disable-next-line node/no-restricted-require
 const prompts = require('prompts')
-const { green, blue, red, reset } = require('kolorist')
+const { red, reset } = require('kolorist')
 
 const cwd = process.cwd()
-
-const FRAMEWORKS = [
-  {
-    name: 'template-ts',
-    display: 'TypeScript',
-    color: green
-  },
-  {
-    name: 'template-js',
-    display: 'JavaScript',
-    color: blue
-  }
-]
-
-const TEMPLATES = FRAMEWORKS.map((v) => v.name)
 
 const renameFiles = {
   _gitignore: '.gitignore'
@@ -33,7 +18,6 @@ const renameFiles = {
 
 async function init() {
   let targetDir = argv._[0]
-  let template = argv.template || argv.t
 
   const defaultProjectName = !targetDir ? 'koa-web-project' : targetDir
 
@@ -76,24 +60,6 @@ async function init() {
           initial: () => toValidPackageName(targetDir),
           validate: (dir) =>
             isValidPackageName(dir) || 'Invalid package.json name'
-        },
-        {
-          type: template && TEMPLATES.includes(template) ? null : 'select',
-          name: 'framework',
-          message:
-            typeof template === 'string' && !TEMPLATES.includes(template)
-              ? reset(
-                  `"${template}" isn't a valid template. Please choose from below: `
-                )
-              : reset('Select a framework:'),
-          initial: 0,
-          choices: FRAMEWORKS.map((framework) => {
-            const frameworkColor = framework.color
-            return {
-              title: frameworkColor(framework.name),
-              value: framework.name
-            }
-          })
         }
       ],
       {
@@ -108,7 +74,7 @@ async function init() {
   }
 
   // user choice associated with prompts
-  const { framework, overwrite, packageName } = result
+  const { overwrite, packageName } = result
 
   const root = path.join(cwd, targetDir)
 
@@ -118,8 +84,7 @@ async function init() {
     fs.mkdirSync(root)
   }
 
-  // determine template
-  template = framework || template
+  template = `template-ts`
 
   console.log(`\nScaffolding project in ${root}...`)
 
