@@ -1,12 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-
-const Home = { template: import('../pages/login/Login.vue') }
-const About = { template: '<div>About</div>' }
-
-const routes = [
-  { path: '/', component: Home },
-  { path: '/about', component: About }
-]
+import routes from './router.config'
 
 const router = createRouter({
   history: createWebHashHistory(),

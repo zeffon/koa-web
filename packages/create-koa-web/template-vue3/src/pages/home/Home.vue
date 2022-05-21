@@ -2,7 +2,7 @@
   <div
     class="w-full h-screen flex flex-col items-center justify-center bg-blue-50"
   >
-    <h1 class="font-bold text-3xl -mt-32 mb-8">欢迎登录</h1>
+    <h1 class="font-bold text-3xl -mt-32 mb-8">主页Home</h1>
     <el-form class="w-96 bg-white px-8 py-10">
       <el-form-item>
         <el-input
@@ -19,11 +19,10 @@
         />
       </el-form-item>
       <el-button
+        type="primary"
+        class="w-full h-10"
         @click="userLogin"
         v-loading="loading"
-        type="primary"
-        size="large"
-        class="w-full"
         >登 录</el-button
       >
     </el-form>
