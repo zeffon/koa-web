@@ -91,7 +91,7 @@ open http://127.0.0.1:3000/koa-web/v1/doc.html
 
 ## Project Layout
 
-This is `template-ts` layout
+This is `template-koa` layout
 
 ```
 ├── __tests__               // jest test.ts

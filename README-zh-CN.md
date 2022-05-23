@@ -91,7 +91,7 @@ $ npm run start
 
 ## 项目结构
 
-`template-ts` 模板结构
+`template-koa` 模板结构
 
 ```
 ├── __tests__               // 单元测试编写目录集合

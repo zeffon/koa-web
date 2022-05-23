@@ -84,7 +84,7 @@ async function init() {
     fs.mkdirSync(root)
   }
 
-  template = `template-ts`
+  template = `template-koa`
 
   console.log(`\nScaffolding project in ${root}...`)
 

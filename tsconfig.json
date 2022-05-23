@@ -15,6 +15,6 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["packages/create-koa-web/template-ts/src/**/*"],
+  "include": ["packages/create-koa-web/template-koa/src/**/*"],
   "exclude": ["node_module", "build"]
 }
