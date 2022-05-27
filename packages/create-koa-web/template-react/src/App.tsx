@@ -1,43 +1,22 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { Button, Form, Input } from 'antd'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+    <div className="w-full h-screen flex flex-col items-center justify-center bg-blue-50">
+      <h1 className="font-bold text-3xl -mt-32 mb-8 tracking-wider">
+        欢迎登录
+      </h1>
+      <Form className="w-96 bg-white px-8 py-10">
+        <Form.Item>
+          <Input placeholder="请输入用户名" className=" h-10" />
+        </Form.Item>
+        <Form.Item>
+          <Input placeholder="请输入密码" className=" h-10" />
+        </Form.Item>
+        <Button type="primary" className="w-full h-10">
+          登录
+        </Button>
+      </Form>
     </div>
   )
 }
