@@ -18,7 +18,7 @@
     "format": "prettier --write .",
     "start": "nodemon",
     "prod": "set NODE_ENV=production&&nodemon",
-    "test": "set NODE_ENV=test&&jest",
+    "test": "set NODE_ENV=test&&jest --coverage --detectOpenHandles --forceExit",
     "cov": "jest --coverage --detectOpenHandles --forceExit",
     "build": "tsc && tsc-alias",
     "release": "ts-node scripts/release.ts",
