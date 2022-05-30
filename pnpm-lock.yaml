@@ -23,6 +23,8 @@ importers:
       simple-git-hooks: ^2.7.0
       ts-jest: ^27.1.3
       ts-node: ^10.5.0
+      tsc-alias: ^1.6.7
+      tsconfig-paths: ^4.0.0
       typescript: ^4.5.5
     devDependencies:
       '@types/jest': 27.4.1
@@ -41,6 +43,8 @@ importers:
       simple-git-hooks: 2.7.0
       ts-jest: 27.1.3_60149d457e34ffba7d4e845dde6a1263
       ts-node: 10.7.0_045cabcbf8818eda83522fe731c87088
+      tsc-alias: 1.6.7
+      tsconfig-paths: 4.0.0
       typescript: 4.6.2
 
   packages/create-koa-web:

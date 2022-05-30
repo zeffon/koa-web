@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "esnext",
     "strict": true,
     "module": "commonjs",
@@ -12,7 +13,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "~/*": ["packages/create-koa-web/template-koa/src/*"]
+    }
   },
   "include": ["packages/create-koa-web/template-koa/src/**/*"],
   "exclude": ["node_module", "build"]
