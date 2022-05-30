@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "esnext",
     "strict": true,
     "module": "commonjs",
-    "lib": [],
     "allowJs": true,
     "sourceMap": true,
     "outDir": "build",
