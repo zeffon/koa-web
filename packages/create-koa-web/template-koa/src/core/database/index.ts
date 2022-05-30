@@ -1,4 +1,4 @@
-import CONFIG from '../../config'
+import CONFIG from '~/config'
 import { Dialect, Sequelize } from 'sequelize'
 const DATABASE = CONFIG.DATABASE
 

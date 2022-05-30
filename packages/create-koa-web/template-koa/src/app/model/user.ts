@@ -1,6 +1,5 @@
 import { DataTypes, Model } from 'sequelize'
-import CONFIG from '../../config'
-import sequelizeClient from '../../core/database'
+import sequelizeClient from '~/core/database'
 
 export interface IUserModel {
   id: number

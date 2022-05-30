@@ -3,7 +3,7 @@
  */
 import log4js from 'log4js'
 import logConfig from './log-config'
-import CONFIG from '../../config'
+import CONFIG from '~/config'
 import _ from 'lodash'
 
 const ENV = CONFIG.ENV

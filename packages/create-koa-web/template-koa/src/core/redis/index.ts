@@ -1,5 +1,5 @@
 import Redis from 'redis'
-import CONFIG from '../../config'
+import CONFIG from '~/config'
 import { jsonToObject, objectToJson } from '../tool'
 
 const REDIS = CONFIG.REDIS

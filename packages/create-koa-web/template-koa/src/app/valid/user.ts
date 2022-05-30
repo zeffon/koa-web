@@ -1,4 +1,4 @@
-import { Rule, LinValidator } from '../../core/validator'
+import { Rule, LinValidator } from '~/core/validator'
 
 /**
  * Register Validator

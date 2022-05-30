@@ -1,6 +1,6 @@
-import CONFIG from '../../config'
+import CONFIG from '~/config'
 import SequelizeClient from './index'
-import * as models from '../../app/model'
+import * as models from '~/app/model'
 
 const isDev = CONFIG.ENV !== 'prod'
 

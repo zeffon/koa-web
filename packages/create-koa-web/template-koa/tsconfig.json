@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "baseUrl": ".",
+    "target": "esnext",
     "strict": true,
     "module": "commonjs",
-    "lib": [],
     "allowJs": true,
     "sourceMap": true,
     "outDir": "build",
@@ -13,7 +13,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "~/*": ["./src/*"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_module", "build"]

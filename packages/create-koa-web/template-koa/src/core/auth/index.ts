@@ -1,6 +1,6 @@
 import Koa from 'koa'
 import jwt from 'jsonwebtoken'
-import CONFIG from '../../config'
+import CONFIG from '~/config'
 
 let unlessPaths = [
   /^\/koa-web\/v1\/json\.html[\/#\?]?$/i,

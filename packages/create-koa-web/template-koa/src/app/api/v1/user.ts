@@ -10,10 +10,10 @@ import {
   prefix,
   security
 } from 'koa-swagger-decorator'
-import * as userSerivce from '../../service/user'
-import { generateToken } from '../../../core/auth'
-import RedisClient from '../../../core/redis'
-import CacheClient from '../../../core/cache'
+import * as userSerivce from '~/app/service/user'
+import { generateToken } from '~/core/auth'
+import RedisClient from '~/core/redis'
+import CacheClient from '~/core/cache'
 
 const tag = tags(['user'])
 

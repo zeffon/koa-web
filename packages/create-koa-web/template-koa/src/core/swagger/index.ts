@@ -1,6 +1,6 @@
 import path from 'path'
 import { SwaggerRouter } from 'koa-swagger-decorator'
-import CONFIG from '../../config'
+import CONFIG from '~/config'
 
 const topRouter = new SwaggerRouter({ prefix: CONFIG.PREFIX })
 

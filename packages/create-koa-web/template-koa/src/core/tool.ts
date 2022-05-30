@@ -22,6 +22,10 @@ export function jsonToObject(val: any) {
 /**
  * map object to array
  **/
+interface OptionItem {
+  label: string
+  value: string | number
+}
 export function objectMapToArray(map: Map<string | number, string>) {
   const array: OptionItem[] = []
   for (const [key, value] of map.entries()) {
