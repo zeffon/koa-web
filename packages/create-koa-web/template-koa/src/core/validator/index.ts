@@ -1,6 +1,6 @@
 import { Context } from 'koa'
 import validator from 'validator'
-import { findMembers } from '../tool'
+import { findMembers, isInvalid } from '../tool'
 import { get, last, set, cloneDeep } from 'lodash'
 
 class LinValidator {
@@ -126,28 +126,28 @@ class LinValidator {
   private _findParam(key: string) {
     let value
     value = get(this.data, ['query', key])
-    if (value) {
+    if (!isInvalid(value)) {
       return {
         value,
         path: ['query', key]
       }
     }
     value = get(this.data, ['body', key])
-    if (value) {
+    if (!isInvalid(value)) {
       return {
         value,
         path: ['body', key]
       }
     }
     value = get(this.data, ['path', key])
-    if (value) {
+    if (!isInvalid(value)) {
       return {
         value,
         path: ['path', key]
       }
     }
     value = get(this.data, ['header', key])
-    if (value) {
+    if (!isInvalid(value)) {
       return {
         value,
         path: ['header', key]

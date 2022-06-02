@@ -65,3 +65,7 @@ export function findMembers(instance: any, options: MembersOptions) {
 
   return _find(instance)
 }
+
+export function isInvalid(value: unknown) {
+  return value === undefined || value === null
+}
