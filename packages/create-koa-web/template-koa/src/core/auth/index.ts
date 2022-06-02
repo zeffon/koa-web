@@ -6,7 +6,8 @@ let unlessPaths = [
   /^\/koa-web\/v1\/json\.html[\/#\?]?$/i,
   /^\/koa-web\/v1\/doc\.html[\/#\?]?$/i,
   /^\/koa-web\/v1\/user\/login[\/#\?]?$/i,
-  /^\/koa-web\/v1\/user\/register[\/#\?]?$/i
+  /^\/koa-web\/v1\/user\/register[\/#\?]?$/i,
+  /^\/koa-web\/v1\/token[\/#\?]?$/i
 ]
 
 export default async function auth(ctx: Koa.Context, next: any) {
