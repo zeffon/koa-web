@@ -3,10 +3,17 @@ import validator from 'validator'
 import { findMembers, isInvalid } from '../tool'
 import { get, last, set, cloneDeep } from 'lodash'
 
+interface IParamModel {
+  body: any
+  query: any
+  path: any
+  header: any
+}
+
 class LinValidator {
   data: any = {}
-  parsed: any = {}
-  alias: any = {};
+  parsed: IParamModel | any = {}
+  alias: IParamModel | any = {};
   [x: string]: any
 
   public async validate(ctx: Context, alias = {}) {
@@ -60,9 +67,7 @@ class LinValidator {
     if (/validate([A-Z])\w+/g.test(key)) {
       return true
     }
-    // @ts-ignore
     if (this[key] instanceof Array) {
-      // @ts-ignore
       this[key].forEach((value: any) => {
         const isRuleType = value instanceof Rule
         if (!isRuleType) {
@@ -75,17 +80,13 @@ class LinValidator {
   }
 
   private async _check(key: string, alias = {}) {
-    // @ts-ignore
     const isCustomFunc = typeof this[key] === 'function'
     let result: any = {}
     if (isCustomFunc) {
       try {
-        // @ts-ignore
         await this[key](this.data)
-        // @ts-ignore
         result = new RuleResult(true)
       } catch (error: any) {
-        // @ts-ignore
         result = new RuleResult(
           false,
           error.msg || error.message || 'parameters error'
@@ -186,8 +187,7 @@ class RuleFieldResult extends RuleResult {
 class Rule {
   name: any
   params: any
-  msg: any
-  message: any
+  msg: string | undefined
   constructor(name: any, msg?: string, ...params: any) {
     Object.assign(this, {
       name,
@@ -201,17 +201,14 @@ class Rule {
       return new RuleResult(true)
     }
     if (!(validator as any)[this.name](field + '', ...this.params)) {
-      return new RuleResult(
-        false,
-        this.msg || this.message || 'parameters error'
-      )
+      return new RuleResult(false, this.msg || 'parameters error')
     }
     return new RuleResult(true, '')
   }
 }
 
 class RuleField {
-  rules: any
+  rules: Rule[]
   constructor(rules: Rule[]) {
     this.rules = rules
   }
