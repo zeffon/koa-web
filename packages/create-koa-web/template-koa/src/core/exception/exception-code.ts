@@ -19,7 +19,9 @@ const CODE = new Map([
     'Redis is not enabled. If you want to use redis, please set config.REDIS.ENABLED=true'
   ],
 
-  [20000, 'User Module Generic Error']
+  [20000, 'User Module Generic Error'],
+  [20001, 'The user does not exist or password is incorrect'],
+  [20002, 'The system is busy or code is invalid, please try again later']
 ])
 
 export default CODE

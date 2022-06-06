@@ -1,25 +1,43 @@
 import { IUserModel } from '../model/user'
 import * as userRepo from '../repository/user'
 
-export const createUser = async (payload: IUserModel): Promise<IUserModel> => {
-  return userRepo.create(payload)
+export const createUser = async (user: IUserModel): Promise<IUserModel> => {
+  return userRepo.create(user)
 }
 
 export const updateUser = async (
   id: number,
-  payload: IUserModel
+  user: IUserModel
 ): Promise<IUserModel> => {
-  return userRepo.update(id, payload)
+  const oldUser = await userRepo.getById(id)
+  if (!oldUser) {
+    global.UnifyResponse.notFoundException(10020)
+  }
+  return await oldUser!.update(user)
 }
 
-export const getUserById = (id: number): Promise<IUserModel> => {
-  return userRepo.getById(id)
+export const getUserById = async (id: number): Promise<IUserModel> => {
+  const user = await userRepo.getById(id)
+  if (!user) {
+    global.UnifyResponse.notFoundException(10020)
+  }
+  return user!
 }
 
-export const deleteById = (id: number): Promise<boolean> => {
-  return userRepo.deleteById(id)
+export const getUserByUsername = async (
+  username: string
+): Promise<IUserModel> => {
+  const user = await userRepo.getByUsername(username)
+  if (!user) {
+    global.UnifyResponse.notFoundException(10020)
+  }
+  return user!
 }
 
-export const getAll = (): Promise<IUserModel[]> => {
-  return userRepo.getAll()
+export const deleteById = async (id: number): Promise<boolean> => {
+  return await userRepo.deleteById(id)
+}
+
+export const getAll = async (): Promise<IUserModel[]> => {
+  return await userRepo.getAll()
 }

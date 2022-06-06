@@ -2,36 +2,26 @@ import { User } from '../model'
 import { IUserModel } from '../model/user'
 
 export const create = async (user: IUserModel) => {
-  return User.create(user)
-}
-
-export const update = async (id: number, payload: IUserModel) => {
-  const user = await User.findByPk(id)
-
-  if (!user) {
-    global.UnifyResponse.notFoundException(10020)
-  }
-
-  return user!.update(payload)
+  return await User.create(user)
 }
 
 export const getById = async (id: number) => {
-  const user = await User.findByPk(id)
+  return await User.findByPk(id)
+}
 
-  if (!user) {
-    global.UnifyResponse.notFoundException(10020)
-  }
-  return user!
+export const getByOpenid = async (openid: string) => {
+  return await User.findOne({ where: { openid } })
+}
+
+export const getByUsername = async (username: string) => {
+  return await User.findOne({ where: { username } })
 }
 
 export const deleteById = async (id: number) => {
-  const numDeleted = await User.destroy({
-    where: { id }
-  })
-
+  const numDeleted = await User.destroy({ where: { id } })
   return !!numDeleted
 }
 
 export const getAll = async () => {
-  return User.findAll()
+  return await User.findAll()
 }

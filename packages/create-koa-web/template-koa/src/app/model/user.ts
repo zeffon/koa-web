@@ -5,6 +5,7 @@ export interface IUserModel {
   id: number
   username: string
   password: string
+  openid: string
 }
 
 export type CUserModel = Omit<IUserModel, 'id'>
@@ -16,6 +17,7 @@ export default class User
   public id!: number
   public username!: string
   public password!: string
+  public openid!: string
 }
 
 User.init(
@@ -27,11 +29,15 @@ User.init(
     },
     username: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
+    },
+    openid: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   },
   {

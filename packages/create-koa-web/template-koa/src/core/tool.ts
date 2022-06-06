@@ -67,5 +67,5 @@ export function findMembers(instance: any, options: MembersOptions) {
 }
 
 export function isInvalid(value: unknown) {
-  return value === undefined || value === null
+  return value === undefined || value === null || value === ''
 }

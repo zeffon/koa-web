@@ -15,18 +15,18 @@ import { generateToken } from '~/core/auth'
 import RedisClient from '~/core/redis'
 import CacheClient from '~/core/cache'
 
-const tag = tags(['user'])
+const tag = tags(['example'])
 
 const userSchema = {
   username: { type: 'string', required: true },
   password: { type: 'string', required: true }
 }
 
-@prefix('/user')
-export default class UserController {
+@prefix('/example')
+export default class ExampleController {
   @request('get', '/{id}/id')
   @summary('Get user by id')
-  @description('example: /user/1/id')
+  @description('example: /example/1/id')
   @tag
   @path({
     id: { type: 'number', required: true, default: null, description: 'id' }
@@ -39,7 +39,7 @@ export default class UserController {
 
   @request('post', '/register')
   @summary('user register')
-  @description('example: /user/register')
+  @description('example: /example/register')
   @tag
   @body(userSchema)
   async register(ctx: Context) {
@@ -49,7 +49,7 @@ export default class UserController {
 
   @request('post', '/login')
   @summary('user login')
-  @description('example: /user/login')
+  @description('example: /example/login')
   @tag
   @body(userSchema)
   async login(ctx: Context) {
@@ -60,7 +60,7 @@ export default class UserController {
 
   @request('delete', '')
   @summary('delete user')
-  @description('example: /user?id=1')
+  @description('example: /example?id=1')
   @tag
   @query({
     id: { type: 'number', required: true, default: null, description: 'id' }
@@ -74,7 +74,7 @@ export default class UserController {
 
   @request('get', '/{id}/redis')
   @summary('get redis')
-  @description('example: /user/1/redis')
+  @description('example: /example/1/redis')
   @tag
   @path({
     id: { type: 'number', required: true, default: null, description: 'id' }
@@ -88,7 +88,7 @@ export default class UserController {
 
   @request('post', '/{id}/redis')
   @summary('set redis')
-  @description('example: /user/1/redis')
+  @description('example: /example/1/redis')
   @tag
   @path({
     id: { type: 'number', required: true, default: null, description: 'id' }
@@ -102,7 +102,7 @@ export default class UserController {
 
   @request('get', '/{id}/cache')
   @summary('get cache')
-  @description('example: /user/1/cache')
+  @description('example: /example/1/cache')
   @tag
   @path({
     id: { type: 'number', required: true, default: null, description: 'id' }
@@ -116,7 +116,7 @@ export default class UserController {
 
   @request('post', '/{id}/cache')
   @summary('set cache')
-  @description('example: /user/1/cache')
+  @description('example: /example/1/cache')
   @tag
   @path({
     id: { type: 'number', required: true, default: null, description: 'id' }
@@ -130,7 +130,7 @@ export default class UserController {
 
   @request('delete', '/{id}/cache')
   @summary('set cache1')
-  @description('example: /user/1/cache')
+  @description('example: /example/1/cache')
   @tag
   @path({
     id: { type: 'number', required: true, default: null, description: 'id' }
