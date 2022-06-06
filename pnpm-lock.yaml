@@ -70,6 +70,7 @@ importers:
       '@types/redis': 2.8.28
       '@types/supertest': ^2.0.11
       '@types/validator': ^13.7.1
+      axios: ^0.27.2
       jest: ^27.5.1
       jsonwebtoken: ^8.5.1
       koa: ^2.13.4
@@ -95,6 +96,7 @@ importers:
       validator: ^13.7.0
     dependencies:
       '@types/node-cache': 4.2.5
+      axios: 0.27.2
       jsonwebtoken: 8.5.1
       koa: 2.13.4
       koa-body: 4.2.0
@@ -1855,7 +1857,7 @@ packages:
     dev: false
 
   /asynckit/0.4.0:
-    resolution: {integrity: sha1-x57Zf380y48robyXkLzDZkdLS3k=}
+    resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
   /autoprefixer/10.4.7_postcss@8.4.13:
     resolution: {integrity: sha512-ypHju4Y2Oav95SipEcCcI5J7CGPuvz8oat7sUtYj3ClK44bldfvtvcxK6IEK++7rqB7YchDGzweZIBG+SD0ZAA==}
@@ -2688,7 +2690,7 @@ packages:
     dev: true
 
   /delayed-stream/1.0.0:
-    resolution: {integrity: sha1-3zrhmayt+31ECqrgsp4icrJOxhk=}
+    resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
 
   /delegates/1.0.0:
