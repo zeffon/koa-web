@@ -84,7 +84,7 @@ cd koa-web-project
 
 npm install
 
-npm run start
+npm run dev
 
 open http://127.0.0.1:3000/koa-web/v1/doc.html
 ```

@@ -45,7 +45,7 @@ $ cd my-koa-web
 
 $ npm install
 
-$ npm run start
+$ npm run dev
 
 # please open in: http://127.0.0.1:3000/koa-web/v1/doc.html
 ```

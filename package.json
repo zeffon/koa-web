@@ -16,7 +16,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "format": "prettier --write .",
-    "start": "nodemon",
+    "dev": "nodemon",
     "prod": "set NODE_ENV=production&&nodemon",
     "test": "set NODE_ENV=test&&jest --coverage --detectOpenHandles --forceExit",
     "cov": "jest --coverage --detectOpenHandles --forceExit",
