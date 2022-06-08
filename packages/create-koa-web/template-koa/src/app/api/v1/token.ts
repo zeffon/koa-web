@@ -47,13 +47,4 @@ export default class TokenController {
     }
     ctx.body = { token: token }
   }
-
-  @request('get', '/me')
-  @summary('Get user')
-  @description('example: /user/me')
-  @tag
-  @security([{ api_key: [] }])
-  async me(ctx: Context) {
-    const id = ctx.params.id
-  }
 }
