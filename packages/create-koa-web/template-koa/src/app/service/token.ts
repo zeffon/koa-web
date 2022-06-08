@@ -13,7 +13,7 @@ export async function userLogin(userData: typeof tokenSchema) {
   if (user.password !== password) {
     global.UnifyResponse.parameterException(20001)
   }
-  return generateToken(user.id.toString())
+  return generateToken(user.id)
 }
 
 export async function code2Session(userData: typeof tokenSchema) {
@@ -35,8 +35,8 @@ async function openid2User(openid: string) {
   }
   const user = await getByOpenid(openid)
   if (user) {
-    return generateToken(user.id.toString())
+    return generateToken(user.id)
   }
   const newUser = await createUser({ openid } as User)
-  return generateToken(newUser.id.toString())
+  return generateToken(newUser.id)
 }

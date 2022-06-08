@@ -1,5 +1,5 @@
 import Koa from 'koa'
-import jwt from 'jsonwebtoken'
+import jwt, { JwtPayload } from 'jsonwebtoken'
 import CONFIG from '~/config'
 
 let unlessPaths = [
@@ -18,8 +18,8 @@ export default async function auth(ctx: Koa.Context, next: any) {
   await next()
 }
 
-export function generateToken(payload: string) {
-  const token = jwt.sign({ payload }, CONFIG.SECRET.JWT_KEY, {
+export function generateToken(userId: number) {
+  const token = jwt.sign({ userId }, CONFIG.SECRET.JWT_KEY, {
     expiresIn: CONFIG.SECRET.EXPIRES_IN
   })
   return token
