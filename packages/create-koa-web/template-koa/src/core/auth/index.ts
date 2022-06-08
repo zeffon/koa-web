@@ -25,6 +25,12 @@ export function generateToken(userId: number) {
   return token
 }
 
+export function decodeToken(token: string) {
+  const { payload } = jwt.decode(token, { complete: true })! as JwtPayload
+  const userId = payload.userId
+  return userId
+}
+
 export function verifyToken(token: string) {
   try {
     jwt.verify(token, CONFIG.SECRET.JWT_KEY, {
