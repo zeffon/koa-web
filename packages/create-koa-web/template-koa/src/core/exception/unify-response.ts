@@ -10,8 +10,6 @@ import {
   UpdateSuccess
 } from './http-exception'
 
-const SUCCESS_CODE = 0
-
 /**
  * Unify Response
  */
@@ -21,7 +19,7 @@ export class UnifyResponse {
    * @param code errorCode
    * @param message tip message
    */
-  getSuccess({ code = SUCCESS_CODE, message = '' }) {
+  getSuccess({ code = global.SUCCESS_CODE, message = '' }) {
     throw new GetSuccess(code, message)
   }
 
@@ -30,7 +28,7 @@ export class UnifyResponse {
    * @param code errorCode
    * @param message tip message
    */
-  createSuccess({ code = SUCCESS_CODE, message = '' }) {
+  createSuccess({ code = global.SUCCESS_CODE, message = '' }) {
     throw new CreateSuccess(code, message)
   }
 
@@ -39,7 +37,7 @@ export class UnifyResponse {
    * @param code errorCode
    * @param message tip message
    */
-  updateSuccess({ code = SUCCESS_CODE, message = '' }) {
+  updateSuccess({ code = global.SUCCESS_CODE, message = '' }) {
     throw new UpdateSuccess(code, message)
   }
 
@@ -48,7 +46,7 @@ export class UnifyResponse {
    * @param code errorCode
    * @param message tip message
    */
-  deleteSuccess({ code = SUCCESS_CODE, message = '' }) {
+  deleteSuccess({ code = global.SUCCESS_CODE, message = '' }) {
     throw new DeleteSuccess(code, message)
   }
 

@@ -4,6 +4,7 @@ class InitGlobal {
   constructor() {}
   init() {
     global.UnifyResponse = new UnifyResponse()
+    global.SUCCESS_CODE = 0
   }
 }
 
