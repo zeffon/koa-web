@@ -43,6 +43,7 @@ User.init(
   {
     tableName: 'user',
     sequelize: sequelizeClient.config(),
-    paranoid: true
+    paranoid: true,
+    underscored: true
   }
 )
