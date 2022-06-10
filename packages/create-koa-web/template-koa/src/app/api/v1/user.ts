@@ -17,18 +17,17 @@ import {
   createUser,
   updateUser
 } from '~/app/service/user'
-import { CreateUserValidator } from '~/app/valid/user'
+import { CreateUserValidator, PasswordValidator } from '~/app/valid/user'
 import { decodeToken } from '~/core/auth'
 
 const tag = tags(['user'])
 
-const createUserSchema = {
+const userSchema = {
   username: { type: 'string', required: true },
   password: { type: 'string', required: true }
 }
-const updateUserSchema = {
+const passwordSchema = {
   id: { type: 'number', required: true },
-  username: { type: 'string', required: true },
   password: { type: 'string', required: true }
 }
 @prefix('/user')
@@ -75,7 +74,7 @@ export default class TokenController {
   @description('example: /user')
   @tag
   @security([{ api_key: [] }])
-  @body(createUserSchema)
+  @body(userSchema)
   async create(ctx: Context) {
     const { parsed } = await new CreateUserValidator().validate(ctx)
     const user = parsed.body
@@ -88,9 +87,9 @@ export default class TokenController {
   @description('example: /user')
   @tag
   @security([{ api_key: [] }])
-  @body(updateUserSchema)
+  @body(passwordSchema)
   async update(ctx: Context) {
-    const { parsed } = await new CreateUserValidator().validate(ctx)
+    const { parsed } = await new PasswordValidator().validate(ctx)
     const user = parsed.body
     await updateUser(user)
     global.UnifyResponse.updateSuccess({ code: global.SUCCESS_CODE })

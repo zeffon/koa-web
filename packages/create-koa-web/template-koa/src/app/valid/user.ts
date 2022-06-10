@@ -58,9 +58,29 @@ export class CreateUserValidator extends LinValidator {
       })
     ]
     this.password = [
-      new Rule('isLength', 'Password has min 6 characters, max 32 characters', {
+      new Rule('isLength', 'Password has min 6 characters, max 20 characters', {
         min: 6,
-        max: 32
+        max: 20
+      }),
+      new Rule(
+        'matches',
+        'Password does not meet specifications',
+        '^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]'
+      )
+    ]
+  }
+}
+
+export class PasswordValidator extends LinValidator {
+  private id
+  private password
+  constructor() {
+    super()
+    this.id = [new Rule('isInt')]
+    this.password = [
+      new Rule('isLength', 'Password has min 6 characters, max 20 characters', {
+        min: 6,
+        max: 20
       }),
       new Rule(
         'matches',

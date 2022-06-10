@@ -14,10 +14,6 @@ export const updateUser = async (user: IUserModel): Promise<IUserModel> => {
   if (!oldUser) {
     global.UnifyResponse.notFoundException(10020)
   }
-  const hadUser = await userRepo.getByUsername(user.username)
-  if (hadUser) {
-    global.UnifyResponse.parameterException(20003)
-  }
   return await oldUser!.update(user)
 }
 
