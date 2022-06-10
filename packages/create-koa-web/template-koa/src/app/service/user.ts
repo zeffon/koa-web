@@ -2,16 +2,21 @@ import { IUserModel } from '../model/user'
 import * as userRepo from '../repository/user'
 
 export const createUser = async (user: IUserModel): Promise<IUserModel> => {
+  const hadUser = await userRepo.getByUsername(user.username)
+  if (hadUser) {
+    global.UnifyResponse.parameterException(20003)
+  }
   return userRepo.create(user)
 }
 
-export const updateUser = async (
-  id: number,
-  user: IUserModel
-): Promise<IUserModel> => {
-  const oldUser = await userRepo.getById(id)
+export const updateUser = async (user: IUserModel): Promise<IUserModel> => {
+  const oldUser = await userRepo.getById(user.id)
   if (!oldUser) {
     global.UnifyResponse.notFoundException(10020)
+  }
+  const hadUser = await userRepo.getByUsername(user.username)
+  if (hadUser) {
+    global.UnifyResponse.parameterException(20003)
   }
   return await oldUser!.update(user)
 }

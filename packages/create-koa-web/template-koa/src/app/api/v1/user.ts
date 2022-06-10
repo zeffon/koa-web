@@ -10,11 +10,27 @@ import {
   prefix,
   security
 } from 'koa-swagger-decorator'
-import { getUserById } from '~/app/service/user'
+import {
+  getUserById,
+  getAll,
+  deleteById,
+  createUser,
+  updateUser
+} from '~/app/service/user'
+import { CreateUserValidator } from '~/app/valid/user'
 import { decodeToken } from '~/core/auth'
 
 const tag = tags(['user'])
 
+const createUserSchema = {
+  username: { type: 'string', required: true },
+  password: { type: 'string', required: true }
+}
+const updateUserSchema = {
+  id: { type: 'number', required: true },
+  username: { type: 'string', required: true },
+  password: { type: 'string', required: true }
+}
 @prefix('/user')
 export default class TokenController {
   @request('get', '/me')
@@ -36,10 +52,11 @@ export default class TokenController {
   @tag
   @security([{ api_key: [] }])
   async list(ctx: Context) {
-    const id = ctx.params.id
+    const list = await getAll()
+    ctx.body = { list }
   }
 
-  @request('get', '/{id}')
+  @request('get', '/{id}/detail')
   @summary('Get user detail')
   @description('example: /user/1')
   @tag
@@ -48,7 +65,9 @@ export default class TokenController {
     id: { type: 'number', required: true, default: null, description: 'id' }
   })
   async detail(ctx: Context) {
-    const id = ctx.params.id
+    const userId = ctx.params.id
+    const user = await getUserById(userId)
+    ctx.body = { user }
   }
 
   @request('post', '')
@@ -56,8 +75,12 @@ export default class TokenController {
   @description('example: /user')
   @tag
   @security([{ api_key: [] }])
+  @body(createUserSchema)
   async create(ctx: Context) {
-    const id = ctx.params.id
+    const { parsed } = await new CreateUserValidator().validate(ctx)
+    const user = parsed.body
+    await createUser(user)
+    global.UnifyResponse.createSuccess({ code: global.SUCCESS_CODE })
   }
 
   @request('put', '')
@@ -65,16 +88,25 @@ export default class TokenController {
   @description('example: /user')
   @tag
   @security([{ api_key: [] }])
+  @body(updateUserSchema)
   async update(ctx: Context) {
-    const id = ctx.params.id
+    const { parsed } = await new CreateUserValidator().validate(ctx)
+    const user = parsed.body
+    await updateUser(user)
+    global.UnifyResponse.updateSuccess({ code: global.SUCCESS_CODE })
   }
 
-  @request('delete', '')
+  @request('delete', '/{id}')
   @summary('delete user')
   @description('example: /user')
   @tag
   @security([{ api_key: [] }])
+  @path({
+    id: { type: 'number', required: true, default: null, description: 'id' }
+  })
   async delete(ctx: Context) {
-    const id = ctx.params.id
+    const userId = ctx.params.id
+    await deleteById(userId)
+    global.UnifyResponse.deleteSuccess({ code: global.SUCCESS_CODE })
   }
 }
