@@ -71,6 +71,7 @@ importers:
       '@types/supertest': ^2.0.11
       '@types/validator': ^13.7.1
       axios: ^0.27.2
+      dayjs: ^1.11.3
       jest: ^27.5.1
       jsonwebtoken: ^8.5.1
       koa: ^2.13.4
@@ -97,6 +98,7 @@ importers:
     dependencies:
       '@types/node-cache': 4.2.5
       axios: 0.27.2
+      dayjs: 1.11.3
       jsonwebtoken: 8.5.1
       koa: 2.13.4
       koa-body: 4.2.0
@@ -2603,6 +2605,10 @@ packages:
 
   /dayjs/1.11.2:
     resolution: {integrity: sha512-F4LXf1OeU9hrSYRPTTj/6FbO4HTjPKXvEIC1P2kcnFurViINCVk3ZV0xAS3XVx9MkMsXbbqlK6hjseaYbgKEHw==}
+    dev: false
+
+  /dayjs/1.11.3:
+    resolution: {integrity: sha512-xxwlswWOlGhzgQ4TKzASQkUhqERI3egRNqgV4ScR8wlANA/A9tZ7miXa44vTTKEq5l7vWoL5G57bG3zA+Kow0A==}
     dev: false
 
   /debug/3.2.7:

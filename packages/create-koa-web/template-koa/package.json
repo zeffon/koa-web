@@ -16,6 +16,7 @@
   "dependencies": {
     "@types/node-cache": "^4.2.5",
     "axios": "^0.27.2",
+    "dayjs": "^1.11.3",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.4",
     "koa-body": "^4.2.0",
