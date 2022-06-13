@@ -1,4 +1,5 @@
 import { isArray, isPlainObject } from 'lodash'
+import dayjs from 'dayjs'
 
 /**
  * object to string
@@ -68,4 +69,8 @@ export function findMembers(instance: any, options: MembersOptions) {
 
 export function isInvalid(value: unknown) {
   return value === undefined || value === null || value === ''
+}
+
+export function format(date: Date, format = 'YYYY-MM-DD HH:mm:ss'): string {
+  return dayjs(date).format(format)
 }

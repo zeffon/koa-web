@@ -15,10 +15,11 @@ import {
   getAll,
   deleteById,
   createUser,
-  updateUser
+  updateUser,
+  curUser
 } from '~/app/service/user'
 import { CreateUserValidator, PasswordValidator } from '~/app/valid/user'
-import { decodeToken } from '~/core/auth'
+import { UserVO } from '~/app/vo/user'
 
 const tag = tags(['user'])
 
@@ -38,11 +39,8 @@ export default class TokenController {
   @tag
   @security([{ api_key: [] }])
   async me(ctx: Context) {
-    const bearerToken = ctx.header.authorization
-    const token = bearerToken!.split(' ')[1]
-    const userId = decodeToken(token!)
-    const user = await getUserById(userId)
-    ctx.body = user
+    const user = await curUser(ctx)
+    ctx.body = new UserVO(user)
   }
 
   @request('get', '/list')
@@ -66,7 +64,7 @@ export default class TokenController {
   async detail(ctx: Context) {
     const userId = ctx.params.id
     const user = await getUserById(userId)
-    ctx.body = { user }
+    ctx.body = new UserVO(user)
   }
 
   @request('post', '')
