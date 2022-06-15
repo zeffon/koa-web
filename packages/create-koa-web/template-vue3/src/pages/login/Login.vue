@@ -3,30 +3,30 @@
     class="w-full h-screen flex flex-col items-center justify-center bg-blue-50"
   >
     <h1 class="font-bold text-3xl -mt-32 mb-8 tracking-wider">欢迎登录</h1>
-    <el-form class="w-96 bg-white px-8 py-10">
-      <el-form-item>
-        <el-input
+    <a-form class="w-96 bg-white px-8 py-10">
+      <a-form-item>
+        <a-input
           v-model.trim="username"
           placeholder="请输入用户名"
           class="h-10"
         />
-      </el-form-item>
-      <el-form-item>
-        <el-input
+      </a-form-item>
+      <a-form-item>
+        <a-input
           v-model.trim="password"
           placeholder="请输入密码"
           class="h-10"
         />
-      </el-form-item>
-      <el-button
+      </a-form-item>
+      <a-button
         @click="userLogin"
-        v-loading="loading"
+        :loading="loading"
         type="primary"
         size="large"
         class="w-full"
-        >登 录</el-button
+        >登 录</a-button
       >
-    </el-form>
+    </a-form>
   </div>
 </template>
 
