@@ -1,26 +1,9 @@
 <template>
-  <el-row>
-    <el-col>
-      <el-result
-        icon="warning"
-        title="页面未找到"
-        sub-title="请检查路径后重试或返回首页"
-      >
-        <template #extra>
-          <el-button type="primary" @click="goBack">Back</el-button>
-        </template>
-      </el-result>
-    </el-col>
-  </el-row>
+  <div
+    class="w-full h-screen flex flex-col items-center justify-center text-4xl bg-blue-50"
+  >
+    404页面找不到
+  </div>
 </template>
 
-<script setup lang="ts">
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
-const goBack = () => {
-  router.push({
-    name: 'home'
-  })
-}
-</script>
+<script setup lang="ts"></script>

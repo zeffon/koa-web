@@ -5,6 +5,11 @@ import { RouteRecordRaw } from 'vue-router'
  */
 const asyncRoutes: Array<RouteRecordRaw> = [
   {
+    path: '/',
+    name: 'index',
+    redirect: '/home'
+  },
+  {
     path: '/home',
     name: 'home',
     component: () => import('~/pages/home/Home.vue')
