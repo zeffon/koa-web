@@ -3,6 +3,7 @@ import * as userRepo from '../repository/user'
 import User from '../model/user'
 import { Context } from 'koa'
 import { decodeToken } from '~/core/auth'
+import { Paging } from '../vo/paging'
 
 export const createUser = async (user: IUserModel): Promise<User> => {
   const hadUser = await userRepo.getByUsername(user.username)
@@ -40,8 +41,22 @@ export const deleteById = async (id: number): Promise<boolean> => {
   return await userRepo.deleteById(id)
 }
 
-export const getAll = async (): Promise<User[]> => {
-  return await userRepo.getAll()
+export const getList = async (): Promise<User[]> => {
+  return await userRepo.list()
+}
+
+export const getPage = async (
+  page: number,
+  count: number
+): Promise<Paging<User>> => {
+  const userPage = await userRepo.page(page, count)
+  const userTotal = (await getList()).length
+  return {
+    total: userTotal,
+    items: userPage,
+    page,
+    count
+  }
 }
 
 export const curUser = async (ctx: Context): Promise<User> => {

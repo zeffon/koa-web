@@ -22,6 +22,11 @@ export const deleteById = async (id: number) => {
   return !!numDeleted
 }
 
-export const getAll = async () => {
+export const list = async () => {
   return await User.findAll()
+}
+
+export const page = async (page: number, limit: number) => {
+  const offset = (page - 1) * limit
+  return await User.findAll({ offset, limit })
 }

@@ -10,9 +10,12 @@ import {
   prefix,
   security
 } from 'koa-swagger-decorator'
+import { pagingSchema } from '~/app/dto/base'
+import { passwordSchema, userSchema } from '~/app/dto/user'
 import {
   getUserById,
-  getAll,
+  getList,
+  getPage,
   deleteById,
   createUser,
   updateUser,
@@ -23,14 +26,6 @@ import { UserVO } from '~/app/vo/user'
 
 const tag = tags(['user'])
 
-const userSchema = {
-  username: { type: 'string', required: true },
-  password: { type: 'string', required: true }
-}
-const passwordSchema = {
-  id: { type: 'number', required: true },
-  password: { type: 'string', required: true }
-}
 @prefix('/user')
 export default class TokenController {
   @request('get', '/me')
@@ -40,6 +35,7 @@ export default class TokenController {
   @security([{ api_key: [] }])
   async me(ctx: Context) {
     const user = await curUser(ctx)
+    console.log(user)
     ctx.body = new UserVO(user)
   }
 
@@ -49,8 +45,21 @@ export default class TokenController {
   @tag
   @security([{ api_key: [] }])
   async list(ctx: Context) {
-    const list = await getAll()
+    const list = await getList()
     ctx.body = { list }
+  }
+
+  @request('get', '/page')
+  @summary('Get user page')
+  @description('example: /user/page')
+  @tag
+  @security([{ api_key: [] }])
+  @path(pagingSchema)
+  async page(ctx: Context) {
+    const page = ctx.params.page as number
+    const count = ctx.params.count as number
+    const paging = await getPage(page, count)
+    ctx.body = { paging }
   }
 
   @request('get', '/{id}/detail')
