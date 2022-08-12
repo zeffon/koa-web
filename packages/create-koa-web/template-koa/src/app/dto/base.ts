@@ -1,4 +1,4 @@
 export const pagingSchema = {
-  page: { type: 'number', required: true },
-  count: { type: 'number', required: true }
+  page: { type: 'number', required: false, default: 1 },
+  count: { type: 'number', required: false, default: 20 }
 }

@@ -54,10 +54,10 @@ export default class TokenController {
   @description('example: /user/page')
   @tag
   @security([{ api_key: [] }])
-  @path(pagingSchema)
+  @query(pagingSchema)
   async page(ctx: Context) {
-    const page = ctx.params.page as number
-    const count = ctx.params.count as number
+    const page = ctx.query.page as any
+    const count = ctx.query.count as any
     const paging = await getPage(page, count)
     ctx.body = { paging }
   }
