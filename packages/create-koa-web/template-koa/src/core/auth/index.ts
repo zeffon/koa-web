@@ -1,22 +1,6 @@
-import Koa from 'koa'
 import jwt, { JwtPayload } from 'jsonwebtoken'
+import { Context } from 'koa'
 import CONFIG from '~/config'
-
-let unlessPaths = [
-  /^\/koa-web\/v1\/json\.html[\/#\?]?$/i,
-  /^\/koa-web\/v1\/doc\.html[\/#\?]?$/i,
-  /^\/koa-web\/v1\/user\/login[\/#\?]?$/i,
-  /^\/koa-web\/v1\/user\/register[\/#\?]?$/i,
-  /^\/koa-web\/v1\/token[\/#\?]?$/i,
-  /^\/koa-web\/v1\/token\/valid[\/#\?]?$/i
-]
-
-export default async function auth(ctx: Koa.Context, next: any) {
-  if (!_isUnless(ctx.path)) {
-    _verifyBearerToken(ctx.header.authorization)
-  }
-  await next()
-}
 
 export function generateToken(userId: number) {
   const token = jwt.sign({ userId }, CONFIG.SECRET.JWT_KEY, {
@@ -57,6 +41,24 @@ function _verifyBearerToken(bearerToken: string | undefined) {
   verifyToken(tokens[1])
 }
 
-function _isUnless(path: string) {
-  return unlessPaths.some((item) => item.test(path))
+const auth = (
+  target: any,
+  property: string,
+  descriptor: PropertyDescriptor
+) => {
+  const oldValue = descriptor.value
+  descriptor.value = function () {
+    const ctx = arguments[0]
+    const authorization = ctx.header.authorization
+    _verifyBearerToken(authorization)
+    return oldValue.apply(null, arguments)
+  }
+  return descriptor
+}
+
+export default auth
+
+export const authMiddleware = async (ctx: Context, next: any) => {
+  _verifyBearerToken(ctx.header.authorization)
+  await next()
 }

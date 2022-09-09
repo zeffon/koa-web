@@ -23,6 +23,7 @@ import {
 } from '~/app/service/user'
 import { CreateUserValidator, PasswordValidator } from '~/app/valid/user'
 import { UserVO } from '~/app/vo/user'
+import auth from '~/core/auth'
 
 const tag = tags(['user'])
 
@@ -33,6 +34,7 @@ export default class TokenController {
   @description('example: /user/me')
   @tag
   @security([{ api_key: [] }])
+  @auth
   async me(ctx: Context) {
     const user = await curUser(ctx)
     console.log(user)
@@ -44,6 +46,7 @@ export default class TokenController {
   @description('example: /user/list')
   @tag
   @security([{ api_key: [] }])
+  @auth
   async list(ctx: Context) {
     const list = await getList()
     ctx.body = { list }
@@ -55,6 +58,7 @@ export default class TokenController {
   @tag
   @security([{ api_key: [] }])
   @query(pagingSchema)
+  @auth
   async page(ctx: Context) {
     const page = ctx.query.page as any
     const count = ctx.query.count as any
@@ -64,12 +68,13 @@ export default class TokenController {
 
   @request('get', '/{id}/detail')
   @summary('Get user detail')
-  @description('example: /user/1')
+  @description('example: /user/1/detail')
   @tag
   @security([{ api_key: [] }])
   @path({
     id: { type: 'number', required: true, default: null, description: 'id' }
   })
+  @auth
   async detail(ctx: Context) {
     const userId = ctx.params.id
     const user = await getUserById(userId)
@@ -82,6 +87,7 @@ export default class TokenController {
   @tag
   @security([{ api_key: [] }])
   @body(userSchema)
+  @auth
   async create(ctx: Context) {
     const { parsed } = await new CreateUserValidator().validate(ctx)
     const user = parsed.body
@@ -95,6 +101,7 @@ export default class TokenController {
   @tag
   @security([{ api_key: [] }])
   @body(passwordSchema)
+  @auth
   async update(ctx: Context) {
     const { parsed } = await new PasswordValidator().validate(ctx)
     const user = parsed.body
@@ -104,12 +111,13 @@ export default class TokenController {
 
   @request('delete', '/{id}')
   @summary('delete user')
-  @description('example: /user')
+  @description('example: /user/1')
   @tag
   @security([{ api_key: [] }])
   @path({
     id: { type: 'number', required: true, default: null, description: 'id' }
   })
+  @auth
   async delete(ctx: Context) {
     const userId = ctx.params.id
     await deleteById(userId)
