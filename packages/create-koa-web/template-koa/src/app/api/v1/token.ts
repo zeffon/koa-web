@@ -13,7 +13,6 @@ import {
 import { code2Session, userLogin } from '~/app/service/token'
 import { LOGIN_TYPE } from '~/app/shared/enum'
 import { TokenValidator } from '~/app/valid/token'
-import { generateToken } from '~/core/auth'
 
 const tag = tags(['token'])
 
