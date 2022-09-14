@@ -1,6 +1,9 @@
 import jwt, { JwtPayload } from 'jsonwebtoken'
 import { Context } from 'koa'
 import CONFIG from '~/config'
+import cacheClient from '../cache'
+
+const CUR_REQUEST_METHOD = 'CUR_REQUEST_METHOD'
 
 export function generateToken(userId: number) {
   const token = jwt.sign({ userId }, CONFIG.SECRET.JWT_KEY, {
@@ -41,24 +44,49 @@ function _verifyBearerToken(bearerToken: string | undefined) {
   verifyToken(tokens[1])
 }
 
-const auth = (
-  target: any,
-  property: string,
-  descriptor: PropertyDescriptor
-) => {
-  const oldValue = descriptor.value
-  descriptor.value = function () {
-    const ctx = arguments[0]
-    const authorization = ctx.header.authorization
-    _verifyBearerToken(authorization)
-    return oldValue.apply(null, arguments)
+export const authMiddleware =
+  (target: any) => async (ctx: Context, next: any) => {
+    await next()
+    const methods = Object.getOwnPropertyNames(target.prototype)
+    const methodNames: string[] = []
+    methods.forEach((name) => {
+      const key = `${target.name}-${name}`
+      methodNames.push(key)
+    })
+    const curMethod =
+      cacheClient.get<{ key: string; disabled: boolean }>(CUR_REQUEST_METHOD)
+    if (
+      !curMethod ||
+      (methodNames.includes(curMethod.key) && curMethod.disabled)
+    ) {
+      _verifyBearerToken(ctx.header.authorization)
+    }
+    cacheClient.delete(CUR_REQUEST_METHOD)
   }
-  return descriptor
+
+export const authAll = (target: any) => {
+  const middlewares = [authMiddleware(target)]
+  target.middlewares = middlewares
 }
+
+const auth =
+  (disabled = true) =>
+  (target: any, property: string, descriptor: PropertyDescriptor) => {
+    const oldValue = descriptor.value
+    descriptor.value = function () {
+      if (!target.prototype && target.constructor) {
+        target = target.constructor
+      }
+      const key = `${target.name}-${property}`
+      cacheClient.set(CUR_REQUEST_METHOD, { key, disabled })
+      if (disabled) {
+        const ctx = arguments[0]
+        const authorization = ctx.header.authorization
+        _verifyBearerToken(authorization)
+      }
+      return oldValue.apply(null, arguments)
+    }
+    return descriptor
+  }
 
 export default auth
-
-export const authMiddleware = async (ctx: Context, next: any) => {
-  _verifyBearerToken(ctx.header.authorization)
-  await next()
-}
