@@ -1,4 +1,4 @@
-import Redis from 'redis'
+import { createClient, RedisClientType } from 'redis'
 import CONFIG from '~/config'
 import { jsonToObject, objectToJson } from '../tool'
 
@@ -6,19 +6,22 @@ const REDIS = CONFIG.REDIS
 
 class RedisClient {
   private static _instance: RedisClient
-  private redisClient: Redis.RedisClient | null = null
+  private redisClient: RedisClientType | null = null
 
   private constructor() {
     if (REDIS.ENABLED) {
-      const redisClient = Redis.createClient(REDIS.PORT, REDIS.HOST)
-      redisClient.auth(REDIS.PASSWORD, () => {
-        console.log('RedisClient has been login successfully')
+      const redisClient: RedisClientType = createClient({
+        url: `redis[${REDIS.DB}]://${REDIS.USER}:${REDIS.PASSWORD}@${REDIS.HOST}:${REDIS.PORT}`,
       })
-      redisClient.on('error', (err) => {
-        redisClient.quit()
-        console.log(err.message)
-      })
-      this.redisClient = redisClient
+      redisClient
+        .connect()
+        .then(() => {
+          this.redisClient = redisClient
+        })
+        .catch((err) => {
+          console.log('Redis Client Error', err)
+          redisClient.quit()
+        })
     }
   }
 
@@ -34,16 +37,13 @@ class RedisClient {
    * @param key string
    * @returns
    */
-  public get(key: string) {
+  public get = async (key: string) => {
     this.valid()
-    if (!key) return
-    return new Promise((resolve, reject) => {
-      this.valid()
-      this.redisClient!.get(key, (err: any, value: any) => {
-        if (err) reject(err)
-        else resolve(jsonToObject(value))
-      })
-    })
+    const result = await this.redisClient!.get(key)
+    if (result) {
+      return JSON.parse(result)
+    }
+    return result
   }
 
   /**
@@ -53,23 +53,16 @@ class RedisClient {
    * @param duration expire time (seconds)
    * @returns
    */
-  public set(key: string, value: any, duration?: number) {
+  public set = async <T>(key: string, value: T, duration?: number) => {
     this.valid()
-    if (!key) return
-    return new Promise((resolve, reject) => {
-      let newValue = objectToJson(value)
-      if (duration) {
-        this.redisClient!.set(key, newValue, 'EX', duration, (err: any) => {
-          if (err) reject(err)
-          else resolve(null)
-        })
-      } else {
-        this.redisClient!.set(key, newValue, (err: any) => {
-          if (err) reject(err)
-          else resolve(null)
-        })
-      }
-    })
+    if (duration) {
+      await this.redisClient!.multi()
+        .set(key, JSON.stringify(value))
+        .expire(key, duration)
+        .exec()
+      return ''
+    }
+    return await this.redisClient!.set(key, JSON.stringify(value))
   }
 
   /**
@@ -77,19 +70,9 @@ class RedisClient {
    * @param key string
    * @returns
    */
-  public delete(key: string) {
+  public delete = async (key: string) => {
     this.valid()
-    if (!key) return
-    return new Promise((resolve, reject) => {
-      try {
-        this.redisClient!.del(key, (err: any) => {
-          if (err) reject(err)
-          else resolve(null)
-        })
-      } catch (e) {
-        resolve(null)
-      }
-    })
+    return await this.redisClient!.del(key)
   }
 
   private valid() {
