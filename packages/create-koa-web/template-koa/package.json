@@ -10,6 +10,7 @@
     "format": "prettier --write .",
     "dev": "nodemon",
     "prod": "set NODE_ENV=production&&nodemon",
+    "cov": "jest --coverage --detectOpenHandles --forceExit",
     "build": "tsc && tsc-alias"
   },
   "dependencies": {
