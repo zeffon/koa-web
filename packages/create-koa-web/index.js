@@ -13,7 +13,7 @@ const { red, reset } = require('kolorist')
 const cwd = process.cwd()
 
 const renameFiles = {
-  _gitignore: '.gitignore'
+  _gitignore: '.gitignore',
 }
 
 async function init() {
@@ -32,7 +32,7 @@ async function init() {
           message: reset('Project name:'),
           initial: defaultProjectName,
           onState: (state) =>
-            (targetDir = state.value.trim() || defaultProjectName)
+            (targetDir = state.value.trim() || defaultProjectName),
         },
         {
           type: () =>
@@ -42,7 +42,7 @@ async function init() {
             (targetDir === '.'
               ? 'Current directory'
               : `Target directory "${targetDir}"`) +
-            ` is not empty. Remove existing files and continue?`
+            ` is not empty. Remove existing files and continue?`,
         },
         {
           type: (_, { overwrite } = {}) => {
@@ -51,7 +51,7 @@ async function init() {
             }
             return null
           },
-          name: 'overwriteChecker'
+          name: 'overwriteChecker',
         },
         {
           type: () => (isValidPackageName(targetDir) ? null : 'text'),
@@ -59,14 +59,14 @@ async function init() {
           message: reset('Package name:'),
           initial: () => toValidPackageName(targetDir),
           validate: (dir) =>
-            isValidPackageName(dir) || 'Invalid package.json name'
-        }
+            isValidPackageName(dir) || 'Invalid package.json name',
+        },
       ],
       {
         onCancel: () => {
           throw new Error(red('✖') + ' Operation cancelled')
-        }
-      }
+        },
+      },
     )
   } catch (cancelled) {
     console.log(cancelled.message)
@@ -143,7 +143,7 @@ function copy(src, dest) {
 
 function isValidPackageName(projectName) {
   return /^(?:@[a-z0-9-*~][a-z0-9-*._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/.test(
-    projectName
+    projectName,
   )
 }
 
@@ -195,7 +195,7 @@ function pkgFromUserAgent(userAgent) {
   const pkgSpecArr = pkgSpec.split('/')
   return {
     name: pkgSpecArr[0],
-    version: pkgSpecArr[1]
+    version: pkgSpecArr[1],
   }
 }
 

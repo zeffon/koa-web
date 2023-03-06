@@ -46,14 +46,14 @@ export function getPackageInfo(pkgName: string) {
     pkgName,
     pkgDir,
     pkgPath,
-    currentVersion
+    currentVersion,
   }
 }
 
 export async function run(
   bin: string,
   args: string[],
-  opts: ExecaOptions<string> = {}
+  opts: ExecaOptions<string> = {},
 ) {
   return execa(bin, args, { stdio: 'inherit', ...opts })
 }
@@ -61,11 +61,11 @@ export async function run(
 export async function dryRun(
   bin: string,
   args: string[],
-  opts?: ExecaOptions<string>
+  opts?: ExecaOptions<string>,
 ) {
   return console.log(
     colors.blue(`[dryrun] ${bin} ${args.join(' ')}`),
-    opts || ''
+    opts || '',
   )
 }
 
@@ -84,34 +84,34 @@ export function getVersionChoices(currentVersion: string) {
   const versionChoices = [
     {
       title: 'next',
-      value: inc(currentBeta ? 'prerelease' : 'patch')
+      value: inc(currentBeta ? 'prerelease' : 'patch'),
     },
     ...(currentBeta
       ? [
           {
             title: 'stable',
-            value: inc('patch')
-          }
+            value: inc('patch'),
+          },
         ]
       : [
           {
             title: 'beta-minor',
-            value: inc('preminor')
+            value: inc('preminor'),
           },
           {
             title: 'beta-major',
-            value: inc('premajor')
+            value: inc('premajor'),
           },
           {
             title: 'minor',
-            value: inc('minor')
+            value: inc('minor'),
           },
           {
             title: 'major',
-            value: inc('major')
-          }
+            value: inc('major'),
+          },
         ]),
-    { value: 'custom', title: 'custom' }
+    { value: 'custom', title: 'custom' },
   ].map((i) => {
     i.title = `${i.title} (${i.value})`
     return i
@@ -128,7 +128,7 @@ export function updateVersion(pkgPath: string, version: string): void {
 
 export async function publishPackage(
   pkdDir: string,
-  tag?: string
+  tag?: string,
 ): Promise<void> {
   const publicArgs = ['publish', '--access', 'public']
   if (tag) {
@@ -136,7 +136,7 @@ export async function publishPackage(
   }
   await runIfNotDry('npm', publicArgs, {
     stdio: 'pipe',
-    cwd: pkdDir
+    cwd: pkdDir,
   })
 }
 
@@ -155,14 +155,14 @@ export async function logRecentCommits(pkgName: string) {
   const tag = await getLatestTag(pkgName)
   if (!tag) return
   const sha = await run('git', ['rev-list', '-n', '1', tag], {
-    stdio: 'pipe'
+    stdio: 'pipe',
   }).then((res) => res.stdout.trim())
   console.log(
     colors.bold(
       `\n${colors.blue(`i`)} Commits of ${colors.green(
-        pkgName
-      )} since ${colors.green(tag)} ${colors.gray(`(${sha.slice(0, 5)})`)}`
-    )
+        pkgName,
+      )} since ${colors.green(tag)} ${colors.gray(`(${sha.slice(0, 5)})`)}`,
+    ),
   )
   await run(
     'git',
@@ -172,9 +172,9 @@ export async function logRecentCommits(pkgName: string) {
       `${sha}..HEAD`,
       '--oneline',
       '--',
-      `packages/${pkgName}`
+      `packages/${pkgName}`,
     ],
-    { stdio: 'inherit' }
+    { stdio: 'inherit' },
   )
   console.log()
 }

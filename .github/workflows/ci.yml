@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: Install and Build
         run: |
@@ -31,10 +31,10 @@ jobs:
         uses: easingthemes/ssh-deploy@v2.1.5
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          ARGS: '-rltgoDzvO --delete'
-          SOURCE: 'build/ '
+          ARGS: "-rltgoDzvO --delete"
+          SOURCE: "build/ "
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: ${{ secrets.REMOTE_TARGET }}
-          EXCLUDE: '/logs/, /node_modules/, /coverage/'
+          EXCLUDE: "/logs/, /node_modules/, /coverage/"

@@ -8,7 +8,7 @@ import {
   body,
   tags,
   prefix,
-  security
+  security,
 } from 'koa-swagger-decorator'
 import { pagingSchema } from '~/app/dto/base'
 import { passwordSchema, userSchema } from '~/app/dto/user'
@@ -19,9 +19,8 @@ import {
   deleteById,
   createUser,
   updateUser,
-  curUser
+  curUser,
 } from '~/app/service/user'
-import { CreateUserValidator, PasswordValidator } from '~/app/valid/user'
 import { UserVO } from '~/app/vo/user'
 import auth, { authAll } from '~/core/auth'
 
@@ -73,7 +72,7 @@ export default class TokenController {
   @tag
   @security([{ api_key: [] }])
   @path({
-    id: { type: 'number', required: true, default: null, description: 'id' }
+    id: { type: 'number', required: true, default: null, description: 'id' },
   })
   async detail(ctx: Context) {
     const userId = ctx.params.id
@@ -88,8 +87,7 @@ export default class TokenController {
   @security([{ api_key: [] }])
   @body(userSchema)
   async create(ctx: Context) {
-    const { parsed } = await new CreateUserValidator().validate(ctx)
-    const user = parsed.body
+    const user = ctx.validatedBody
     await createUser(user)
     global.UnifyResponse.createSuccess({ code: global.SUCCESS_CODE })
   }
@@ -101,8 +99,7 @@ export default class TokenController {
   @security([{ api_key: [] }])
   @body(passwordSchema)
   async update(ctx: Context) {
-    const { parsed } = await new PasswordValidator().validate(ctx)
-    const user = parsed.body
+    const user = ctx.validatedBody
     await updateUser(user)
     global.UnifyResponse.updateSuccess({ code: global.SUCCESS_CODE })
   }
@@ -113,7 +110,7 @@ export default class TokenController {
   @tag
   @security([{ api_key: [] }])
   @path({
-    id: { type: 'number', required: true, default: null, description: 'id' }
+    id: { type: 'number', required: true, default: null, description: 'id' },
   })
   async delete(ctx: Context) {
     const userId = ctx.params.id

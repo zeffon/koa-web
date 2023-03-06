@@ -8,7 +8,7 @@ import {
   body,
   tags,
   prefix,
-  security
+  security,
 } from 'koa-swagger-decorator'
 import * as userSerivce from '~/app/service/user'
 import { generateToken } from '~/core/auth'
@@ -19,7 +19,7 @@ const tag = tags(['example'])
 
 const userSchema = {
   username: { type: 'string', required: true },
-  password: { type: 'string', required: true }
+  password: { type: 'string', required: true },
 }
 
 @prefix('/example')
@@ -29,7 +29,7 @@ export default class ExampleController {
   @description('example: /example/1/id')
   @tag
   @path({
-    id: { type: 'number', required: true, default: null, description: 'id' }
+    id: { type: 'number', required: true, default: null, description: 'id' },
   })
   @security([{ api_key: [] }])
   async getUser(ctx: Context) {
@@ -63,7 +63,7 @@ export default class ExampleController {
   @description('example: /example?id=1')
   @tag
   @query({
-    id: { type: 'number', required: true, default: null, description: 'id' }
+    id: { type: 'number', required: true, default: null, description: 'id' },
   })
   @security([{ api_key: [] }])
   async query(ctx: Context) {
@@ -77,7 +77,7 @@ export default class ExampleController {
   @description('example: /example/1/redis')
   @tag
   @path({
-    id: { type: 'number', required: true, default: null, description: 'id' }
+    id: { type: 'number', required: true, default: null, description: 'id' },
   })
   @security([{ api_key: [] }])
   async getRedis(ctx: Context) {
@@ -91,7 +91,7 @@ export default class ExampleController {
   @description('example: /example/1/redis')
   @tag
   @path({
-    id: { type: 'number', required: true, default: null, description: 'id' }
+    id: { type: 'number', required: true, default: null, description: 'id' },
   })
   @security([{ api_key: [] }])
   async setRedis(ctx: Context) {
@@ -105,7 +105,7 @@ export default class ExampleController {
   @description('example: /example/1/cache')
   @tag
   @path({
-    id: { type: 'number', required: true, default: null, description: 'id' }
+    id: { type: 'number', required: true, default: null, description: 'id' },
   })
   @security([{ api_key: [] }])
   async getCache(ctx: Context) {
@@ -119,7 +119,7 @@ export default class ExampleController {
   @description('example: /example/1/cache')
   @tag
   @path({
-    id: { type: 'number', required: true, default: null, description: 'id' }
+    id: { type: 'number', required: true, default: null, description: 'id' },
   })
   @security([{ api_key: [] }])
   async setCache(ctx: Context) {
@@ -133,7 +133,7 @@ export default class ExampleController {
   @description('example: /example/1/cache')
   @tag
   @path({
-    id: { type: 'number', required: true, default: null, description: 'id' }
+    id: { type: 'number', required: true, default: null, description: 'id' },
   })
   @security([{ api_key: [] }])
   async delCache(ctx: Context) {

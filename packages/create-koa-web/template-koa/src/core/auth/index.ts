@@ -7,7 +7,7 @@ const CUR_REQUEST_METHOD = 'CUR_REQUEST_METHOD'
 
 export function generateToken(userId: number) {
   const token = jwt.sign({ userId }, CONFIG.SECRET.JWT_KEY, {
-    expiresIn: CONFIG.SECRET.EXPIRES_IN
+    expiresIn: CONFIG.SECRET.EXPIRES_IN,
   })
   return token
 }
@@ -21,7 +21,7 @@ export function decodeToken(token: string) {
 export function verifyToken(token: string) {
   try {
     jwt.verify(token, CONFIG.SECRET.JWT_KEY, {
-      complete: true
+      complete: true,
     })
   } catch (error) {
     global.UnifyResponse.unAuthenticatedException(10004)
@@ -53,8 +53,9 @@ export const authMiddleware =
       const key = `${target.name}-${name}`
       methodNames.push(key)
     })
-    const curMethod =
-      cacheClient.get<{ key: string; disabled: boolean }>(CUR_REQUEST_METHOD)
+    const curMethod = cacheClient.get<{ key: string; disabled: boolean }>(
+      CUR_REQUEST_METHOD,
+    )
     if (
       !curMethod ||
       (methodNames.includes(curMethod.key) && curMethod.disabled)

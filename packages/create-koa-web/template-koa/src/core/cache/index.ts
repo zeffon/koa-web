@@ -14,7 +14,7 @@ class CacheClient {
   private constructor(ttlSeconds: number) {
     this.cache = new NodeCache({
       stdTTL: ttlSeconds,
-      checkperiod: ttlSeconds * 1.2
+      checkperiod: ttlSeconds * 1.2,
     })
   }
 

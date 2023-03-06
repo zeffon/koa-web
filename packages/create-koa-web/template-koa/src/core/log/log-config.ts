@@ -24,7 +24,7 @@ export default {
       encoding: 'utf-8',
       maxLogSize: 10 * 1024 * 1024, // 10 m
       numBackups: 3,
-      path: INFO_PATH
+      path: INFO_PATH,
     },
     errorLogger: {
       type: 'dateFile',
@@ -34,14 +34,14 @@ export default {
       encoding: 'utf-8',
       maxLogSize: 10 * 1024 * 1024, // 10 m
       numBackups: 3,
-      path: ERROR_PATH
-    }
+      path: ERROR_PATH,
+    },
   },
   categories: {
     default: { appenders: ['rule-console'], level: 'all' },
     infoLogger: { appenders: ['infoLogger'], level: 'all' },
     errorLogger: { appenders: ['errorLogger'], level: 'all' },
-    http: { appenders: ['infoLogger'], level: 'info' }
+    http: { appenders: ['infoLogger'], level: 'info' },
   },
-  baseLogPath: BASE_LOG_PATH
+  baseLogPath: BASE_LOG_PATH,
 }

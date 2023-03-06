@@ -66,7 +66,7 @@ let formatText = {
     }
     logText += `\n!!!!!!!!!!!!!!!!!!!! ERROR LOG END !!!!!!!!!!!!!!!!!!!!\n`
     return logText
-  }
+  },
 }
 
 interface LoggerOptions {
@@ -98,6 +98,6 @@ const Logger: LoggerOptions = {
   /** sql error log */
   error: function (...arg: any) {
     errorLogger.error(formatText.error(...arg))
-  }
+  },
 }
 export default Logger

@@ -26,21 +26,21 @@ User.init(
     id: {
       type: DataTypes.INTEGER.UNSIGNED,
       autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
     },
     createdAt: {
       field: 'created_at',
       type: DataTypes.DATE,
       get() {
         return format(this.getDataValue('createdAt')!)
-      }
+      },
     },
     updatedAt: {
       field: 'updated_at',
       type: DataTypes.DATE,
       get() {
         return format(this.getDataValue('updatedAt')!)
-      }
+      },
     },
     deletedAt: {
       field: 'deleted_at',
@@ -49,25 +49,25 @@ User.init(
         return this.getDataValue('deletedAt')
           ? format(this.getDataValue('deletedAt')!)
           : null
-      }
+      },
     },
     username: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
     },
     openid: {
       type: DataTypes.STRING,
-      allowNull: true
-    }
+      allowNull: true,
+    },
   },
   {
     tableName: 'user',
     sequelize: sequelizeClient.config(),
     paranoid: true,
-    underscored: true
-  }
+    underscored: true,
+  },
 )

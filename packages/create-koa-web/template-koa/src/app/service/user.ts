@@ -47,7 +47,7 @@ export const getList = async (): Promise<User[]> => {
 
 export const getPage = async (
   page: number,
-  count: number
+  count: number,
 ): Promise<Paging<User>> => {
   const userPage = await userRepo.page(page, count)
   const userTotal = (await getList()).length
@@ -55,7 +55,7 @@ export const getPage = async (
     total: userTotal,
     items: userPage,
     page,
-    count
+    count,
   }
 }
 

@@ -3,8 +3,8 @@ name: Add GitHub Release Tag
 on:
   push:
     tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
-      - 'create-koa-web*' # # Push events to matching create-koa-web*, i.e. create-koa-web@1.0.0
+      - "v*" # Push events to matching v*, i.e. v1.0, v20.15.10
+      - "create-koa-web*" # # Push events to matching create-koa-web*, i.e. create-koa-web@1.0.0
 
 # $GITHUB_REF_NAME - https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables
 
