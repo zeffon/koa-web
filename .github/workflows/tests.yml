@@ -35,10 +35,9 @@ jobs:
         run: pnpm run cov
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: packages/create-koa-web/template-koa/coverage/clover.xml
+          files: ./packages/create-koa-web/template-koa/coverage/clover.xml
           fail_ci_if_error: true
           verbose: true
-          version: "v0.1.15"
