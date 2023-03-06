@@ -15,44 +15,44 @@
   ],
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "format": "prettier --write .",
-    "dev": "nodemon",
-    "prod": "set NODE_ENV=production&&nodemon",
-    "test": "set NODE_ENV=test&&jest --coverage --detectOpenHandles --forceExit",
-    "cov": "jest --coverage --detectOpenHandles --forceExit",
-    "build": "tsc && tsc-alias",
-    "release": "ts-node scripts/release.ts",
-    "ci-publish": "ts-node scripts/publishCI.ts"
+    "postinstall": "simple-git-hooks",
+    "format": "prettier --write --cache .",
+    "dev": "pnpm -r --parallel --filter='./packages/create-koa-web/*' run dev",
+    "build": "pnpm -r --filter='./packages/create-koa-web/*' run build",
+    "cov": "pnpm -r --filter='./packages/create-koa-web/*' run cov",
+    "release": "tsx scripts/release.ts",
+    "ci-publish": "tsx scripts/publishCI.ts"
   },
   "devDependencies": {
-    "@types/jest": "^27.4.0",
-    "@types/node": "^16.11.12",
-    "@types/prompts": "^2.0.14",
-    "@types/semver": "^7.3.9",
+    "@types/node": "^18.14.6",
+    "@types/prompts": "^2.4.2",
+    "@types/semver": "^7.3.13",
     "conventional-changelog-cli": "^2.2.2",
-    "execa": "^5.1.1",
-    "jest": "^27.5.1",
-    "lint-staged": "^12.3.3",
-    "nodemon": "^2.0.15",
+    "execa": "^7.0.0",
+    "lint-staged": "^13.1.2",
     "picocolors": "^1.0.0",
-    "prettier": "2.5.1",
+    "prettier": "2.8.4",
     "prompts": "^2.4.2",
-    "semver": "^7.3.5",
-    "simple-git-hooks": "^2.7.0",
-    "ts-jest": "^27.1.3",
-    "ts-node": "^10.5.0",
-    "tsc-alias": "^1.6.7",
-    "tsconfig-paths": "^4.0.0",
-    "typescript": "^4.5.5"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm exec lint-staged --concurrent false",
-    "commit-msg": "pnpm exec ts-node scripts/verifyCommit.ts $1"
+    "semver": "^7.3.8",
+    "simple-git-hooks": "^2.8.1",
+    "tsx": "^3.12.3",
+    "typescript": "^4.9.5"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "*": [
+      "prettier --write --cache --ignore-unknown"
+    ],
+    "packages/*/{src,types}/**/*.ts": [
+      "eslint --cache --fix"
+    ],
+    "packages/**/*.d.ts": [
+      "eslint --cache --fix"
+    ],
+    "playground/**/__tests__/**/*.ts": [
+      "eslint --cache --fix"
+    ]
   },
-  "packageManager": "pnpm@6.30.0",
+  "packageManager": "pnpm@7.27.1",
   "pnpm": {
     "overrides": {
       "koa-web": "workspace:*"
