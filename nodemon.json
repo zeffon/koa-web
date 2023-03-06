@@ -1,6 +1,0 @@
-{
-  "watch": ["packages/create-koa-web/template-koa/src"],
-  "ext": "ts,json",
-  "ignore": ["src/**/*.spec.ts"],
-  "exec": "ts-node -r tsconfig-paths/register --files packages/create-koa-web/template-koa/src/app.ts"
-}
