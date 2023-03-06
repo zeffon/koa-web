@@ -101,8 +101,7 @@ This is `template-koa` layout
 │       ├── exception       // global exception
 │       ├── log             // log modules
 │       ├── redis           // redis modules
-│       ├── swagger         // api docs
-│       └── validator       // data validator
+│       └── swagger       // api docs
 ├── .editorconfig           // lint config
 ├── .gitignore
 ├── .prettierignore

@@ -5,7 +5,6 @@
 ├── model            // Data model, mapping database tables
 ├── repository       // persistence layer, operating the database
 ├── service          // Business Layer, handle business logic
-├── valid            // Validator, validation parameter
 └── shared           // common constant and tool
 ```
 

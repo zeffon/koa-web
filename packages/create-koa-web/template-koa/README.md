@@ -50,8 +50,7 @@ This template should help get you started developing with koa2 and TypeScript in
 │       ├── log             // log modules
 │       ├── mysql           // mysql modules
 │       ├── redis           // redis modules
-│       ├── swagger         // api docs
-│       └── validator       // data validator
+│       └── swagger       // api docs
 ├── .editorconfig
 ├── .gitignore
 ├── .prettierignore

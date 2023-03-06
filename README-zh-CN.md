@@ -101,8 +101,7 @@ $ npm run dev
 │       ├── exception       // 统一异常
 │       ├── log             // 日志模块
 │       ├── redis           // redis模块
-│       ├── swagger         // API文档模块
-│       └── validator       // 数据校验
+│       └── swagger       // API文档模块
 ├── .editorconfig           // lint 自定义格式化
 ├── .gitignore
 ├── .prettierignore

@@ -32,7 +32,7 @@ export function objectMapToArray(map: Map<string | number, string>) {
   for (const [key, value] of map.entries()) {
     array.push({
       label: value,
-      value: key
+      value: key,
     })
   }
 }
