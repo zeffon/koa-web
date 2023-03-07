@@ -33,7 +33,7 @@ export default class ExampleController {
   })
   @security([{ api_key: [] }])
   async getUser(ctx: Context) {
-    const id = ctx.params.id
+    const { id } = ctx.validatedParams
     ctx.body = await userSerivce.getUserById(id)
   }
 
@@ -81,7 +81,7 @@ export default class ExampleController {
   })
   @security([{ api_key: [] }])
   async getRedis(ctx: Context) {
-    const id = ctx.params.id
+    const { id } = ctx.validatedParams
     const res = (await RedisClient.get(id)) as any
     global.UnifyResponse.deleteSuccess({ message: res })
   }
@@ -95,7 +95,7 @@ export default class ExampleController {
   })
   @security([{ api_key: [] }])
   async setRedis(ctx: Context) {
-    const id = ctx.params.id
+    const { id } = ctx.validatedParams
     await RedisClient.set(id, 'this is user: ' + id, 10)
     global.UnifyResponse.deleteSuccess({ code: 0 })
   }
@@ -109,7 +109,7 @@ export default class ExampleController {
   })
   @security([{ api_key: [] }])
   async getCache(ctx: Context) {
-    const id = ctx.params.id
+    const { id } = ctx.validatedParams
     const res = (await CacheClient.get(id)) as any
     global.UnifyResponse.deleteSuccess({ message: res })
   }
@@ -123,7 +123,7 @@ export default class ExampleController {
   })
   @security([{ api_key: [] }])
   async setCache(ctx: Context) {
-    const id = ctx.params.id
+    const { id } = ctx.validatedParams
     CacheClient.set(id, 'this is user: ' + id)
     global.UnifyResponse.deleteSuccess({ code: 0 })
   }
@@ -137,7 +137,7 @@ export default class ExampleController {
   })
   @security([{ api_key: [] }])
   async delCache(ctx: Context) {
-    const id = ctx.params.id
+    const { id } = ctx.validatedParams
     CacheClient.delete(id)
     global.UnifyResponse.deleteSuccess({ code: 0 })
   }

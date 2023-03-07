@@ -75,8 +75,8 @@ export default class TokenController {
     id: { type: 'number', required: true, default: null, description: 'id' },
   })
   async detail(ctx: Context) {
-    const userId = ctx.params.id
-    const user = await getUserById(userId)
+    const { id } = ctx.validatedParams
+    const user = await getUserById(id)
     ctx.body = new UserVO(user)
   }
 
@@ -113,8 +113,8 @@ export default class TokenController {
     id: { type: 'number', required: true, default: null, description: 'id' },
   })
   async delete(ctx: Context) {
-    const userId = ctx.params.id
-    await deleteById(userId)
+    const { id } = ctx.validatedParams
+    await deleteById(id)
     global.UnifyResponse.deleteSuccess({ code: global.SUCCESS_CODE })
   }
 }
