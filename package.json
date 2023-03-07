@@ -19,7 +19,6 @@
     "format": "prettier --write --cache .",
     "dev": "pnpm -r --parallel --filter='./packages/create-koa-web/*' run dev",
     "build": "pnpm -r --filter='./packages/create-koa-web/*' run build",
-    "cov": "pnpm -r --filter='./packages/create-koa-web/*' run cov",
     "release": "tsx scripts/release.ts",
     "ci-publish": "tsx scripts/publishCI.ts"
   },
@@ -27,7 +26,14 @@
     "@types/node": "^18.14.6",
     "@types/prompts": "^2.4.2",
     "@types/semver": "^7.3.13",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
     "conventional-changelog-cli": "^2.2.2",
+    "eslint": "^8.34.0",
+    "eslint-define-config": "^1.15.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-regexp": "^1.12.0",
     "execa": "^7.0.0",
     "lint-staged": "^13.1.2",
     "picocolors": "^1.0.0",
@@ -50,9 +56,6 @@
       "eslint --cache --fix"
     ],
     "packages/**/*.d.ts": [
-      "eslint --cache --fix"
-    ],
-    "playground/**/__tests__/**/*.ts": [
       "eslint --cache --fix"
     ]
   },
