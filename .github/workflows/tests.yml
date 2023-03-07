@@ -31,10 +31,11 @@ jobs:
       - name: Installation
         run: pnpm install
 
-      - name: Test
+      - name: Cov
         run: pnpm run cov
 
       - name: Upload coverage to Codecov
+        needs: Cov
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
