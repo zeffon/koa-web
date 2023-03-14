@@ -85,6 +85,22 @@ module.exports = defineConfig({
   },
   overrides: [
     {
+      files: ['packages/**/*'],
+      rules: {
+        'no-restricted-globals': [
+          'error',
+          'require',
+          '__dirname',
+          '__filename',
+        ],
+        'node/no-extraneous-require': 'off',
+        'node/no-missing-import': 'off',
+        'node/no-extraneous-import': 'off',
+        'node/no-missing-require': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+      },
+    },
+    {
       files: ['*.js', '*.mjs', '*.cjs'],
       rules: {
         '@typescript-eslint/explicit-module-boundary-types': 'off',
