@@ -1,6 +1,6 @@
-import Koa from 'koa'
-import { isNumber } from 'lodash'
+import type Koa from 'koa'
 import Logger from '../log'
+import { isNumber } from '../tool'
 import CODE from './exception-code'
 import { HttpException, Success } from './http-exception'
 
@@ -53,7 +53,7 @@ export default async function catchError(ctx: Koa.Context, next: any) {
  * @param isHttpException isHttpException
  */
 function logError(error: any, isHttpException: boolean) {
-  let isSuccess = error instanceof Success
+  const isSuccess = error instanceof Success
   if (isSuccess) return
   if (isHttpException) {
     const code = `ERROR_CODE: ${getCode(error)}`

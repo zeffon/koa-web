@@ -1,6 +1,6 @@
-import { createClient, RedisClientType } from 'redis'
+import type { RedisClientType } from 'redis'
+import { createClient } from 'redis'
 import CONFIG from '~/config'
-import { jsonToObject, objectToJson } from '../tool'
 
 const REDIS = CONFIG.REDIS
 
@@ -76,7 +76,7 @@ class RedisClient {
   }
 
   private valid() {
-    if (this.redisClient === null) {
+    if (this.redisClient == null) {
       global.UnifyResponse.serverErrorException(11001)
     }
   }

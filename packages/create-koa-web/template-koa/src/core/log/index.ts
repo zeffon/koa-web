@@ -2,23 +2,23 @@
  * Logger
  */
 import log4js from 'log4js'
+import { isArray, isPlainObject } from '../tool'
 import logConfig from './log-config'
 import CONFIG from '~/config'
-import _ from 'lodash'
 
 const ENV = CONFIG.ENV
 
 // loading log config
 log4js.configure(logConfig)
 
-let infoLogger = log4js.getLogger('infoLogger')
-let errorLogger = log4js.getLogger('errorLogger')
+const infoLogger = log4js.getLogger('infoLogger')
+const errorLogger = log4js.getLogger('errorLogger')
 
 // format log text
-let formatText = {
+const formatText = {
   // request log
   request: function (ctx: any) {
-    let logText: string = ''
+    let logText = ''
     logText += `\n==================== REQUEST BEGIN ====================`
     logText += `\n[REQUEST LOG BEGIN]`
     logText += `\n  [requestOriginalUrl]: ${ctx.originalUrl},`
@@ -45,7 +45,7 @@ let formatText = {
   // sql query
   query: function (sql: any, data?: any) {
     let logText = ''
-    if (data && _.isArray(data)) data = JSON.stringify(data)
+    if (data && isArray(data)) data = JSON.stringify(data)
     logText += `\n[SQL QUERY LOG BEGIN]`
     logText += `\n  [SQL]: ${sql}`
     logText += `\n  [SQLData]: ${data}`
@@ -60,7 +60,7 @@ let formatText = {
     logText += `\n!!!!!!!!!!!!!!!!!!!! ERROR LOG BEGIN !!!!!!!!!!!!!!!!!!!!`
     for (let i = 0, len = arg.length; i < len; i++) {
       let info = arg[i]
-      if (_.isPlainObject(info)) info = JSON.stringify(info)
+      if (isPlainObject(info)) info = JSON.stringify(info)
       logText += `\n  [errorInfoLog]: ${info}`
       console.log(info)
     }

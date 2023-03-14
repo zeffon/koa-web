@@ -1,76 +1,31 @@
-import { isArray, isPlainObject } from 'lodash'
-import dayjs from 'dayjs'
-
-/**
- * object to string
- **/
-export function objectToJson(val: any) {
-  if (isArray(val) || isPlainObject(val)) return JSON.stringify(val)
-  return val.toString()
+export const isNumber = (value: unknown): boolean => {
+  return typeof value === 'number' && isFinite(value)
 }
 
-/**
- * string to object
- **/
-export function jsonToObject(val: any) {
-  try {
-    return JSON.parse(val)
-  } catch (e) {
-    return val
+export const isArray = (value: unknown): boolean => {
+  return Array.isArray(value)
+}
+
+export const isPlainObject = (value: unknown): boolean => {
+  if (typeof value !== 'object' || value == null) {
+    return false
   }
+  const proto = Object.getPrototypeOf(value)
+  return proto === Object.prototype || proto == null
 }
 
-/**
- * map object to array
- **/
-interface OptionItem {
-  label: string
-  value: string | number
-}
-export function objectMapToArray(map: Map<string | number, string>) {
-  const array: OptionItem[] = []
-  for (const [key, value] of map.entries()) {
-    array.push({
-      label: value,
-      value: key,
-    })
-  }
-}
-
-interface MembersOptions {
-  prefix?: any
-  specifiedType?: any
-  filter?: any
-}
-
-/**
- * find function members
- */
-export function findMembers(instance: any, options: MembersOptions) {
-  function _find(instance: any): any {
-    if (instance.__proto__ === null) return []
-    // 获取自身属性
-    let names = Reflect.ownKeys(instance)
-    // 过滤
-    names = names.filter((name) => _shouldKeep(name))
-    return [...names, ..._find(instance.__proto__)]
-  }
-
-  // 过滤条件
-  function _shouldKeep(value: any) {
-    if (options.filter) if (options.filter(value)) return true
-    if (options.prefix) if (value.startsWith(options.prefix)) return true
-    if (options.specifiedType)
-      if (instance[value] instanceof options.specifiedType) return true
-  }
-
-  return _find(instance)
-}
-
-export function isInvalid(value: unknown) {
-  return value === undefined || value === null || value === ''
-}
-
-export function format(date: Date, format = 'YYYY-MM-DD HH:mm:ss'): string {
-  return dayjs(date).format(format)
+export const format = (date: Date, format = 'YYYY-MM-DD HH:mm:ss'): string => {
+  const year = date.getFullYear().toString()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  const hour = String(date.getHours()).padStart(2, '0')
+  const minute = String(date.getMinutes()).padStart(2, '0')
+  const second = String(date.getSeconds()).padStart(2, '0')
+  return format
+    .replace('YYYY', year)
+    .replace('MM', month)
+    .replace('DD', day)
+    .replace('HH', hour)
+    .replace('mm', minute)
+    .replace('ss', second)
 }

@@ -1,7 +1,7 @@
 import { DataTypes, Model } from 'sequelize'
+import type { IBaseModel } from './base'
 import sequelizeClient from '~/core/database'
 import { format } from '~/core/tool'
-import { IBaseModel } from './base'
 
 export interface IUserModel extends IBaseModel {
   username: string

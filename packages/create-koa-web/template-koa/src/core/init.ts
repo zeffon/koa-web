@@ -1,4 +1,4 @@
-import Koa from 'koa'
+import type Koa from 'koa'
 import Koa2Cors from 'koa2-cors'
 import KoaBody from 'koa-body'
 import catchError from './exception'
