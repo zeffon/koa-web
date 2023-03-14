@@ -1,5 +1,5 @@
+import { readFileSync } from 'node:fs'
 import colors from 'picocolors'
-import { readFileSync } from 'fs'
 
 /**
  * get $1 from commit-msg script
@@ -10,7 +10,7 @@ const msg = readFileSync(msgPath, 'utf-8').trim()
 
 const releaseRE = /^v\d/
 const commitRE =
-  /^(revert: )?(feat|fix|docs|dx|refactor|perf|style|test|workflow|build|ci|chore|types|wip|release|deps)(\(.+\))?: .{1,50}/
+  /^(?:revert: )?(?:feat|fix|docs|dx|refactor|perf|style|test|workflow|build|ci|chore|types|wip|release)(?:\(.+\))?!?: .{1,50}/
 
 if (!releaseRE.test(msg) && !commitRE.test(msg)) {
   console.log()
