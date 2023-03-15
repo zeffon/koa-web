@@ -74,7 +74,7 @@ npm install
 
 npm run dev
 
-open http://127.0.0.1:3000/koa-web/v1/doc.html
+open http://127.0.0.1:3100/koa-web/v1/doc.html
 ```
 
 ## Project Layout

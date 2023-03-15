@@ -74,7 +74,7 @@ $ npm install
 
 $ npm run dev
 
-# please open in: http://127.0.0.1:3000/koa-web/v1/doc.html
+# please open in: http://127.0.0.1:3100/koa-web/v1/doc.html
 ```
 
 ## 项目结构
