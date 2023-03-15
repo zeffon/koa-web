@@ -87,12 +87,7 @@ module.exports = defineConfig({
     {
       files: ['packages/**/*'],
       rules: {
-        'no-restricted-globals': [
-          'error',
-          'require',
-          '__dirname',
-          '__filename',
-        ],
+        'no-restricted-globals': ['off', 'require', '__dirname', '__filename'],
         'node/no-extraneous-require': 'off',
         'node/no-missing-import': 'off',
         'node/no-extraneous-import': 'off',
