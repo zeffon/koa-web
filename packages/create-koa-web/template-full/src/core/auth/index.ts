@@ -1,7 +1,8 @@
-import jwt, { JwtPayload } from 'jsonwebtoken'
-import { Context } from 'koa'
-import CONFIG from '~/config'
+import type { JwtPayload } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
+import type { Context } from 'koa'
 import cacheClient from '../cache'
+import CONFIG from '~/config'
 
 const CUR_REQUEST_METHOD = 'CUR_REQUEST_METHOD'
 

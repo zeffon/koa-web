@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 
 /** log root path */
 const BASE_LOG_PATH = path.resolve(__dirname, '../../../logs')

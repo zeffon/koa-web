@@ -1,5 +1,6 @@
+import type { Dialect } from 'sequelize'
+import { Sequelize } from 'sequelize'
 import CONFIG from '~/config'
-import { Dialect, Sequelize } from 'sequelize'
 const DATABASE = CONFIG.DATABASE
 
 class SequelizeClient {

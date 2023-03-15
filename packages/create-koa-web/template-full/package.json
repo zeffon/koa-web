@@ -1,5 +1,5 @@
 {
-  "name": "template-koa",
+  "name": "koa-web-full-starter",
   "private": true,
   "version": "0.0.0",
   "description": "The best scaffolding of building Koa2 restful API with TypeScript.",

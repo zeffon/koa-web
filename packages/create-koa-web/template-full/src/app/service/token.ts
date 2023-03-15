@@ -1,10 +1,10 @@
-import CONFIG from '~/config'
-import { tokenSchema } from '../api/v1/token'
 import axios from 'axios'
-import { generateToken } from '~/core/auth'
+import type { tokenSchema } from '../api/v1/token'
 import { getByOpenid } from '../repository/user'
-import { User } from '../model'
+import type { User } from '../model'
 import { createUser, getUserByUsername } from './user'
+import { generateToken } from '~/core/auth'
+import CONFIG from '~/config'
 
 export const userLogin = async (userData: typeof tokenSchema) => {
   const username = userData.username as unknown

@@ -17,7 +17,7 @@ export class UnifyResponse {
   /**
    * Get success
    * @param code errorCode
-   * @param message tip message
+   * @param message errorCode message
    */
   getSuccess({ code = global.SUCCESS_CODE, message = '' }) {
     throw new GetSuccess(code, message)
@@ -26,7 +26,7 @@ export class UnifyResponse {
   /**
    * Create Success
    * @param code errorCode
-   * @param message tip message
+   * @param message errorCode message
    */
   createSuccess({ code = global.SUCCESS_CODE, message = '' }) {
     throw new CreateSuccess(code, message)
@@ -35,7 +35,7 @@ export class UnifyResponse {
   /**
    * Update Success
    * @param code errorCode
-   * @param message tip message
+   * @param message errorCode message
    */
   updateSuccess({ code = global.SUCCESS_CODE, message = '' }) {
     throw new UpdateSuccess(code, message)
@@ -44,7 +44,7 @@ export class UnifyResponse {
   /**
    * 删除成功
    * @param code errorCode
-   * @param message tip message
+   * @param message errorCode message
    */
   deleteSuccess({ code = global.SUCCESS_CODE, message = '' }) {
     throw new DeleteSuccess(code, message)

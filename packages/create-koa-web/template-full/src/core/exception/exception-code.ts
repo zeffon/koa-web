@@ -1,6 +1,6 @@
 /**
  * Custom HTTP exception error code
- * [errorCode, 'tip message']
+ * [errorCode, 'errorCode message']
  */
 const CODE = new Map([
   [0, 'ok'],

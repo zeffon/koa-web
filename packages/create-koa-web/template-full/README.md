@@ -16,7 +16,7 @@ This template should help get you started developing with koa2 and TypeScript in
 
    ```dev
    $ pnpm start
-   open http://127.0.0.1:3000/koa-web/v1/doc.html
+   open http://127.0.0.1:3100/koa-web/v1/doc.html
    ```
 
 3. code format

@@ -1,5 +1,5 @@
-import CONFIG from '~/config'
 import SequelizeClient from './index'
+import CONFIG from '~/config'
 import * as models from '~/app/model'
 
 const isDev = CONFIG.ENV !== 'prod'
@@ -8,7 +8,7 @@ const modelsObj: { [index: string]: any } = models
 const allModel: any[] = []
 const enable = SequelizeClient.enable()
 if (enable) {
-  for (let key in modelsObj) {
+  for (const key in modelsObj) {
     const model = modelsObj[key].sync({ alter: isDev })
     allModel.push(model)
   }
