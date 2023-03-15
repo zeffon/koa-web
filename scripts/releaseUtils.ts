@@ -1,15 +1,17 @@
 /**
  * modified from https://github.com/vitejs/vite/blob/main/scripts/releaseUtils.ts
  */
+import { existsSync, writeFileSync } from 'node:fs'
+import path from 'node:path'
 import colors from 'picocolors'
-import type { Options as ExecaOptions } from 'execa'
-import execa from 'execa'
-import { readFileSync, writeFileSync, existsSync } from 'fs'
-import path from 'path'
+import type { Options as ExecaOptions, ExecaReturnValue } from 'execa'
+import { execa } from 'execa'
+import fs from 'fs-extra'
 import type { ReleaseType } from 'semver'
 import semver from 'semver'
+import minimist from 'minimist'
 
-export const args = require('minimist')(process.argv.slice(2))
+export const args = minimist(process.argv.slice(2))
 
 export const isDryRun = !!args.dry
 
@@ -22,7 +24,18 @@ export const packages = ['create-koa-web']
 
 export const versionIncrements: ReleaseType[] = ['patch', 'minor', 'major']
 
-export function getPackageInfo(pkgName: string) {
+interface Pkg {
+  name: string
+  version: string
+  private?: boolean
+}
+export function getPackageInfo(pkgName: string): {
+  pkg: Pkg
+  pkgName: string
+  pkgDir: string
+  pkgPath: string
+  currentVersion: string
+} {
   const pkgDir = path.resolve(__dirname, '../packages/' + pkgName)
 
   if (!existsSync(pkgDir)) {
@@ -30,11 +43,7 @@ export function getPackageInfo(pkgName: string) {
   }
 
   const pkgPath = path.resolve(pkgDir, 'package.json')
-  const pkg: {
-    name: string
-    version: string
-    private?: boolean
-  } = require(pkgPath)
+  const pkg: Pkg = require(pkgPath)
   const currentVersion = pkg.version
 
   if (pkg.private) {
@@ -54,15 +63,14 @@ export async function run(
   bin: string,
   args: string[],
   opts: ExecaOptions<string> = {},
-) {
+): Promise<ExecaReturnValue<string>> {
   return execa(bin, args, { stdio: 'inherit', ...opts })
 }
-
 export async function dryRun(
   bin: string,
   args: string[],
   opts?: ExecaOptions<string>,
-) {
+): Promise<any> {
   return console.log(
     colors.blue(`[dryrun] ${bin} ${args.join(' ')}`),
     opts || '',
@@ -71,48 +79,74 @@ export async function dryRun(
 
 export const runIfNotDry = isDryRun ? dryRun : run
 
-export function step(msg: string) {
+export function step(msg: string): void {
   return console.log(colors.cyan(msg))
 }
 
-export function getVersionChoices(currentVersion: string) {
+interface VersionChoice {
+  title: string
+  value: string
+}
+export function getVersionChoices(currentVersion: string): {
+  title: string
+  value: string
+}[] {
   const currentBeta = currentVersion.includes('beta')
+  const currentAlpha = currentVersion.includes('alpha')
+  const isStable = !currentBeta && !currentAlpha
 
-  const inc: (i: ReleaseType) => string = (i) =>
-    semver.inc(currentVersion, i, 'beta')!
+  function inc(i: ReleaseType, tag = currentAlpha ? 'alpha' : 'beta') {
+    return semver.inc(currentVersion, i, tag)!
+  }
 
-  const versionChoices = [
+  let versionChoices: VersionChoice[] = [
     {
       title: 'next',
-      value: inc(currentBeta ? 'prerelease' : 'patch'),
+      value: inc(isStable ? 'patch' : 'prerelease'),
     },
-    ...(currentBeta
-      ? [
-          {
-            title: 'stable',
-            value: inc('patch'),
-          },
-        ]
-      : [
-          {
-            title: 'beta-minor',
-            value: inc('preminor'),
-          },
-          {
-            title: 'beta-major',
-            value: inc('premajor'),
-          },
-          {
-            title: 'minor',
-            value: inc('minor'),
-          },
-          {
-            title: 'major',
-            value: inc('major'),
-          },
-        ]),
-    { value: 'custom', title: 'custom' },
-  ].map((i) => {
+  ]
+
+  if (isStable) {
+    versionChoices.push(
+      {
+        title: 'beta-minor',
+        value: inc('preminor'),
+      },
+      {
+        title: 'beta-major',
+        value: inc('premajor'),
+      },
+      {
+        title: 'alpha-minor',
+        value: inc('preminor', 'alpha'),
+      },
+      {
+        title: 'alpha-major',
+        value: inc('premajor', 'alpha'),
+      },
+      {
+        title: 'minor',
+        value: inc('minor'),
+      },
+      {
+        title: 'major',
+        value: inc('major'),
+      },
+    )
+  } else if (currentAlpha) {
+    versionChoices.push({
+      title: 'beta',
+      value: inc('patch') + '-beta.0',
+    })
+  } else {
+    versionChoices.push({
+      title: 'stable',
+      value: inc('patch'),
+    })
+  }
+  versionChoices.push({ value: 'custom', title: 'custom' })
+
+  versionChoices = versionChoices.map((i) => {
     i.title = `${i.title} (${i.value})`
     return i
   })
@@ -121,7 +155,7 @@ export function getVersionChoices(currentVersion: string) {
 }
 
 export function updateVersion(pkgPath: string, version: string): void {
-  const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'))
+  const pkg = fs.readJSONSync(pkgPath)
   pkg.version = version
   writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n')
 }
@@ -140,7 +174,7 @@ export async function publishPackage(
   })
 }
 
-export async function getLatestTag(pkgName: string) {
+export async function getLatestTag(pkgName: string): Promise<any> {
   const tags = (await run('git', ['tag'], { stdio: 'pipe' })).stdout
     .split(/\n/)
     .filter(Boolean)
@@ -151,7 +185,7 @@ export async function getLatestTag(pkgName: string) {
     .reverse()[0]
 }
 
-export async function logRecentCommits(pkgName: string) {
+export async function logRecentCommits(pkgName: string): Promise<any> {
   const tag = await getLatestTag(pkgName)
   if (!tag) return
   const sha = await run('git', ['rev-list', '-n', '1', tag], {

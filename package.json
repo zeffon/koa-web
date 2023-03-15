@@ -23,6 +23,8 @@
     "ci-publish": "tsx scripts/publishCI.ts"
   },
   "devDependencies": {
+    "@types/fs-extra": "^11.0.1",
+    "@types/minimist": "^1.2.2",
     "@types/node": "^18.14.6",
     "@types/prompts": "^2.4.2",
     "@types/semver": "^7.3.13",
@@ -35,7 +37,9 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-regexp": "^1.12.0",
     "execa": "^7.0.0",
+    "fs-extra": "^11.1.0",
     "lint-staged": "^13.1.2",
+    "minimist": "^1.2.8",
     "picocolors": "^1.0.0",
     "prettier": "2.8.4",
     "prompts": "^2.4.2",

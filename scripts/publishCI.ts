@@ -1,6 +1,7 @@
 /**
  * modified from https://github.com/vitejs/vite/blob/main/scripts/publishCI.ts
  */
+import semver from 'semver'
 import { args, getPackageInfo, publishPackage, step } from './releaseUtils'
 
 async function main() {
@@ -25,7 +26,14 @@ async function main() {
     )
 
   step('Publishing package...')
-  await publishPackage(pkgDir, version.includes('beta') ? 'beta' : undefined)
+  const releaseTag = version.includes('beta')
+    ? 'beta'
+    : version.includes('alpha')
+    ? 'alpha'
+    : semver.lt(currentVersion, pkgName)
+    ? 'previous'
+    : undefined
+  await publishPackage(pkgDir, releaseTag)
 }
 
 main().catch((err) => {
