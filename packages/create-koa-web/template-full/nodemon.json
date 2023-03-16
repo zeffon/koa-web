@@ -1,6 +1,5 @@
 {
   "watch": ["src"],
   "ext": "ts,json",
-  "ignore": ["src/**/*.spec.ts"],
-  "exec": "tsx -r tsconfig-paths/register src/app.ts"
+  "exec": "tsx src/app.ts"
 }
