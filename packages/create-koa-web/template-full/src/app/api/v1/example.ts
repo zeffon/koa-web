@@ -1,14 +1,14 @@
-import { Context } from 'koa'
+import type { Context } from 'koa'
 import {
-  request,
-  summary,
-  description,
-  query,
-  path,
   body,
-  tags,
+  description,
+  path,
   prefix,
+  query,
+  request,
   security,
+  summary,
+  tags,
 } from 'koa-swagger-decorator'
 import * as userSerivce from '~/app/service/user'
 import { generateToken } from '~/core/auth'

@@ -1,14 +1,11 @@
-import { Context } from 'koa'
+import type { Context } from 'koa'
 import {
+  body,
+  description,
+  prefix,
   request,
   summary,
-  description,
-  query,
-  path,
-  body,
   tags,
-  prefix,
-  security,
 } from 'koa-swagger-decorator'
 import { code2Session, userLogin } from '~/app/service/token'
 import { LOGIN_TYPE } from '~/app/shared/enum'

@@ -1,25 +1,25 @@
-import { Context } from 'koa'
+import type { Context } from 'koa'
 import {
-  request,
-  summary,
-  description,
-  query,
-  path,
   body,
-  tags,
+  description,
+  path,
   prefix,
+  query,
+  request,
   security,
+  summary,
+  tags,
 } from 'koa-swagger-decorator'
 import { pagingSchema } from '~/app/dto/base'
 import { passwordSchema, userSchema } from '~/app/dto/user'
 import {
-  getUserById,
+  createUser,
+  curUser,
+  deleteById,
   getList,
   getPage,
-  deleteById,
-  createUser,
+  getUserById,
   updateUser,
-  curUser,
 } from '~/app/service/user'
 import { UserVO } from '~/app/vo/user'
 import auth, { authAll } from '~/core/auth'

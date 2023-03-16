@@ -1,5 +1,5 @@
 import { User } from '../model'
-import { IUserModel } from '../model/user'
+import type { IUserModel } from '../model/user'
 
 export const create = async (user: IUserModel) => {
   return await User.create(user)

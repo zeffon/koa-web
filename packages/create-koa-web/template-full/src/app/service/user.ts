@@ -1,9 +1,9 @@
-import { IUserModel } from '../model/user'
+import type { Context } from 'koa'
+import type { IUserModel } from '../model/user'
 import * as userRepo from '../repository/user'
-import User from '../model/user'
-import { Context } from 'koa'
+import type User from '../model/user'
+import type { Paging } from '../vo/paging'
 import { decodeToken } from '~/core/auth'
-import { Paging } from '../vo/paging'
 
 export const createUser = async (user: IUserModel): Promise<User> => {
   const hadUser = await userRepo.getByUsername(user.username)
