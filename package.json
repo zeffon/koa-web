@@ -17,8 +17,10 @@
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
     "format": "prettier --write --cache .",
-    "dev": "pnpm -r --parallel --filter='./packages/create-koa-web/*' run dev",
-    "build": "pnpm -r --filter='./packages/create-koa-web/*' run build",
+    "lint": "eslint --cache .",
+    "typecheck": "tsc -p scripts --noEmit && pnpm -r --parallel run typecheck",
+    "dev": "pnpm -r --parallel --filter='./packages/*' run dev",
+    "build": "pnpm -r --filter='./packages/*' run build",
     "release": "tsx scripts/release.ts",
     "ci-publish": "tsx scripts/publishCI.ts"
   },
