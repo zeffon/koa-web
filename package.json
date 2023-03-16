@@ -1,11 +1,11 @@
 {
   "name": "koa-web-monorepo",
   "private": true,
+  "license": "MIT",
   "engines": {
-    "node": ">=12.2.0"
+    "node": ">=14.18.0 || >=16.0.0"
   },
   "author": "Zeffon Wu",
-  "license": "MIT",
   "keywords": [
     "koa2",
     "koa-typescript",
@@ -69,7 +69,7 @@
   "packageManager": "pnpm@7.27.1",
   "pnpm": {
     "overrides": {
-      "koa-web": "workspace:*"
+      "create-koa-web": "workspace:*"
     }
   }
 }
