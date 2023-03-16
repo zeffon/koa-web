@@ -1,19 +1,15 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "target": "esnext",
-    "strict": true,
     "module": "commonjs",
-    "allowJs": true,
-    "sourceMap": true,
-    "outDir": "build",
-    "noImplicitAny": true,
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
+    "strict": true,
     "skipLibCheck": true,
+    "sourceMap": false,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
+    "outDir": "build",
+    "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"]
     }
