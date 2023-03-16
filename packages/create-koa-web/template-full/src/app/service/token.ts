@@ -1,4 +1,3 @@
-import axios from 'axios'
 import type { tokenSchema } from '../api/v1/token'
 import { getByOpenid } from '../repository/user'
 import type { User } from '../model'
@@ -22,15 +21,15 @@ export const code2Session = async (userData: typeof tokenSchema) => {
     WX.APP_SECRET
   }&js_code=${userData!.username}&grant_type=authorization_code`
 
-  const { data } = await axios.get(formatUrl)
-  if (data.errcode && data.errcode !== 1) {
-    global.UnifyResponse.parameterException(20002)
-  }
-  return openid2User(data.openid)
+  // send formatUrl to wechat and get openid of user by code.
+  // For Example: const { data } = await axios.get(formatUrl)
+  const openid = formatUrl
+
+  return openid2User(openid)
 }
 
 export const openid2User = async (openid: string) => {
-  if (openid === null || openid === undefined) {
+  if (openid == null || openid === undefined) {
     global.UnifyResponse.parameterException(20002)
   }
   const user = await getByOpenid(openid)
