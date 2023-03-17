@@ -1,3 +1,7 @@
+## <small>0.7.3 (2023-03-17)</small>
+
+- fix: create-koa-web package type is module ([99f61f9](https://github.com/zeffon/koa-web/commit/99f61f9))
+
 ## <small>0.7.2 (2023-03-17)</small>
 
 ## <small>0.7.1 (2023-03-17)</small>
