@@ -11,7 +11,7 @@
     "dev": "nodemon",
     "prod": "set NODE_ENV=production&&nodemon",
     "build": "tsc",
-    "cov": "jest --coverage --detectOpenHandles --forceExit"
+    "test": "jest --detectOpenHandles --forceExit"
   },
   "dependencies": {
     "jsonwebtoken": "^9.0.0",
