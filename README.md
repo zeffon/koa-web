@@ -13,33 +13,33 @@ The best scaffolding of building `Koa2` restful API with `TypeScript`.
 <img alt="node ci" src="https://github.com/zeffon/koa-web/actions/workflows/ci.yml/badge.svg?style=flat-square">
 </a>
 <a href="https://github.com/zeffon/koa-web/actions/workflows/tests.yml">
-<img alt="unit tests" src="https://github.com/zeffon/koa-web/actions/workflows/tests.yml/badge.svg?style=flat-square">
-</a>
 <a href="https://github.com/zeffon/koa-web/releases/latest">
   <img alt="GitHub Release" src="https://img.shields.io/github/v/release/zeffon/koa-web.svg">
 </a>
-<a href="https://gitter.im/zeffon/koa-web">
-  <img alt="Gitter" src="https://badges.gitter.im/zeffon/koa-web.svg">
-</a>
 </div>
 
-- Preview: https://zeffon.cn/koa-web/v1/doc.html
-
-- Getting Started: [![Edit koa-web](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/zeffon-koa-web-vjojoe)
-
 ## Features
+
+The presets template are:
+
+|                         Template                         |                Feature                 |
+| :------------------------------------------------------: | :------------------------------------: |
+|     [Mini](https://stackblitz.com/edit/koa-web-mini)     |     Exception, Validator, API Doc      |
+|     [Lite](https://stackblitz.com/edit/koa-web-lite)     |          **Mini** + Database           |
+| [Standard](https://stackblitz.com/edit/koa-web-standard) |          **Lite** + Auth, Log          |
+|     [Full](https://stackblitz.com/edit/koa-web-full)     | **Standard** + Redis, Cache, Test-Unit |
 
 - :bulb: **TypeScript**: support TypeScript
 - :art: **Prettier**：prettier lint code
 - :rocket: **Exception**：Global exception handling
 - :airplane: **Validator**：Practical and efficient data validation usage
+- :memo: **API Doc**：API Doc UI
 - :four_leaf_clover: **Database**：Support for Sequelize connections
-- :fire: **Redis**：Support for Redis database connections
-- :zap: **Cache**：Support for Local Cache
 - :writing_hand: **Auth**：General JWT authorization
 - :book: **Log**：Log SQL and error logs
-- :white_check_mark: **Unit Test**：Support unit test
-- :memo: **API Doc**：API Doc UI
+- :fire: **Redis**：Support for Redis database connections
+- :zap: **Cache**：Support for Local Cache
+- :white_check_mark: **Test-Unit**：Support unit test
 
 ## Usage
 
@@ -65,21 +65,32 @@ With PNPM:
 $ pnpm create koa-web
 ```
 
-run app
+Here are the default main npm scripts in a scaffolded koa-web-starter project:
+
+```json
+{
+  "scripts": {
+    "format": "prettier --write --cache .", // format code with prettier
+    "dev": "nodemon", // start dev server
+    "prod": "set NODE_ENV=production&&nodemon", // start prod server
+    "build": "tsc" // build project
+  }
+}
+```
 
 ```bash
-cd koa-web-project
+cd koa-web-starter
 
 npm install
 
 npm run dev
 
-open http://127.0.0.1:3100/koa-web/v1/doc.html
+# please open in: http://127.0.0.1:3100/koa-web/v1/doc.html
 ```
 
 ## Project Layout
 
-This is `template-koa` layout
+This is `template-koa-full` layout
 
 ```
 ├── __tests__               // jest test.ts
@@ -95,18 +106,19 @@ This is `template-koa` layout
 │       ├── init.ts         // core start
 │       ├── global.ts       // global var
 │       ├── tool.ts         // tool
-│       ├── auth            // auth modules
-│       ├── database        // database modules
-│       ├── mysql           // mysql modules
 │       ├── exception       // global exception
+│       ├── swagger         // api docs and validator
+│       ├── database        // database modules
+│       ├── auth            // auth modules
 │       ├── log             // log modules
 │       ├── redis           // redis modules
-│       └── swagger       // api docs
+│       └── cache           // node cache
 ├── .editorconfig           // lint config
 ├── .gitignore
 ├── .prettierignore
 ├── .prettierrc             // prettier style config
 ├── jest.config.js          // jest test config
+├── nodemon.json            // nodemon watch files to run server
 ├── package.json
 ├── README.md
 └── tsconfig.json

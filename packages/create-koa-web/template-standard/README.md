@@ -1,6 +1,6 @@
 # Koa-Web + TypeScript
 
-This template should help get you started developing with koa2 and TypeScript in koa-web.
+This template-standard should help get you started developing with koa2 and TypeScript in koa-web.
 
 ## Usage
 
@@ -15,8 +15,8 @@ This template should help get you started developing with koa2 and TypeScript in
 2. start app
 
    ```dev
-   $ pnpm start
-   open http://127.0.0.1:3100/koa-web/v1/doc.html
+   $ pnpm dev
+   # please open in: http://127.0.0.1:3100/koa-web/v1/doc.html
    ```
 
 3. code format
@@ -25,17 +25,17 @@ This template should help get you started developing with koa2 and TypeScript in
    $ pnpm format
    ```
 
-4. run unit tests
+4. build project
    ```
-   $ pnpm test
+   $ pnpm build
    ```
 
 ## Project Layout
 
+template-standard
+
 ```
-├── __tests__                // jest test.ts
 ├── build                   // build output
-├── coverage                // unit tests output
 ├── logs                    // log output
 ├── src
 │   ├── app.ts              // koa start
@@ -47,15 +47,15 @@ This template should help get you started developing with koa2 and TypeScript in
 │       ├── global.ts       // global var
 │       ├── tool.ts         // tool
 │       ├── exception       // global exception
-│       ├── log             // log modules
-│       ├── mysql           // mysql modules
-│       ├── redis           // redis modules
-│       └── swagger       // api docs
+│       ├── swagger         // api docs and validator
+│       ├── database        // database modules
+│       ├── auth            // auth modules
+│       └── log             // log modules
 ├── .editorconfig
 ├── .gitignore
 ├── .prettierignore
 ├── .prettierrc
-├── jest.config.js
+├── nodemon.json
 ├── package.json
 ├── README.md
 └── tsconfig.json

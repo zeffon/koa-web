@@ -1,9 +1,18 @@
 # create-koa-web
 
+The presets template are:
+
+|                         Template                         |                Feature                 |
+| :------------------------------------------------------: | :------------------------------------: |
+|     [Mini](https://stackblitz.com/edit/koa-web-mini)     |     Exception, Validator, API Doc      |
+|     [Lite](https://stackblitz.com/edit/koa-web-lite)     |          **Mini** + Database           |
+| [Standard](https://stackblitz.com/edit/koa-web-standard) |          **Lite** + Auth, Log          |
+|     [Full](https://stackblitz.com/edit/koa-web-full)     | **Standard** + Redis, Cache, Test-Unit |
+
 ## Scaffolding Your First koa-web Project
 
 > **Compatibility Note:**
-> koa-web requires [Node.js](https://nodejs.org/en/) version >=12.2.0. However, some templates require a higher Node.js version to work, please upgrade if your package manager warns about it.
+> koa-web requires [Node.js](https://nodejs.org/en/) version 14.18+, 16+.. However, some templates require a higher Node.js version to work, please upgrade if your package manager warns about it.
 
 With NPM:
 
@@ -28,20 +37,36 @@ Then follow the prompts!
 You can also directly specify the project name. For example, to scaffold a koa-web project, run:
 
 ```bash
-# npm
-npm create koa-web@latest my-koa-web
+# npm 6.x
+npm create koa-web@latest koa-web-starter --template standard
+
+# npm 7+, extra double-dash is needed:
+npm create koa-web@latest koa-web-starter -- --template standard
 
 # yarn
-yarn create koa-web my-koa-web
+yarn create koa-web koa-web-starter --template standard
 
 # pnpm
-pnpm create koa-web my-koa-web
+pnpm create koa-web koa-web-starter --template standard
 ```
 
 ## Usage
 
+Here are the default main npm scripts in a scaffolded koa-web-starter project:
+
+```json
+{
+  "scripts": {
+    "format": "prettier --write --cache .", // format code with prettier
+    "dev": "nodemon", // start dev server
+    "prod": "set NODE_ENV=production&&nodemon", // start prod server
+    "build": "tsc" // build project
+  }
+}
+```
+
 ```bash
-$ cd my-koa-web
+$ cd koa-web-starter
 
 $ npm install
 
