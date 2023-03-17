@@ -2,7 +2,13 @@
  * modified from https://github.com/vitejs/vite/blob/main/scripts/publishCI.ts
  */
 import semver from 'semver'
-import { args, getPackageInfo, publishPackage, step } from './releaseUtils'
+import {
+  args,
+  getActiveVersion,
+  getPackageInfo,
+  publishPackage,
+  step,
+} from './releaseUtils'
 
 async function main() {
   const tag = args._[0]
@@ -11,7 +17,7 @@ async function main() {
     throw new Error('No tag specified')
   }
 
-  let pkgName = 'create-koa-web'
+  let pkgName = 'koa-web'
   let version
 
   if (tag.includes('@')) [pkgName, version] = tag.split('@')
@@ -25,12 +31,14 @@ async function main() {
       `Package version from tag "${version}" mismatches with current version "${currentVersion}"`,
     )
 
+  const activeVersion = await getActiveVersion(pkgName)
+
   step('Publishing package...')
   const releaseTag = version.includes('beta')
     ? 'beta'
     : version.includes('alpha')
     ? 'alpha'
-    : semver.lt(currentVersion, pkgName)
+    : semver.lt(currentVersion, activeVersion)
     ? 'previous'
     : undefined
   await publishPackage(pkgDir, releaseTag)
