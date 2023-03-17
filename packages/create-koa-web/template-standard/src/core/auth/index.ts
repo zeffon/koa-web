@@ -1,10 +1,22 @@
 import type { JwtPayload } from 'jsonwebtoken'
 import jwt from 'jsonwebtoken'
 import type { Context } from 'koa'
-import cacheClient from '../cache'
 import CONFIG from '~/config'
 
 const CUR_REQUEST_METHOD = 'CUR_REQUEST_METHOD'
+
+type Cache = Record<string, unknown>
+const cache: Cache = {}
+
+function get<T>(cache: Cache, key: string): T | undefined {
+  return cache[key] as T | undefined
+}
+function set<T>(cache: Cache, key: string, value: T): void {
+  cache[key] = value
+}
+function del(cache: Cache, key: string): void {
+  delete cache[key]
+}
 
 export function generateToken(userId: number) {
   const token = jwt.sign({ userId }, CONFIG.SECRET.JWT_KEY, {
@@ -54,7 +66,8 @@ export const authMiddleware =
       const key = `${target.name}-${name}`
       methodNames.push(key)
     })
-    const curMethod = cacheClient.get<{ key: string; disabled: boolean }>(
+    const curMethod = get<{ key: string; disabled: boolean }>(
+      cache,
       CUR_REQUEST_METHOD,
     )
     if (
@@ -63,7 +76,7 @@ export const authMiddleware =
     ) {
       _verifyBearerToken(ctx.header.authorization)
     }
-    cacheClient.delete(CUR_REQUEST_METHOD)
+    del(cache, CUR_REQUEST_METHOD)
   }
 
 export const authAll = (target: any) => {
@@ -80,7 +93,7 @@ const auth =
         target = target.constructor
       }
       const key = `${target.name}-${property}`
-      cacheClient.set(CUR_REQUEST_METHOD, { key, disabled })
+      set(cache, CUR_REQUEST_METHOD, { key, disabled })
       if (disabled) {
         const ctx = arguments[0]
         const authorization = ctx.header.authorization
