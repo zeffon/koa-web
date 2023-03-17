@@ -96,6 +96,14 @@ module.exports = defineConfig({
       },
     },
     {
+      files: ['packages/create-koa-web/template-*/**', '**/build.config.ts'],
+      rules: {
+        'prefer-spread': 'off',
+        'prefer-rest-params': 'off',
+        '@typescript-eslint/no-empty-function': 'off',
+      },
+    },
+    {
       files: ['*.js', '*.mjs', '*.cjs'],
       rules: {
         '@typescript-eslint/explicit-module-boundary-types': 'off',
