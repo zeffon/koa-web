@@ -1,3 +1,8 @@
+## <small>0.7.1 (2023-03-17)</small>
+
+- docs: update CHANGELOG ([9177267](https://github.com/zeffon/koa-web/commit/9177267))
+- fix(full): inport CONFIG error about app.ts ([aefa0f5](https://github.com/zeffon/koa-web/commit/aefa0f5))
+
 ## 0.7.0 (2023-03-17)
 
 - chore: split templates for [mini](https://stackblitz.com/edit/koa-web-mini), [lite](https://stackblitz.com/edit/koa-web-lite), [standard](https://stackblitz.com/edit/koa-web-standard), [full](https://stackblitz.com/edit/koa-web-full)
