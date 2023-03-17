@@ -1,6 +1,7 @@
 {
   "name": "create-koa-web",
   "version": "0.7.2",
+  "type": "module",
   "license": "MIT",
   "author": "Zeffon Wu",
   "bin": {
