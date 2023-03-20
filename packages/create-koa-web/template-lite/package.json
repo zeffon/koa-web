@@ -10,7 +10,7 @@
     "format": "prettier --write --cache .",
     "dev": "nodemon",
     "prod": "set NODE_ENV=production&&nodemon",
-    "build": "tsc"
+    "build": "tsc && tsc-alias"
   },
   "dependencies": {
     "koa": "^2.14.1",
@@ -28,6 +28,7 @@
     "koa-swagger-decorator": "^1.8.6",
     "nodemon": "^2.0.21",
     "prettier": "2.8.4",
+    "tsc-alias": "^1.8.3",
     "tsx": "^3.12.3",
     "typescript": "^4.9.3"
   }
