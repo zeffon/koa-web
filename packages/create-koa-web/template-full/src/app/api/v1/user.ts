@@ -11,7 +11,7 @@ import {
   tags,
 } from 'koa-swagger-decorator'
 import { pagingSchema } from '~/app/dto/base'
-import { passwordSchema, userSchema } from '~/app/dto/user'
+import { UserVO, passwordSchema, userSchema } from '~/app/dto/user'
 import {
   createUser,
   curUser,
@@ -21,14 +21,13 @@ import {
   getUserById,
   updateUser,
 } from '~/app/service/user'
-import { UserVO } from '~/app/vo/user'
 import auth, { authAll } from '~/core/auth'
 
 const tag = tags(['user'])
 
 @prefix('/user')
 @authAll
-export default class TokenController {
+export default class UserController {
   @request('get', '/me')
   @summary('Get user')
   @description('example: /user/me')
@@ -37,7 +36,6 @@ export default class TokenController {
   @auth(false)
   async me(ctx: Context) {
     const user = await curUser(ctx)
-    console.log(user)
     ctx.body = new UserVO(user)
   }
 
@@ -60,9 +58,7 @@ export default class TokenController {
   @query(pagingSchema)
   @auth()
   async page(ctx: Context) {
-    const page = ctx.query.page as any
-    const count = ctx.query.count as any
-    const paging = await getPage(page, count)
+    const paging = await getPage(ctx)
     ctx.body = { paging }
   }
 

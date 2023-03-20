@@ -1,7 +1,7 @@
 import type { Context } from 'koa'
 import type { IUserModel } from '../model/user'
 import { User } from '../model'
-import type { Paging } from '../vo/paging'
+import { Paging } from '../dto/base'
 import { decodeToken } from '~/core/auth'
 
 export const createUser = async (user: IUserModel): Promise<User> => {
@@ -49,19 +49,13 @@ export const getList = async (): Promise<User[]> => {
   return await User.findAll()
 }
 
-export const getPage = async (
-  page: number,
-  count: number,
-): Promise<Paging<User>> => {
-  const offset = (page - 1) * count
-  const userPage = await User.findAll({ offset, limit: count })
-  const userTotal = (await User.findAll()).length
-  return {
-    total: userTotal,
-    items: userPage,
-    page,
-    count,
-  }
+export const getPage = async (ctx: Context): Promise<Paging<User>> => {
+  const { start, limit } = ctx.validatedQuery
+  const offset = (start - 1) * limit
+  const pageRel = await User.findAll({ offset, limit })
+  const totalRel = (await User.findAll()).length
+
+  return new Paging(pageRel, totalRel, start, limit)
 }
 
 export const curUser = async (ctx: Context): Promise<User> => {

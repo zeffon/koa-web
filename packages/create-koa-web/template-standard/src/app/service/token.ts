@@ -15,4 +15,5 @@ export const userLogin = async (userData: typeof tokenSchema) => {
 export const code2Session = async (userData: typeof tokenSchema) => {
   // TODO generate token of mini-pro
   console.log(userData)
+  return 'generated token'
 }
