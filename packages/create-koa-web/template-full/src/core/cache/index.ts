@@ -1,46 +1,55 @@
-import NodeCache from 'node-cache'
+import type { Cache, Milliseconds } from 'cache-manager'
+import { caching } from 'cache-manager'
 
-type CacheKey = string | number
-const ttlSeconds = 100
+class CacheClient<T> {
+  private static instance: CacheClient<any>
+  private cache: Cache | null = null
 
-/**
- * The CacheClient will be cleared with the restart of the process.
- */
-class CacheClient {
-  private static _instance: CacheClient
+  private constructor() {}
 
-  private cache: NodeCache
-
-  private constructor(ttlSeconds: number) {
-    this.cache = new NodeCache({
-      stdTTL: ttlSeconds,
-      checkperiod: ttlSeconds * 1.2,
-    })
-  }
-
-  public static getInstance(): CacheClient {
-    if (!CacheClient._instance) {
-      CacheClient._instance = new CacheClient(ttlSeconds)
+  private async initializeCache(): Promise<void> {
+    const config = {
+      max: 100,
+      ttl: 10 * 1000,
     }
-
-    return CacheClient._instance
+    this.cache = await caching('memory', config)
   }
 
-  public get<T>(key: CacheKey): T | undefined {
-    return this.cache.get(key)
+  public static getInstance<T>(): CacheClient<T> {
+    if (!CacheClient.instance) {
+      CacheClient.instance = new CacheClient<T>()
+      CacheClient.instance.initializeCache()
+    }
+    return CacheClient.instance
   }
 
-  public set<T>(key: CacheKey, data: T): void {
-    this.cache.set(key, data)
+  public getCache(): Cache {
+    return this.cache!
   }
 
-  public delete(key: CacheKey): void {
-    this.cache.del(key)
+  public async get(key: string): Promise<T | undefined> {
+    return this.getCache().get(key)
   }
 
-  public hasKey(key: CacheKey): boolean {
-    return this.cache.has(key)
+  public async set(
+    key: string,
+    value: unknown,
+    ttl?: Milliseconds,
+  ): Promise<void> {
+    return this.getCache().set(key, value, ttl)
+  }
+
+  public async del(key: string): Promise<void> {
+    return this.getCache().del(key)
+  }
+
+  public async wrap<T>(
+    key: string,
+    wrapperFn: () => Promise<T>,
+    ttl?: Milliseconds,
+  ): Promise<T> {
+    return this.getCache().wrap(key, wrapperFn, ttl)
   }
 }
 
-export default CacheClient.getInstance()
+export default CacheClient
