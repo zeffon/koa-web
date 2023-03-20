@@ -57,10 +57,9 @@ Here are the default main npm scripts in a scaffolded koa-web-starter project:
 ```json
 {
   "scripts": {
-    "format": "prettier --write --cache .", // format code with prettier
-    "dev": "nodemon", // start dev server
+    "dev": "nodemon", // start dev serve
     "build": "tsc && tsc-alias", // build project
-    "serve": "node build/app.js" // start build server
+    "serve": "node build/app.js" // start build serve
   }
 }
 ```
@@ -72,5 +71,36 @@ $ npm install
 
 $ npm run dev
 
-# please open in: http://127.0.0.1:3100/koa-web/v1/doc.html
+# please open in: http://127.0.0.1:3100/api/doc.html
+```
+
+## Project Layout
+
+This is `template-koa-standard` layout
+
+```
+├── src
+│   ├── app.ts              // koa start
+│   ├── app                 // app modules
+│       ├── api             // controller layer
+│       ├── dto             // Data Transfer Object
+│       ├── model           // sequelize model
+│       ├── service         // service processing layer
+│       └── share           // util directory
+│   ├── config              // env config
+│   ├── typings             // ts type
+│   └── core                // core mudules
+│       ├── init.ts         // core start
+│       ├── global.ts       // global var
+│       ├── tool.ts         // tool
+│       ├── exception       // global exception
+│       ├── swagger         // api docs and validator
+│       ├── database        // database modules
+│       ├── auth            // auth modules
+│       └── log             // log modules
+├── .gitignore
+├── nodemon.json            // nodemon watch files to run serve
+├── package.json
+├── README.md
+└── tsconfig.json
 ```

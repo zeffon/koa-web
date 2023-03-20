@@ -16,18 +16,19 @@ This template-standard should help get you started developing with koa2 and Type
 
    ```dev
    $ pnpm dev
-   # please open in: http://127.0.0.1:3100/koa-web/v1/doc.html
+   # please open in: http://127.0.0.1:3100/api/doc.html
    ```
 
-3. code format
+3. build project
 
-   ```
-   $ pnpm format
-   ```
-
-4. build project
    ```
    $ pnpm build
+   ```
+
+4. run build
+
+   ```
+   $ pnpm serve
    ```
 
 ## Project Layout
@@ -51,10 +52,7 @@ template-standard
 │       ├── database        // database modules
 │       ├── auth            // auth modules
 │       └── log             // log modules
-├── .editorconfig
 ├── .gitignore
-├── .prettierignore
-├── .prettierrc
 ├── nodemon.json
 ├── package.json
 ├── README.md

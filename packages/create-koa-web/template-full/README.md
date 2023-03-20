@@ -16,22 +16,16 @@ This template-full should help get you started developing with koa2 and TypeScri
 
    ```dev
    $ pnpm start
-   open http://127.0.0.1:3100/koa-web/v1/doc.html
+   # please open in: http://127.0.0.1:3100/api/v1/doc.html
    ```
 
-3. code format
-
-   ```
-   $ pnpm format
-   ```
-
-4. build project
+3. build project
 
    ```
    $ pnpm build
    ```
 
-5. run unit tests
+4. run unit tests
    ```
    $ pnpm test
    ```
@@ -61,10 +55,7 @@ template-full
 │       ├── auth            // auth modules
 │       ├── redis           // redis modules
 │       └── cache           // node cache modules
-├── .editorconfig
 ├── .gitignore
-├── .prettierignore
-├── .prettierrc
 ├── jest.config.js
 ├── nodemon.json
 ├── package.json

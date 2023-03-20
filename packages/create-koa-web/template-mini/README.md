@@ -16,18 +16,19 @@ This template-mini should help get you started developing with koa2 and TypeScri
 
    ```dev
    $ pnpm dev
-   # please open in: http://127.0.0.1:3100/koa-web/v1/doc.html
+   # please open in: http://127.0.0.1:3100/api/doc.html
    ```
 
-3. code format
+3. build project
 
-   ```
-   $ pnpm format
-   ```
-
-4. build project
    ```
    $ pnpm build
+   ```
+
+4. run build
+
+   ```
+   $ pnpm serve
    ```
 
 ## Project Layout
@@ -47,10 +48,7 @@ template-mini
 │       ├── tool.ts         // tool
 │       ├── exception       // global exception
 │       └── swagger         // api docs and validator
-├── .editorconfig
 ├── .gitignore
-├── .prettierignore
-├── .prettierrc
 ├── nodemon.json
 ├── package.json
 ├── README.md

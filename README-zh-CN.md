@@ -29,7 +29,6 @@ Language : [English](./README.md) | 简体中文
 |     [Full](https://stackblitz.com/edit/koa-web-full)     | **Standard** + Redis, Cache, 单元测试 |
 
 - :bulb: **TypeScript**: 支持 TypeScript
-- :art: **prettier**：prettier 规范代码格式
 - :rocket: **全局异常**：全局异常统一处理
 - :airplane: **数据校验**：实用且高效的数据校验方式
 - :memo: **API 文档**：API 文档测试
@@ -69,7 +68,6 @@ $ pnpm create koa-web
 ```json
 {
   "scripts": {
-    "format": "prettier --write --cache .", // 格式化代码
     "dev": "nodemon", // 启动dev环境的服务
     "build": "tsc", // 构建项目
     "serve": "node build/app.js" // 启动prod环境的服
@@ -84,21 +82,22 @@ $ npm install
 
 $ npm run dev
 
-# please open in: http://127.0.0.1:3100/koa-web/v1/doc.html
+# please open in: http://127.0.0.1:3100/api/doc.html
 ```
 
 ## 项目结构
 
-`template-koa-full` 模板结构
+`template-koa-standard` 模板结构
 
 ```
-├── __tests__               // 单元测试编写目录集合
-├── build                   // 编译输出的目录
-├── coverage                // 单元测试生成的文件目录
-├── logs                    // 日志记录的目录
 ├── src
 │   ├── app.ts              // koa 入口文件
 │   ├── app                 // 应用目录
+│       ├── api             // api控制层
+│       ├── dto             // 数据传输对象
+│       ├── model           // Sequelize模型层
+│       ├── service         // 服务处理层
+│       └── share           // 通用工具
 │   ├── config              // 环境配置
 │   ├── typings             // 变量声明目录
 │   └── core                // 核心模块目录
@@ -106,18 +105,11 @@ $ npm run dev
 │       ├── global.ts       // 全局变量
 │       ├── tool.ts         // 工具类
 │       ├── exception       // 统一异常
-│       ├── auth            // 授权模块
 │       ├── swagger         // API文档和参数校验
 │       ├── database        // 数据库模块
-│       ├── auth            // 认证模块
-│       ├── log             // 日志模块
-│       ├── redis           // redis模块
-│       └── cache           // Node缓存
-├── .editorconfig           // lint 自定义格式化
+│       ├── auth            // 授权模块
+│       └── log             // 日志模块
 ├── .gitignore
-├── .prettierignore
-├── .prettierrc             // 配置代码格式化风格
-├── jest.config.js          // jest单元测试配置
 ├── nodemon.json            // nodemon监听文件来启动服务
 ├── package.json
 ├── README.md
