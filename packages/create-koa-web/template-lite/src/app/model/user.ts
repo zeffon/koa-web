@@ -13,9 +13,9 @@ export type CUserModel = Omit<IUserModel, 'id'>
 
 export default class User extends Model<IUserModel, IUserModel> {
   declare id: number
-  declare createdAt: Date
-  declare updatedAt: Date
-  declare deletedAt: Date
+  declare created_at: Date
+  declare updated_at: Date
+  declare deleted_at: Date
   declare username: string
   declare password: string
   declare openid: string
@@ -28,26 +28,23 @@ User.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    createdAt: {
-      field: 'created_at',
+    created_at: {
       type: DataTypes.DATE,
       get() {
-        return format(this.getDataValue('createdAt')!)
+        return format(this.getDataValue('created_at')!)
       },
     },
-    updatedAt: {
-      field: 'updated_at',
+    updated_at: {
       type: DataTypes.DATE,
       get() {
-        return format(this.getDataValue('updatedAt')!)
+        return format(this.getDataValue('updated_at')!)
       },
     },
-    deletedAt: {
-      field: 'deleted_at',
+    deleted_at: {
       type: DataTypes.DATE,
       get() {
-        return this.getDataValue('deletedAt')
-          ? format(this.getDataValue('deletedAt')!)
+        return this.getDataValue('deleted_at')
+          ? format(this.getDataValue('deleted_at')!)
           : null
       },
     },
