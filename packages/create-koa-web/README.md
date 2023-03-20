@@ -59,8 +59,8 @@ Here are the default main npm scripts in a scaffolded koa-web-starter project:
   "scripts": {
     "format": "prettier --write --cache .", // format code with prettier
     "dev": "nodemon", // start dev server
-    "prod": "set NODE_ENV=production&&nodemon", // start prod server
-    "build": "tsc" // build project
+    "build": "tsc && tsc-alias", // build project
+    "serve": "node build/app.js" // start build server
   }
 }
 ```

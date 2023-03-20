@@ -1,5 +1,5 @@
 /**
- * System env config
+ * app env config
  */
 import { devConf } from './dev'
 import { prodConf } from './prod'

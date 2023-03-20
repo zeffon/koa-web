@@ -71,8 +71,8 @@ $ pnpm create koa-web
   "scripts": {
     "format": "prettier --write --cache .", // 格式化代码
     "dev": "nodemon", // 启动dev环境的服务
-    "prod": "set NODE_ENV=production&&nodemon", // 启动prod环境的服务
-    "build": "tsc" // 构建项目
+    "build": "tsc", // 构建项目
+    "serve": "node build/app.js" // 启动prod环境的服
   }
 }
 ```

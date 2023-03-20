@@ -9,6 +9,7 @@
   "scripts": {
     "format": "prettier --write --cache .",
     "dev": "nodemon",
+    "serve": "node build/app.js",
     "prod": "set NODE_ENV=production&&nodemon",
     "build": "tsc && tsc-alias",
     "test": "jest --detectOpenHandles --forceExit"

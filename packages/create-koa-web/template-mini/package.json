@@ -9,8 +9,8 @@
   "scripts": {
     "format": "prettier --write --cache .",
     "dev": "nodemon",
-    "prod": "set NODE_ENV=production&&nodemon",
-    "build": "tsc && tsc-alias"
+    "build": "tsc && tsc-alias",
+    "serve": "node build/app.js"
   },
   "dependencies": {
     "koa": "^2.14.1",
