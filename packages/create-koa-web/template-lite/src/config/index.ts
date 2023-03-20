@@ -10,7 +10,7 @@ const CONFIG = {
   ENV: 'dev',
   PORT: 3100,
   BASE_URL: 'http://127.0.0.1',
-  PREFIX: '/koa-web',
+  PREFIX: '/api',
   DATABASE: {
     DIALECT: 'mysql',
     DB_NAME: 'root',

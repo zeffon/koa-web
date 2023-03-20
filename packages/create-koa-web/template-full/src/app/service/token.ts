@@ -1,8 +1,6 @@
 import type { tokenSchema } from '../api/v1/token'
-import type { User } from '../model'
-import { createUser, getByOpenid, getUserByUsername } from './user'
+import { getUserByUsername } from './user'
 import { generateToken } from '~/core/auth'
-import CONFIG from '~/config'
 
 export const userLogin = async (userData: typeof tokenSchema) => {
   const username = userData.username as unknown
@@ -15,26 +13,7 @@ export const userLogin = async (userData: typeof tokenSchema) => {
 }
 
 export const code2Session = async (userData: typeof tokenSchema) => {
-  const WX = CONFIG.WX
-  const formatUrl = `${WX.SESSION_URL}?appid=${WX.APP_ID}&secret=${
-    WX.APP_SECRET
-  }&js_code=${userData!.username}&grant_type=authorization_code`
-
-  // send formatUrl to wechat and get openid of user by code.
-  // For Example: const { data } = await axios.get(formatUrl)
-  const openid = formatUrl
-
-  return openid2User(openid)
-}
-
-export const openid2User = async (openid: string) => {
-  if (openid == null || openid === undefined) {
-    global.UnifyResponse.parameterException(20002)
-  }
-  const user = await getByOpenid(openid)
-  if (user) {
-    return generateToken(user.id)
-  }
-  const newUser = await createUser({ openid } as User)
-  return generateToken(newUser.id)
+  // TODO generate token of mini-pro
+  console.log(userData)
+  return 'generated token'
 }

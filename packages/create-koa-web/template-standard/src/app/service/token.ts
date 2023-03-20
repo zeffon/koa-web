@@ -1,5 +1,5 @@
-import type { tokenSchema } from '../api/v1/token'
 import { getUserByUsername } from './user'
+import type { tokenSchema } from '~/app/api/token'
 import { generateToken } from '~/core/auth'
 
 export const userLogin = async (userData: typeof tokenSchema) => {

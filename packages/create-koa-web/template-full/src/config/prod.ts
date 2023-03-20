@@ -2,7 +2,7 @@ export const prodConf = {
   ENV: 'prod',
   PORT: 3200,
   BASE_URL: 'http://127.0.0.1',
-  PREFIX: '/koa-web',
+  PREFIX: '/api',
   SECRET: {
     JWT_KEY: 'zeffonwu',
     EXPIRES_IN: '1d',
@@ -22,10 +22,5 @@ export const prodConf = {
     PORT: 6379,
     DB: 0,
     PASSWORD: '123456',
-  },
-  WX: {
-    APP_ID: 'app_id',
-    APP_SECRET: 'app_secret',
-    SESSION_URL: 'https://api.weixin.qq.com/sns/jscode2session',
   },
 }

@@ -2,17 +2,17 @@ import path from 'node:path'
 import { SwaggerRouter } from 'koa-swagger-decorator'
 import CONFIG from '~/config'
 
-const topRouter = new SwaggerRouter({ prefix: CONFIG.PREFIX })
+/**
+ * If you need multi-version API DOC, please refer to `template-full`
+ */
+const router = new SwaggerRouter({ prefix: CONFIG.PREFIX })
 
-/** This is v1 routers */
-const v1 = new SwaggerRouter()
-const v1Prefix = '/v1'
-if (CONFIG.ENV !== 'prod') {
-  v1.swagger({
-    prefix: `${CONFIG.PREFIX}${v1Prefix}`,
-    title: 'V1 API DOC',
-    description: 'This is v1 api doc.',
-    version: '0.1.0',
+if (CONFIG.ENV === 'dev') {
+  router.swagger({
+    prefix: `${CONFIG.PREFIX}`,
+    title: 'Koa-web API DOC',
+    description: 'This is api doc.',
+    version: '1.0.0',
     swaggerHtmlEndpoint: '/doc.html',
     swaggerJsonEndpoint: '/json.html',
     swaggerOptions: {
@@ -27,11 +27,6 @@ if (CONFIG.ENV !== 'prod') {
   })
 }
 
-// point to v1 apis directory
-v1.mapDir(path.resolve(__dirname, `../../app/api/v1/`))
+router.mapDir(path.resolve(__dirname, `../../app/api/`), {})
 
-/** This is v2 routers */
-// ...
-
-topRouter.use(v1Prefix, v1.routes())
-export default topRouter
+export default router

@@ -7,7 +7,7 @@ const topRouter = new SwaggerRouter({ prefix: CONFIG.PREFIX })
 /** This is v1 routers */
 const v1 = new SwaggerRouter()
 const v1Prefix = '/v1'
-if (CONFIG.ENV !== 'prod') {
+if (CONFIG.ENV === 'dev') {
   v1.swagger({
     prefix: `${CONFIG.PREFIX}${v1Prefix}`,
     title: 'V1 API DOC',
