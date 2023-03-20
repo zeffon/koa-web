@@ -1,7 +1,6 @@
 import type { tokenSchema } from '../api/v1/token'
-import { getByOpenid } from '../repository/user'
 import type { User } from '../model'
-import { createUser, getUserByUsername } from './user'
+import { createUser, getByOpenid, getUserByUsername } from './user'
 import { generateToken } from '~/core/auth'
 import CONFIG from '~/config'
 
