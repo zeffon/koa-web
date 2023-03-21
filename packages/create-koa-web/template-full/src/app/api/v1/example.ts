@@ -9,7 +9,7 @@ import {
   tags,
 } from 'koa-swagger-decorator'
 import RedisClient from '~/core/redis'
-import CacheClient from '~/core/cache'
+import cacheClient from '~/core/cache'
 
 const tag = tags(['example'])
 
@@ -67,7 +67,8 @@ export default class ExampleController {
   @security([{ api_key: [] }])
   async getCache(ctx: Context) {
     const { id } = ctx.validatedParams
-    const res = await CacheClient.getInstance<string>().get(id)
+    let res = await cacheClient.get<string>(id)
+    if (!res) res = 'user no exists'
     global.UnifyResponse.deleteSuccess({ message: res })
   }
 
@@ -81,7 +82,7 @@ export default class ExampleController {
   @security([{ api_key: [] }])
   async setCache(ctx: Context) {
     const { id } = ctx.validatedParams
-    CacheClient.getInstance().set(id, 'this is user: ' + id)
+    await cacheClient.set(id, 'this is user: ' + id)
     global.UnifyResponse.deleteSuccess({ code: 0 })
   }
 
@@ -95,7 +96,7 @@ export default class ExampleController {
   @security([{ api_key: [] }])
   async delCache(ctx: Context) {
     const { id } = ctx.validatedParams
-    CacheClient.getInstance().del(id)
+    await cacheClient.del(id)
     global.UnifyResponse.deleteSuccess({ code: 0 })
   }
 }

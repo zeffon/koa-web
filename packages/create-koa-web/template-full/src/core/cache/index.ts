@@ -1,13 +1,13 @@
 import type { Cache, Milliseconds } from 'cache-manager'
 import { caching } from 'cache-manager'
 
-class CacheClient<T> {
-  private static instance: CacheClient<any>
+class CacheClient {
+  private static instance: CacheClient
   private cache: Cache | null = null
 
   private constructor() {}
 
-  private async initializeCache(): Promise<void> {
+  public async init(): Promise<void> {
     const config = {
       max: 100,
       ttl: 10 * 1000,
@@ -15,32 +15,35 @@ class CacheClient<T> {
     this.cache = await caching('memory', config)
   }
 
-  public static getInstance<T>(): CacheClient<T> {
+  public static getInstance(): CacheClient {
     if (!CacheClient.instance) {
-      CacheClient.instance = new CacheClient<T>()
-      CacheClient.instance.initializeCache()
+      CacheClient.instance = new CacheClient()
+      CacheClient.instance.init()
     }
     return CacheClient.instance
   }
 
   public getCache(): Cache {
+    if (!this.cache) {
+      this.init()
+    }
     return this.cache!
   }
 
-  public async get(key: string): Promise<T | undefined> {
-    return this.getCache().get(key)
+  public async get<T>(key: string): Promise<T | undefined> {
+    return await this.getCache().get(key)
   }
 
-  public async set(
+  public async set<T>(
     key: string,
-    value: unknown,
+    value: T,
     ttl?: Milliseconds,
   ): Promise<void> {
-    return this.getCache().set(key, value, ttl)
+    return await this.getCache().set(key, value, ttl)
   }
 
   public async del(key: string): Promise<void> {
-    return this.getCache().del(key)
+    return await this.getCache().del(key)
   }
 
   public async wrap<T>(
@@ -48,8 +51,8 @@ class CacheClient<T> {
     wrapperFn: () => Promise<T>,
     ttl?: Milliseconds,
   ): Promise<T> {
-    return this.getCache().wrap(key, wrapperFn, ttl)
+    return await this.getCache().wrap(key, wrapperFn, ttl)
   }
 }
 
-export default CacheClient
+export default CacheClient.getInstance()
