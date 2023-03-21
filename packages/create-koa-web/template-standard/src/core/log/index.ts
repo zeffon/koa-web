@@ -11,8 +11,8 @@ const ENV = CONFIG.ENV
 // loading log config
 log4js.configure(logConfig)
 
-const infoLogger = log4js.getLogger('infoLogger')
-const errorLogger = log4js.getLogger('errorLogger')
+const infoLogger = log4js.getLogger('info')
+const errorLogger = log4js.getLogger('error')
 
 // format log text
 const formatText = {
