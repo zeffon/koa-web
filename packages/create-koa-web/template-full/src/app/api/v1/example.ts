@@ -8,52 +8,53 @@ import {
   summary,
   tags,
 } from 'koa-swagger-decorator'
-import RedisClient from '~/core/redis'
+import redisClient from '~/core/redis'
 import cacheClient from '~/core/cache'
 
 const tag = tags(['example'])
 
 @prefix('/example')
 export default class ExampleController {
-  @request('get', '/{id}/redis')
+  @request('get', '/{key}/redis')
   @summary('get redis')
   @description('example: /example/1/redis')
   @tag
   @path({
-    id: { type: 'number', required: true, default: null, description: 'id' },
+    key: { type: 'string', required: true, default: null, description: 'key' },
   })
   @security([{ api_key: [] }])
   async getRedis(ctx: Context) {
-    const { id } = ctx.validatedParams
-    const res = (await RedisClient.get(id)) as any
+    const { key } = ctx.validatedParams
+    let res = await redisClient.get<string>(key)
+    if (!res) res = 'user no exists'
     global.UnifyResponse.deleteSuccess({ message: res })
   }
 
-  @request('post', '/{id}/redis')
+  @request('post', '/{key}/redis')
   @summary('set redis')
   @description('example: /example/1/redis')
   @tag
   @path({
-    id: { type: 'number', required: true, default: null, description: 'id' },
+    key: { type: 'string', required: true, default: null, description: 'key' },
   })
   @security([{ api_key: [] }])
   async setRedis(ctx: Context) {
-    const { id } = ctx.validatedParams
-    await RedisClient.set(id, 'this is user: ' + id, 10)
+    const { key } = ctx.validatedParams
+    await redisClient.set(key, 'this is user: ' + key, 100)
     global.UnifyResponse.deleteSuccess({ code: 0 })
   }
 
-  @request('post', '/{id}/redis')
+  @request('delete', '/{key}/redis')
   @summary('set redis')
   @description('example: /example/1/redis')
   @tag
   @path({
-    id: { type: 'number', required: true, default: null, description: 'id' },
+    key: { type: 'string', required: true, default: null, description: 'key' },
   })
   @security([{ api_key: [] }])
   async delRedis(ctx: Context) {
-    const { id } = ctx.validatedParams
-    await RedisClient.delete(id)
+    const { key } = ctx.validatedParams
+    await redisClient.del(key)
     global.UnifyResponse.deleteSuccess({ code: 0 })
   }
 

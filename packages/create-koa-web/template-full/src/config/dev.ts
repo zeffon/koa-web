@@ -17,10 +17,9 @@ export const devConf = {
   },
   REDIS: {
     ENABLED: false,
-    USER: '',
+    USER: '', // redis dufault user is ''
     HOST: '127.0.0.1',
     PORT: 6379,
-    DB: 0,
     PASSWORD: '123456',
   },
 }
