@@ -20,7 +20,6 @@ export default class UserController {
   @summary('Get user list')
   @description('example: /user/list')
   @tag
-  @security([{ api_key: [] }])
   async list(ctx: Context) {
     // get list of user
     ctx.body = [1, 2, 3]
@@ -30,7 +29,6 @@ export default class UserController {
   @summary('Get user detail')
   @description('example: /user/1/detail')
   @tag
-  @security([{ api_key: [] }])
   @path({
     id: { type: 'number', required: true, default: null, description: 'id' },
   })
@@ -44,7 +42,6 @@ export default class UserController {
   @summary('create user')
   @description('example: /user')
   @tag
-  @security([{ api_key: [] }])
   @body(userSchema)
   async create(ctx: Context) {
     const user = ctx.validatedBody
@@ -55,8 +52,6 @@ export default class UserController {
   @request('put', '')
   @summary('modify user')
   @description('example: /user')
-  @tag
-  @security([{ api_key: [] }])
   @body(passwordSchema)
   async update(ctx: Context) {
     const user = ctx.validatedBody
@@ -64,6 +59,12 @@ export default class UserController {
     global.UnifyResponse.updateSuccess({ code: global.SUCCESS_CODE })
   }
 
+  /**
+   * @security([{ api_key: [] }])
+   * In Swagger UI, it will be displayed as a lock icon that you can click to view and configure the required API key or OAuth2 token.
+   * If your API does not require security measures, `@security` can be omitted.
+   * @param ctx
+   */
   @request('delete', '')
   @summary('delete user')
   @description('example: /user?id=1')
@@ -74,6 +75,8 @@ export default class UserController {
   })
   async delete(ctx: Context) {
     const { id } = ctx.validatedParams
+    const authorization = ctx.headers.authorization
+    console.log(authorization)
     // delete user by id
     global.UnifyResponse.deleteSuccess({ code: global.SUCCESS_CODE })
   }

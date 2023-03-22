@@ -28,12 +28,18 @@ const tag = tags(['user'])
 @prefix('/user')
 @authAll
 export default class UserController {
+  /**
+   * @security([{ api_key: [] }])
+   * In Swagger UI, it will be displayed as a lock icon that you can click to view and configure the required API key or OAuth2 token.
+   * If your API does not require security measures, `@security` can be omitted.
+   * @param ctx
+   */
   @request('get', '/me')
   @summary('Get user')
   @description('example: /user/me')
   @tag
   @security([{ api_key: [] }])
-  @auth(false)
+  @auth()
   async me(ctx: Context) {
     const user = await curUser(ctx)
     ctx.body = new UserVO(user)
@@ -43,8 +49,7 @@ export default class UserController {
   @summary('Get user list')
   @description('example: /user/list')
   @tag
-  @security([{ api_key: [] }])
-  @auth(true)
+  @auth(false)
   async list(ctx: Context) {
     const list = await getList()
     ctx.body = { list }
@@ -54,9 +59,8 @@ export default class UserController {
   @summary('Get user page')
   @description('example: /user/page')
   @tag
-  @security([{ api_key: [] }])
   @query(pagingSchema)
-  @auth()
+  @auth(false)
   async page(ctx: Context) {
     const paging = await getPage(ctx)
     ctx.body = { paging }
@@ -70,6 +74,7 @@ export default class UserController {
   @path({
     id: { type: 'number', required: true, default: null, description: 'id' },
   })
+  @auth(true)
   async detail(ctx: Context) {
     const { id } = ctx.validatedParams
     const user = await getById(id)

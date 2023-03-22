@@ -22,7 +22,6 @@ export default class ExampleController {
   @path({
     key: { type: 'string', required: true, default: null, description: 'key' },
   })
-  @security([{ api_key: [] }])
   async getRedis(ctx: Context) {
     const { key } = ctx.validatedParams
     let res = await redisClient.get<string>(key)
@@ -37,7 +36,6 @@ export default class ExampleController {
   @path({
     key: { type: 'string', required: true, default: null, description: 'key' },
   })
-  @security([{ api_key: [] }])
   async setRedis(ctx: Context) {
     const { key } = ctx.validatedParams
     await redisClient.set(key, 'this is user: ' + key, 100)
@@ -51,7 +49,6 @@ export default class ExampleController {
   @path({
     key: { type: 'string', required: true, default: null, description: 'key' },
   })
-  @security([{ api_key: [] }])
   async delRedis(ctx: Context) {
     const { key } = ctx.validatedParams
     await redisClient.del(key)
@@ -65,7 +62,6 @@ export default class ExampleController {
   @path({
     id: { type: 'number', required: true, default: null, description: 'id' },
   })
-  @security([{ api_key: [] }])
   async getCache(ctx: Context) {
     const { id } = ctx.validatedParams
     let res = await cacheClient.get<string>(id)
@@ -80,7 +76,6 @@ export default class ExampleController {
   @path({
     id: { type: 'number', required: true, default: null, description: 'id' },
   })
-  @security([{ api_key: [] }])
   async setCache(ctx: Context) {
     const { id } = ctx.validatedParams
     await cacheClient.set(id, 'this is user: ' + id)
@@ -94,7 +89,6 @@ export default class ExampleController {
   @path({
     id: { type: 'number', required: true, default: null, description: 'id' },
   })
-  @security([{ api_key: [] }])
   async delCache(ctx: Context) {
     const { id } = ctx.validatedParams
     await cacheClient.del(id)
