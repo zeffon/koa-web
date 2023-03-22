@@ -15,7 +15,7 @@ import { passwordSchema, userSchema } from '~/app/dto/user'
 const tag = tags(['user'])
 
 @prefix('/user')
-export default class TokenController {
+export default class UserController {
   @request('get', '/list')
   @summary('Get user list')
   @description('example: /user/list')

@@ -6,10 +6,7 @@ import { format } from '~/core/tool'
 export interface IUserModel extends IBaseModel {
   username: string
   password: string
-  openid: string
 }
-
-export type CUserModel = Omit<IUserModel, 'id'>
 
 export default class User extends Model<IUserModel, IUserModel> {
   declare id: number
@@ -18,7 +15,6 @@ export default class User extends Model<IUserModel, IUserModel> {
   declare deleted_at: Date
   declare username: string
   declare password: string
-  declare openid: string
 }
 
 User.init(
@@ -53,10 +49,6 @@ User.init(
       allowNull: true,
     },
     password: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    openid: {
       type: DataTypes.STRING,
       allowNull: true,
     },

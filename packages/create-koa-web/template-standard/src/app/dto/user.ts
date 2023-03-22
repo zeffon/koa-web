@@ -11,12 +11,11 @@ export const passwordSchema = {
 }
 
 export class UserVO extends User {
-  constructor(user: User) {
-    super(user)
-    this.id = user.getDataValue('id')
-    this.username = user.getDataValue('username')
-    this.openid = user.getDataValue('openid')
-    this.created_at = user.getDataValue('created_at')
-    this.updated_at = user.getDataValue('updated_at')
+  constructor(one: User) {
+    super(one)
+    this.id = one.getDataValue('id')
+    this.username = one.getDataValue('username')
+    this.created_at = one.getDataValue('created_at')
+    this.updated_at = one.getDataValue('updated_at')
   }
 }

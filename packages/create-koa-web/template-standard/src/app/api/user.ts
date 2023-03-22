@@ -13,13 +13,13 @@ import {
 import { pagingSchema } from '~/app/dto/base'
 import { UserVO, passwordSchema, userSchema } from '~/app/dto/user'
 import {
-  createUser,
+  createOne,
   curUser,
   deleteById,
+  getById,
   getList,
   getPage,
-  getUserById,
-  updateUser,
+  updateOne,
 } from '~/app/service/user'
 import auth, { authAll } from '~/core/auth'
 
@@ -27,7 +27,7 @@ const tag = tags(['user'])
 
 @prefix('/user')
 @authAll
-export default class TokenController {
+export default class UserController {
   @request('get', '/me')
   @summary('Get user')
   @description('example: /user/me')
@@ -72,7 +72,7 @@ export default class TokenController {
   })
   async detail(ctx: Context) {
     const { id } = ctx.validatedParams
-    const user = await getUserById(id)
+    const user = await getById(id)
     ctx.body = new UserVO(user)
   }
 
@@ -84,7 +84,7 @@ export default class TokenController {
   @body(userSchema)
   async create(ctx: Context) {
     const user = ctx.validatedBody
-    await createUser(user)
+    await createOne(user)
     global.UnifyResponse.createSuccess({ code: global.SUCCESS_CODE })
   }
 
@@ -96,7 +96,7 @@ export default class TokenController {
   @body(passwordSchema)
   async update(ctx: Context) {
     const user = ctx.validatedBody
-    await updateUser(user)
+    await updateOne(user)
     global.UnifyResponse.updateSuccess({ code: global.SUCCESS_CODE })
   }
 

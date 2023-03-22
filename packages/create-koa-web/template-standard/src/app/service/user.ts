@@ -4,36 +4,36 @@ import { User } from '../model'
 import { Paging } from '../dto/base'
 import { decodeToken } from '~/core/auth'
 
-export const createUser = async (user: IUserModel): Promise<User> => {
-  const hadUser = await User.findOne({ where: { username: user.username } })
-  if (hadUser) {
+export const createOne = async (newOne: IUserModel): Promise<User> => {
+  const one = await User.findOne({ where: { username: newOne.username } })
+  if (one) {
     global.UnifyResponse.parameterException(20003)
   }
-  return await User.create(user)
+  return await User.create(newOne)
 }
 
-export const updateUser = async (user: IUserModel): Promise<User> => {
-  const oldUser = await User.findByPk(user.id)
-  if (!oldUser) {
+export const updateOne = async (newOne: IUserModel): Promise<User> => {
+  const one = await User.findByPk(newOne.id)
+  if (!one) {
     global.UnifyResponse.notFoundException(10020)
   }
-  return await oldUser!.update(user)
+  return await one!.update(newOne)
 }
 
-export const getUserById = async (id: number): Promise<User> => {
-  const user = await User.findByPk(id)
-  if (!user) {
+export const getById = async (id: number): Promise<User> => {
+  const one = await User.findByPk(id)
+  if (!one) {
     global.UnifyResponse.notFoundException(10020)
   }
-  return user!
+  return one!
 }
 
-export const getUserByUsername = async (username: string): Promise<User> => {
-  const user = await User.findOne({ where: { username } })
-  if (!user) {
+export const getOneByUsername = async (username: string): Promise<User> => {
+  const one = await User.findOne({ where: { username } })
+  if (!one) {
     global.UnifyResponse.notFoundException(10020)
   }
-  return user!
+  return one!
 }
 
 export const deleteById = async (id: number): Promise<boolean> => {
@@ -58,6 +58,6 @@ export const curUser = async (ctx: Context): Promise<User> => {
   const bearerToken = ctx.header.authorization
   const token = bearerToken!.split(' ')[1]
   const userId = decodeToken(token!)
-  const user = await getUserById(userId)
-  return user
+  const one = await getById(userId)
+  return one
 }
