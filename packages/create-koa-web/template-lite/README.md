@@ -36,7 +36,7 @@ This template-lite should help get you started developing with koa2 and TypeScri
 template-lite
 
 ```
-├── build                   // build output
+├── dist                   // build output
 ├── src
 │   ├── app.ts              // koa start
 │   ├── app                 // app modules

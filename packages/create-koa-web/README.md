@@ -59,7 +59,7 @@ Here are the default main npm scripts in a scaffolded koa-web-starter project:
   "scripts": {
     "dev": "nodemon", // start dev serve
     "build": "tsc && tsc-alias", // build project
-    "serve": "node build/app.js" // start build serve
+    "serve": "node dist/app.js" // start build serve
   }
 }
 ```

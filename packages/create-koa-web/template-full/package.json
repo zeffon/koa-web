@@ -8,9 +8,9 @@
   },
   "scripts": {
     "dev": "nodemon",
-    "serve": "node build/app.js",
     "prod": "set NODE_ENV=production&&nodemon",
     "build": "tsc && tsc-alias",
+    "serve": "node dist/app.js",
     "test": "jest --detectOpenHandles --forceExit"
   },
   "dependencies": {

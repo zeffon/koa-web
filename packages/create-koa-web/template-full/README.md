@@ -36,7 +36,7 @@ template-full
 
 ```
 ├── __tests__               // jest test.ts
-├── build                   // build output
+├── dist                   // build output
 ├── coverage                // unit tests output
 ├── logs                    // log output
 ├── src

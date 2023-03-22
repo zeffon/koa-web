@@ -36,7 +36,7 @@ This template-standard should help get you started developing with koa2 and Type
 template-standard
 
 ```
-├── build                   // build output
+├── dist                   // build output
 ├── logs                    // log output
 ├── src
 │   ├── app.ts              // koa start

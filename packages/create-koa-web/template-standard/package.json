@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "nodemon",
     "build": "tsc && tsc-alias",
-    "serve": "node build/app.js"
+    "serve": "node dist/app.js"
   },
   "dependencies": {
     "jsonwebtoken": "^9.0.0",

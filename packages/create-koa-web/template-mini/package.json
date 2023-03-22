@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "nodemon",
     "build": "tsc && tsc-alias",
-    "serve": "node build/app.js"
+    "serve": "node dist/app.js"
   },
   "dependencies": {
     "koa": "^2.14.1",

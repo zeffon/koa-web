@@ -53,8 +53,15 @@ export default {
    *       "NODE_ENV": "development"
    *     },
    *     "name": "koa-web",
-   *     "script": "/koa-web/build/app.js",
+   *     "script": "/koa-web/dist/app.js",
    *     "instance_var": "koa-web_log4js_3100",
+   *     "cwd": "/koa-web",
+   *     "watch": [
+   *        "dist"
+   *      ],
+   *     "error_file":"./logs/pm2/error.log",
+   *     "out_file":"./logs/pm2/out.log",
+   *     "log_date_format":"YYYY-MM-DD HH:mm:ss",
    *   }]
    * }
    */

@@ -36,7 +36,7 @@ This template-mini should help get you started developing with koa2 and TypeScri
 template-mini
 
 ```
-├── build                   // build output
+├── dist                   // build output
 ├── src
 │   ├── app.ts              // koa start
 │   ├── app                 // app modules

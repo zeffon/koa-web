@@ -8,12 +8,12 @@
     "sourceMap": false,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "outDir": "build",
+    "outDir": "dist",
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"]
     }
   },
   "include": ["src/**/*"],
-  "exclude": ["node_module", "build"]
+  "exclude": ["node_module", "dist"]
 }

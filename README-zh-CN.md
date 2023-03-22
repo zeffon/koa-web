@@ -70,7 +70,7 @@ $ pnpm create koa-web
   "scripts": {
     "dev": "nodemon", // 启动dev环境的服务
     "build": "tsc", // 构建项目
-    "serve": "node build/app.js" // 启动prod环境的服
+    "serve": "node dist/app.js" // 启动prod环境的服
   }
 }
 ```
