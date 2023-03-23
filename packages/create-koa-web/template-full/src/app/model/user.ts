@@ -1,49 +1,17 @@
-import { DataTypes, Model } from 'sequelize'
+import { DataTypes } from 'sequelize'
 import type { IBaseModel } from './base'
-import sequelizeClient from '~/core/database'
-import { format } from '~/core/tool'
+import { BaseModel, baseFields, baseOptions } from './base'
 
 export interface IUserModel extends IBaseModel {
   username: string
   password: string
 }
 
-export default class User extends Model<IUserModel, IUserModel> {
-  declare id: number
-  declare created_at: Date
-  declare updated_at: Date
-  declare deleted_at: Date
-  declare username: string
-  declare password: string
-}
+export default class User extends BaseModel<IUserModel, IUserModel> {}
 
 User.init(
   {
-    id: {
-      type: DataTypes.INTEGER.UNSIGNED,
-      autoIncrement: true,
-      primaryKey: true,
-    },
-    created_at: {
-      type: DataTypes.DATE,
-      get() {
-        return format(this.getDataValue('created_at')!)
-      },
-    },
-    updated_at: {
-      type: DataTypes.DATE,
-      get() {
-        return format(this.getDataValue('updated_at')!)
-      },
-    },
-    deleted_at: {
-      type: DataTypes.DATE,
-      get() {
-        return this.getDataValue('deleted_at')
-          ? format(this.getDataValue('deleted_at')!)
-          : null
-      },
-    },
+    ...baseFields,
     username: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -55,12 +23,6 @@ User.init(
   },
   {
     tableName: 'user',
-    sequelize: sequelizeClient.config(),
-    paranoid: true,
-    underscored: true,
-    timestamps: true,
-    createdAt: 'created_at',
-    updatedAt: 'updated_at',
-    deletedAt: 'deleted_at',
+    ...baseOptions,
   },
 )
