@@ -4,17 +4,14 @@
  */
 const CODE = new Map([
   [0, 'ok'],
-  [9999, 'Server Unknown Exception'],
 
   [10000, 'Generic Exception'],
-  [10001, 'Generic parameter error'],
-  [10002, 'The resource not found'],
-  [10003, 'No suitable login method found'],
-
-  [20000, 'User Module Generic Error'],
-  [20001, 'The user does not exist or password is incorrect'],
-  [20002, 'The system is busy or code is invalid, please try again later'],
-  [20003, 'The username already exists'],
+  [10400, 'The request format is incorrect.'],
+  [10401, 'The token is invalid or expired.'],
+  [10403, 'You do not have permission to access.'],
+  [10404, 'Unable to find the requested resource.'],
+  [10409, 'The data already exists.'],
+  [10500, 'Server Unknown Exception.'],
 ])
 
 export default CODE

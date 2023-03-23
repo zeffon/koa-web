@@ -7,7 +7,7 @@ import { decodeToken } from '~/core/auth'
 export const createOne = async (newOne: IUserModel): Promise<User> => {
   const one = await User.findOne({ where: { username: newOne.username } })
   if (one) {
-    global.UnifyResponse.parameterException(20003)
+    global.UnifyResponse.parameterException(10409)
   }
   return await User.create(newOne)
 }
@@ -15,7 +15,7 @@ export const createOne = async (newOne: IUserModel): Promise<User> => {
 export const updateOne = async (newOne: IUserModel): Promise<User> => {
   const one = await User.findByPk(newOne.id)
   if (!one) {
-    global.UnifyResponse.notFoundException(10020)
+    global.UnifyResponse.notFoundException(10404)
   }
   return await one!.update(newOne)
 }
@@ -23,7 +23,7 @@ export const updateOne = async (newOne: IUserModel): Promise<User> => {
 export const getById = async (id: number): Promise<User> => {
   const one = await User.findByPk(id)
   if (!one) {
-    global.UnifyResponse.notFoundException(10020)
+    global.UnifyResponse.notFoundException(10404)
   }
   return one!
 }
@@ -49,7 +49,7 @@ export const getPage = async (ctx: Context): Promise<Paging<User>> => {
 export const getOneByUsername = async (username: string): Promise<User> => {
   const one = await User.findOne({ where: { username } })
   if (!one) {
-    global.UnifyResponse.notFoundException(10020)
+    global.UnifyResponse.notFoundException(10404)
   }
   return one!
 }

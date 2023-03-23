@@ -25,21 +25,21 @@ export function verifyToken(token: string) {
       complete: true,
     })
   } catch (error) {
-    global.UnifyResponse.unAuthenticatedException(10004)
+    global.UnifyResponse.unAuthenticatedException(10401)
   }
 }
 
 function _verifyBearerToken(bearerToken: string | undefined) {
   if (!bearerToken) {
-    global.UnifyResponse.unAuthenticatedException(10004)
+    global.UnifyResponse.unAuthenticatedException(10401)
   }
 
   const tokens = bearerToken?.split(' ') as string[]
   if (!(tokens?.length === 2)) {
-    global.UnifyResponse.unAuthenticatedException(10004)
+    global.UnifyResponse.unAuthenticatedException(10401)
   }
   if (tokens[0] !== 'Bearer') {
-    global.UnifyResponse.unAuthenticatedException(10004)
+    global.UnifyResponse.unAuthenticatedException(10401)
   }
 
   verifyToken(tokens[1])

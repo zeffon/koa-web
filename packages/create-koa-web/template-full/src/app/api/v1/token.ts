@@ -36,7 +36,7 @@ export default class TokenController {
         token = await code2Session(userData)
         break
       default:
-        global.UnifyResponse.parameterException(10003)
+        global.UnifyResponse.parameterException(20002)
         break
     }
     ctx.body = { token: token }

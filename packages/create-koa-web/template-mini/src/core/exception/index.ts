@@ -28,16 +28,16 @@ export default async function catchError(ctx: Koa.Context, next: any) {
       ctx.body = data
     } else if (error.status !== 500) {
       const data = {
-        code: 10001,
-        message: error.message || CODE.get(10001),
+        code: 10000,
+        message: error.message || CODE.get(10000),
         request,
       }
       ctx.body = data
       ctx.status = error.status || 500
     } else {
       const data = {
-        code: 9999,
-        message: CODE.get(9999),
+        code: 10500,
+        message: CODE.get(10500),
         request,
       }
       ctx.body = data
