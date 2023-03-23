@@ -4,17 +4,16 @@ Language : English | [简体中文](./README-zh-CN.md)
 
 <div align="center">
 
-The best scaffolding of building `Koa2` restful API with `TypeScript`.
+The scaffolding of building Node Service with `Koa2 + TypeScript`.
 
+<a href="https://www.npmjs.com/package/create-koa-web">
+  <img alt="npm release" src="https://img.shields.io/npm/v/create-koa-web.svg">
+</a>
 <a href="https://github.com/zeffon/koa-web/blob/main/LICENSE">
-<img src="https://img.shields.io/github/license/zeffon/koa-web?style=flat-square" alt="license">
+<img alt="license" src="https://img.shields.io/github/license/zeffon/koa-web?style=flat-square">
 </a>
 <a href="https://github.com/zeffon/koa-web/actions/workflows/ci.yml">
 <img alt="node ci" src="https://github.com/zeffon/koa-web/actions/workflows/ci.yml/badge.svg?style=flat-square">
-</a>
-<a href="https://github.com/zeffon/koa-web/actions/workflows/tests.yml">
-<a href="https://github.com/zeffon/koa-web/releases/latest">
-  <img alt="GitHub Release" src="https://img.shields.io/github/v/release/zeffon/koa-web.svg">
 </a>
 </div>
 

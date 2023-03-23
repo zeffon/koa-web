@@ -4,16 +4,16 @@ Language : [English](./README.md) | 简体中文
 
 <div align="center">
 
-使用 `TypeScript` 构建 `Koa2` RESTful API 最佳的脚手架。
+使用 `Koa2 + TypeScript` 构建 Node 服务的脚手架。
 
+<a href="https://www.npmjs.com/package/create-koa-web">
+  <img alt="npm release" src="https://img.shields.io/npm/v/create-koa-web.svg">
+</a>
 <a href="https://github.com/zeffon/koa-web/blob/main/LICENSE">
-<img src="https://img.shields.io/github/license/zeffon/koa-web?style=flat-square" alt="license">
+<img alt="license" src="https://img.shields.io/github/license/zeffon/koa-web?style=flat-square">
 </a>
 <a href="https://github.com/zeffon/koa-web/actions/workflows/ci.yml">
 <img alt="node ci" src="https://github.com/zeffon/koa-web/actions/workflows/ci.yml/badge.svg?style=flat-square">
-</a>
-<a href="https://github.com/zeffon/koa-web/releases/latest">
-  <img alt="GitHub Release" src="https://img.shields.io/github/v/release/zeffon/koa-web.svg">
 </a>
 </div>
 

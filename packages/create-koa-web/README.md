@@ -1,5 +1,7 @@
 # create-koa-web
 
+The scaffolding of building Node Service with `Koa2 + TypeScript`.
+
 The presets template are:
 
 |                         Template                         |                Feature                 |
