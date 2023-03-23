@@ -14,6 +14,7 @@ export const prodConf = {
     PORT: 3306,
     USER: 'root',
     PASSWORD: '123456',
+    TIMEZONE: '+08:00',
   },
   REDIS: {
     ENABLED: false,

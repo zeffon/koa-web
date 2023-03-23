@@ -18,6 +18,7 @@ const CONFIG = {
     PORT: 3306,
     USER: 'root',
     PASSWORD: '123456',
+    TIMEZONE: '+08:00',
   },
 }
 
