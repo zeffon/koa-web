@@ -1,3 +1,27 @@
+## 1.0.0 (2023-03-23)
+
+- docs: update project about intro and badge ([e1a89ca](https://github.com/zeffon/koa-web/commit/e1a89ca))
+- docs: update README ([bd6d485](https://github.com/zeffon/koa-web/commit/bd6d485))
+- perf: optimize and make log4js support pm2 ([462a158](https://github.com/zeffon/koa-web/commit/462a158))
+- perf: optimize app config and update serve scrpt ([2c3ed85](https://github.com/zeffon/koa-web/commit/2c3ed85))
+- perf: optimize param transfer model ([471e5a7](https://github.com/zeffon/koa-web/commit/471e5a7))
+- perf(template): optimize model of sequelize ([dcafd3a](https://github.com/zeffon/koa-web/commit/dcafd3a))
+- dx(template): database field naming conventions ([913d8de](https://github.com/zeffon/koa-web/commit/913d8de))
+- dx(template): remove repository module ([a121451](https://github.com/zeffon/koa-web/commit/a121451))
+- dx(template): standardize methods and vars ([5d8bdf2](https://github.com/zeffon/koa-web/commit/5d8bdf2))
+- dx(template): update exception code ([38f7b1f](https://github.com/zeffon/koa-web/commit/38f7b1f))
+- chore(deps): remove excess koa-router ([d349c15](https://github.com/zeffon/koa-web/commit/d349c15))
+- chore(deps): switch cache with cache-manager ([75b9aad](https://github.com/zeffon/koa-web/commit/75b9aad))
+- chore(template): add a timezone of database ([ec4c154](https://github.com/zeffon/koa-web/commit/ec4c154))
+- chore(template): remove excess @security ([8f1e391](https://github.com/zeffon/koa-web/commit/8f1e391))
+- chore(template): remove prettier ([04536eb](https://github.com/zeffon/koa-web/commit/04536eb))
+- chore(template): rename the build directory name ([897c840](https://github.com/zeffon/koa-web/commit/897c840))
+- chore(template): unit sequelize field for snack ([6db644e](https://github.com/zeffon/koa-web/commit/6db644e))
+- refactor(template): optimize cache usage ([66b7795](https://github.com/zeffon/koa-web/commit/66b7795))
+- refactor(template): optimize redis usage ([7683d4c](https://github.com/zeffon/koa-web/commit/7683d4c))
+- refactor(template): refactoring swagger ([dc447dd](https://github.com/zeffon/koa-web/commit/dc447dd))
+- fix(template): build lack tsc-alias ([9fa5cbf](https://github.com/zeffon/koa-web/commit/9fa5cbf))
+
 ## <small>0.7.3 (2023-03-17)</small>
 
 - fix: create-koa-web package type is module ([99f61f9](https://github.com/zeffon/koa-web/commit/99f61f9))

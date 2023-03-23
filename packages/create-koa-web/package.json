@@ -1,6 +1,6 @@
 {
   "name": "create-koa-web",
-  "version": "0.7.3",
+  "version": "1.0.0",
   "description": "The scaffolding of building Node Service with `Koa2 + TypeScript`.",
   "type": "module",
   "license": "MIT",
