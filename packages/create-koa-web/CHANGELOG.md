@@ -1,3 +1,11 @@
+## 1.1.0 (2023-03-29)
+
+- chore: replace koa2-cors with @koa/cors ([1ccbc7a](https://github.com/zeffon/koa-web/commit/1ccbc7a))
+- chore(deps): add cross-env deps ([4aa36b7](https://github.com/zeffon/koa-web/commit/4aa36b7))
+- chore(deps): update version of sequelize, nodemon ([f94e68f](https://github.com/zeffon/koa-web/commit/f94e68f))
+- chore(template): rename env value ([8617fb4](https://github.com/zeffon/koa-web/commit/8617fb4))
+- fix(full): the log is not ouput in pm2 ([f195be6](https://github.com/zeffon/koa-web/commit/f195be6))
+
 ## 1.0.0 (2023-03-23)
 
 - docs: update project about intro and badge ([e1a89ca](https://github.com/zeffon/koa-web/commit/e1a89ca))
