@@ -1,3 +1,7 @@
+## <small>1.1.1 (2023-03-29)</small>
+
+- fix(mini): missing koa-body in package.json ([4fbd61c](https://github.com/zeffon/koa-web/commit/4fbd61c))
+
 ## 1.1.0 (2023-03-29)
 
 - chore: replace koa2-cors with @koa/cors ([1ccbc7a](https://github.com/zeffon/koa-web/commit/1ccbc7a))
