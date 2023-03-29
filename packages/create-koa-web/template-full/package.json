@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "nodemon",
-    "prod": "set NODE_ENV=production&&nodemon",
+    "prod": "cross-env NODE_ENV=production nodemon",
     "build": "tsc && tsc-alias",
     "serve": "node dist/app.js",
     "test": "jest --detectOpenHandles --forceExit"
@@ -19,6 +19,7 @@
     "jsonwebtoken": "^9.0.0",
     "koa": "^2.14.1",
     "koa-body": "^6.0.1",
+    "koa-swagger-decorator": "^1.8.6",
     "log4js": "^6.8.0",
     "mysql2": "^3.2.0",
     "redis": "4.6.5",
@@ -32,7 +33,7 @@
     "@types/node": "^18.14.6",
     "@types/supertest": "^2.0.12",
     "jest": "^29.4.3",
-    "koa-swagger-decorator": "^1.8.6",
+    "cross-env": "^7.0.3",
     "nodemon": "^2.0.22",
     "supertest": "^6.3.3",
     "ts-jest": "^29.0.5",

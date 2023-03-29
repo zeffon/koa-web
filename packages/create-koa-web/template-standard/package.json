@@ -16,6 +16,7 @@
     "jsonwebtoken": "^9.0.0",
     "koa": "^2.14.1",
     "koa-body": "^6.0.1",
+    "koa-swagger-decorator": "^1.8.6",
     "log4js": "^6.8.0",
     "mysql2": "^3.2.0",
     "sequelize": "^6.30.0"
@@ -25,7 +26,6 @@
     "@types/koa": "^2.13.5",
     "@types/koa__cors": "^4.0.0",
     "@types/node": "^18.14.6",
-    "koa-swagger-decorator": "^1.8.6",
     "nodemon": "^2.0.22",
     "tsc-alias": "^1.8.3",
     "tsx": "^3.12.3",

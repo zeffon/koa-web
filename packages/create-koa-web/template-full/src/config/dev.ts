@@ -1,5 +1,5 @@
 export const devConf = {
-  ENV: 'dev',
+  ENV: 'development',
   PORT: 3100,
   BASE_URL: 'http://127.0.0.1',
   PREFIX: '/api',
