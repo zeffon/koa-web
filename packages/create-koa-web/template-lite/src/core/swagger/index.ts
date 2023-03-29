@@ -7,7 +7,7 @@ import CONFIG from '~/config'
  */
 const router = new SwaggerRouter({ prefix: CONFIG.PREFIX })
 
-if (CONFIG.ENV === 'dev') {
+if (CONFIG.ENV === 'development') {
   router.swagger({
     prefix: `${CONFIG.PREFIX}`,
     title: 'Koa-web API DOC',

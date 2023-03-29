@@ -27,7 +27,7 @@ const formatText = {
     logText += `\n  [requestMethod]: ${ctx.method},`
     logText += `\n  [requestParameters]: ${JSON.stringify(ctx.data)}`
     logText += `\n[REQUEST LOG END]\n`
-    if (ENV === 'dev') console.log(logText)
+    if (ENV === 'development') console.log(logText)
     return logText
   },
 
@@ -38,7 +38,7 @@ const formatText = {
     logText += `\n  [responseData]: ${JSON.stringify(data)}`
     logText += `\n[RESPONSE LOG END]`
     logText += `\n******************** RESPONSE END ********************\n`
-    if (ENV === 'dev') console.log(logText)
+    if (ENV === 'development') console.log(logText)
     return logText
   },
 
@@ -50,7 +50,7 @@ const formatText = {
     logText += `\n  [SQL]: ${sql}`
     logText += `\n  [SQLData]: ${data}`
     logText += `\n[SQL QUERY LOG END]\n`
-    if (ENV === 'dev') console.log(logText)
+    if (ENV === 'development') console.log(logText)
     return logText
   },
 

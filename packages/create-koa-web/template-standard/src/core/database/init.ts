@@ -2,7 +2,7 @@ import SequelizeClient from './index'
 import CONFIG from '~/config'
 import * as models from '~/app/model'
 
-const isDev = CONFIG.ENV !== 'prod'
+const isDev = CONFIG.ENV !== 'production'
 
 const modelsObj: { [index: string]: any } = models
 const allModel: any[] = []
