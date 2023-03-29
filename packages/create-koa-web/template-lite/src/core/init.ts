@@ -1,5 +1,5 @@
 import type Koa from 'koa'
-import Koa2Cors from 'koa2-cors'
+import cors from '@koa/cors'
 import KoaBody from 'koa-body'
 import catchError from './exception'
 import InitGlobal from './global'
@@ -16,7 +16,7 @@ export default class InitManager {
 
   initCore() {
     InitGlobal.init() // global var and methods
-    this.app.use(Koa2Cors()) // cross-domain processing
+    this.app.use(cors()) // cross-domain processing
     this.app.use(KoaBody({ multipart: true })) // body parameter processing
     this.app.use(catchError) // global exception handling
     this._initRoutesAndSwagger() // router and api docs
