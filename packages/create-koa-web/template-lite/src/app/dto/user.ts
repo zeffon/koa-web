@@ -1,10 +1,11 @@
 import { User } from '../model'
-export const userSchema = {
+import type { SchemaProps } from './base'
+export const userSchema: SchemaProps = {
   username: { type: 'string', required: true },
   password: { type: 'string', required: true },
 }
 
-export const passwordSchema = {
+export const passwordSchema: SchemaProps = {
   id: { type: 'number', required: true },
   password: { type: 'string', required: true },
 }

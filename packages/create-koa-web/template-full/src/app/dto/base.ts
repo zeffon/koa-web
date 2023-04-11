@@ -1,4 +1,14 @@
-export const pagingSchema = {
+type SchemaType = 'string' | 'number' | 'boolean' | 'object' | 'array'
+
+export interface SchemaProps {
+  [x: string]: {
+    type: SchemaType
+    required: boolean
+    [x: string]: any
+  }
+}
+
+export const pagingSchema: SchemaProps = {
   start: { type: 'number', required: false, default: 1 },
   limit: { type: 'number', required: false, default: 20 },
 }
