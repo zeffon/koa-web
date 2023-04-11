@@ -21,12 +21,13 @@ The scaffolding of building Node Service with `Koa2 + TypeScript`.
 
 The presets template are:
 
-|                         Template                         |                Feature                 |
-| :------------------------------------------------------: | :------------------------------------: |
-|     [Mini](https://stackblitz.com/edit/koa-web-mini)     |     Exception, Validator, API Doc      |
-|     [Lite](https://stackblitz.com/edit/koa-web-lite)     |          **Mini** + Database           |
-| [Standard](https://stackblitz.com/edit/koa-web-standard) |          **Lite** + Auth, Log          |
-|     [Full](https://stackblitz.com/edit/koa-web-full)     | **Standard** + Redis, Cache, Test-Unit |
+|                          Template                          |                     Feature                     |
+| :--------------------------------------------------------: | :---------------------------------------------: |
+|      [Mini](https://stackblitz.com/edit/koa-web-mini)      |          Exception, Validator, API Doc          |
+|      [Lite](https://stackblitz.com/edit/koa-web-lite)      |               **Mini** + Database               |
+|  [Standard](https://stackblitz.com/edit/koa-web-standard)  |              **Lite** + Auth, Log               |
+|      [Full](https://stackblitz.com/edit/koa-web-full)      |     **Standard** + Redis, Cache, Test-Unit      |
+| [Generator](https://stackblitz.com/edit/koa-web-generator) | generate `app module code` and `database table` |
 
 - :bulb: **TypeScript**: support TypeScript
 - :rocket: **Exception**：Global exception handling
@@ -115,6 +116,51 @@ This is `template-koa-standard` layout
 ├── README.md
 └── tsconfig.json
 ```
+
+## Generator
+
+koa-web-generator can quickly generate koa-web's app module code and database table.
+
+Generate content: model, service, API, and DTO files.
+
+> Automatically generate database tables is turned off by default.
+
+1. pull project & install deps
+
+   ```bash
+   pnpm create koa-web koa-web-starter --template generator
+
+   cd ./koa-web-generator
+
+   pnpm install
+   ```
+
+2. Add the models you want to generate in `./src/index.ts`
+
+   > Every model is already contains `id`, `created_at`, `updated_at`, `deleted_at`.
+
+   ```ts
+   const models: ModelProps[] = [
+     {
+       name: 'user',
+       fields: [
+         { fieldName: 'username', type: DataTypes.STRING, allowNull: false },
+         { fieldName: 'password', type: DataTypes.STRING, allowNull: false },
+       ],
+     },
+   ]
+   ```
+
+3. start generate
+
+   ```bash
+   pnpm start
+   ```
+
+After generation is complete, you can get such as files in `./src(model | service | api | dto)`
+You can copy these files into your koa-web project.
+
+> Don't forget, the file `./src/model/index/ts` also has generated content.
 
 ## License
 

@@ -21,12 +21,13 @@ Language : [English](./README.md) | 简体中文
 
 预设的模板如下:
 
-|                           模板                           |                 功能                  |
-| :------------------------------------------------------: | :-----------------------------------: |
-|     [Mini](https://stackblitz.com/edit/koa-web-mini)     |     全局异常, 数据校验, API 文档      |
-|     [Lite](https://stackblitz.com/edit/koa-web-lite)     |           **Mini** + 数据库           |
-| [Standard](https://stackblitz.com/edit/koa-web-standard) |         **Lite** + 认证, 日志         |
-|     [Full](https://stackblitz.com/edit/koa-web-full)     | **Standard** + Redis, Cache, 单元测试 |
+|                            模板                            |                 功能                  |
+| :--------------------------------------------------------: | :-----------------------------------: |
+|      [Mini](https://stackblitz.com/edit/koa-web-mini)      |     全局异常, 数据校验, API 文档      |
+|      [Lite](https://stackblitz.com/edit/koa-web-lite)      |           **Mini** + 数据库           |
+|  [Standard](https://stackblitz.com/edit/koa-web-standard)  |         **Lite** + 认证, 日志         |
+|      [Full](https://stackblitz.com/edit/koa-web-full)      | **Standard** + Redis, Cache, 单元测试 |
+| [Generator](https://stackblitz.com/edit/koa-web-generator) |      生成 app 模块代码和数据库表      |
 
 - :bulb: **TypeScript**: 支持 TypeScript
 - :rocket: **全局异常**：全局异常统一处理
@@ -115,6 +116,51 @@ $ npm run dev
 ├── README.md
 └── tsconfig.json
 ```
+
+## Generator
+
+koa-web-generator 可以快速生成 app 模块代码和数据库表.
+
+生成的内容： model, service, API, and DTO 这些模块文件.
+
+> 自动生成数据库表默认是关闭的
+
+1. 拉取项目 & 安装依赖
+
+   ```bash
+   pnpm create koa-web koa-web-starter --template generator
+
+   cd ./koa-web-generator
+
+   pnpm install
+   ```
+
+2. 在`./src/index.ts`添加你想生成的模型
+
+   > 每个模型已经内置了 `id`, `created_at`, `updated_at`, `deleted_at`.
+
+   ```ts
+   const models: ModelProps[] = [
+     {
+       name: 'user',
+       fields: [
+         { fieldName: 'username', type: DataTypes.STRING, allowNull: false },
+         { fieldName: 'password', type: DataTypes.STRING, allowNull: false },
+       ],
+     },
+   ]
+   ```
+
+3. 开始生成
+
+   ```bash
+   pnpm start
+   ```
+
+生成完成后, 你可以在 `./src(model | service | api | dto)` 目录查看生成的文件.
+你可以复制这些文件应用到你的 koa-web 项目中.
+
+> 不要忘记, `./src/model/index/ts`这个文件也有生成内容.
 
 ## License
 
