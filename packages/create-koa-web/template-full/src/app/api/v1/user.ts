@@ -11,7 +11,7 @@ import {
   tags,
 } from 'koa-swagger-decorator'
 import { pagingSchema } from '~/app/dto/base'
-import { UserVO, passwordSchema, userSchema } from '~/app/dto/user'
+import { passwordSchema, userSchema } from '~/app/dto/user'
 import {
   createOne,
   curUser,
@@ -42,7 +42,7 @@ export default class UserController {
   @auth()
   async me(ctx: Context) {
     const user = await curUser(ctx)
-    ctx.body = new UserVO(user)
+    ctx.body = user
   }
 
   @request('get', '/list')
@@ -78,7 +78,7 @@ export default class UserController {
   async detail(ctx: Context) {
     const { id } = ctx.validatedParams
     const user = await getById(id)
-    ctx.body = new UserVO(user)
+    ctx.body = user
   }
 
   @request('post', '')
