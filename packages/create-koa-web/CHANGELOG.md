@@ -1,3 +1,7 @@
+## <small>1.2.1 (2023-04-12)</small>
+
+- docs: update README about create-koa-web ([c0684ab](https://github.com/zeffon/koa-web/commit/c0684ab))
+
 ## 1.2.0 (2023-04-12)
 
 - feat: add template of koa-web-generator ([6c414e1](https://github.com/zeffon/koa-web/commit/6c414e1))
