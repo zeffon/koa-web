@@ -55,6 +55,19 @@ You can copy these files into your koa-web project.
    })
    ```
 
+   And set your database config in `./src/starter/sequelize.ts`:
+
+   ```ts
+   const DATABASE = {
+     DIALECT: 'mysql',
+     DB_NAME: 'dbname',
+     HOST: '127.0.0.1',
+     PORT: 3306,
+     USER: 'root',
+     PASSWORD: '123456',
+   }
+   ```
+
 2. If you want to generate database tables, you must keep this file `./src/model/base.ts`.
 
 3. when alterDatabase is true: This checks what is the current state of the table in the database, and then performs the necessary changes in the table to make it match the model.
