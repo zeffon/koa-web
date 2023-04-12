@@ -128,7 +128,7 @@ Generate content: model, service, API, and DTO files.
 1. pull project & install deps
 
    ```bash
-   pnpm create koa-web koa-web-starter --template generator
+   pnpm create koa-web koa-web-generator --template generator
 
    cd ./koa-web-generator
 

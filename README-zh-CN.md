@@ -128,7 +128,7 @@ koa-web-generator 可以快速生成 app 模块代码和数据库表.
 1. 拉取项目 & 安装依赖
 
    ```bash
-   pnpm create koa-web koa-web-starter --template generator
+   pnpm create koa-web koa-web-generator --template generator
 
    cd ./koa-web-generator
 
