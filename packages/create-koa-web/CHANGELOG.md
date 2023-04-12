@@ -1,3 +1,11 @@
+## 1.2.0 (2023-04-12)
+
+- feat: add template of koa-web-generator ([6c414e1](https://github.com/zeffon/koa-web/commit/6c414e1))
+- chore(standard): remove modelToSchema method ([7fdfcf8](https://github.com/zeffon/koa-web/commit/7fdfcf8))
+- chore(template): remove userVO ([786795c](https://github.com/zeffon/koa-web/commit/786795c))
+- types(template): add types in schema ([3bd839e](https://github.com/zeffon/koa-web/commit/3bd839e))
+- dx(template): KoaBody modify to koaBody ([84e4f09](https://github.com/zeffon/koa-web/commit/84e4f09))
+
 ## <small>1.1.1 (2023-03-29)</small>
 
 - fix(mini): missing koa-body in package.json ([4fbd61c](https://github.com/zeffon/koa-web/commit/4fbd61c))
