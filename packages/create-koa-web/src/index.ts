@@ -3,7 +3,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import minimist from 'minimist'
 import prompts from 'prompts'
-import { green, magenta, red, reset, yellow } from 'kolorist'
+import { blue, green, magenta, red, reset, yellow } from 'kolorist'
 
 // Avoids autoconversion to number of the project name by defining that the args
 // non associated with an option ( _ ) needs to be parsed as a string. See #4606
@@ -40,6 +40,11 @@ const FRAMEWORKS: Framework[] = [
     name: 'full',
     display: 'Full',
     color: red,
+  },
+  {
+    name: 'generator',
+    display: 'Generator',
+    color: blue,
   },
 ]
 
