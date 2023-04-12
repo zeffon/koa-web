@@ -1,3 +1,8 @@
+## <small>1.2.2 (2023-04-12)</small>
+
+- docs: update README ([6634c5c](https://github.com/zeffon/koa-web/commit/6634c5c))
+- chore: add generator option in install ([d033fd4](https://github.com/zeffon/koa-web/commit/d033fd4))
+
 ## <small>1.2.1 (2023-04-12)</small>
 
 - docs: update README about create-koa-web ([c0684ab](https://github.com/zeffon/koa-web/commit/c0684ab))
