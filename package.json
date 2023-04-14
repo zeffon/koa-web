@@ -66,7 +66,7 @@
       "eslint --cache --fix"
     ]
   },
-  "packageManager": "pnpm@7.27.1",
+  "packageManager": "pnpm@8.2.0",
   "pnpm": {
     "overrides": {
       "create-koa-web": "workspace:*"
