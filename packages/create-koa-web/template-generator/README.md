@@ -23,10 +23,26 @@ Automatically generate database tables is turned off by default.
    ```ts
    const models: ModelProps[] = [
      {
-       name: 'user',
+       name: 'user_alpha',
+       comment: 'user comment',
        fields: [
-         { fieldName: 'username', type: DataTypes.STRING, allowNull: false },
-         { fieldName: 'password', type: DataTypes.STRING, allowNull: false },
+         {
+           fieldName: 'username',
+           type: 'STRING(20)',
+           allowNull: false,
+           unique: 'username_idx',
+         },
+         {
+           fieldName: 'password',
+           type: 'STRING',
+           allowNull: false,
+           comment: 'password comment',
+         },
+         {
+           fieldName: 'type',
+           type: 'BOOLEAN',
+           defaultValue: '0',
+         },
        ],
      },
    ]
@@ -82,27 +98,3 @@ You can copy these files into your koa-web project.
 ## Sequelize Data Types
 
 > Refer more [go](https://sequelize.org/docs/v6/core-concepts/model-basics/#data-types)
-
-Currently, only the following types are supported:
-
-### string:
-
-DataTypes.STRING // VARCHAR(255)
-DataTypes.TEXT // TEXT
-
-### boolean
-
-DataTypes.BOOLEAN // TINYINT(1)
-
-### number
-
-DataTypes.INTEGER // INTEGER
-DataTypes.BIGINT // BIGINT
-DataTypes.FLOAT // FLOAT
-DataTypes.DOUBLE // DOUBLE
-DataTypes.DECIMAL // DECIMAL
-
-### date
-
-DataTypes.DATE // DATETIME for mysql / sqlite, TIMESTAMP WITH TIME ZONE for postgres
-DataTypes.DATEONLY // DATE without time

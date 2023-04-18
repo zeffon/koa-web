@@ -142,10 +142,26 @@ koa-web-generator 可以快速生成 app 模块代码和数据库表.
    ```ts
    const models: ModelProps[] = [
      {
-       name: 'user',
+       name: 'user_alpha',
+       comment: 'user comment',
        fields: [
-         { fieldName: 'username', type: DataTypes.STRING, allowNull: false },
-         { fieldName: 'password', type: DataTypes.STRING, allowNull: false },
+         {
+           fieldName: 'username',
+           type: 'STRING(20)',
+           allowNull: false,
+           unique: 'username_idx',
+         },
+         {
+           fieldName: 'password',
+           type: 'STRING',
+           allowNull: false,
+           comment: 'password comment',
+         },
+         {
+           fieldName: 'type',
+           type: 'BOOLEAN',
+           defaultValue: '0',
+         },
        ],
      },
    ]
