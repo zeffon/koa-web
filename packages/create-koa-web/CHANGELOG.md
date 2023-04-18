@@ -1,3 +1,10 @@
+## 1.3.0 (2023-04-18)
+
+- docs: update README about generator ([aebf657](https://github.com/zeffon/koa-web/commit/aebf657))
+- docs(generator): update README ([62c0b67](https://github.com/zeffon/koa-web/commit/62c0b67))
+- perf(generator): optimize generator-template ([65780d8](https://github.com/zeffon/koa-web/commit/65780d8))
+- chore(template): remove model alter database ([1c8991c](https://github.com/zeffon/koa-web/commit/1c8991c))
+
 ## <small>1.2.2 (2023-04-12)</small>
 
 - docs: update README ([6634c5c](https://github.com/zeffon/koa-web/commit/6634c5c))
