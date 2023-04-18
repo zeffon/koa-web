@@ -23,8 +23,8 @@ import { oneSchema, updateOneSchema } from '~/app/dto/${modelName}'
 import {
   createOne,
   deleteById,
-  getList,
   getById,
+  getList,
   getPage,
   updateOne,
 } from '~/app/service/${modelName}'
@@ -68,7 +68,7 @@ export default class ${modelNameWithUppercase}Controller {
   @request('post', '')
   @summary('create ${modelName}')
   @description('example: /${modelName}')
-  @tags
+  @tag
   @body(oneSchema)
   async create(ctx: Context) {
     const one = ctx.validatedBody

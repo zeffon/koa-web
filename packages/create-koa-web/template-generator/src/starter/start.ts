@@ -1,7 +1,6 @@
 /* eslint-disable import/no-nodejs-modules */
 import * as fs from 'fs'
 import * as nodePath from 'path'
-import type { SequelizeDataTypes } from './converter'
 import { initDB } from './sequelize-init'
 import {
   getApiTemplate,
@@ -10,26 +9,34 @@ import {
   getModelTemplate,
   getServiceTemplate,
 } from './templates'
+import type { SequelizeDataTypes } from './converter'
 
 export interface ModelProps {
   name: string
+  comment?: string
   fields: FieldProps[]
 }
 
 export interface FieldProps {
   fieldName: string
   type: SequelizeDataTypes
-  allowNull: boolean
+  /**
+   * @default true
+   */
+  allowNull?: boolean
+  defaultValue?: unknown
+  comment?: string
+  /**
+   * If true, the column will get a unique constraint. If a string is provided, the column will be part of a
+   * composite unique index. If multiple columns have the same string, they will be part of the same unique
+   * index
+   */
+  unique?: boolean | string
 }
 
 export interface databaseOptionProps {
   generateTable: boolean
   alterDatabase?: boolean
-}
-
-export enum ModeOption {
-  FORWARD = 'Forward',
-  REVERSE = 'Reverse',
 }
 
 /**

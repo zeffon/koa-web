@@ -1,4 +1,3 @@
-import type { DataTypes } from 'sequelize'
 import type { FieldProps } from './start'
 
 type SchemaType = 'string' | 'number' | 'boolean' | 'object' | 'array'
@@ -24,21 +23,53 @@ export const customModelToModelField = (fields: FieldProps[]) => {
   }
 }
 
-export const formatModelField = (field: FieldProps) => {
-  const fieldStr = `  ${field.fieldName}: {
-      type: DataTypes.${field.type},
-      allowNull: ${field.allowNull},
+const formatModelField = (field: FieldProps) => {
+  const { fieldName, type, allowNull, defaultValue, comment, unique } = field
+
+  let fieldStr = `type: DataTypes.${field.type},
+      allowNull: ${allowNull},`
+  if (defaultValue) {
+    fieldStr = `${fieldStr}
+      defaultValue: ${
+        isStringInField(type) ? `"${defaultValue}"` : defaultValue
+      },`
+  }
+  if (comment) {
+    fieldStr = `${fieldStr}
+      comment: "${comment}",`
+  }
+  if (unique) {
+    fieldStr = `${fieldStr}
+      unique: "${unique}",`
+  }
+  return `  ${fieldName}: {
+      ${fieldStr}
     },
   `
-  return fieldStr
 }
 
-export const formatFieldProps = (field: FieldProps, hasDeclare = false) => {
+const formatFieldProps = (field: FieldProps, hasDeclare = false) => {
   const fieldStr = `${hasDeclare ? 'declare ' : ''}${
     field.fieldName
   }: ${convertType(field.type)}
   `
   return fieldStr
+}
+
+export const customModelToModelTable = (
+  modelName: string,
+  comment?: string,
+) => {
+  let fieldStr = `tableName: '${modelName}',`
+
+  if (comment) {
+    fieldStr = `${fieldStr}
+    comment: '${comment}',`
+  }
+  return `{
+    ${fieldStr}
+    ...baseOptions,
+  }`
 }
 
 export const customModelToDTOParams = (fields: FieldProps[]) => {
@@ -73,26 +104,41 @@ export const formatModelName = (name: string): string => {
 }
 
 export type SequelizeDataTypes =
-  | typeof DataTypes.STRING
-  | typeof DataTypes.TEXT
-  | typeof DataTypes.BOOLEAN
-  | typeof DataTypes.INTEGER
-  | typeof DataTypes.BIGINT
-  | typeof DataTypes.FLOAT
-  | typeof DataTypes.DOUBLE
-  | typeof DataTypes.DECIMAL
-  | typeof DataTypes.DATE
-  | typeof DataTypes.DATEONLY
+  | `STRING`
+  | `STRING(${number})`
+  | `TEXT`
+  | `TEXT('tiny')`
+  | `BOOLEAN`
+  | `INTEGER`
+  | `BIGINT`
+  | `BIGINT(${number})`
+  | `FLOAT`
+  | `FLOAT(${number})`
+  | `FLOAT(${number}, ${number})`
+  | `DOUBLE`
+  | `DOUBLE(${number})`
+  | `DOUBLE(${number}, ${number})`
+  | `DECIMAL`
+  | `DECIMAL(${number}, ${number})`
+  | `DATE`
+  | `DATE(${number})`
+  | `DATEONLY`
+
+export const isStringInField = (type: SequelizeDataTypes) => {
+  if (type.includes('STRING') || type.includes('TEXT')) {
+    return true
+  }
+  return false
+}
 
 export const convertType = (type: SequelizeDataTypes): SchemaType => {
-  const typeStr = type.toString()
-  if (typeStr.includes('STRING') || typeStr.includes('TEXT')) {
+  if (isStringInField(type)) {
     return 'string'
-  } else if (typeStr.includes('DATE') || typeStr.includes('DATEONLY')) {
+  } else if (type.includes('DATE') || type.includes('DATEONLY')) {
     return 'string'
-  } else if (typeStr.includes('BOOLEAN')) {
+  } else if (type.includes('BOOLEAN')) {
     return 'boolean'
   }
-  // INTEGER BIGINT FLOAT DOUBLE
+  // INTEGER BIGINT FLOAT DOUBLE DECIMAL
   return 'number'
 }
