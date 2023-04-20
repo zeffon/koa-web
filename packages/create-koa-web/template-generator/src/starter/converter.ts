@@ -69,7 +69,7 @@ export const customModelToModelTable = (
   return `{
     ${fieldStr}
     ...baseOptions,
-  }`
+  },`
 }
 
 export const customModelToDTOParams = (fields: FieldProps[]) => {

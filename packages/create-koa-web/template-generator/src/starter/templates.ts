@@ -1,6 +1,7 @@
 import {
   customModelToDTOParams,
   customModelToModelField,
+  customModelToModelTable,
   formatModelName,
 } from './converter'
 import type { ModelProps } from './start'
@@ -174,6 +175,7 @@ export const getModelTemplate = (model: ModelProps) => {
   )
   const modelName = model.name
   const modelNameWithUppercase = formatModelName(modelName)
+  const tableConfig = customModelToModelTable(modelName, model.comment)
   const ModelImpl = `I${modelNameWithUppercase}Model`
   const template = `import { DataTypes } from 'sequelize'
 import type { IBaseModel } from './base'
@@ -192,10 +194,7 @@ ${modelNameWithUppercase}.init(
     ...baseFields,
     ${fieldsStr}
   },
-  {
-    tableName: '${modelName}',
-    ...baseOptions,
-  },
+  ${tableConfig}
 )
 `
   return template
