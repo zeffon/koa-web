@@ -123,6 +123,7 @@ export type SequelizeDataTypes =
   | `DATE`
   | `DATE(${number})`
   | `DATEONLY`
+  | `JSON`
 
 export const isStringInField = (type: SequelizeDataTypes) => {
   if (type.includes('STRING') || type.includes('TEXT')) {
