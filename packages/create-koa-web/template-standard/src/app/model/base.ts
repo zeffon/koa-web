@@ -1,6 +1,5 @@
 import { DataTypes, Model } from 'sequelize'
 import sequelizeClient from '~/core/database'
-import { format } from '~/core/tool'
 
 export interface IBaseModel {
   id: number
@@ -34,22 +33,11 @@ export const baseFields = {
   },
   created_at: {
     type: DataTypes.DATE,
-    get(this: any) {
-      return format(this.getDataValue('created_at')!)
-    },
   },
   updated_at: {
     type: DataTypes.DATE,
-    get(this: any) {
-      return format(this.getDataValue('updated_at')!)
-    },
   },
   deleted_at: {
     type: DataTypes.DATE,
-    get(this: any) {
-      return this.getDataValue('deleted_at')
-        ? format(this.getDataValue('deleted_at')!)
-        : null
-    },
   },
 }

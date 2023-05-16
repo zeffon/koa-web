@@ -18,6 +18,10 @@ class SequelizeClient {
         dialect: DATABASE.DIALECT as Dialect,
         host: DATABASE.HOST,
         port: DATABASE.PORT,
+        dialectOptions: {
+          dateStrings: true,
+          typeCast: true,
+        },
         timezone: DATABASE.TIMEZONE,
         logging: false,
       },
