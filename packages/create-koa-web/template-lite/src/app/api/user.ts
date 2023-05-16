@@ -6,7 +6,6 @@ import {
   prefix,
   query,
   request,
-  security,
   summary,
   tags,
 } from 'koa-swagger-decorator'
@@ -79,17 +78,10 @@ export default class UserController {
     global.UnifyResponse.updateSuccess({ code: global.SUCCESS_CODE })
   }
 
-  /**
-   * @security([{ api_key: [] }])
-   * In Swagger UI, it will be displayed as a lock icon that you can click to view and configure the required API key or OAuth2 token.
-   * If your API does not require security measures, `@security` can be omitted.
-   * @param ctx
-   */
   @request('delete', '/{id}')
   @summary('delete user')
   @description('example: /user/1')
   @tag
-  @security([{ api_key: [] }])
   @path({
     id: { type: 'number', required: true, default: null, description: 'id' },
   })
