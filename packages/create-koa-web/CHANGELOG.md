@@ -1,3 +1,11 @@
+## 1.4.0 (2023-05-18)
+
+- perf: use config instead of custom time conversion ([34f482c](https://github.com/zeffon/koa-web/commit/34f482c))
+- perf(generator): add JSON tyle in sequelize field ([c0ccfe9](https://github.com/zeffon/koa-web/commit/c0ccfe9))
+- chore(lite): remove @security in lite-template ([a635fef](https://github.com/zeffon/koa-web/commit/a635fef))
+- chore(template): remove unnecessary file ([7f25041](https://github.com/zeffon/koa-web/commit/7f25041))
+- fix(generator): missing model comment ([cb5e112](https://github.com/zeffon/koa-web/commit/cb5e112))
+
 ## 1.3.0 (2023-04-18)
 
 - docs: update README about generator ([aebf657](https://github.com/zeffon/koa-web/commit/aebf657))
