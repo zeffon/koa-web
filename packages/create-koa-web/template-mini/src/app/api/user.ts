@@ -52,6 +52,7 @@ export default class UserController {
   @request('put', '')
   @summary('modify user')
   @description('example: /user')
+  @tag
   @body(passwordSchema)
   async update(ctx: Context) {
     const user = ctx.validatedBody
